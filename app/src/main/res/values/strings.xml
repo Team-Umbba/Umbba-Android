@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">umbba-android</string>
+    <string name="binding_error">바인딩 에러</string>
+</resources>
