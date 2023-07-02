@@ -1,4 +1,4 @@
-package com.example.umbba_android.data.model.response
+package com.sopt.umbba_android.data.model.response
 
 import kotlinx.serialization.Serializable
 
