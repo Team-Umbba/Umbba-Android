@@ -59,7 +59,8 @@
         android:textColor="@color/white"
         android:text="@string/invite_code_next"
         android:textSize="16sp"
-        android:background="@drawable/shape_g300_fill_r50_rect"
+        android:enabled="false"
+        android:background="@drawable/sel_invite_code_btn_next"
         android:layout_marginHorizontal="24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
