@@ -19,9 +19,10 @@
             app:titleText="@{`초대코드 입력`}"/>
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="초대코드를\n입력해주세요."
+            android:text="@string/invite_code_title"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -29,6 +30,7 @@
             android:layout_marginTop="18dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -39,21 +41,23 @@
             app:hintAnimationEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:hint="초대 코드를 입력해주세요."/>
+                android:hint="@string/invite_code_hint"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginVertical="24dp"
         android:textColor="@color/white"
-        android:text="다음으로"
+        android:text="@string/invite_code_next"
         android:textSize="16sp"
         android:background="@drawable/shape_g300_fill_r50_rect"
         android:layout_marginHorizontal="24dp"/>

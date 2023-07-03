@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">umbba-android</string>
     <string name="binding_error">바인딩 에러</string>
+
+    <!--invite code activity-->
+    <string name="invite_code_next">다음으로</string>
+    <string name="invite_code_hint">초대 코드를 입력해주세요.</string>
+    <string name="invite_code_title">초대코드를\n입력해주세요.</string>
 </resources>
