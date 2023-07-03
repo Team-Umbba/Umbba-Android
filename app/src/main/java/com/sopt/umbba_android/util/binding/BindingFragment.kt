@@ -1,4 +1,4 @@
-package com.example.umbba_android.util.binding
+package com.sopt.umbba_android.util.binding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.example.umbba_android.R
+import com.sopt.umbba_android.R
 
 abstract class BindingFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int

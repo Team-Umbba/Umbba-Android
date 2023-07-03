@@ -1,4 +1,4 @@
-package com.example.umbba_android
+package com.sopt.umbba_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

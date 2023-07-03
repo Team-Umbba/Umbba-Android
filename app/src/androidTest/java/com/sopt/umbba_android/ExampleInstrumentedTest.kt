@@ -1,4 +1,4 @@
-package com.example.umbba_android
+package com.sopt.umbba_android
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
