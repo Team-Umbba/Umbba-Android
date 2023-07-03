@@ -6,6 +6,5 @@
         <item name="colorPrimaryVariant">@color/primary_500</item>
         <item name="colorOnPrimary">@color/primary_600</item>
     </style>
-
     <style name="Theme.Umbbaandroid" parent="Base.Theme.Umbbaandroid" />
 </resources>

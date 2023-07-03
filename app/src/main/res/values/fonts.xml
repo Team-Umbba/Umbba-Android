@@ -49,4 +49,19 @@
         <item name="android:fontStyle">normal</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="BrandTypeBigRegular20">
+        <item name="android:fontFamily">@font/cafe24_classic_type</item>
+        <item name="android:fontStyle">normal</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textSize">20sp</item>
+
+    </style>
+    <style name="BrandTypeSmallSemiBold16">
+        <item name="android:fontFamily">@font/cafe24_classic_type</item>
+        <item name="android:fontStyle">normal</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
