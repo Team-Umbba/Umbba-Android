@@ -9,14 +9,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <include
+            android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
-            app:titleText="@{`초대코드 입력`}"/>
+            app:titleText="@{`초대코드 입력`}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -26,6 +25,8 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"
             android:layout_marginTop="18dp"/>
 
@@ -38,6 +39,9 @@
             android:layout_marginHorizontal="24dp"
             app:hintEnabled="false"
             android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:hintAnimationEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +53,7 @@
                 android:hint="@string/invite_code_hint"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         android:layout_width="match_parent"

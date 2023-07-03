@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation
+package com.sopt.umbba_android.presentation.onboarding
 
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInviteCodeBinding
