@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            style="@style/TextInputLayoutStyle"
             android:layout_marginHorizontal="24dp"
             app:hintEnabled="false"
             android:textSize="16sp"
