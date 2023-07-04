@@ -9,7 +9,6 @@
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
         <!--FilledBox일 경우 밑줄 색상, OutlinedBox일 경우 테두리 색상-->
         <item name="boxStrokeColor">@color/sel_invite_code_input_layout</item>
         <!--Error-->
@@ -30,4 +29,6 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    
 </resources>

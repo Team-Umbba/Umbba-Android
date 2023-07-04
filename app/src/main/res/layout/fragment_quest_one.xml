@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="335dp"
+    android:background="@drawable/shape_gd4d4_line_r8_rect">
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:text="어머니와 지금 같이 살고 있어?"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_question"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:text="응!"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/sel_quest_btn_answer"
+            android:button="@null"
+            android:textColor="@drawable/sel_quest_btn_text_answer" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:text="아니"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/sel_quest_btn_answer"
+            android:button="@null"
+            android:textColor="@drawable/sel_quest_btn_text_answer" />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="애매해"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:background="@drawable/sel_quest_btn_answer"
+            android:button="@null"
+            android:textColor="@drawable/sel_quest_btn_text_answer" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
