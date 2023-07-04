@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="18dp"
-            android:text="간단한 질문에\n답해줘"
+            android:text="@string/quest_activity_title"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            android:text="거의 다 왔어! 조금만 힘내줘!"
+            android:text="@string/quest_progressbar_comment"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:textColor="@color/grey_999999"/>
