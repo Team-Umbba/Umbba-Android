@@ -30,11 +30,11 @@
             app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_go_past"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_margin="24dp"
             android:background="@drawable/shape_black_fill_r50_rect"
-            android:enabled="false"
             android:text="@string/go_past"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />

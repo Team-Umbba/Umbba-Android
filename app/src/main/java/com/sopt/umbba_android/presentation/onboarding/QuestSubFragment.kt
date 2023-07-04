@@ -9,7 +9,7 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentQuestOneBinding
 import com.sopt.umbba_android.util.binding.BindingFragment
 
-class QuestSubFragment : BindingFragment<FragmentQuestOneBinding> (R.layout.fragment_quest_one) {
+class QuestSubFragment : BindingFragment<FragmentQuestOneBinding>(R.layout.fragment_quest_one) {
 
     override fun onCreateView(
         inflater: LayoutInflater,

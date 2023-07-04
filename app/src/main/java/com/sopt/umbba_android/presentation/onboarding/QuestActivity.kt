@@ -11,9 +11,10 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         super.onCreate(savedInstanceState)
         changeFragment(QuestSubFragment())
     }
-    private fun changeFragment(fragment:Fragment){
+
+    private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_question,fragment)
+            .add(R.id.fragment_question, fragment)
             .commit()
     }
 }
