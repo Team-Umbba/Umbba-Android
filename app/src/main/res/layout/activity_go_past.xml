@@ -36,6 +36,7 @@
             android:layout_margin="24dp"
             android:background="@drawable/shape_black_fill_r50_rect"
             android:text="@string/go_past"
+            android:textSize="16sp"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />
 

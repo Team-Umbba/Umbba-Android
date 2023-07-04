@@ -70,6 +70,7 @@
             android:enabled="false"
             android:text="@string/btn_next"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
