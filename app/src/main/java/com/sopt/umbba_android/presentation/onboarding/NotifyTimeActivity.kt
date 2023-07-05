@@ -3,10 +3,10 @@ package com.sopt.umbba_android.presentation.onboarding
 import android.content.Intent
 import android.os.Bundle
 import com.sopt.umbba_android.R
-import com.sopt.umbba_android.databinding.ActivityGoPastBinding
+import com.sopt.umbba_android.databinding.ActivityNotifyTimeBinding
 import com.sopt.umbba_android.util.binding.BindingActivity
 
-class GoPastActivity : BindingActivity<ActivityGoPastBinding>(R.layout.activity_go_past) {
+class NotifyTimeActivity : BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setClickButton()
@@ -15,7 +15,7 @@ class GoPastActivity : BindingActivity<ActivityGoPastBinding>(R.layout.activity_
     private fun setClickButton() {
         with(binding) {
             btnGoPast.setOnClickListener {
-                startActivity(Intent(this@GoPastActivity, QuestActivity::class.java))
+                startActivity(Intent(this@NotifyTimeActivity, QuestActivity::class.java))
             }
         }
     }
