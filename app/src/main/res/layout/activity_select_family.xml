@@ -151,7 +151,7 @@
             android:layout_marginVertical="24dp"
             android:background="@drawable/sel_invite_code_btn_next"
             android:enabled="false"
-            android:text="@string/invite_code_next"
+            android:text="@string/btn_next"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />
