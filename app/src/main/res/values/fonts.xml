@@ -44,6 +44,12 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="AndroidBody3Bold16">
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="AndroidCaptionRegular12">
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:fontStyle">normal</item>
