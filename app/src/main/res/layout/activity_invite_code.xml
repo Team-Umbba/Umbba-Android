@@ -59,15 +59,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
+            style="@style/NextButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:enabled="true"
+            android:text="@string/btn_next"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
-            android:background="@drawable/sel_invite_code_btn_next"
-            android:enabled="false"
-            android:text="@string/btn_next"
-            android:textColor="@color/white"
-            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

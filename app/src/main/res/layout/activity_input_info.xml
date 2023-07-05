@@ -207,7 +207,7 @@
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
-            android:background="@drawable/sel_invite_code_btn_next"
+            android:background="@drawable/sel_btn_next"
             android:enabled="false"
             android:text="@string/btn_next"
             android:textColor="@color/white"
