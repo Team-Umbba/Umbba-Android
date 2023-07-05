@@ -36,7 +36,7 @@
                     android:id="@+id/tv_appbar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{titleText == null ? ` ` : titleText}"
+                    android:text="@{titleText == null ? null : titleText}"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
