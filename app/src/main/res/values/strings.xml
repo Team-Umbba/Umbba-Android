@@ -16,4 +16,25 @@
     <string name="or">----------------- or ----------------</string>
     <string name="did_you_receive_code">초대 코드를 받으셨나요?</string>
     <string name="btn_input_code">초대코드 입력하기</string>
+
+    <!--input info activity-->
+    <string name="please_introduce_user">환영해!\n너에 대해 알려줘!</string>
+    <string name="what_is_your_name">너의 이름이 뭐야?</string>
+    <string name="what_is_your_sex">너의 성별을 알려줘!</string>
+    <string name="man">남자</string>
+    <string name="woman">여자</string>
+    <string name="please_input_name">이름을 입력해 주세요.</string>
+    <string name="when_is_your_birth_year">태어난 연도는 언제야?</string>
+    <string name="please_input_birth_year">태어난 연도를 입력해 주세요.</string>
+
+    <!-- select family activity-->
+    <string name="travel_to_timemachine">지금부터\n먼 과거로 시간여행을 떠날 거야</string>
+    <string name="who_want_travel">누구와 떠날래?</string>
+    <string name="parent">부모님</string>
+    <string name="child">자식</string>
+    <string name="son">아들</string>
+    <string name="daughter">딸</string>
+    <string name="please_more_detail">더 자세히 알려줄 수 있어?</string>
+    <string name="mom">엄마</string>
+    <string name="dad">아빠</string>
 </resources>

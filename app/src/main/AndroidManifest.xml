@@ -23,6 +23,14 @@
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".presentation.onboarding.InputInfoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.onboarding.SelectFamilyActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

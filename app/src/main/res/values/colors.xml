@@ -19,5 +19,10 @@
 
     <color name="grey_or">#BABABA</color>
     <color name="grey_code_btn">#808080</color>
+    <color name="grey_stroke">#D4D4D4</color>
+    <color name="grey_btn_stroke">#DBDBDB</color>
+    <color name="grey_btn_solid">#EAEAEA</color>
+    <color name="grey_btn_checked_solid">#747474</color>
+    <color name="grey_btn_text">#6A6A6A</color>
 
 </resources>
