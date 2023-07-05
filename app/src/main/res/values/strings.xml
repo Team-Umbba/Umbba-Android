@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">umbba-android</string>
     <string name="binding_error">바인딩 에러</string>
+    <string name="btn_next">다음으로</string>
 
     <!--invite code activity-->
-    <string name="invite_code_next">다음으로</string>
     <string name="invite_code_hint">초대 코드를 입력해주세요.</string>
     <string name="invite_code_title">초대코드를\n입력해주세요.</string>
 
@@ -37,4 +37,12 @@
     <string name="please_more_detail">더 자세히 알려줄 수 있어?</string>
     <string name="mom">엄마</string>
     <string name="dad">아빠</string>
+
+    <!-- go past activity-->
+    <string name="go_past">과거로 떠나기</string>
+    <string name="go_past_title">매일 밤 11시에\n타임머신을 보내줄게</string>
+
+    <!-- quest activity-->
+    <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
+    <string name="quest_activity_title">간단한 질문에\n답해줘</string>
 </resources>

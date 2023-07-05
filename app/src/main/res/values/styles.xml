@@ -9,7 +9,6 @@
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
         <!--FilledBox일 경우 밑줄 색상, OutlinedBox일 경우 테두리 색상-->
         <item name="boxStrokeColor">@color/sel_invite_code_input_layout</item>
         <!--Error-->
@@ -44,4 +43,20 @@
         <item name="chipStrokeColor">@color/sel_choice_chip_stroke</item>
         <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
     </style>
+
+    <style name="QuestChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <!--Text Style-->
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/sel_quest_choice_chip_text</item>
+        <item name="android:textAlignment">center</item>
+
+        <!--Chip Design-->
+        <item name="chipCornerRadius">50dp</item>
+        <item name="chipStrokeColor">@color/grey_CFCFCF</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
+    </style>
+
 </resources>
