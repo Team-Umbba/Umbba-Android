@@ -19,7 +19,6 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-
     <style name="AndroidSubHead1SemiBold20">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
         <item name="android:textStyle">normal</item>
@@ -38,10 +37,34 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="AndroidBody2Regular16">
+    <style name="AndroidBody2_1SemiBold16">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AndroidBody2_2Regular16">
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AndroidBody3Bold16">
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AndroidBody2_1SemiBold12">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AndroidBody2_2Regular12">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AndroidCaptionRegular12">
@@ -55,8 +78,8 @@
         <item name="android:fontStyle">normal</item>
         <item name="android:fontWeight">400</item>
         <item name="android:textSize">20sp</item>
-
     </style>
+
     <style name="BrandTypeSmallSemiBold16">
         <item name="android:fontFamily">@font/cafe24_classic_type</item>
         <item name="android:fontStyle">normal</item>

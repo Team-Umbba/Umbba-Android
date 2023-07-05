@@ -17,6 +17,8 @@
     <color name="primary_500">#E99F74</color>
     <color name="primary_600">#C87759</color>
 
+    <color name="grey_or">#BABABA</color>
+    <color name="grey_code_btn">#808080</color>
     <color name="grey_stroke">#D4D4D4</color>
     <color name="grey_btn_stroke">#DBDBDB</color>
     <color name="grey_btn_solid">#EAEAEA</color>
