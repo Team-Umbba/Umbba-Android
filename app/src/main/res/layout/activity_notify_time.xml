@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:lineSpacingExtra="8dp"
             android:layout_marginTop="18dp"
             android:text="@string/go_past_title"
             android:textColor="@color/black"

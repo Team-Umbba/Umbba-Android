@@ -27,7 +27,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             style="@style/AndroidCaptionRegular12"
-            android:text="해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다."
+            android:text="@string/quest_sub_title"
             android:textColor="@color/grey_999999"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_question" />

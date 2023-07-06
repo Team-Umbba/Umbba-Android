@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="12dp"
+            android:lineSpacingExtra="8dp"
             android:text="@string/invite_code_title"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +60,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
-            style="@style/NextButtonStyle"
+            android:background="@drawable/sel_btn_next"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:enabled="true"
+            android:enabled="false"
+            android:textColor="@color/white"
             android:text="@string/btn_next"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
