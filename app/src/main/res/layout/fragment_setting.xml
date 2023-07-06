@@ -37,7 +37,7 @@
 
             <TextView
                 android:id="@+id/tv_notification"
-                style="@style/AndroidBody2Regular16"
+                style="@style/AndroidBody2_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -49,14 +49,14 @@
 
             <Switch
                 android:id="@+id/switch_notification"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="54dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginEnd="27dp"
                 android:layout_marginBottom="21dp"
                 android:gravity="center"
                 android:showText="true"
-                android:switchTextAppearance="@style/AndroidCaptionRegular12"
+                android:switchTextAppearance="@style/AndroidCaptionRegular10"
                 android:thumb="@drawable/shape_switch_thumb"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
 
             <TextView
                 android:id="@+id/tv_about_umbba"
-                style="@style/AndroidBody2Regular16"
+                style="@style/AndroidBody2_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -106,7 +106,7 @@
 
             <TextView
                 android:id="@+id/tv_tos"
-                style="@style/AndroidBody2Regular16"
+                style="@style/AndroidBody2_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -138,7 +138,7 @@
 
             <TextView
                 android:id="@+id/tv_notice"
-                style="@style/AndroidBody2Regular16"
+                style="@style/AndroidBody2_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"

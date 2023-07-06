@@ -73,6 +73,12 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="AndroidCaptionRegular10">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:fontStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <style name="BrandTypeBigRegular20">
         <item name="android:fontFamily">@font/cafe24_classic_type</item>
         <item name="android:fontStyle">normal</item>

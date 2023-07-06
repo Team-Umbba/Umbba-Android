@@ -66,7 +66,7 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_check"
-                    android:visibility="@{visibleCheck ? View.GONE : View.VISIBLE}"
+                    android:visibility="@{visibleCheck ? View.VISIBLE : View.GONE }"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
