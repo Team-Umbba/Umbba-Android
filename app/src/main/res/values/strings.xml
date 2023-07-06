@@ -53,4 +53,9 @@
     <string name="setting_about_umbba">About 엄빠도 어렸다</string>
     <string name="setting_tos">이용약관</string>
     <string name="setting_notice">공지사항</string>
+
+    <!-- answer activity-->
+    <string name="answer_edittext_hint">답변을 입력해주세요.</string>
+    <string name="answer_title">가장 오랜된 기억</string>
+    <string name="answer_question">당신과 어머니의 꿈은 달라?</string>
 </resources>
