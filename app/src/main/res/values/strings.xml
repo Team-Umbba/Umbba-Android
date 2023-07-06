@@ -36,4 +36,5 @@
     <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
     <string name="quest_activity_title">간단한 질문에\n답해줘</string>
     <string name="setting">설정</string>
+    <string name="quest_notification">해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다.</string>
 </resources>

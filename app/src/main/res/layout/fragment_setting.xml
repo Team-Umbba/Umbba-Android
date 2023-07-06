@@ -45,6 +45,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Switch
+            android:id="@+id/switch_notification"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="21dp"
+            android:gravity="center"
+            android:showText="true"
+            android:switchTextAppearance="@style/AndroidCaptionRegular12"
+            app:track="@drawable/sel_switch_notification"
+            android:thumb="@drawable/shape_switch_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
