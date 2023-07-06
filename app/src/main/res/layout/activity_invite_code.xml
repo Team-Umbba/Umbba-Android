@@ -49,7 +49,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_code"
-                style="@style/AndroidBody2Regular16"
+                style="@style/AndroidBody1_2Regular16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/invite_code_hint"
