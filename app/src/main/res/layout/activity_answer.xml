@@ -12,6 +12,10 @@
         <variable
             name="visibleCheck"
             type="java.lang.Boolean" />
+
+        <variable
+            name="title"
+            type="String"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar"
-            android:text="가장 오랜된 기억" />
+            android:text="@string/answer_title" />
 
         <TextView
             android:id="@+id/tv_question"
@@ -47,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            android:text="당신과 어머니의 꿈은 달라?" />
+            android:text="@string/answer_question" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -77,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
-                    android:hint="답변을 입력해주세요."
+                    android:hint="@string/answer_edittext_hint"
                     android:textAppearance="@style/AndroidBody1_2Regular16"
                     android:minHeight="172dp"
                     app:layout_constraintBottom_toBottomOf="parent"
