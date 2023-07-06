@@ -56,6 +56,6 @@
 
     <!-- answer activity-->
     <string name="answer_edittext_hint">답변을 입력해주세요.</string>
-    <string name="answer_title">가장 오랜된 기억</string>
+    <string name="answer_title">가장 오래된 기억</string>
     <string name="answer_question">당신과 어머니의 꿈은 달라?</string>
 </resources>

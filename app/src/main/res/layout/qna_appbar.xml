@@ -2,7 +2,9 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="titleText"
             type="String" />
@@ -39,24 +41,24 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="160dp"
                     android:layout_height="30dp"
+                    android:background="@drawable/shape_grey_appbar_r68_rect"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/shape_grey_appbar_r68_rect">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:id="@+id/tv_appbar_title"
                         style="@style/BrandTypeSmallSemiBold16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="#1 나의 어린시절"
                         android:text="@{titleText == null ? null : titleText}"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="#1 나의 어린시절" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

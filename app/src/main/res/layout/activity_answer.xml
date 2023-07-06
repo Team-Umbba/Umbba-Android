@@ -15,7 +15,7 @@
 
         <variable
             name="title"
-            type="String"/>
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,10 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="@string/answer_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_appbar"
-            android:text="@string/answer_title" />
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
         <TextView
             android:id="@+id/tv_question"
@@ -48,42 +48,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
+            android:text="@string/answer_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            android:text="@string/answer_question" />
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/shape_grey_fill_r17_rect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/shape_grey_fill_r17_rect"
             app:layout_constraintTop_toBottomOf="@id/tv_question">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/AnswerTextInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="16dp"
-                app:hintAnimationEnabled="false"
-                app:hintEnabled="false"
-                style="@style/AnswerTextInputLayoutStyle"
                 android:layout_marginVertical="16dp"
                 app:boxStrokeWidth="0dp"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="@string/answer_edittext_hint"
-                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     android:minHeight="172dp"
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
