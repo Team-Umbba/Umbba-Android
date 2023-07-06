@@ -34,7 +34,7 @@
 
                 <TextView
                     android:id="@+id/tv_appbar_title"
-                    style="@style/AndroidBody2Regular16"
+                    style="@style/AndroidBody2_2Regular16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{titleText == null ? null : titleText}"
