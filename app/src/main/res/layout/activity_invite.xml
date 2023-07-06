@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/tv_or"
-            style="@style/AndroidBody2_2Regular16"
+            style="@style/AndroidBody1_2Regular16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
@@ -60,7 +60,7 @@
 
         <TextView
             android:id="@+id/tv_receive_code"
-            style="@style/AndroidBody2_2Regular16"
+            style="@style/AndroidBody1_2Regular16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"

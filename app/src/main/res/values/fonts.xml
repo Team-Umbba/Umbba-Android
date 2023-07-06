@@ -31,19 +31,13 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="AndroidBody1SemiBold16">
+    <style name="AndroidBody1_1SemiBold16">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="AndroidBody2_1SemiBold16">
-        <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="AndroidBody2_2Regular16">
+    <style name="AndroidBody1_2Regular16">
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>

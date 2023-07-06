@@ -78,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="답변을 입력해주세요."
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     android:minHeight="172dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
