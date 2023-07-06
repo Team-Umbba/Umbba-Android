@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/sel_invite_code_btn_next"
+            android:background="@drawable/sel_btn_next"
             android:enabled="true"
             android:text="@string/btn_start"
             android:textColor="@color/white"
