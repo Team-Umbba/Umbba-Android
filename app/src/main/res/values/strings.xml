@@ -35,6 +35,12 @@
     <!-- quest activity-->
     <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
     <string name="quest_activity_title">간단한 질문에\n답해줘</string>
+    <string name="quest_sub_title">해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다.</string>
+
+    <!-- setting fragment-->
     <string name="setting">설정</string>
-    <string name="quest_notification">해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다.</string>
+    <string name="setting_notification">알람 설정</string>
+    <string name="setting_about_umbba">About 엄빠도 어렸다</string>
+    <string name="setting_tos">이용약관</string>
+    <string name="setting_notice">공지사항</string>
 </resources>

@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
-            android:text="알람 설정"
+            android:text="@string/setting_notification"
             android:textColor="@color/black_opacity60"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
-            android:text="About 엄빠도 어렸다"
+            android:text="@string/setting_about_umbba"
             android:textColor="@color/black_opacity60"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
-            android:text="이용약관"
+            android:text="@string/setting_tos"
             android:textColor="@color/black_opacity60"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="26dp"
-            android:text="공지사항"
+            android:text="@string/setting_notice"
             android:textColor="@color/black_opacity60"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
