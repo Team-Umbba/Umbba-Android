@@ -37,4 +37,6 @@
     <string name="please_more_detail">더 자세히 알려줄 수 있어?</string>
     <string name="mom">엄마</string>
     <string name="dad">아빠</string>
+    <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
+    <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드립니다</string>
 </resources>
