@@ -8,7 +8,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_title_bar"
+            android:id="@+id/cl_title_bar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,12 +28,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_notification"
+            android:id="@+id/cl_notification"
             android:layout_width="match_parent"
             android:layout_height="76dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_title_bar">
+            app:layout_constraintTop_toBottomOf="@id/cl_title_bar">
 
             <TextView
                 android:id="@+id/tv_notification"
@@ -66,12 +66,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_about_umbba"
+            android:id="@+id/cl_about_umbba"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_notification">
+            app:layout_constraintTop_toBottomOf="@id/cl_notification">
 
             <TextView
                 android:id="@+id/tv_about_umbba"
@@ -97,12 +97,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_tos"
+            android:id="@+id/cl_tos"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_about_umbba">
+            app:layout_constraintTop_toBottomOf="@id/cl_about_umbba">
 
             <TextView
                 android:id="@+id/tv_tos"
@@ -129,12 +129,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_notice"
+            android:id="@+id/cl_notice"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_tos">
+            app:layout_constraintTop_toBottomOf="@id/cl_tos">
 
             <TextView
                 android:id="@+id/tv_notice"
