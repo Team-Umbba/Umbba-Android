@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">umbba-android</string>
     <string name="binding_error">바인딩 에러</string>
+    <string name="btn_next">다음으로</string>
 
     <!--invite code activity-->
-    <string name="invite_code_next">다음으로</string>
     <string name="invite_code_hint">초대 코드를 입력해주세요.</string>
     <string name="invite_code_title">초대코드를\n입력해주세요.</string>
 
@@ -37,6 +37,29 @@
     <string name="please_more_detail">더 자세히 알려줄 수 있어?</string>
     <string name="mom">엄마</string>
     <string name="dad">아빠</string>
+
+    <!-- set time activity-->
     <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
     <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드립니다</string>
+
+    <!-- go past activity-->
+    <string name="go_past">과거로 떠나기</string>
+    <string name="go_past_title">매일 밤 11시에\n타임머신을 보내줄게</string>
+
+    <!-- quest activity-->
+    <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
+    <string name="quest_activity_title">간단한 질문에\n답해줘</string>
+    <string name="quest_sub_title">해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다.</string>
+
+    <!-- setting fragment-->
+    <string name="setting">설정</string>
+    <string name="setting_notification">알람 설정</string>
+    <string name="setting_about_umbba">About 엄빠도 어렸다</string>
+    <string name="setting_tos">이용약관</string>
+    <string name="setting_notice">공지사항</string>
+
+    <!-- answer activity-->
+    <string name="answer_edittext_hint">답변을 입력해주세요.</string>
+    <string name="answer_title">가장 오래된 기억</string>
+    <string name="answer_question">당신과 어머니의 꿈은 달라?</string>
 </resources>
