@@ -58,9 +58,9 @@
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
-            android:background="@drawable/sel_invite_code_btn_next"
+            android:background="@drawable/sel_btn_next"
             android:enabled="true"
-            android:text="@string/invite_code_next"
+            android:text="@string/btn_next"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />
