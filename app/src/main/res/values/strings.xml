@@ -71,4 +71,21 @@
     <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
     <string name="content_example">sdlkfjslkdjfklsdjfksdf\nsldkfjsldkjflksdjf</string>
     <string name="home_question_answer">질문 답변하기</string>
+
+    <!--invite code dialog fragment-->
+    <string name="not_have_partner">아직 상대가 도착하지 않았어요</string>
+    <string name="start_qna_after_connect">연결 후 문답을 시작해요</string>
+    <string name="copy_invite_code">초대코드 복사</string>
+    <string name="send_invitation">초대장 보내기</string>
+
+    <!--confirm answer dialog fragment-->
+    <string name="save_answer">답변을 저장하시겠어요?</string>
+    <string name="back">돌아가기</string>
+    <string name="save">저장</string>
+
+    <!-- back answer dialog fragment-->
+    <string name="back_confirm">답변 작성을 취소하시겠습니까?\n 작성 중인 답변은 저장되지 않습니다.</string>
+    <string name="cancel">취소</string>
+    <string name="confirm">확인</string>
+
 </resources>
