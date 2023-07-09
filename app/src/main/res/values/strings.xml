@@ -70,4 +70,11 @@
     <string name="question_answer_parent_question">할머니와 엄마의 꿈은 달랐어?</string>
     <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
     <string name="content_example">sdlkfjslkdjfklsdjfksdf\nsldkfjsldkjflksdjf</string>
+
+    <!--invite code dialog fragment-->
+    <string name="not_have_partner">아직 상대가 도착하지 않았어요</string>
+    <string name="start_qna_after_connect">연결 후 문답을 시작해요</string>
+    <string name="copy_invite_code">초대코드 복사</string>
+    <string name="send_invitation">초대장 보내기</string>
+
 </resources>
