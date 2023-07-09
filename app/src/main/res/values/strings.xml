@@ -70,4 +70,5 @@
     <string name="question_answer_parent_question">할머니와 엄마의 꿈은 달랐어?</string>
     <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
     <string name="content_example">sdlkfjslkdjfklsdjfksdf\nsldkfjsldkjflksdjf</string>
+    <string name="home_question_answer">질문 답변하기</string>
 </resources>
