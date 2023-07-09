@@ -22,7 +22,7 @@ class QuestionAnswerActivity :
 
     private fun setBlurText(isBlur: Boolean) {
         with(binding) {
-            tvAnswerOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply{
+            tvAnswerOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply {
                 if (isBlur) tvAnswerOther.paint.maskFilter =
                     BlurMaskFilter(13f, BlurMaskFilter.Blur.NORMAL)
                 else tvAnswerOther.paint.maskFilter = null

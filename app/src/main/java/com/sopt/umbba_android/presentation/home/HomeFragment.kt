@@ -14,6 +14,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         setBackground()
     }
+
     private fun setBackground(){
         with(binding){
             ivBackground.load("https://i.ibb.co/sRV9Vr4/iv-maru.jpg")
