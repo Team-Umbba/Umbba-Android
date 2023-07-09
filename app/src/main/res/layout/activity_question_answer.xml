@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="가장 오래된 기억"
+            android:text="@string/answer_title"
             android:textAppearance="@style/BrandTypeBigRegular20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="32dp"
-            android:text="할머니와 엄마의 꿈은 달랐어?"
+            android:text="@string/question_answer_parent_question"
             android:textAppearance="@style/AndroidSubHead1SemiBold20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="엄마가."
+                android:text="@string/question_answer_from_mom"
                 android:textAppearance="@style/BrandTypeSmallSemiBold16"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="43dp"
             android:layout_marginEnd="28dp"
-            android:text="할머니와 엄마의 꿈은 달랐어?"
+            android:text="@string/question_answer_quesiton_me"
             android:textAppearance="@style/AndroidSubHead1SemiBold20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_answer_other" />
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="아들이."
+                android:text="@string/question_answer_from_me"
                 android:textAppearance="@style/BrandTypeSmallSemiBold16"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -135,7 +135,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/shape_black_fill_r50_rect"
-            android:text="질문 답변하기"
+            android:text="@string/btn_question_answer"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent" />

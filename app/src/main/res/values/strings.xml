@@ -58,4 +58,11 @@
     <string name="answer_edittext_hint">답변을 입력해주세요.</string>
     <string name="answer_title">가장 오래된 기억</string>
     <string name="answer_question">당신과 어머니의 꿈은 달라?</string>
+
+    <!--question and answer activity-->
+    <string name="btn_question_answer">질문 답변하기</string>
+    <string name="question_answer_from_mom">엄마가.</string>
+    <string name="question_answer_from_me">아들이.</string>
+    <string name="question_answer_parent_question">할머니와 엄마의 꿈은 달랐어?</string>
+    <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
 </resources>
