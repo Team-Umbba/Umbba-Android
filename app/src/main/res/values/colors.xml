@@ -6,7 +6,7 @@
 
     <color name="grey_300">#F7F2F0</color>
     <color name="grey_400">#F0EBE8</color>
-    <color name="grey_500">#E7E0DC</color>
+    <color name="grey_800">#BBADA4</color>
 
     <color name="grey_D2D2D2">#D2D2D2</color>
     <color name="grey_666666">#666666</color>
@@ -16,7 +16,6 @@
     <color name="grey_D4D4D4">#D4D4D4</color>
     <color name="grey_747474">#747474</color>
     <color name="grey_btn">#E5E5E5</color>
-
 
     <color name="error_red">#FF3A1F</color>
     <color name="success">#419277</color>
