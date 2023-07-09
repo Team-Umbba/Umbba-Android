@@ -15,13 +15,17 @@
         android:theme="@style/Theme.Umbbaandroid"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.onboarding.SetTimeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.onboarding.InviteActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.onboarding.LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.onboarding.InputInfoActivity"
             android:exported="false"
