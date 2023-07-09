@@ -1,6 +1,5 @@
-package com.sopt.umbba_android.presentation
+package com.sopt.umbba_android.presentation.qna
 
-import android.R.attr.radius
 import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View

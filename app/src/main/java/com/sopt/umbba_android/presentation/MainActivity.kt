@@ -1,11 +1,10 @@
-package com.sopt.umbba_android
+package com.sopt.umbba_android.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sopt.umbba_android.presentation.AnswerActivity
-import com.sopt.umbba_android.presentation.QuestionAnswerActivity
-import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
+import com.sopt.umbba_android.R
+import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

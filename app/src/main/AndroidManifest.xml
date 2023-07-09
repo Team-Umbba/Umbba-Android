@@ -19,11 +19,11 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.InviteActivity"
+            android:name=".presentation.invite.InviteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.LoginActivity"
+            android:name=".presentation.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -35,7 +35,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.onboarding.InviteCodeActivity"
+            android:name=".presentation.invite.InviteCodeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
@@ -57,11 +57,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.AnswerActivity"
+            android:name=".presentation.qna.AnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.QuestionAnswerActivity"
+            android:name=".presentation.qna.QuestionAnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>
