@@ -38,6 +38,10 @@
     <string name="mom">엄마</string>
     <string name="dad">아빠</string>
 
+    <!-- set time activity-->
+    <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
+    <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드립니다</string>
+
     <!-- go past activity-->
     <string name="go_past">과거로 떠나기</string>
     <string name="go_past_title">매일 밤 11시에\n타임머신을 보내줄게</string>
