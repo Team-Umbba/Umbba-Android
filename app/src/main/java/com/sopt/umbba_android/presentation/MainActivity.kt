@@ -13,12 +13,5 @@ import com.sopt.umbba_android.util.binding.BindingActivity
 class MainActivity :BindingActivity<ActivityMainBinding>(R.layout.activity_main){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        changeFragment(HomeFragment())
-    }
-
-    private fun changeFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_fv, fragment)
-            .commit()
     }
 }
