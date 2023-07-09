@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="21dp"
-        tools:context=".presentation.onboarding.LoginActivity">
+        tools:context=".presentation.login.LoginActivity">
 
         <ImageView
             android:id="@+id/iv_logo"
