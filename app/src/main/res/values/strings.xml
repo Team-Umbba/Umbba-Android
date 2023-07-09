@@ -77,4 +77,9 @@
     <string name="copy_invite_code">초대코드 복사</string>
     <string name="send_invitation">초대장 보내기</string>
 
+    <!--confirm answer dialog fragment-->
+    <string name="save_answer">답변을 저장하시겠어요?</string>
+    <string name="back">돌아가기</string>
+    <string name="save">저장</string>
+
 </resources>
