@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="titleText"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_appbar"
+            layout="@layout/basic_appbar"
+            app:titleText="@{`회원 탈퇴`}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_life_quotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="48dp"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_life_quotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/AndroidSubHead1SemiBold20"
+                android:text="추억은 일종의 만남이다."
+                android:layout_marginTop="26dp"
+                android:textColor="@color/primary_600"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/tv_people_life_quotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:text="- 칼릴 지브란 -"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="27dp"
+                android:textColor="@color/primary_600"
+                app:layout_constraintTop_toBottomOf="@id/tv_life_quotes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_delete_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cl_life_quotes"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="회원탈퇴를 진행하시겠습니까?"
+            android:textAppearance="@style/AndroidSubHead1SemiBold20"
+            />
+        <TextView
+            android:id="@+id/tv_delete_account_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/umbba_black"
+            android:textAppearance="@style/AndroidBody2_2Regular12"
+            app:layout_constraintTop_toBottomOf="@id/tv_delete_account_title"
+            android:layout_marginHorizontal="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="작성한 모든 문답 내역이 삭제되며 상대측에게는 더 이상 알림이 가지 않습니다.삭제한 내역은 복구할 수 없으니 신중하게 선택해주세요."/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/shape_error_btn_r50_rect"
+        android:layout_marginHorizontal="24dp"
+        android:textAppearance="@style/AndroidBody1_1SemiBold16"
+        android:layout_marginBottom="12dp"
+        android:text="탈퇴하기"
+        android:textColor="@color/umbba_white"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
