@@ -43,7 +43,9 @@
     <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
     <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드려요</string>
 
-    <!-- go past activity-->
+    <!-- notify time activity-->
+    <string name="timemachine_description">오늘부터 매일, 과거로 시간 여행을 떠날 거야</string>
+    <string name="time_description">초대자가 선택한 시간에 따라 푸시 알림을 보내드려요</string>
     <string name="go_past">과거로 떠나기</string>
     <string name="go_past_title">매일 밤 11시에\n교신을 보내줄게</string>
 

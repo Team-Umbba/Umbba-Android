@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="24dp"
-            android:text="오늘부터 매일, 과거로 시간 여행을 떠날 거야"
+            android:text="@string/timemachine_description"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="12dp"
-            android:text="초대자가 선택한 시간에 따라 푸시 알림을 보내드려요"
+            android:text="@string/time_description"
             android:textColor="@color/grey_800"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
