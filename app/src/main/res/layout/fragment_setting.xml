@@ -17,13 +17,47 @@
 
             <TextView
                 android:id="@+id/tv_setting"
-                style="@style/AndroidSubHead1SemiBold20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:text="@string/setting"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_manage_account"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/sel_background_bottom_stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_title_bar">
+
+            <TextView
+                android:id="@+id/tv_manage_account"
+                style="@style/AndroidBody1_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="18dp"
-                android:text="@string/setting"
+                android:layout_marginTop="26dp"
+                android:text="계정 관리"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:textColor="@color/black_opacity60"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_manage_account"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -31,9 +65,10 @@
             android:id="@+id/cl_notification"
             android:layout_width="match_parent"
             android:layout_height="76dp"
+            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_title_bar">
+            app:layout_constraintTop_toBottomOf="@id/cl_manage_account">
 
             <TextView
                 android:id="@+id/tv_notification"
@@ -43,31 +78,35 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
                 android:text="@string/setting_notification"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/black_opacity60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_notification"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="27dp"
-                android:layout_marginBottom="21dp"
-                app:showText="true"
-                app:switchMinWidth="40dp"
-                app:switchTextAppearance="@style/AndroidCaptionRegular10"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="12dp"
+                android:paddingHorizontal="10dp"
                 android:thumb="@drawable/shape_switch_thumb"
-                app:trackTint="@color/sel_switch_track"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:showText="true"
+                android:checked="false"
+                app:switchMinWidth="17dp"
+                app:switchTextAppearance="@style/AndroidCaptionRegular10"
+                app:trackTint="@color/sel_switch_track" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_about_umbba"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_notification">
@@ -80,6 +119,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
                 android:text="@string/setting_about_umbba"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/black_opacity60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -99,6 +139,7 @@
             android:id="@+id/cl_tos"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_about_umbba">
@@ -111,6 +152,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
                 android:text="@string/setting_tos"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/black_opacity60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,6 +173,7 @@
             android:id="@+id/cl_notice"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_tos">
@@ -143,6 +186,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
                 android:text="@string/setting_notice"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/black_opacity60"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
