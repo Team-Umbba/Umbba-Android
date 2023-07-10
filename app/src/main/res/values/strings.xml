@@ -94,4 +94,11 @@
     <string name="on">On</string>
     <string name="off">Off</string>
 
+    <!-- delete account activity-->
+    <string name="delete_account_life_quotes">\"추억은 일종의 만남이다.\"</string>
+    <string name="delete_account_life_quotes_people">- 칼릴 지브란 -</string>
+    <string name="delete_account_title">회원탈퇴를 진행하시겠습니까?</string>
+    <string name="delete_account_content">작성한 모든 문답 내역이 삭제되며 상대측에게는 더 이상 알림이 가지 않습니다.삭제한 내역은 복구할 수 없으니 신중하게 선택해주세요.</string>
+    <string name="btn_delete_account">탈퇴하기</string>
+
 </resources>
