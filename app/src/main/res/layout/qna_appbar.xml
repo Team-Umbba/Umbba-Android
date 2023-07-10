@@ -12,13 +12,16 @@
         <variable
             name="visibleCheck"
             type="java.lang.Boolean" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/umbba_white">
+        android:layout_height="60dp">
 
         <androidx.appcompat.widget.Toolbar
             style="@style/toolbar"
@@ -28,7 +31,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/umbba_white">
 
                 <ImageView
                     android:id="@+id/iv_back"
@@ -36,6 +40,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
                     android:src="@drawable/ic_arrow_back"
+                    android:onClick="@{clickListener}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,6 +75,7 @@
                     android:layout_height="24dp"
                     android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_check"
+                    android:onClick="@{clickListener}"
                     android:visibility="@{visibleCheck ? View.VISIBLE : View.GONE }"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

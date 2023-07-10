@@ -16,6 +16,10 @@
         <variable
             name="title"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,6 +30,7 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/qna_appbar"
+            app:clickListener="@{clickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -85,9 +90,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="@string/answer_edittext_hint"
-                    android:textColorHint="@color/grey_800"
                     android:minHeight="172dp"
                     android:textAppearance="@style/AndroidBody1_2Regular16"
+                    android:textColorHint="@color/grey_800"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
