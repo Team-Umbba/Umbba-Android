@@ -10,39 +10,58 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="21dp"
+        android:background="@color/umbba_white"
         tools:context=".presentation.login.LoginActivity">
 
         <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/ic_umbba_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_app_description"
-            style="@style/AndroidHead2Regular24"
+            android:id="@+id/tv_app_title"
+            style="@style/BrandTypeBigRegular20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
             android:layout_marginTop="16dp"
-            android:text="@string/app_description"
+            android:text="@string/app_title"
+            android:textColor="@color/primary_500"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
+        <TextView
+            android:id="@+id/tv_app_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/app_description"
+            android:textColor="@color/primary_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_title" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_kakao_login"
+            style="@style/AndroidBody1_2Regular16"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginVertical="24dp"
-            android:background="@drawable/shape_grey_btn_r50_rectangle"
-            android:enabled="false"
+            android:background="@drawable/shape_yellow_btn_r50_rect"
+            android:drawableStart="@drawable/ic_kakao_talk_logo"
+            android:paddingStart="20dp"
+            android:paddingEnd="44dp"
+            android:stateListAnimator="@null"
             android:text="@string/kakao_login"
-            android:textColor="@color/white"
+            android:textColor="@color/umbba_black"
             android:textSize="16sp"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
