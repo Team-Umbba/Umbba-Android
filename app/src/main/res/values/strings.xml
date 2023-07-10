@@ -85,5 +85,6 @@
 
     <!--list fragment-->
     <string name="list">리스트</string>
+    <string name="question_number">#%d</string>
 
 </resources>
