@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.list.ListFragment">
+        tools:context=".presentation.list.ListFragment"
+        android:background="@color/umbba_white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_image"
