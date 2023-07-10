@@ -6,6 +6,9 @@
         <variable
             name="titleText"
             type="String" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,10 +26,11 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/iv_back"
+                    android:id="@+id/iv_basic_back"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
+                    android:onClick="@{clickListener}"
                     android:src="@drawable/ic_arrow_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

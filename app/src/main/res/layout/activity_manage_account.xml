@@ -6,6 +6,10 @@
         <variable
             name="titleText"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +19,8 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
-            app:titleText="@{`계정 관리`}" />
+            app:titleText="@{`계정 관리`}"
+            app:clickListener="@{clickListener}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_logout"
