@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.SwitchCompat
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_notification"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -99,6 +99,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:showText="true"
                 app:switchMinWidth="17dp"
+                app:thumbTint="@color/white"
+                app:thumbTintMode="multiply"
                 app:switchTextAppearance="@style/AndroidCaptionRegular10"
                 app:trackTint="@color/sel_switch_track" />
         </androidx.constraintlayout.widget.ConstraintLayout>
