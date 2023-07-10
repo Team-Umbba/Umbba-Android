@@ -39,6 +39,7 @@
         <!--Counter-->
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">300</item>
+        <item name="counterTextColor">@color/umbba_black</item>
         <item name="counterTextAppearance">@style/AndroidCaptionRegular10</item>
     </style>
 
@@ -47,13 +48,13 @@
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/sel_choice_chip_text</item>
+        <item name="android:textColor">@color/sel_choice_chip_pri500_text</item>
         <item name="android:textAlignment">center</item>
 
         <!--Chip Design-->
         <item name="chipCornerRadius">50dp</item>
-        <item name="chipStrokeColor">@color/sel_choice_chip_stroke</item>
-        <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
+        <item name="chipStrokeColor">@color/sel_choice_chip_pri500_stroke</item>
+        <item name="chipBackgroundColor">@color/sel_choice_chip_pri500_color</item>
     </style>
 
     <style name="QuestChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
@@ -61,28 +62,28 @@
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/sel_quest_choice_chip_text</item>
+        <item name="android:textColor">@color/sel_choice_chip_pri500_text</item>
         <item name="android:textAlignment">center</item>
 
         <!--Chip Design-->
         <item name="chipCornerRadius">50dp</item>
-        <item name="chipStrokeColor">@color/grey_CFCFCF</item>
+        <item name="chipStrokeColor">@color/sel_choice_chip_pri500_stroke</item>
         <item name="chipStrokeWidth">1dp</item>
-        <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
+        <item name="chipBackgroundColor">@color/sel_choice_chip_pri500_color</item>
     </style>
 
     <style name="ListChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <!--Text Style-->
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/sel_quest_choice_chip_text</item>
+        <item name="android:textColor">@color/sel_choice_chip_pri600_text</item>
         <item name="android:textAlignment">center</item>
 
         <!--Chip Design-->
         <item name="chipCornerRadius">32dp</item>
         <item name="chipStrokeColor">@color/primary_600</item>
         <item name="chipStrokeWidth">1dp</item>
-        <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
+        <item name="chipBackgroundColor">@color/sel_choice_chip_pri600_color</item>
     </style>
 
     <style name="CornerRadiusImageView">
