@@ -55,6 +55,7 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/shape_gradient_btn_r50_rect"
             android:enabled="true"
+            android:stateListAnimator="@null"
             android:text="@string/btn_start"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@id/tv_or" />
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/or"
-            android:textColor="@color/grey_or"
+            android:textColor="@color/grey_800"
             app:layout_constraintBottom_toTopOf="@id/tv_receive_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/did_you_receive_code"
+            android:textColor="@color/grey_800"
             app:layout_constraintBottom_toTopOf="@id/btn_input_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -88,7 +90,8 @@
             android:layout_height="60dp"
             android:layout_marginHorizontal="21dp"
             android:layout_marginVertical="24dp"
-            android:background="@drawable/shape_primary_btn_r50_rect"
+            android:background="@drawable/shape_pri500_btn_stroke_r50_rect"
+            android:stateListAnimator="@null"
             android:text="@string/btn_start_code"
             android:textColor="@color/primary_500"
             android:textSize="16sp"

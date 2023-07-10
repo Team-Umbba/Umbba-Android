@@ -20,7 +20,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/umbba_white">
 
         <include
             android:id="@+id/layout_appbar"
@@ -28,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@{`#1 나의 어린시절`}"
+            app:titleText="@{`어린시절`}"
             app:visibleCheck="@{true}" />
 
         <TextView
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/answer_title"
+            android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
@@ -49,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
             android:text="@string/answer_question"
+            android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -82,6 +85,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="@string/answer_edittext_hint"
+                    android:textColorHint="@color/grey_800"
                     android:minHeight="172dp"
                     android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:layout_constraintBottom_toBottomOf="parent"

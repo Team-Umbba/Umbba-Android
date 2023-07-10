@@ -31,40 +31,32 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="@string/not_have_partner"
-            android:textColor="@color/black"
+            android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_close" />
-
-        <TextView
-            android:id="@+id/tv_start_qna_after_connect"
-            style="@style/AndroidSubHead1SemiBold20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/start_qna_after_connect"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_not_have_partner" />
 
         <ImageView
             android:id="@+id/iv_invite_code_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_umbba_logo_big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_start_qna_after_connect" />
+            app:layout_constraintTop_toBottomOf="@id/tv_not_have_partner" />
 
         <TextView
             android:id="@+id/tv_copy_invite_code"
             style="@style/AndroidBody1_1SemiBold16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="12dp"
             android:text="@string/copy_invite_code"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_500"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:background="@drawable/shape_pri500_stroke_r56_rect"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_invite_code_image" />
@@ -75,37 +67,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textColor="@color/black"
+            android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_copy_invite_code"
             tools:text="umbbachoigo123" />
-
-        <ImageView
-            android:id="@+id/iv_line1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="82dp"
-            android:src="@drawable/shape_grey_line_3dp_rect"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_invite_code" />
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_send_invitation"
             style="@style/AndroidBody1_2Regular16"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/shape_grey_btn_r50_rectangle"
-            android:enabled="true"
+            android:background="@drawable/shape_pri500_btn_r50_rect"
             android:text="@string/send_invitation"
-            android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textColor="@color/umbba_white"
+            android:stateListAnimator="@null"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="32dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_line1"
+            app:layout_constraintTop_toBottomOf="@id/tv_invite_code"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

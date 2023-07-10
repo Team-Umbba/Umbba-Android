@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="335dp"
-        android:background="@drawable/shape_gd4d4_stroke_r8_rect">
+        android:background="@drawable/shape_g400_stroke_r8_rect">
 
         <TextView
             android:id="@+id/tv_question"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="어머니와 지금 같이 살고 있어?" />
@@ -28,7 +28,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:text="@string/quest_sub_title"
-            android:textColor="@color/grey_999999"
+            android:textColor="@color/grey_800"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_question" />
 
