@@ -24,7 +24,7 @@
             app:layout_constraintTop_toBottomOf="@id/layout_appbar"
             android:layout_marginTop="24dp"
             android:layout_marginHorizontal="48dp"
-            android:background="@color/white">
+            android:background="@drawable/shape_white_r12_stroke_rect">
 
             <TextView
                 android:id="@+id/tv_life_quotes"
