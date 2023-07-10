@@ -33,8 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:text="로그아웃"
-                android:textColor="@color/black_opacity60"
+                android:textColor="@color/umbba_black"
+                android:text="@string/logout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,8 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:text="회원 탈퇴"
-                android:textColor="@color/black_opacity60"
+                android:textColor="@color/umbba_black"
+                android:text="@string/delete_account"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
