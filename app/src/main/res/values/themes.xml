@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Umbbaandroid" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Umbbaandroid" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_400</item>
         <item name="colorPrimaryVariant">@color/primary_500</item>

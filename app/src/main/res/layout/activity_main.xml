@@ -21,11 +21,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:itemIconSize="24dp"
+        app:itemIconSize="16dp"
         app:itemIconTint="@color/sel_bottom_nav_icon"
         app:menu="@menu/menu_bottom"
         app:itemBackground="@drawable/sel_bottom_nav_indicator"
         app:itemActiveIndicatorStyle="@null"
+        android:background="@color/umbba_white"
         app:itemTextColor="@color/sel_bottom_nav_text"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

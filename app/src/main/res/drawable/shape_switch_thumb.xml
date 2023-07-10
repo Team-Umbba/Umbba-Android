@@ -26,10 +26,10 @@
         <shape android:shape="oval">
             <solid android:color="#40CCCCCC" />
             <padding
-                android:bottom="1dp"
-                android:left="1dp"
-                android:right="1dp"
-                android:top="1dp" />
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="2dp"
+                android:top="2dp" />
         </shape>
     </item>
 
@@ -57,9 +57,9 @@
     <item>
         <shape android:shape="oval">
             <size
-                android:width="33dp"
-                android:height="33dp" />
-            <solid android:color="@color/white" />
+                android:width="35dp"
+                android:height="35dp" />
+            <solid android:color="@color/umbba_white" />
         </shape>
     </item>
 </layer-list>

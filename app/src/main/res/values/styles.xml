@@ -88,4 +88,12 @@
         <item name="cornerSizeBottomLeft">20dp</item>
         <item name="cornerSizeBottomRight">20dp</item>
     </style>
+
+    <style name="SettingSwitchStyle">
+        <item name="android:thumb">@drawable/shape_switch_thumb</item>
+        <item name="android:track">@drawable/sel_switch_notification</item>
+        <item name="android:textColor">"@color/umbba_black"</item>
+        <item name="android:textAppearance">@style/AndroidCaptionRegular10</item>
+        <item name="android:thumbTextPadding">10dp</item>
+    </style>
 </resources>

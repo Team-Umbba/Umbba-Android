@@ -64,6 +64,14 @@
             android:name=".presentation.qna.QuestionAnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.setting.ManageAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.setting.DeleteAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
