@@ -29,7 +29,7 @@
     <string name="please_input_birth_year">ex) 1988</string>
 
     <!-- select family activity-->
-    <string name="travel_to_timemachine">지금부터\n먼 과거로 시간여행을 떠날 거야</string>
+    <string name="travel_to_timemachine">오늘부터 매일,\n과거로 시간여행을 떠날 거야</string>
     <string name="who_want_travel">누구와 떠날래?</string>
     <string name="parent">부모님</string>
     <string name="child">자식</string>
