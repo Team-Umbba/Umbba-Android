@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/shape_g300_fill_r50_rect" android:state_enabled="false" />
-    <item android:drawable="@drawable/shape_black_fill_r50_rect" android:state_enabled="true" />
+    <item android:drawable="@drawable/shape_g400_btn_r50_rect" android:state_enabled="false" />
+    <item android:drawable="@drawable/shape_gradient_btn_r50_rect" android:state_enabled="true" />
 </selector>

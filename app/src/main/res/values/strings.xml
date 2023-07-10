@@ -4,31 +4,32 @@
     <string name="btn_next">다음으로</string>
 
     <!--invite code activity-->
-    <string name="invite_code_hint">초대 코드를 입력해주세요.</string>
-    <string name="invite_code_title">초대코드를\n입력해주세요.</string>
+    <string name="invite_code_hint">ex) ORWO-11yzwx</string>
+    <string name="invite_code_title">초대코드를 입력해줘</string>
 
     <!--login activity-->
-    <string name="app_description">부모와 떠나는 시간 여행</string>
+    <string name="app_title">엄빠도 어렸다</string>
+    <string name="app_description">처음부터 다시 나누는 이야기</string>
     <string name="kakao_login">카카오로 로그인</string>
 
     <!--invite activity-->
     <string name="btn_start">시작하기</string>
     <string name="or">----------------- or ----------------</string>
-    <string name="did_you_receive_code">초대 코드를 받으셨나요?</string>
-    <string name="btn_input_code">초대코드 입력하기</string>
+    <string name="did_you_receive_code">카카오톡 초대 코드를 받고 왔어요</string>
+    <string name="btn_start_code">초대코드로 시작하기</string>
 
     <!--input info activity-->
-    <string name="please_introduce_user">환영해!\n너에 대해 알려줘!</string>
+    <string name="please_introduce_user">반가워!\n너에 대해 알고 싶어</string>
     <string name="what_is_your_name">너의 이름이 뭐야?</string>
     <string name="what_is_your_sex">너의 성별을 알려줘!</string>
     <string name="man">남자</string>
     <string name="woman">여자</string>
-    <string name="please_input_name">이름을 입력해 주세요.</string>
+    <string name="please_input_name">ex) 홍길동</string>
     <string name="when_is_your_birth_year">태어난 연도는 언제야?</string>
-    <string name="please_input_birth_year">태어난 연도를 입력해 주세요.</string>
+    <string name="please_input_birth_year">ex) 1988</string>
 
     <!-- select family activity-->
-    <string name="travel_to_timemachine">지금부터\n먼 과거로 시간여행을 떠날 거야</string>
+    <string name="travel_to_timemachine">오늘부터 매일,\n과거로 시간여행을 떠날 거야</string>
     <string name="who_want_travel">누구와 떠날래?</string>
     <string name="parent">부모님</string>
     <string name="child">자식</string>
@@ -40,16 +41,18 @@
 
     <!-- set time activity-->
     <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
-    <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드립니다</string>
+    <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드려요</string>
 
-    <!-- go past activity-->
+    <!-- notify time activity-->
+    <string name="timemachine_description">오늘부터 매일, 과거로 시간 여행을 떠날 거야</string>
+    <string name="time_description">초대자가 선택한 시간에 따라 푸시 알림을 보내드려요</string>
     <string name="go_past">과거로 떠나기</string>
-    <string name="go_past_title">매일 밤 11시에\n타임머신을 보내줄게</string>
+    <string name="go_past_title">매일 밤 11시에\n교신을 보내줄게</string>
 
     <!-- quest activity-->
     <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
     <string name="quest_activity_title">간단한 질문에\n답해줘</string>
-    <string name="quest_sub_title">해당 답변은 추후 제공될 질문을 구성하는 데 이용됩니다.</string>
+    <string name="quest_sub_title">해당 답변은 추후 제공될 질문을 구성하는 데 이용돼요</string>
 
     <!-- setting fragment-->
     <string name="setting">설정</string>
@@ -59,9 +62,9 @@
     <string name="setting_notice">공지사항</string>
 
     <!-- answer activity-->
-    <string name="answer_edittext_hint">답변을 입력해주세요.</string>
+    <string name="answer_edittext_hint">상대방은 아직 답변하지 않았어요</string>
     <string name="answer_title">#1 가장 오래된 기억</string>
-    <string name="answer_question">당신과 어머니의 꿈은 달라?</string>
+    <string name="answer_question">할머니와 엄마의 꿈이 달랐어?</string>
 
     <!--question and answer activity-->
     <string name="btn_question_answer">답변하기</string>
@@ -73,8 +76,7 @@
     <string name="home_question_answer">질문 답변하기</string>
 
     <!--invite code dialog fragment-->
-    <string name="not_have_partner">아직 상대가 도착하지 않았어요</string>
-    <string name="start_qna_after_connect">연결 후 문답을 시작해요</string>
+    <string name="not_have_partner">상대에게 교신을 보낼 차례야\n초대를 수락받으면 문답이 시작돼</string>
     <string name="copy_invite_code">초대코드 복사</string>
     <string name="send_invitation">초대장 보내기</string>
 
@@ -88,7 +90,7 @@
     <string name="question_number">#%d</string>
 
     <!-- back answer dialog fragment-->
-    <string name="back_confirm">답변 작성을 취소하시겠습니까?\n 작성 중인 답변은 저장되지 않습니다.</string>
+    <string name="back_confirm">답변 작성을 취소하시겠습니까?\n작성 중인 답변은 저장되지 않아요</string>
     <string name="cancel">취소</string>
     <string name="confirm">확인</string>
     <string name="on">On</string>
@@ -102,5 +104,6 @@
     <string name="btn_delete_account">탈퇴하기</string>
     <string name="logout">로그아웃</string>
     <string name="delete_account">회원 탈퇴</string>
+    <string name="manage_account">계정 관리</string>
 
 </resources>

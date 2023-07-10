@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:text="계정 관리"
+                android:text="@string/manage_account"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/umbba_black"
                 app:layout_constraintStart_toStartOf="parent"

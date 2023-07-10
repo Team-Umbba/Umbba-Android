@@ -17,11 +17,13 @@
     <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="@color/umbba_white">
 
         <androidx.appcompat.widget.Toolbar
             style="@style/toolbar"
             android:layout_height="60dp"
+            android:background="@color/umbba_white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +43,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="160dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/shape_grey_appbar_r68_rect"
+                    android:background="@drawable/shape_pri500_appbar_r68_rect"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -53,12 +55,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{titleText == null ? null : titleText}"
-                        android:textColor="@color/black"
+                        android:textColor="@color/umbba_white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="#1 나의 어린시절" />
+                        tools:text="어린시절" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
