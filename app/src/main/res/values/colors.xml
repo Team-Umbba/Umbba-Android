@@ -8,15 +8,6 @@
     <color name="grey_400">#F0EBE8</color>
     <color name="grey_800">#BBADA4</color>
 
-    <color name="grey_D2D2D2">#D2D2D2</color>
-    <color name="grey_666666">#666666</color>
-    <color name="grey_999999">#999999</color>
-    <color name="grey_CFCFCF">#CFCFCF</color>
-    <color name="grey_EAEAEA">#EAEAEA</color>
-    <color name="grey_D4D4D4">#D4D4D4</color>
-    <color name="grey_747474">#747474</color>
-    <color name="grey_btn">#E5E5E5</color>
-
     <color name="error_red">#FF3A1F</color>
     <color name="success">#419277</color>
     <color name="umbba_black">#32211B</color>
@@ -25,6 +16,21 @@
     <color name="primary_400">#F1BD9B</color>
     <color name="primary_500">#E99F74</color>
     <color name="primary_600">#C87759</color>
+
+    <color name="gradient_start">#F8C8AE</color>
+    <color name="gradient_center">#EBA787</color>
+    <color name="gradient_end">#D87E7E</color>
+
+    <color name="kakao_yellow">#FBE44D</color>
+
+    <color name="grey_D2D2D2">#D2D2D2</color>
+    <color name="grey_666666">#666666</color>
+    <color name="grey_999999">#999999</color>
+    <color name="grey_CFCFCF">#CFCFCF</color>
+    <color name="grey_EAEAEA">#EAEAEA</color>
+    <color name="grey_D4D4D4">#D4D4D4</color>
+    <color name="grey_747474">#747474</color>
+    <color name="grey_btn">#E5E5E5</color>
 
     <color name="grey_or">#BABABA</color>
     <color name="grey_code_btn">#808080</color>
