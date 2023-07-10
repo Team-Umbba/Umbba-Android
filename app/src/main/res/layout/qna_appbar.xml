@@ -35,7 +35,7 @@
                 android:background="@color/umbba_white">
 
                 <ImageView
-                    android:id="@+id/iv_back"
+                    android:id="@+id/iv_qna_back"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
