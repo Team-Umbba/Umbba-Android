@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
@@ -20,11 +21,11 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@{`초대코드 입력`}"
-            app:clickListener="@{clickListener}"/>
+            app:titleText="@{`초대코드 입력`}" />
 
         <TextView
             android:id="@+id/tv_title"

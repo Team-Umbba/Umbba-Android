@@ -52,11 +52,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/copy_invite_code"
-            android:textColor="@color/primary_500"
+            android:background="@drawable/shape_pri500_stroke_r56_rect"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
-            android:background="@drawable/shape_pri500_stroke_r56_rect"
+            android:text="@string/copy_invite_code"
+            android:textColor="@color/primary_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_invite_code_image" />
@@ -78,14 +78,14 @@
             style="@style/AndroidBody1_2Regular16"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/shape_pri500_btn_r50_rect"
-            android:text="@string/send_invitation"
-            android:textColor="@color/umbba_white"
-            android:stateListAnimator="@null"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="32dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_invite_code"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:background="@drawable/shape_pri500_btn_r50_rect"
+            android:stateListAnimator="@null"
+            android:text="@string/send_invitation"
+            android:textColor="@color/umbba_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invite_code" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

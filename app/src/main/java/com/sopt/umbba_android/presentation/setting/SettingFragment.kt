@@ -7,17 +7,18 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentSettingBinding
 import com.sopt.umbba_android.util.binding.BindingFragment
 
-class SettingFragment:BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
+class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setClickEvent()
     }
-    private fun setClickEvent(){
-        with(binding){
+
+    private fun setClickEvent() {
+        with(binding) {
             clManageAccount.setOnClickListener {
-                startActivity(Intent(requireActivity(),ManageAccountActivity::class.java))
+                startActivity(Intent(requireActivity(), ManageAccountActivity::class.java))
             }
-            clAboutUmbba.setOnClickListener{
+            clAboutUmbba.setOnClickListener {
                 TODO("엄빠소개 노션으로 이동하도록 만들기. Uri 연결하기")
             }
             clTos.setOnClickListener {

@@ -21,7 +21,7 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
-            app:clickListener="@{clickListener}"/>
+            app:clickListener="@{clickListener}" />
 
         <TextView
             android:id="@+id/tv_title"
