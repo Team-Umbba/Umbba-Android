@@ -1,6 +1,7 @@
 package com.sopt.umbba_android.presentation.setting
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import com.sopt.umbba_android.R
@@ -19,13 +20,13 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(Intent(requireActivity(), ManageAccountActivity::class.java))
             }
             clAboutUmbba.setOnClickListener {
-                TODO("엄빠소개 노션으로 이동하도록 만들기. Uri 연결하기")
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
             }
             clTos.setOnClickListener {
-                TODO("이용약관 노션으로 이동하도록 만들기. Uri 연결하기")
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
             }
             clNotice.setOnClickListener {
-                TODO("개인정보처리방침 노션으로 이동하도록 만들기. Uri 연결하기")
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
             }
         }
     }
