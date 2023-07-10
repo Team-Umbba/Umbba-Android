@@ -17,6 +17,7 @@
         <item name="errorIconDrawable">@drawable/ic_close</item>
         <item name="boxStrokeErrorColor">@color/error_red</item>
         <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
+        <item name="hintTextColor">@color/grey_800</item>
         <!--Radius-->
         <item name="boxCornerRadiusTopStart">50dp</item>
         <item name="boxCornerRadiusTopEnd">50dp</item>
