@@ -70,4 +70,22 @@
         <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
     </style>
 
+    <style name="ListChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <!--Text Style-->
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/sel_quest_choice_chip_text</item>
+        <item name="android:textAlignment">center</item>
+
+        <!--Chip Design-->
+        <item name="chipCornerRadius">32dp</item>
+        <item name="chipStrokeColor">@color/primary_600</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/sel_choice_chip_color</item>
+    </style>
+
+    <style name="CornerRadiusImageView">
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
 </resources>
