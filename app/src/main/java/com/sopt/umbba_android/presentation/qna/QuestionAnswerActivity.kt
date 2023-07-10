@@ -1,5 +1,6 @@
 package com.sopt.umbba_android.presentation.qna
 
+import android.content.Intent
 import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View
@@ -9,13 +10,25 @@ import com.sopt.umbba_android.util.binding.BindingActivity
 
 
 class QuestionAnswerActivity :
-    BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer) {
+    BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
+    View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setBlurText(true)
+        binding.clickListener = this
+        setBlurText(false)
+        setClickEvent()
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.iv_qna_back -> finish()
+        }
+    }
+
+    private fun setClickEvent() {
         with(binding) {
             btnAnswer.setOnClickListener {
-                setBlurText(false) // 임시 블러 테스트
+                startActivity(Intent(this@QuestionAnswerActivity, AnswerActivity::class.java))
             }
         }
     }

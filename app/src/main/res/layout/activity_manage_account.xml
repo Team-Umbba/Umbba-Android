@@ -6,6 +6,10 @@
         <variable
             name="titleText"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,15 +20,16 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
             app:titleText="@{`계정 관리`}" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_logout"
             android:layout_width="match_parent"
             android:layout_height="72dp"
+            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/sel_background_bottom_stroke"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar">
 
             <TextView
@@ -34,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:textColor="@color/umbba_black"
                 android:text="@string/logout"
+                android:textColor="@color/umbba_black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,8 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:textColor="@color/umbba_black"
                 android:text="@string/delete_account"
+                android:textColor="@color/umbba_black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
