@@ -91,7 +91,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
-                android:checked="false"
+                android:checked="true"
                 android:paddingHorizontal="10dp"
                 android:thumb="@drawable/shape_switch_thumb"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -13,9 +13,8 @@ class AnswerActivity: BindingActivity<ActivityAnswerBinding>(R.layout.activity_a
     }
     override fun onClick(view: View?) {
         when(view?.id){
-            R.id.iv_qna_back->TODO("진짜 뒤로갈거냐는 Dialog 띄우기 ")
+            R.id.iv_qna_back-> TODO("진짜 뒤로갈거냐는 Dialog 띄우기 ")
             R.id.iv_check-> TODO("답변 이거 맞냐고 확인하는 Dialog 띄우기")
         }
     }
-
 }

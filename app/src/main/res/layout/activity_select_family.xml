@@ -8,6 +8,11 @@
         <variable
             name="titleText"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +24,7 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

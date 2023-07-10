@@ -2,10 +2,14 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
 
         <variable
             name="titleText"
             type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,7 +23,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@{`초대코드 입력`}" />
+            app:titleText="@{`초대코드 입력`}"
+            app:clickListener="@{clickListener}"/>
 
         <TextView
             android:id="@+id/tv_title"

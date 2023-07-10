@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
 
     </data>
 
@@ -16,6 +19,7 @@
         <include
             android:id="@+id/layout_appbar"
             layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

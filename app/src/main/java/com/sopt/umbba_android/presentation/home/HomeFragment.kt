@@ -18,15 +18,16 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         setClickEvent()
     }
 
-    private fun setClickEvent(){
-        with(binding){
+    private fun setClickEvent() {
+        with(binding) {
             btnAnswer.setOnClickListener {
                 startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
             }
         }
     }
-    private fun setBackground(){
-        with(binding){
+
+    private fun setBackground() {
+        with(binding) {
             ivBackground.load("https://i.ibb.co/sRV9Vr4/iv-maru.jpg")
         }
     }

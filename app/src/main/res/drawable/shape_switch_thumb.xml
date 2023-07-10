@@ -56,10 +56,10 @@
     </item>
     <item>
         <shape android:shape="oval">
+            <solid android:color="@color/umbba_white" />
             <size
                 android:width="35dp"
                 android:height="35dp" />
-            <solid android:color="@color/umbba_white" />
         </shape>
     </item>
 </layer-list>

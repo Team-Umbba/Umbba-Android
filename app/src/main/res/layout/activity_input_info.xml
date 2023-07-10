@@ -8,6 +8,10 @@
         <variable
             name="titleText"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +25,8 @@
             layout="@layout/basic_appbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:clickListener="@{clickListener}"/>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/sv_introduce_user"
