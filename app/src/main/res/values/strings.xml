@@ -82,5 +82,10 @@
     <string name="save_answer">답변을 저장하시겠어요?</string>
     <string name="back">돌아가기</string>
     <string name="save">저장</string>
-  
+
+    <!-- back answer dialog fragment-->
+    <string name="back_confirm">답변 작성을 취소하시겠습니까?\n 작성 중인 답변은 저장되지 않습니다.</string>
+    <string name="cancel">취소</string>
+    <string name="confirm">확인</string>
+
 </resources>
