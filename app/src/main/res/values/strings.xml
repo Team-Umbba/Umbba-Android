@@ -8,14 +8,15 @@
     <string name="invite_code_title">초대코드를\n입력해주세요.</string>
 
     <!--login activity-->
-    <string name="app_description">부모와 떠나는 시간 여행</string>
+    <string name="app_title">엄빠도 어렸다</string>
+    <string name="app_description">처음부터 다시 나누는 이야기</string>
     <string name="kakao_login">카카오로 로그인</string>
 
     <!--invite activity-->
     <string name="btn_start">시작하기</string>
     <string name="or">----------------- or ----------------</string>
     <string name="did_you_receive_code">초대 코드를 받으셨나요?</string>
-    <string name="btn_input_code">초대코드 입력하기</string>
+    <string name="btn_start_code">초대코드로 시작하기</string>
 
     <!--input info activity-->
     <string name="please_introduce_user">환영해!\n너에 대해 알려줘!</string>
