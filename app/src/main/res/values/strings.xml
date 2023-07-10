@@ -82,5 +82,8 @@
     <string name="save_answer">답변을 저장하시겠어요?</string>
     <string name="back">돌아가기</string>
     <string name="save">저장</string>
-  
+
+    <!--list fragment-->
+    <string name="list">리스트</string>
+
 </resources>
