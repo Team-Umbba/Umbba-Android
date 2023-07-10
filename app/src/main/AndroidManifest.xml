@@ -15,6 +15,10 @@
         android:theme="@style/Theme.Umbbaandroid"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.login.AgreePrivacyUseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".presentation.onboarding.OnboardingFinishActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
