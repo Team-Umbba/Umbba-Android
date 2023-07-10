@@ -22,7 +22,7 @@
             android:background="@color/umbba_white"
             app:itemActiveIndicatorStyle="@null"
             app:itemBackground="@drawable/sel_bottom_nav_indicator"
-            app:itemIconSize="16dp"
+            app:itemIconSize="24dp"
             app:itemIconTint="@color/sel_bottom_nav_icon"
             app:itemTextColor="@color/sel_bottom_nav_text"
             app:layout_constraintBottom_toBottomOf="parent"
