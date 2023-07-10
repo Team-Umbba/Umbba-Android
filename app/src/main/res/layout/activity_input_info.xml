@@ -13,6 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/umbba_white"
         tools:context=".presentation.onboarding.InputInfoActivity">
 
         <include
@@ -22,19 +23,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_introduce_user"
-            style="@style/AndroidHead1SemiBold24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="12dp"
-            android:lineSpacingExtra="8dp"
-            android:text="@string/please_introduce_user"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
-
         <androidx.core.widget.NestedScrollView
             android:id="@+id/sv_introduce_user"
             android:layout_width="match_parent"
@@ -43,7 +31,7 @@
             android:isScrollContainer="true"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/btn_next"
-            app:layout_constraintTop_toBottomOf="@id/tv_introduce_user">
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_introduce_user"
@@ -51,12 +39,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="28dp">
 
+                <TextView
+                    android:id="@+id/tv_introduce_user"
+                    style="@style/AndroidHead1SemiBold24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/please_introduce_user"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/shape_gd4d4_stroke_r8_rect"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/tv_introduce_user">
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -87,11 +86,11 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_name"
+                            style="@style/AndroidBody1_2Regular16"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_name"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,6 +127,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintHorizontal_weight="1"
                         app:layout_constraintTop_toBottomOf="@id/tv_sex"
+                        app:selectionRequired="true"
                         app:singleLine="true"
                         app:singleSelection="true">
 
@@ -188,11 +188,11 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_year"
+                            style="@style/AndroidBody1_2Regular16"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_birth_year"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -203,6 +203,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_next"
+            style="@style/AndroidBody1_1SemiBold16"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
