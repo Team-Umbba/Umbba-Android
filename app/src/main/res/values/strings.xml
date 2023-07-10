@@ -102,5 +102,6 @@
     <string name="btn_delete_account">탈퇴하기</string>
     <string name="logout">로그아웃</string>
     <string name="delete_account">회원 탈퇴</string>
+    <string name="manage_account">계정 관리</string>
 
 </resources>
