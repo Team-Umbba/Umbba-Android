@@ -1,16 +1,17 @@
 package com.sopt.umbba_android.presentation.login
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.text.util.Linkify
-import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityAgreePrivacyUseBinding
+import com.sopt.umbba_android.presentation.invite.InviteActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 import java.util.regex.Pattern
 
@@ -19,8 +20,65 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        clickAllAgreeButton()
+        clickCircleButton()
         setHyperLinkAndColorInTermsTextView()
         setHyperLinkAndColorInPrivacyTextView()
+        goInviteActivity()
+    }
+
+    private fun clickAllAgreeButton() {
+        with(binding) {
+            btnAllAgreeCheck.setOnClickListener {
+                btnAllAgreeCheck.isSelected = !btnAllAgreeCheck.isSelected
+                checkAllAgreeButton()
+            }
+        }
+    }
+
+    private fun checkAllAgreeButton() {
+        with(binding) {
+            if (btnAllAgreeCheck.isSelected) {
+                btnUp14.isSelected = true
+                btnAgreeTermsAndCondition.isSelected = true
+                btnAgreePrivacy.isSelected = true
+                btnNext.isEnabled = true
+            } else {
+                btnUp14.isSelected = false
+                btnAgreeTermsAndCondition.isSelected = false
+                btnAgreePrivacy.isSelected = false
+                btnNext.isEnabled = false
+            }
+        }
+    }
+
+    private fun clickCircleButton() {
+        with(binding) {
+            btnUp14.setOnClickListener {
+                btnUp14.isSelected = !btnUp14.isSelected
+                checkAllCircleButton()
+            }
+            btnAgreeTermsAndCondition.setOnClickListener {
+                btnAgreeTermsAndCondition.isSelected = !btnAgreeTermsAndCondition.isSelected
+                checkAllCircleButton()
+            }
+            btnAgreePrivacy.setOnClickListener {
+                btnAgreePrivacy.isSelected = !btnAgreePrivacy.isSelected
+                checkAllCircleButton()
+            }
+        }
+    }
+
+    private fun checkAllCircleButton() {
+        with(binding) {
+            if (btnUp14.isSelected && btnAgreeTermsAndCondition.isSelected && btnAgreePrivacy.isSelected) {
+                btnAllAgreeCheck.isSelected = true
+                btnNext.isEnabled = true
+            } else {
+                btnAllAgreeCheck.isSelected = false
+                btnNext.isEnabled = false
+            }
+        }
     }
 
     private fun setHyperLinkAndColorInTermsTextView() {
@@ -54,5 +112,11 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
         val sentence = SpannableStringBuilder(view.text)
         sentence.setSpan(StyleSpan(Typeface.BOLD), 5, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         view.text = sentence
+    }
+
+    private fun goInviteActivity() {
+        binding.btnNext.setOnClickListener {
+            startActivity(Intent(this, InviteActivity::class.java))
+        }
     }
 }

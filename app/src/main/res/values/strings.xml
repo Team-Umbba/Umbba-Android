@@ -76,9 +76,9 @@
     <string name="home_question_answer">질문 답변하기</string>
 
     <!--invite code dialog fragment-->
-    <string name="not_have_partner">상대에게 교신을 보낼 차례야\n초대를 수락받으면 문답이 시작돼</string>
+    <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
     <string name="copy_invite_code">초대코드 복사</string>
-    <string name="send_invitation">초대장 보내기</string>
+    <string name="send_invitation">카카오톡으로 초대 보내기</string>
 
     <!--confirm answer dialog fragment-->
     <string name="save_answer">답변을 저장하시겠어요?</string>
@@ -117,5 +117,9 @@
     <string name="agree_terms_and_condition">[필수] 서비스 이용약관에 동의합니다.</string>
     <string name="agree_privacy">[필수] 개인정보 수집 및 이용에 동의합니다.</string>
     <string name="agree_privacy_description">\'(주)이승준 컴퍼니\'(이하 \'회사\')가 운영하는 \'엄빠도 어렸다\'는 개인정보보호법 제30조 의거 이용자의 개인정보보호와 권익을 보호하고 관련된 고충 및 애로사항을 신속하게 처리하기 위해 아래의 개인정보처리방침을 제정·운영하고 있습니다.</string>
+
+    <!--communication activity-->
+    <string name="answer_phone">전화 받기</string>
+    <string name="call_description">오래된 공중전화에서 수신음이 들린다</string>
 
 </resources>
