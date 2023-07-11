@@ -12,12 +12,12 @@ import timber.log.Timber
 
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val answerViewModel by viewModels <AnswerViewModel>()
+    private val answerViewModel by viewModels<AnswerViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.vm = answerViewModel
-        observeText()
+        setQuestionTitle()
     }
 
     override fun onClick(view: View?) {
@@ -27,25 +27,31 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         }
     }
 
-    private fun observeText(){
-        answerViewModel.inputAnswer.observe(this){
-           Log.e("answer 값",it.toString())
-        }
-    }
-
     private fun showBackDialog() {
         BackAnswerDialogFragment()
             .show(supportFragmentManager, "BackAnswerDialog")
     }
 
+    private fun setQuestionTitle() {
+        with(binding) {
+            tvQuestion.text = intent.getStringExtra("question")
+            tvTitle.text = intent.getStringExtra("topic")
+            layoutAppbar.titleText = intent.getStringExtra("section")
+        }
+    }
+
     private fun showConfirmDialog() {
         val bundle = Bundle()
         val confirmDialog = ConfirmAnswerDialogFragment()
-        bundle.putString("ConfirmAnswerText",answerViewModel.inputAnswer.value.toString())
-        // TODO(API에따라 다르겠지만, 질문 대주제와 소주제, 질문도 dialog에 넘겨줘야함.)
-        confirmDialog.apply{
+        bundle.apply {
+            putString("question", intent.getStringExtra("question"))
+            putString("topic", intent.getStringExtra("topic"))
+            putString("section", intent.getStringExtra("section"))
+            putString("answer", answerViewModel.answer.value)
+        }
+        confirmDialog.apply {
             arguments = bundle
-            show(supportFragmentManager,"ConfirmDialogFragment")
+            show(supportFragmentManager, "ConfirmDialogFragment")
         }
     }
 }
