@@ -13,6 +13,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
+import timber.log.Timber
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
@@ -22,8 +23,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        Log.e("hyeon", message.notification.toString())
-        Log.e("hyeon", message.data.toString())
+        Timber.e(message.notification.toString())
+        Timber.e(message.data.toString())
         createNotification(message)
     }
 
