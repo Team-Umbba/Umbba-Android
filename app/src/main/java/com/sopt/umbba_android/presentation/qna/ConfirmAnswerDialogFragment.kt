@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
 import timber.log.Timber
@@ -17,6 +18,7 @@ import timber.log.Timber
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
+    private val confirmAnswerDialogViewModel by viewModels<ConfirmAnswerDialogFragmentViewModel>()
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
@@ -30,12 +32,16 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setBackgroundDesign()
-        setBtnClickEvent()
         setPreviewAnswer()
+        setBtnClickEvent()
     }
 
     private fun setPreviewAnswer() {
-        binding.tvAnswer.text = arguments?.getString("ConfirmAnswerText")
+        with(binding) {
+            tvAnswer.text = arguments?.getString("answer")
+            tvTitle.text = arguments?.getString("title")
+            tvTopic.text = arguments?.getString("topic")
+        }
     }
 
     private fun setBackgroundDesign() {
@@ -49,7 +55,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 dismiss()
-                //TODO(답변 내용 POST API 연결 부분)
+                confirmAnswerDialogViewModel.postAnswer(tvAnswer.text.toString())
             }
         }
     }
