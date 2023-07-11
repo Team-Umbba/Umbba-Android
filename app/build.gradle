@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 Properties properties = new Properties()
@@ -103,4 +104,12 @@ dependencies {
 
     //viewpager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // FCM
+    // import the firebase bom
+    implementation platform('com.google.firebase:firebase-bom:32.1.1')
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Import Firebase Cloud Messaging SDK
+    implementation 'com.google.firebase:firebase-messaging'
 }
