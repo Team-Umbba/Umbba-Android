@@ -18,7 +18,6 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        setClickEvent()
         observeQnaResponse()
     }
 
@@ -28,12 +27,13 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setClickEvent() {
+    private fun setClickEvent(data: QuestionAnswerResponseDto) {
         with(binding) {
             btnAnswer.setOnClickListener {
                 Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
-                    putExtra("section", binding.titleText.toString())
-                    putExtra("topic",binding.layoutAppbar.titleText.toString())
+                    putExtra("section", data.section)
+                    putExtra("topic", data.topic)
+                    putExtra("question", data.myQuestion)
                     startActivity(this)
                 }
             }
@@ -44,6 +44,7 @@ class QuestionAnswerActivity :
         questionAnswerViewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
             setData(it)
             setAnswerText(it)
+            setClickEvent(it)
         }
     }
 
