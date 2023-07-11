@@ -3,6 +3,7 @@ package com.sopt.umbba_android.presentation.qna
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
+import timber.log.Timber
 
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
@@ -29,8 +31,12 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         backgroundDesign()
         setBtnClickEvent()
+        setPreviewAnswer()
     }
 
+    private fun setPreviewAnswer(){
+        binding.tvAnswer.text = arguments?.getString("ConfirmAnswerText")
+    }
     private fun backgroundDesign() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
