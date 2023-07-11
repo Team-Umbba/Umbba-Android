@@ -28,9 +28,11 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
     }
 
     private fun clickAllAgreeButton() {
-        binding.btnAllAgreeCheck.setOnClickListener {
-            binding.btnAllAgreeCheck.isSelected = !binding.btnAllAgreeCheck.isSelected
-            checkAllAgreeButton()
+        with(binding) {
+            btnAllAgreeCheck.setOnClickListener {
+                btnAllAgreeCheck.isSelected = !btnAllAgreeCheck.isSelected
+                checkAllAgreeButton()
+            }
         }
     }
 
