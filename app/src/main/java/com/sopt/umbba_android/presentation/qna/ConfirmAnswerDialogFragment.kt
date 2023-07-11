@@ -29,15 +29,16 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backgroundDesign()
+        setBackgroundDesign()
         setBtnClickEvent()
         setPreviewAnswer()
     }
 
-    private fun setPreviewAnswer(){
+    private fun setPreviewAnswer() {
         binding.tvAnswer.text = arguments?.getString("ConfirmAnswerText")
     }
-    private fun backgroundDesign() {
+
+    private fun setBackgroundDesign() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
