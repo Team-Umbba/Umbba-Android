@@ -1,16 +1,17 @@
 package com.sopt.umbba_android.presentation.login
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
 import android.text.util.Linkify
-import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityAgreePrivacyUseBinding
+import com.sopt.umbba_android.presentation.invite.InviteActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 import java.util.regex.Pattern
 
@@ -109,5 +110,11 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
         val sentence = SpannableStringBuilder(view.text)
         sentence.setSpan(StyleSpan(Typeface.BOLD), 5, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         view.text = sentence
+    }
+
+    private fun goInviteActivity() {
+        binding.btnNext.setOnClickListener {
+            startActivity(Intent(this, InviteActivity::class.java))
+        }
     }
 }
