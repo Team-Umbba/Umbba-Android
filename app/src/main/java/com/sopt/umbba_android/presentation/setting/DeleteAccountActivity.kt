@@ -12,6 +12,16 @@ class DeleteAccountActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        setClickEvent()
+    }
+
+    private fun setClickEvent() {
+        with(binding) {
+            btnDeleteAccount.setOnClickListener {
+                DeleteAccountDialogFragment()
+                    .show(supportFragmentManager, "DeleteAccountDialog")
+            }
+        }
     }
 
     override fun onClick(view: View?) {

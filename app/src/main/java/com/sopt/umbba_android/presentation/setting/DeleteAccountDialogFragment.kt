@@ -1,27 +1,26 @@
-package com.sopt.umbba_android.presentation.qna
+package com.sopt.umbba_android.presentation.setting
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
-import com.sopt.umbba_android.R
-import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
+import com.sopt.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 
-class ConfirmAnswerDialogFragment : DialogFragment() {
 
-    private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
+class DeleteAccountDialogFragment : DialogFragment() {
+
+    private var _binding: FragemntDeleteAccountDialogBinding? = null
+    private val binding get() = requireNotNull(_binding) { "DeleteAccountDialogFragment is null" }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentConfirmAnswerDialogBinding.inflate(inflater, container, false)
+        _binding = FragemntDeleteAccountDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,12 +36,11 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private fun setBtnClickEvent() {
         with(binding) {
-            btnBack.setOnClickListener {
+            btnCancel.setOnClickListener {
                 dismiss()
             }
             btnConfirm.setOnClickListener {
-                dismiss()
-                //TODO(답변 내용 POST API 연결 부분)
+                // TODO(탈퇴 API 연결 로직 넣기)
             }
         }
     }
