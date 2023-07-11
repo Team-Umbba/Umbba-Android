@@ -13,18 +13,6 @@
         android:background="@color/black_opacity60"
         tools:context=".presentation.onboarding.CommunicationActivity">
 
-        <TextView
-            android:id="@+id/tv_call"
-            style="@style/AndroidBody1_1SemiBold16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/call_description"
-            android:textColor="@color/umbba_white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
             android:id="@+id/iv_communication"
             android:layout_width="wrap_content"
