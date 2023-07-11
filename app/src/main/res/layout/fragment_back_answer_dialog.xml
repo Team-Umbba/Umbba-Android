@@ -42,8 +42,8 @@
                 android:background="@drawable/shape_grey_btn_r50_stroke_rect"
                 android:text="@string/cancel"
                 android:textColor="@color/umbba_black"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_confirm"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -54,8 +54,8 @@
                 android:background="@drawable/shape_pri500_btn_r50_rect"
                 android:text="@string/confirm"
                 android:textColor="@color/umbba_white"
-                app:layout_constraintStart_toEndOf="@id/btn_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_cancel"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

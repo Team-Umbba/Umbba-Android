@@ -34,8 +34,8 @@ class DeleteAccountDialogFragment : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    private fun setBtnClickEvent(){
-        with(binding){
+    private fun setBtnClickEvent() {
+        with(binding) {
             btnCancel.setOnClickListener {
                 dismiss()
             }

@@ -37,8 +37,9 @@ class BackAnswerDialogFragment : DialogFragment() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
-    private fun setBtnClickEvent(){
-        with(binding){
+
+    private fun setBtnClickEvent() {
+        with(binding) {
             btnCancel.setOnClickListener {
                 dismiss()
             }
@@ -48,6 +49,7 @@ class BackAnswerDialogFragment : DialogFragment() {
             }
         }
     }
+
     private fun backgroundDesign() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }

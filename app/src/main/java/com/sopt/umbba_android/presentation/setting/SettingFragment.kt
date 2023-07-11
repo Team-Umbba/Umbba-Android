@@ -20,13 +20,28 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(Intent(requireActivity(), ManageAccountActivity::class.java))
             }
             clAboutUmbba.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                    )
+                )
             }
             clTos.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                    )
+                )
             }
             clNotice.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                    )
+                )
             }
         }
     }

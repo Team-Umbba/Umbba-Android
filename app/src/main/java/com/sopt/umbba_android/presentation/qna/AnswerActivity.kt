@@ -25,8 +25,8 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             .show(supportFragmentManager, "BackAnswerDialog")
     }
 
-    private fun showConfirmDialog(){
+    private fun showConfirmDialog() {
         ConfirmAnswerDialogFragment()
-            .show(supportFragmentManager,"ConfirmAnswerDialog")
+            .show(supportFragmentManager, "ConfirmAnswerDialog")
     }
 }
