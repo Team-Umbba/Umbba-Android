@@ -73,7 +73,7 @@
     <string name="question_answer_parent_question">할머니와 엄마의 꿈은 달랐어?</string>
     <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
     <string name="content_example">sdlkfjslkdjfklsdjfksdf\nsldkfjsldkjflksdjf</string>
-    <string name="home_question_answer">질문 답변하기</string>
+    <string name="home_question_answer">질문 확인하기</string>
 
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대에게 교신을 보낼 차례야\n초대를 수락받으면 문답이 시작돼</string>
@@ -90,7 +90,7 @@
     <string name="question_number">#%d</string>
 
     <!-- back answer dialog fragment-->
-    <string name="back_confirm">답변 작성을 취소하시겠습니까?\n작성 중인 답변은 저장되지 않아요</string>
+    <string name="back_confirm">답변 작성을 취소하시겠어요?\n작성 중인 답변은 저장되지 않아요</string>
     <string name="cancel">취소</string>
     <string name="confirm">확인</string>
     <string name="on">On</string>
