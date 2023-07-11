@@ -53,6 +53,7 @@
 
         <!--Chip Design-->
         <item name="chipCornerRadius">50dp</item>
+        <item name="chipStrokeWidth">1dp</item>
         <item name="chipStrokeColor">@color/sel_choice_chip_pri500_stroke</item>
         <item name="chipBackgroundColor">@color/sel_choice_chip_pri500_color</item>
     </style>
