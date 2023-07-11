@@ -86,6 +86,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete_account"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"

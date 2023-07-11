@@ -105,5 +105,6 @@
     <string name="logout">로그아웃</string>
     <string name="delete_account">회원 탈퇴</string>
     <string name="manage_account">계정 관리</string>
+    <string name="delete_account_dialog">정말 회원을 탈퇴하시겠습니까?</string>
 
 </resources>

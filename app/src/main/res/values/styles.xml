@@ -33,7 +33,7 @@
 
     <style name="AnswerTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!--FilledBox일 경우 밑줄 색상, OutlinedBox일 경우 테두리 색상-->
-        <item name="boxStrokeColor">@color/sel_answer_input_layout</item>
+        <item name="boxStrokeWidth">-1dp</item>
         <!--Error-->
         <item name="errorEnabled">false</item>
         <!--Counter-->
