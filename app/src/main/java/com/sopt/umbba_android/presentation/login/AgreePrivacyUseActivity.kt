@@ -19,8 +19,63 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        clickAllAgreeButton()
+        clickCircleButton()
         setHyperLinkAndColorInTermsTextView()
         setHyperLinkAndColorInPrivacyTextView()
+        goInviteActivity()
+    }
+
+    private fun clickAllAgreeButton() {
+        binding.btnAllAgreeCheck.setOnClickListener {
+            binding.btnAllAgreeCheck.isSelected = !binding.btnAllAgreeCheck.isSelected
+            checkAllAgreeButton()
+        }
+    }
+
+    private fun checkAllAgreeButton() {
+        with(binding) {
+            if (btnAllAgreeCheck.isSelected) {
+                btnUp14.isSelected = true
+                btnAgreeTermsAndCondition.isSelected = true
+                btnAgreePrivacy.isSelected = true
+                btnNext.isEnabled = true
+            } else {
+                btnUp14.isSelected = false
+                btnAgreeTermsAndCondition.isSelected = false
+                btnAgreePrivacy.isSelected = false
+                btnNext.isEnabled = false
+            }
+        }
+    }
+
+    private fun clickCircleButton() {
+        with(binding) {
+            btnUp14.setOnClickListener {
+                btnUp14.isSelected = !btnUp14.isSelected
+                checkAllCircleButton()
+            }
+            btnAgreeTermsAndCondition.setOnClickListener {
+                btnAgreeTermsAndCondition.isSelected = !btnAgreeTermsAndCondition.isSelected
+                checkAllCircleButton()
+            }
+            btnAgreePrivacy.setOnClickListener {
+                btnAgreePrivacy.isSelected = !btnAgreePrivacy.isSelected
+                checkAllCircleButton()
+            }
+        }
+    }
+
+    private fun checkAllCircleButton() {
+        with(binding) {
+            if (btnUp14.isSelected && btnAgreeTermsAndCondition.isSelected && btnAgreePrivacy.isSelected) {
+                btnAllAgreeCheck.isSelected = true
+                btnNext.isEnabled = true
+            } else {
+                btnAllAgreeCheck.isSelected = false
+                btnNext.isEnabled = false
+            }
+        }
     }
 
     private fun setHyperLinkAndColorInTermsTextView() {
