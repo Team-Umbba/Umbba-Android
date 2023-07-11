@@ -1,5 +1,7 @@
 package com.sopt.umbba_android.presentation.qna
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,7 +27,24 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        backgroundDesign()
+        setBtnClickEvent()
+    }
 
+    private fun backgroundDesign() {
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    private fun setBtnClickEvent() {
+        with(binding) {
+            btnBack.setOnClickListener {
+                dismiss()
+            }
+            btnConfirm.setOnClickListener {
+                dismiss()
+                //TODO(답변 내용 POST API 연결 부분)
+            }
+        }
     }
 
     override fun onResume() {
