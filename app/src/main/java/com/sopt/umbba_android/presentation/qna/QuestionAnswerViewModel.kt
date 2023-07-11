@@ -6,6 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 
 class QuestionAnswerViewModel : ViewModel() {
-    private val _qnaResponse = MutableLiveData<QuestionAnswerResponseDto>()
-    var qnaResponse: LiveData<QuestionAnswerResponseDto> = _qnaResponse
+    private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto>()
+    val qnaResponse: LiveData<QuestionAnswerResponseDto> = _qnaResponse
 }
