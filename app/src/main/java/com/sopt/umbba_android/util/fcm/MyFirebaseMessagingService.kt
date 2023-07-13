@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.tasks.OnCompleteListener
@@ -16,16 +17,15 @@ import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import timber.log.Timber
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.e("hyeon", "fcm token : $token")
+        Timber.tag("hyeon").e("fcm token : " + token)
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        Log.e("hyeon", message.notification.toString())
-        Log.e("hyeon", message.data.toString())
+        Timber.tag("hyeon").e(message.notification.toString())
+        Timber.tag("hyeon").e(message.data.toString())
         createNotification(message)
     }
 
@@ -68,11 +68,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun getFcmToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.e("hyeon", "Fetching FCM registration token failed", task.exception)
+                Timber.tag("hyeon").e(task.exception, "Fetching FCM registration token failed")
                 return@OnCompleteListener
             }
             val token = task.result
-            Log.e("hyeon", "token is $token")
+            Timber.tag("hyeon").e("token is " + token)
         })
     }
 
