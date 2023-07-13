@@ -12,6 +12,10 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewmodel"
+            type="com.sopt.umbba_android.presentation.viewmodel.InputInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,6 +104,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_name"
                             android:maxLines="1"
+                            android:text="@={viewmodel.name}"
                             android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -146,6 +151,7 @@
                             style="@style/ChoiceChipStyle"
                             android:layout_width="128dp"
                             android:layout_height="wrap_content"
+                            android:checked="@={viewmodel.man}"
                             android:text="@string/man"
                             app:chipMinHeight="52dp" />
 
@@ -154,6 +160,7 @@
                             style="@style/ChoiceChipStyle"
                             android:layout_width="128dp"
                             android:layout_height="wrap_content"
+                            android:checked="@={viewmodel.woman}"
                             android:maxLines="1"
                             android:text="@string/woman"
                             app:chipMinHeight="52dp" />
@@ -208,7 +215,7 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_birth_year"
                             android:maxLines="1"
-                            android:maxLength="4"
+                            android:text="@={viewmodel.year}"
                             android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
