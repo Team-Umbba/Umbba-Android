@@ -94,7 +94,11 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
 
     private fun goSelectFamilyActivity() {
         binding.btnNext.setOnClickListener {
-            startActivity(Intent(this, SelectFamilyActivity::class.java))
+            if (true) { //초대하는 사람
+                startActivity(Intent(this, SelectFamilyActivity::class.java))
+            } else { //초대받는 사람
+                startActivity(Intent(this, QuestActivity::class.java))
+            }
         }
     }
 
