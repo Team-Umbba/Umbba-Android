@@ -5,6 +5,5 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class AnswerViewModel : ViewModel() {
-    private var _answer = MutableLiveData<String>()
-    val answer: LiveData<String> = _answer
+    var answer = MutableLiveData<String>()
 }
