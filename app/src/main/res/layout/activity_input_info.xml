@@ -161,7 +161,6 @@
                             android:layout_width="128dp"
                             android:layout_height="wrap_content"
                             android:checked="@={viewmodel.woman}"
-                            android:maxLines="1"
                             android:text="@string/woman"
                             app:chipMinHeight="52dp" />
                     </com.google.android.material.chip.ChipGroup>
