@@ -82,6 +82,9 @@
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="12dp"
                         android:textSize="16sp"
+                        app:endIconDrawable="@drawable/ic_close_grey"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey_800"
                         app:hintAnimationEnabled="false"
                         app:hintEnabled="false"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -184,6 +187,9 @@
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="12dp"
                         android:textSize="16sp"
+                        app:endIconDrawable="@drawable/ic_close_grey"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey_800"
                         app:hintAnimationEnabled="false"
                         app:hintEnabled="false"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -197,7 +203,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_birth_year"
-                            android:textColor="@color/black" />
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
