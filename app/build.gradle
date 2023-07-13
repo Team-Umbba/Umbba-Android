@@ -23,6 +23,8 @@ android {
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "UMBBA_BASE_URL", properties["UMBBA_BASE_URL"]
     }
 
     buildTypes {
@@ -41,6 +43,7 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig true
     }
 }
 
