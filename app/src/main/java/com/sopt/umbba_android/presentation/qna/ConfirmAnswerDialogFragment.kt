@@ -3,18 +3,22 @@ package com.sopt.umbba_android.presentation.qna
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
+import timber.log.Timber
 
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
+    private val confirmAnswerDialogViewModel by viewModels<ConfirmAnswerDialogFragmentViewModel>()
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
@@ -27,11 +31,20 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        backgroundDesign()
+        setBackgroundDesign()
+        setPreviewAnswer()
         setBtnClickEvent()
     }
 
-    private fun backgroundDesign() {
+    private fun setPreviewAnswer() {
+        with(binding) {
+            tvAnswer.text = arguments?.getString("answer")
+            tvTitle.text = arguments?.getString("title")
+            tvTopic.text = arguments?.getString("topic")
+        }
+    }
+
+    private fun setBackgroundDesign() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
@@ -42,7 +55,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 dismiss()
-                //TODO(답변 내용 POST API 연결 부분)
+                confirmAnswerDialogViewModel.postAnswer(tvAnswer.text.toString())
             }
         }
     }

@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="vm"
+            type="com.sopt.umbba_android.presentation.qna.AnswerViewModel" />
+
+        <variable
             name="titleText"
             type="String" />
 
@@ -85,11 +89,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_answer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="@string/answer_edittext_hint"
                     android:minHeight="172dp"
+                    android:text="@={vm.answer}"
                     android:textAppearance="@style/AndroidBody1_2Regular16"
                     android:textColorHint="@color/grey_800"
                     app:layout_constraintBottom_toBottomOf="parent"
