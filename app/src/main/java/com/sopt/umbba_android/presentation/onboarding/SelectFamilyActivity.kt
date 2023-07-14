@@ -18,7 +18,6 @@ class SelectFamilyActivity :
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.viewmodel = viewModel
-        binding.lifecycleOwner = this
 
         checkAllSelectFamilyComplete()
         goQuestActivity()

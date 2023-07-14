@@ -20,7 +20,6 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.viewmodel = viewModel
-        binding.lifecycleOwner = this
 
         checkAllInfoComplete()
         validateName()
