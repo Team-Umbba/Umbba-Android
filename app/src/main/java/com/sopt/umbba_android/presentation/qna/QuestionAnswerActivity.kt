@@ -5,18 +5,23 @@ import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
+import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
     View.OnClickListener {
-    private val viewModel by viewModels<QuestionAnswerViewModel>()
+    private val viewModel: QuestionAnswerViewModel by viewModels{ViewModelFactory(this)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        viewModel.getQuestionAnswer()
         observeQnaResponse()
     }
 
@@ -52,6 +57,8 @@ class QuestionAnswerActivity :
             tvTitle.text = data.section
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
+            tvFromOther.text = data.opponentUsername
+            tvFromMe.text= data.myUsername
         }
     }
 
@@ -76,7 +83,7 @@ class QuestionAnswerActivity :
     }
 
     private fun setBtnEnable(enable: Boolean) {
-        if (!enable) {
+        if (enable) {
             binding.btnAnswer.isEnabled = false
             binding.btnAnswer.text = "홈으로"
         }

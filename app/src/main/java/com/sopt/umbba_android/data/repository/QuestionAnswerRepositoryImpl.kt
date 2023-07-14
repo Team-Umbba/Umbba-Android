@@ -7,15 +7,14 @@ import timber.log.Timber
 
 class QuestionAnswerRepositoryImpl(private val questionAnswerRemoteDataSource: QuestionAnswerRemoteDataSource) :
     QuestionAnswerRepository {
-    override suspend fun getQuestionAnswer(): Result<QuestionAnswerResponseDto> =
+    override suspend fun getQuestionAnswer(token:String): Result<QuestionAnswerResponseDto> =
         runCatching {
-            questionAnswerRemoteDataSource.getQuestionAnswer()
+            questionAnswerRemoteDataSource.getQuestionAnswer(token)
         }.onSuccess {
             Timber.e("문답 data get 성공")
         }.onFailure {
             Timber.e("문답 data get 실패 크라잉. . . ")
         }
-
     override suspend fun postAnswer() {
         TODO("Not yet implemented")
     }

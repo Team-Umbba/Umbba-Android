@@ -1,5 +1,6 @@
 package com.sopt.umbba_android.presentation.qna
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,20 +12,21 @@ import timber.log.Timber
 
 class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
     ViewModel() {
-    init {
-        getQuestionAnswer()
-    }
+    private val token =
+        "Bearer "+" "
 
-    private val _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
+    private val contentType = "application/json"
+    private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
 
-    private fun getQuestionAnswer() {
+    fun getQuestionAnswer() {
         viewModelScope.launch {
-            questionAnswerRepositoryImpl.getQuestionAnswer().onSuccess { response ->
-                Timber.e("getQuestionAnswer 성공")
-                _qnaResponse.value = response.data
-            }.onFailure { error ->
-                Timber.e("getQuestionAnswer 실패  " + error.message)
+            questionAnswerRepositoryImpl.getQuestionAnswer(token)
+                .onSuccess { response ->
+                    Log.e("hyeon", "getQuestionAnswer 성공")
+                    _qnaResponse.value = response.data
+                }.onFailure { error ->
+                Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
             }
         }
     }
