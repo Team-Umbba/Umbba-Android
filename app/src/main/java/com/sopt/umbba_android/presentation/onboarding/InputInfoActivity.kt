@@ -85,9 +85,11 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             viewModel.checkInfoComplete()
         }
         viewModel.isAllInfoComplete.observe(this) {
-            binding.btnNext.isEnabled =
-                binding.layoutInputName.error.isNullOrEmpty() && binding.layoutInputYear.error.isNullOrEmpty() && binding.etYear.text.toString()
-                    .isNotEmpty() && binding.etName.text.toString().isNotEmpty()
+            with(binding) {
+                btnNext.isEnabled =
+                    layoutInputName.error.isNullOrEmpty() && layoutInputYear.error.isNullOrEmpty() && etYear.text.toString()
+                        .isNotEmpty() && etName.text.toString().isNotEmpty()
+            }
         }
     }
 
