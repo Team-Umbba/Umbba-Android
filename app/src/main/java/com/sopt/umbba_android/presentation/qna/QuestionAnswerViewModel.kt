@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.presentation.qna
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +18,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     private val _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
 
-    fun getQuestionAnswer() {
+    private fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer().onSuccess { response ->
                 Timber.e("getQuestionAnswer 성공")

@@ -14,15 +14,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 object ApiFactory {
-    private val client by lazy{
+    private val client by lazy {
         OkHttpClient.Builder().addInterceptor(
-            HttpLoggingInterceptor().apply{
+            HttpLoggingInterceptor().apply {
                 level =
-                    if(BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             }
         ).build()
     }
-    val retrofit: Retrofit by lazy{
+    val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("d")
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
@@ -30,10 +30,10 @@ object ApiFactory {
             .build()
     }
 
-    inline fun <reified T> create():T = retrofit.create(T::class.java)
+    inline fun <reified T> create(): T = retrofit.create(T::class.java)
 }
 
-object ServicePool{
+object ServicePool {
     val questionAnswerService = ApiFactory.create<QuestionAnswerService>()
     val settingService = ApiFactory.create<SettingService>()
     val homeService = ApiFactory.create<HomeService>()
