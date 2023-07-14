@@ -6,15 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.sopt.umbba_android.R
-import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
-import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
-import com.sopt.umbba_android.presentation.home.HomeFragment
 import com.sopt.umbba_android.presentation.home.InviteCodeDialogFragment
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class QuestionAnswerActivity :
