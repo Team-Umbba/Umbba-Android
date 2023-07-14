@@ -16,9 +16,10 @@ import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingFragment
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getHomeData()
         observeData()
         setClickEvent()
     }

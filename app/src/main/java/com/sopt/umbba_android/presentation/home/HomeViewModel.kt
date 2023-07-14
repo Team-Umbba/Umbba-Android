@@ -11,14 +11,11 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewModel() {
 
-    init{
-        getHomeData()
-    }
 
     private var _homeData = MutableLiveData<HomeResponseDto.HomeData>()
     val homeData: LiveData<HomeResponseDto.HomeData> = _homeData
 
-    private fun getHomeData() {
+    fun getHomeData() {
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
