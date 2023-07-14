@@ -7,9 +7,9 @@ import timber.log.Timber
 
 class QuestionAnswerRepositoryImpl(private val questionAnswerRemoteDataSource: QuestionAnswerRemoteDataSource) :
     QuestionAnswerRepository {
-    override suspend fun getQuestionAnswer(token:String): Result<QuestionAnswerResponseDto> =
+    override suspend fun getQuestionAnswer(): Result<QuestionAnswerResponseDto> =
         runCatching {
-            questionAnswerRemoteDataSource.getQuestionAnswer(token)
+            questionAnswerRemoteDataSource.getQuestionAnswer()
         }.onSuccess {
             Timber.e("문답 data get 성공")
         }.onFailure {
