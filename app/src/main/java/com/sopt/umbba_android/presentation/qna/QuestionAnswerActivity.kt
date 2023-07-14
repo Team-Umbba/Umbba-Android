@@ -10,11 +10,10 @@ import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.util.binding.BindingActivity
 
-
 class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
     View.OnClickListener {
-    private val questionAnswerViewModel by viewModels<QuestionAnswerViewModel>()
+    private val viewModel by viewModels<QuestionAnswerViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -27,28 +26,27 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setClickEvent(data: QuestionAnswerResponseDto) {
-        with(binding) {
-            btnAnswer.setOnClickListener {
-                Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
-                    putExtra("section", data.section)
-                    putExtra("topic", data.topic)
-                    putExtra("question", data.myQuestion)
-                    startActivity(this)
-                }
+    private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
+        binding.btnAnswer.setOnClickListener {
+            Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
+                putExtra("section", data.section)
+                putExtra("topic", data.topic)
+                putExtra("question", data.myQuestion)
+                startActivity(this)
             }
         }
     }
 
     private fun observeQnaResponse() {
-        questionAnswerViewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
+        viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
             setData(it)
             setAnswerText(it)
             setClickEvent(it)
+            setBtnEnable(it.isMyAnswer)
         }
     }
 
-    private fun setData(data: QuestionAnswerResponseDto) {
+    private fun setData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.topic
             tvTitle.text = data.section
@@ -57,7 +55,7 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setAnswerText(data: QuestionAnswerResponseDto) {
+    private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             if (data.isOpponentAnswer) {
                 if (data.isMyAnswer) {
@@ -74,6 +72,13 @@ class QuestionAnswerActivity :
                     tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
                 }
             }
+        }
+    }
+
+    private fun setBtnEnable(enable: Boolean) {
+        if (!enable) {
+            binding.btnAnswer.isEnabled = false
+            binding.btnAnswer.text = "홈으로"
         }
     }
 

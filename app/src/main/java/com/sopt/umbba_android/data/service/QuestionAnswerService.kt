@@ -9,7 +9,7 @@ import retrofit2.http.POST
 
 interface QuestionAnswerService {
     @GET("/qna/today")
-    suspend fun getQuestion() : QuestionAnswerResponseDto
+    suspend fun getQuestionAnswer() : QuestionAnswerResponseDto
 
     @POST("/qna/answer")
     suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto) : AnswerResponseDto
