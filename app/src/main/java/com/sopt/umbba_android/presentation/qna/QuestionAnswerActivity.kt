@@ -46,7 +46,7 @@ class QuestionAnswerActivity :
     }
 
     private fun showNoOpponentDialog() {
-
+        NoOpponentDialogFragment().show(supportFragmentManager,"NoOpponentDialogFragment")
     }
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
