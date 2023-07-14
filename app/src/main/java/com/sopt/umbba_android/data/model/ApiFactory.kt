@@ -7,6 +7,7 @@ import com.sopt.umbba_android.data.service.ListService
 import com.sopt.umbba_android.data.service.OnBoardingService
 import com.sopt.umbba_android.data.service.QuestionAnswerService
 import com.sopt.umbba_android.data.service.SettingService
+import com.sopt.umbba_android.interceptor.AuthInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
