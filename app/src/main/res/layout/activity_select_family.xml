@@ -13,6 +13,10 @@
             name="clickListener"
             type="android.view.View.OnClickListener" />
 
+        <variable
+            name="viewmodel"
+            type="com.sopt.umbba_android.presentation.viewmodel.SelectFamilyViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -64,13 +68,14 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cg_family"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
                 app:chipSpacingHorizontal="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_family"
                 app:selectionRequired="true"
                 app:singleLine="true"
@@ -81,6 +86,7 @@
                     style="@style/ChoiceChipStyle"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.parent}"
                     android:text="@string/parent"
                     app:chipMinHeight="52dp" />
 
@@ -89,6 +95,7 @@
                     style="@style/ChoiceChipStyle"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.child}"
                     android:text="@string/child"
                     app:chipMinHeight="52dp" />
             </com.google.android.material.chip.ChipGroup>
@@ -103,7 +110,8 @@
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/shape_g400_stroke_r8_rect"
-            app:layout_constraintTop_toBottomOf="@id/cl_family">
+            app:layout_constraintTop_toBottomOf="@id/cl_family"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_more"
@@ -119,13 +127,14 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/cg_more"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="16dp"
                 app:chipSpacingHorizontal="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_more"
                 app:selectionRequired="true"
                 app:singleLine="true"
@@ -136,6 +145,7 @@
                     style="@style/ChoiceChipStyle"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.mom}"
                     android:text="@string/mom"
                     app:chipMinHeight="52dp" />
 
@@ -144,6 +154,7 @@
                     style="@style/ChoiceChipStyle"
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
+                    android:checked="@={viewmodel.dad}"
                     android:text="@string/dad"
                     app:chipMinHeight="52dp" />
             </com.google.android.material.chip.ChipGroup>

@@ -76,9 +76,9 @@
     <string name="home_question_answer">질문 확인하기</string>
 
     <!--invite code dialog fragment-->
-    <string name="not_have_partner">상대에게 교신을 보낼 차례야\n초대를 수락받으면 문답이 시작돼</string>
+    <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
     <string name="copy_invite_code">초대코드 복사</string>
-    <string name="send_invitation">초대장 보내기</string>
+    <string name="send_invitation">카카오톡으로 초대 보내기</string>
 
     <!--confirm answer dialog fragment-->
     <string name="save_answer">답변을 저장하시겠어요?</string>
@@ -108,5 +108,21 @@
     <string name="delete_account_dialog">정말 회원을 탈퇴하시겠습니까?</string>
     <string name="no_opponenet_text">상대와의 연결이 끊겼습니다</string>
     <string name="no_opponenet_coment">새로운 상대와 함께하려면\n회원탈퇴 후 이용해주세요</string>
+
+    <!--onboarding finish activity-->
+    <string name="arrive_past">과거에 도착했어!\n앞으로 나눌 이야기가 많을 거야</string>
+
+    <!--agree privacy activity-->
+    <string name="all_agree">전체 동의하기</string>
+    <string name="all_agree_description">본인은 만 14세 이상이며, 엄빠도 어렸다 서비스 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</string>
+    <string name="up_14">[필수] 만 14세 이상입니다.</string>
+    <string name="up_14_description">엄빠도 어렸다 서비스를 이용하기 위해서는 만 14세 이상이 되어야 합니다. 만 14세 미만의 이용자의 경우 서비스 이용이 제한됩니다.</string>
+    <string name="agree_terms_and_condition">[필수] 서비스 이용약관에 동의합니다.</string>
+    <string name="agree_privacy">[필수] 개인정보 수집 및 이용에 동의합니다.</string>
+    <string name="agree_privacy_description">\'(주)이승준 컴퍼니\'(이하 \'회사\')가 운영하는 \'엄빠도 어렸다\'는 개인정보보호법 제30조 의거 이용자의 개인정보보호와 권익을 보호하고 관련된 고충 및 애로사항을 신속하게 처리하기 위해 아래의 개인정보처리방침을 제정·운영하고 있습니다.</string>
+
+    <!--communication activity-->
+    <string name="answer_phone">전화 받기</string>
+    <string name="call_description">오래된 공중전화에서 수신음이 들린다</string>
 
 </resources>

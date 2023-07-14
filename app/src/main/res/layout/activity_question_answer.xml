@@ -148,7 +148,7 @@
             android:background="@drawable/sel_btn_answer"
             android:stateListAnimator="@null"
             android:text="@string/btn_question_answer"
-            android:textColor="@color/sel_btn_pri500_text"
+            android:textColor="@color/sel_btn_white_text"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

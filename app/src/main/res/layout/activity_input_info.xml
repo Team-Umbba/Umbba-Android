@@ -12,6 +12,10 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewmodel"
+            type="com.sopt.umbba_android.presentation.viewmodel.InputInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,7 +85,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
                         android:textSize="16sp"
+                        app:endIconDrawable="@drawable/ic_close_grey"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey_800"
                         app:hintAnimationEnabled="false"
                         app:hintEnabled="false"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,6 +103,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_name"
+                            android:maxLines="1"
+                            android:text="@={viewmodel.name}"
                             android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -123,14 +133,14 @@
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/cg_sex"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="16dp"
                         app:chipSpacingHorizontal="13dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_sex"
                         app:selectionRequired="true"
                         app:singleLine="true"
@@ -141,6 +151,7 @@
                             style="@style/ChoiceChipStyle"
                             android:layout_width="128dp"
                             android:layout_height="wrap_content"
+                            android:checked="@={viewmodel.man}"
                             android:text="@string/man"
                             app:chipMinHeight="52dp" />
 
@@ -149,6 +160,7 @@
                             style="@style/ChoiceChipStyle"
                             android:layout_width="128dp"
                             android:layout_height="wrap_content"
+                            android:checked="@={viewmodel.woman}"
                             android:text="@string/woman"
                             app:chipMinHeight="52dp" />
                     </com.google.android.material.chip.ChipGroup>
@@ -183,7 +195,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
                         android:textSize="16sp"
+                        app:endIconDrawable="@drawable/ic_close_grey"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey_800"
                         app:hintAnimationEnabled="false"
                         app:hintEnabled="false"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -197,7 +213,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/please_input_birth_year"
-                            android:textColor="@color/black" />
+                            android:maxLines="1"
+                            android:text="@={viewmodel.year}"
+                            android:textColor="@color/umbba_black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -212,7 +230,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginVertical="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/sel_btn_next"
             android:enabled="false"
             android:stateListAnimator="@null"
