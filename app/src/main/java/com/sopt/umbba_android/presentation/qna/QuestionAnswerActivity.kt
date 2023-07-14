@@ -14,6 +14,7 @@ import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.presentation.home.HomeFragment
+import com.sopt.umbba_android.presentation.home.InviteCodeDialogFragment
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class QuestionAnswerActivity :
@@ -31,6 +32,21 @@ class QuestionAnswerActivity :
         when (view?.id) {
             R.id.iv_qna_back -> finish()
         }
+    }
+
+    private fun setDialog(responseCase: Int) {
+        when (responseCase) {
+            2 -> showInviteDialog()
+            3 -> showNoOpponentDialog()
+        }
+    }
+
+    private fun showInviteDialog() {
+        InviteCodeDialogFragment().show(supportFragmentManager, "InviteCodeDialogFragment")
+    }
+
+    private fun showNoOpponentDialog() {
+
     }
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
@@ -56,6 +72,7 @@ class QuestionAnswerActivity :
             setAnswerText(it)
             setClickEvent(it)
             setBtnEnable(it.isMyAnswer)
+            setDialog(it.responseCase)
         }
     }
 
