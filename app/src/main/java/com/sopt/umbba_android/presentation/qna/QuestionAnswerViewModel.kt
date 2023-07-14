@@ -30,5 +30,4 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
             }
         }
     }
-
 }

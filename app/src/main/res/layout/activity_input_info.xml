@@ -15,7 +15,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sopt.umbba_android.presentation.viewmodel.InputInfoViewModel" />
+            type="com.sopt.umbba_android.presentation.onboarding.InputInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
