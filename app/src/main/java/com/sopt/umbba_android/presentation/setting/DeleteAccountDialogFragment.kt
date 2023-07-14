@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 
 
 class DeleteAccountDialogFragment : DialogFragment() {
 
+    private val deleteAccountViewModel by viewModels<DeleteAccountViewModel>()
     private var _binding: FragemntDeleteAccountDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "DeleteAccountDialogFragment is null" }
 
@@ -40,7 +43,7 @@ class DeleteAccountDialogFragment : DialogFragment() {
                 dismiss()
             }
             btnConfirm.setOnClickListener {
-                // TODO(탈퇴 API 연결 로직 넣기)
+                deleteAccountViewModel.deleteAccount()
             }
         }
     }

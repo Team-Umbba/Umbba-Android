@@ -1,12 +1,9 @@
 package com.sopt.umbba_android.presentation.setting
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentSettingBinding
 import com.sopt.umbba_android.util.binding.BindingFragment
@@ -15,13 +12,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setClickEvent()
-        setNotificationSwitch()
     }
-
-    private fun setNotificationSwitch() {
-
-    }
-
 
     private fun setClickEvent() {
         with(binding) {
@@ -54,5 +45,6 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
             }
         }
     }
+
 
 }
