@@ -14,6 +14,8 @@ data class QuestionAnswerResponseDto(
 ) {
     @Serializable
     data class QnaData(
+        @SerialName("response_case")
+        val responseCase: Int,
         @SerialName("qna_id")
         val qnaId: Long,
         @SerialName("section")
