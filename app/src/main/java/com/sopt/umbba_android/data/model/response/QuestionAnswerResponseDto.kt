@@ -17,26 +17,34 @@ data class QuestionAnswerResponseDto(
         @SerialName("response_case")
         val responseCase: Int,
         @SerialName("qna_id")
-        val qnaId: Long,
+        val qnaId: Long?,
         @SerialName("section")
-        val section: String,
+        val section: String?,
         @SerialName("topic")
-        val topic: String,
+        val topic: String?,
         @SerialName("opponent_question")
-        val opponentQuestion: String,
+        val opponentQuestion: String?,
         @SerialName("my_question")
-        val myQuestion: String,
+        val myQuestion: String?,
         @SerialName("opponent_answer")
-        val opponentAnswer: String,
+        val opponentAnswer: String?,
         @SerialName("my_answer")
-        val myAnswer: String,
-        @SerialName("opponent_username")
-        val opponentUsername: String,
-        @SerialName("my_username")
-        val myUsername: String,
+        val myAnswer: String?,
         @SerialName("is_opponent_answer")
-        val isOpponentAnswer: Boolean,
+        val isOpponentAnswer: Boolean?,
         @SerialName("is_my_answer")
-        val isMyAnswer: Boolean,
+        val isMyAnswer: Boolean?,
+        @SerialName("opponent_username")
+        val opponentUsername: String?,
+        @SerialName("my_username")
+        val myUsername: String?,
+        @SerialName("invite_code")
+        val inviteCode:String?,
+        @SerialName("invite_username")
+        val inviteUserName:String?,
+        @SerialName("install_url")
+        val installUrl:String?,
+        @SerialName("relative_user_active")
+        val relativeUserActivate:Boolean?
     )
 }
