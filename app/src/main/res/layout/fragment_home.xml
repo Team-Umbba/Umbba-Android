@@ -12,6 +12,7 @@
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
