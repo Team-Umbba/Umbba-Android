@@ -16,10 +16,7 @@ import retrofit2.Retrofit
 object ApiFactory {
     private val client by lazy {
         OkHttpClient.Builder().addInterceptor(
-            HttpLoggingInterceptor().apply {
-                level =
-                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            }
+            AuthInterceptor()
         ).build()
     }
     val retrofit: Retrofit by lazy {
