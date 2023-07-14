@@ -125,4 +125,6 @@
     <string name="answer_phone">전화 받기</string>
     <string name="call_description">오래된 공중전화에서 수신음이 들린다</string>
 
+    <!--home fragment-->
+    <string name="main_topic">#%2$d %1$s</string>
 </resources>
