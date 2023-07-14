@@ -46,11 +46,11 @@ class QuestionAnswerActivity :
     }
 
     private fun showNoOpponentDialog() {
-        NoOpponentDialogFragment().show(supportFragmentManager,"NoOpponentDialogFragment")
+        NoOpponentDialogFragment().show(supportFragmentManager, "NoOpponentDialogFragment")
     }
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
-        if (data.isMyAnswer) {
+        if (data.isMyAnswer == true) {
             binding.btnAnswer.setOnClickListener {
                 finish()
             }
@@ -68,11 +68,16 @@ class QuestionAnswerActivity :
 
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            setData(it)
-            setAnswerText(it)
-            setClickEvent(it)
-            setBtnEnable(it.isMyAnswer)
-            setDialog(it.responseCase)
+            when (it.responseCase) {
+                1 -> {
+                    setData(it)
+                    setAnswerText(it)
+                    setClickEvent(it)
+                    setBtnEnable(it.isMyAnswer)
+                }
+                2 -> showInviteDialog()
+                3 -> showNoOpponentDialog()
+            }
         }
     }
 
@@ -89,17 +94,18 @@ class QuestionAnswerActivity :
 
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
-            if (data.isOpponentAnswer) {
-                if (data.isMyAnswer) {
+            if (data.isOpponentAnswer == true) {
+                if (data.isMyAnswer!!) {
                     tvAnswerMe.text = data.myAnswer
                     tvAnswerOther.text = data.opponentAnswer
+                    setBlurText(false)
                 } else {
                     tvAnswerOther.text = data.opponentAnswer
                     tvAnswerMe.text = "답변을 입력해 주세요"
                     setBlurText(true)
                 }
             } else {
-                if (data.isMyAnswer) {
+                if (data.isMyAnswer == true) {
                     tvAnswerMe.text = data.myAnswer
                     tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
                 }
@@ -107,8 +113,8 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setBtnEnable(enable: Boolean) {
-        if (enable) {
+    private fun setBtnEnable(enable: Boolean?) {
+        if (enable == true) {
             with(binding) {
                 btnAnswer.setTextColor(
                     ContextCompat.getColor(
