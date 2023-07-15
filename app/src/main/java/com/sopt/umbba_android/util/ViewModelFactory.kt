@@ -8,6 +8,8 @@ import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.repository.HomeRepositoryImpl
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.sopt.umbba_android.presentation.home.HomeViewModel
+import com.sopt.umbba_android.presentation.qna.AnswerViewModel
+import com.sopt.umbba_android.presentation.qna.ConfirmAnswerDialogFragmentViewModel
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -23,6 +25,18 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return HomeViewModel(
                 HomeRepositoryImpl(
                     HomeRemoteDataSource()
+                )
+            ) as T
+        }
+        if (modelClass.isAssignableFrom(AnswerViewModel::class.java)) {
+            return AnswerViewModel(
+            ) as T
+        }
+
+        if (modelClass.isAssignableFrom(ConfirmAnswerDialogFragmentViewModel::class.java)){
+            return ConfirmAnswerDialogFragmentViewModel(
+                QuestionAnswerRepositoryImpl(
+                    QuestionAnswerRemoteDataSource()
                 )
             ) as T
         }
