@@ -11,22 +11,14 @@ data class HomeResponseDto(
     val message: String,
     @SerialName("data")
     val data: HomeData
-){
+) {
     @Serializable
     data class HomeData(
         @SerialName("section")
-        val section:String,
+        val section: String,
         @SerialName("topic")
-        val topic:String,
+        val topic: String,
         @SerialName("index")
-        val index:Int,
-        @SerialName("response_case")
-        val responseCase:Int,
-        @SerialName("invite_code")
-        val inviteCode:String?,
-        @SerialName("invite_username")
-        val inviteUserName:String?,
-        @SerialName("invite_url")
-        val inviteUrl:String?,
+        val index: Int
     )
 }
