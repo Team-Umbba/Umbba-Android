@@ -13,7 +13,7 @@ import timber.log.Timber
 
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val answerViewModel:AnswerViewModel by viewModels { ViewModelFactory(this) }
+    private val answerViewModel: AnswerViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -54,7 +54,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             putString("topic", intent.getStringExtra("topic"))
             putString("section", intent.getStringExtra("section"))
             putString("answer", answerViewModel.answer.value)
-        }
+        } // 이 부분은 변수 안쓰고.. 코드 쓰고 싶음 (일단 서버연결 완료되면 해보고, 테스트도 해보자잉)
         confirmDialog.apply {
             arguments = bundle
             show(supportFragmentManager, "ConfirmDialogFragment")

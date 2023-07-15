@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AnswerRequestDto(
     @SerialName("answer")
-    val answer: String
+    val answer: String?
 )
