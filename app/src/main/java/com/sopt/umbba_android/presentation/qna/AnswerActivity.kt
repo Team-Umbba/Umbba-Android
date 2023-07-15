@@ -23,7 +23,11 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_qna_back -> showBackDialog()
-            R.id.iv_check -> showConfirmDialog()
+            R.id.iv_check -> {
+                if (!answerViewModel.answer.value.isNullOrBlank()) {
+                    showConfirmDialog()
+                }
+            }
         }
     }
 
@@ -36,7 +40,8 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         with(binding) {
             tvQuestion.text = intent.getStringExtra("question")
             tvTitle.text = intent.getStringExtra("topic")
-            layoutAppbar.titleText = intent.getStringExtra("section")
+            layoutAppbar.titleText = intent.getStringExtra("section").toString()
+            Log.e("hyeon", intent.getStringExtra("section").toString())
         }
     }
 

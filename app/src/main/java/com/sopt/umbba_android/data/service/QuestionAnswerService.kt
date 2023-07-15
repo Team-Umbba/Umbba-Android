@@ -12,9 +12,7 @@ import retrofit2.http.POST
 interface QuestionAnswerService {
     @Headers("Content-Type: application/json")
     @GET("/qna/today")
-    suspend fun getQuestionAnswer(
-        @Header("Authorization") token: String
-    ): QuestionAnswerResponseDto
+    suspend fun getQuestionAnswer(): QuestionAnswerResponseDto
 
     @POST("/qna/answer")
     suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto): AnswerResponseDto

@@ -7,6 +7,7 @@ import com.sopt.umbba_android.data.service.ListService
 import com.sopt.umbba_android.data.service.OnBoardingService
 import com.sopt.umbba_android.data.service.QuestionAnswerService
 import com.sopt.umbba_android.data.service.SettingService
+import com.sopt.umbba_android.interceptor.AuthInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -16,10 +17,7 @@ import retrofit2.Retrofit
 object ApiFactory {
     private val client by lazy {
         OkHttpClient.Builder().addInterceptor(
-            HttpLoggingInterceptor().apply {
-                level =
-                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            }
+            AuthInterceptor()
         ).build()
     }
     val retrofit: Retrofit by lazy {

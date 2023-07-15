@@ -11,7 +11,7 @@ class AuthInterceptor : Interceptor {
         val headerRequest = originalRequest.newBuilder() // 헤더를 추가한 req
             .header(
                 "Authorization",
-                "Bearer" + "$token"
+                "Bearer $token"
             )
             .build()
 

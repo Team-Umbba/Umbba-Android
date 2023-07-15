@@ -45,6 +45,7 @@
                 android:textColor="@color/umbba_black"
                 app:layout_constraintEnd_toStartOf="@id/btn_confirm"
                 app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -54,6 +55,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/shape_pri500_btn_r50_rect"
                 android:text="@string/confirm"
+                android:layout_marginStart="8dp"
                 android:textColor="@color/umbba_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_cancel"

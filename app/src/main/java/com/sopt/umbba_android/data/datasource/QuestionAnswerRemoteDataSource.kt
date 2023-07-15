@@ -5,5 +5,5 @@ import retrofit2.http.Header
 
 class QuestionAnswerRemoteDataSource {
     private val questionAnswerService = ServicePool.questionAnswerService
-    suspend fun getQuestionAnswer(token:String) = questionAnswerService.getQuestionAnswer(token)
+    suspend fun getQuestionAnswer() = questionAnswerService.getQuestionAnswer()
 }
