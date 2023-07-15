@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.presentation.onboarding
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -18,16 +17,19 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
     }
 
     private fun animateFadeBackground() {
-        val fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout)
-        with(binding.clStart) {
-            startAnimation(fadeOutAnim)
-            visibility = View.INVISIBLE
-        }
-        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein)
-        binding.clArrive.startAnimation(fadeInAnim)
-        with(binding.clArrive) {
-            startAnimation(fadeInAnim)
-            visibility = View.VISIBLE
-        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            val fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout)
+            with(binding.clStart) {
+                startAnimation(fadeOutAnim)
+                visibility = View.INVISIBLE
+            }
+            val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein)
+            binding.clArrive.startAnimation(fadeInAnim)
+            with(binding.clArrive) {
+                startAnimation(fadeInAnim)
+                visibility = View.VISIBLE
+            }
+        },2000)
+
     }
 }
