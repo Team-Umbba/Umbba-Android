@@ -1,5 +1,6 @@
 package com.sopt.umbba_android.presentation.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityOnboardingFinishBinding
+import com.sopt.umbba_android.presentation.MainActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding>(R.layout.activity_onboarding_finish) {
@@ -14,6 +16,7 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
         super.onCreate(savedInstanceState)
 
         animateFadeBackground()
+        goMainActivity()
     }
 
     private fun animateFadeBackground() {
@@ -31,5 +34,11 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
             }
         },2000)
 
+    }
+
+    private fun goMainActivity() {
+        binding.btnStart.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }
