@@ -14,7 +14,7 @@
         tools:context=".presentation.qna.ConfirmAnswerDialogFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_topic"
+            android:id="@+id/cl_section"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="83dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tv_topic"
+                android:id="@+id/tv_section"
                 style="@style/BrandTypeSmallSemiBold16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_topic"
+            app:layout_constraintTop_toBottomOf="@id/cl_section"
             tools:text="#1 가장 오래된 기억" />
 
         <TextView
@@ -71,6 +71,8 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_question"
             tools:text="@string/content_example" />
 
@@ -105,6 +107,7 @@
                 android:background="@drawable/shape_grey_btn_r50_stroke_rect"
                 android:stateListAnimator="@null"
                 android:text="@string/back"
+                android:layout_marginEnd="8dp"
                 android:textColor="@color/umbba_black"
                 app:layout_constraintEnd_toStartOf="@id/btn_confirm"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +120,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/shape_pri500_btn_r50_rect"
                 android:text="@string/save"
+                android:layout_marginStart="8dp"
                 android:textColor="@color/umbba_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_back"
