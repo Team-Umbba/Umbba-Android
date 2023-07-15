@@ -20,8 +20,7 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        // viewModel.getQuestionAnswer()
-        // observeQnaResponse()
+        observeQnaResponse()
     }
 
     override fun onClick(view: View?) {
@@ -49,14 +48,10 @@ class QuestionAnswerActivity :
 
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            when (it.responseCase) {
-                1 -> {
-                    setData(it)
-                    setAnswerText(it)
-                    setClickEvent(it)
-                    setBtnEnable(it.isMyAnswer)
-                }
-            }
+            setData(it)
+            setAnswerText(it)
+            setClickEvent(it)
+            setBtnEnable(it.isMyAnswer)
         }
     }
 
