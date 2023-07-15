@@ -11,6 +11,8 @@ import coil.load
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
 import com.sopt.umbba_android.databinding.FragmentHomeBinding
+import com.sopt.umbba_android.presentation.qna.AnswerActivity
+import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingFragment
@@ -20,7 +22,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        // viewModel.getHomeData()
-       // observeData()
+        observeData()
         setClickEvent()
     }
 
@@ -34,6 +36,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun observeData() {
         viewModel.homeData.observe(requireActivity()) {
+            setNextView(it)
             setData(it)
             setBackground(it.section)
         }
@@ -44,6 +47,23 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         with(binding) {
             tvTitle.text = getString(R.string.main_topic, data.index, data.topic)
         }
+    }
+    private fun setNextView(data:HomeResponseDto.HomeData){
+        binding.btnAnswer.setOnClickListener {
+            when(data.responseCase){
+                1-> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
+                2-> showInviteDialog(data.inviteCode.toString())
+                3-> showNoOpponentDialog()
+            }
+        }
+    }
+
+    private fun showInviteDialog(inviteCode:String) {
+       InviteCodeDialogFragment(inviteCode).show(requireActivity().supportFragmentManager,"InviteCodeDialogFragment")
+    }
+
+    private fun showNoOpponentDialog() {
+        NoOpponentDialogFragment().show(requireActivity().supportFragmentManager, "NoOpponentDialogFragment")
     }
 
     private fun setBackground(section: String) {
