@@ -67,11 +67,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:text="umbbachoigo123"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_copy_invite_code"
-            tools:text="umbbachoigo123" />
+            app:layout_constraintTop_toBottomOf="@id/tv_copy_invite_code" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_send_invitation"

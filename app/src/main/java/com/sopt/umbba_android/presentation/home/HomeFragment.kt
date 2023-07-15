@@ -19,8 +19,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getHomeData()
-        observeData()
+       // viewModel.getHomeData()
+       // observeData()
         setClickEvent()
     }
 
