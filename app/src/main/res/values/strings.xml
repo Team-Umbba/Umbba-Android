@@ -106,8 +106,8 @@
     <string name="delete_account">회원 탈퇴</string>
     <string name="manage_account">계정 관리</string>
     <string name="delete_account_dialog">정말 회원을 탈퇴하시겠습니까?</string>
-    <string name="no_opponenet_text">상대와의 연결이 끊겼습니다</string>
-    <string name="no_opponenet_coment">새로운 상대와 함께하려면\n회원탈퇴 후 이용해주세요</string>
+    <string name="no_opponenet_text">상대와의 연결이 끊겼어요</string>
+    <string name="no_opponenet_coment">새로운 상대와 함께 하려면\n회원 탈퇴 후 이용해주세요</string>
 
     <!--onboarding finish activity-->
     <string name="arrive_past">과거에 도착했어!\n앞으로 나눌 이야기가 많을 거야</string>
