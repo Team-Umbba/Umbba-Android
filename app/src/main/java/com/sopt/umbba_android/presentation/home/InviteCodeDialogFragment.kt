@@ -17,7 +17,7 @@ import androidx.fragment.app.DialogFragment
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
 
-class InviteCodeDialogFragment : DialogFragment() {
+class InviteCodeDialogFragment(private val inviteCode: String) : DialogFragment() {
 
     private var _binding: FragmentInviteCodeDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "InviteCodeDialogFragment is null" }
@@ -35,6 +35,7 @@ class InviteCodeDialogFragment : DialogFragment() {
         copyInviteCode()
         closeDialog()
         setBackgroundDesign()
+        setInviteCodeText(inviteCode)
     }
 
     private fun closeDialog() {
@@ -47,12 +48,17 @@ class InviteCodeDialogFragment : DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
+    private fun setInviteCodeText(inviteCode: String) {
+        binding.tvInviteCode.text = inviteCode
+    }
+
     private fun copyInviteCode() {
         binding.clCopyInviteCode.setOnClickListener {
-            val clipboard: ClipboardManager = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("label",binding.tvInviteCode.text)
+            val clipboard: ClipboardManager =
+                requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(requireActivity(),"초대 코드가 복사되었습니다",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "초대 코드가 복사되었습니다", Toast.LENGTH_SHORT).show()
         }
     }
 
