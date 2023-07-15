@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.sopt.umbba_android.presentation.qna.QuestionAnswerViewModel" />
 
         <variable
             name="titleText"
@@ -47,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="32dp"
-            android:text="할머니와 엄마의 꿈은 꿈은 꿈은 달랐어??????하하하하하하하하"
+            tool:text ="할머니와 엄마의 꿈은 달라?"
             android:textAppearance="@style/AndroidSubHead1SemiBold20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,9 +74,8 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/content_example"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
-                android:textColor="@color/umbba_black"
+                android:textColor="@{vm.isOpponentAnswer() ? @color/umbba_black : @color/grey_800 }"
                 app:layout_constraintBottom_toTopOf="@id/tv_from_other"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +123,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
-                android:textColor="@color/umbba_black"
+                android:textColor="@{vm.isMyAnswer() ? @color/umbba_black : @color/grey_800 }"
                 app:layout_constraintBottom_toTopOf="@id/tv_from_me"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
