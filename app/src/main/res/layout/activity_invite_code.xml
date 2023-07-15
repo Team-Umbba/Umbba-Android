@@ -11,6 +11,10 @@
             name="titleText"
             type="String" />
 
+        <variable
+            name="viewmodel"
+            type="com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -36,7 +40,7 @@
             android:layout_marginTop="12dp"
             android:lineSpacingExtra="8dp"
             android:text="@string/invite_code_title"
-            android:textColor="@color/black"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
@@ -48,8 +52,9 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
             android:textSize="16sp"
-            app:boxStrokeColor="@color/grey_400"
-            app:boxStrokeWidth="1dp"
+            app:endIconDrawable="@drawable/ic_close_grey"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/grey_800"
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,10 +66,10 @@
                 style="@style/AndroidBody1_2Regular16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white_opacity50"
                 android:hint="@string/invite_code_hint"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:maxLines="1"
+                android:text="@={viewmodel.code}"
+                android:textColor="@color/umbba_black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +84,7 @@
             android:enabled="false"
             android:stateListAnimator="@null"
             android:text="@string/btn_next"
-            android:textColor="@color/white"
+            android:textColor="@color/umbba_white"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
