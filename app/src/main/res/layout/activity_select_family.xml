@@ -15,7 +15,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sopt.umbba_android.presentation.onboarding.SelectFamilyViewModel" />
+            type="com.sopt.umbba_android.presentation.onboarding.viewmodel.SelectFamilyViewModel" />
 
     </data>
 
