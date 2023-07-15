@@ -20,7 +20,6 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        showInviteDialog()
         // viewModel.getQuestionAnswer()
         // observeQnaResponse()
     }
@@ -29,14 +28,6 @@ class QuestionAnswerActivity :
         when (view?.id) {
             R.id.iv_qna_back -> finish()
         }
-    }
-
-    private fun showInviteDialog() {
-        InviteCodeDialogFragment().show(supportFragmentManager, "InviteCodeDialogFragment")
-    }
-
-    private fun showNoOpponentDialog() {
-        NoOpponentDialogFragment().show(supportFragmentManager, "NoOpponentDialogFragment")
     }
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
@@ -64,16 +55,6 @@ class QuestionAnswerActivity :
                     setAnswerText(it)
                     setClickEvent(it)
                     setBtnEnable(it.isMyAnswer)
-                }
-
-                2 -> {
-                    finish()
-                    showInviteDialog()
-                }
-
-                3 -> {
-                    finish()
-                    showNoOpponentDialog()
                 }
             }
         }
