@@ -6,7 +6,6 @@ import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivitySelectFamilyBinding
-import com.sopt.umbba_android.presentation.viewmodel.SelectFamilyViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class SelectFamilyActivity :

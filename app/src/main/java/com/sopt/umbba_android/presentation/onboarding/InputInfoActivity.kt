@@ -8,7 +8,6 @@ import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInputInfoBinding
-import com.sopt.umbba_android.presentation.viewmodel.InputInfoViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
 import java.util.regex.Pattern
 

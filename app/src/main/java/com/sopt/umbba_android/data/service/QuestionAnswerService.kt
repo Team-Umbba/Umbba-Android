@@ -5,12 +5,17 @@ import com.sopt.umbba_android.data.model.response.AnswerResponseDto
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface QuestionAnswerService {
+    @Headers("Content-Type: application/json")
     @GET("/qna/today")
-    suspend fun getQuestion() : QuestionAnswerResponseDto
+    suspend fun getQuestionAnswer(
+        @Header("Authorization") token: String
+    ): QuestionAnswerResponseDto
 
     @POST("/qna/answer")
-    suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto) : AnswerResponseDto
+    suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto): AnswerResponseDto
 }

@@ -5,19 +5,26 @@ import android.graphics.BlurMaskFilter
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
+import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
+import com.sopt.umbba_android.presentation.home.HomeFragment
+import com.sopt.umbba_android.presentation.home.InviteCodeDialogFragment
 import com.sopt.umbba_android.util.binding.BindingActivity
-
 
 class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
     View.OnClickListener {
-    private val questionAnswerViewModel by viewModels<QuestionAnswerViewModel>()
+    private val viewModel: QuestionAnswerViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        viewModel.getQuestionAnswer()
         observeQnaResponse()
     }
 
@@ -27,9 +34,28 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setClickEvent(data: QuestionAnswerResponseDto) {
-        with(binding) {
-            btnAnswer.setOnClickListener {
+    private fun setDialog(responseCase: Int) {
+        when (responseCase) {
+            2 -> showInviteDialog()
+            3 -> showNoOpponentDialog()
+        }
+    }
+
+    private fun showInviteDialog() {
+        InviteCodeDialogFragment().show(supportFragmentManager, "InviteCodeDialogFragment")
+    }
+
+    private fun showNoOpponentDialog() {
+        NoOpponentDialogFragment().show(supportFragmentManager, "NoOpponentDialogFragment")
+    }
+
+    private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
+        if (data.isMyAnswer == true) {
+            binding.btnAnswer.setOnClickListener {
+                finish()
+            }
+        } else {
+            binding.btnAnswer.setOnClickListener {
                 Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
                     putExtra("section", data.section)
                     putExtra("topic", data.topic)
@@ -41,38 +67,66 @@ class QuestionAnswerActivity :
     }
 
     private fun observeQnaResponse() {
-        questionAnswerViewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            setData(it)
-            setAnswerText(it)
-            setClickEvent(it)
+        viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
+            when (it.responseCase) {
+                1 -> {
+                    setData(it)
+                    setAnswerText(it)
+                    setClickEvent(it)
+                    setBtnEnable(it.isMyAnswer)
+                }
+                2 -> showInviteDialog()
+                3 -> showNoOpponentDialog()
+            }
         }
     }
 
-    private fun setData(data: QuestionAnswerResponseDto) {
+    private fun setData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.topic
             tvTitle.text = data.section
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
+            tvFromOther.text = data.opponentUsername
+            tvFromMe.text = data.myUsername
         }
     }
 
-    private fun setAnswerText(data: QuestionAnswerResponseDto) {
+    private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
-            if (data.isOpponentAnswer) {
-                if (data.isMyAnswer) {
+            if (data.isOpponentAnswer == true) {
+                if (data.isMyAnswer!!) {
                     tvAnswerMe.text = data.myAnswer
                     tvAnswerOther.text = data.opponentAnswer
+                    setBlurText(false)
                 } else {
                     tvAnswerOther.text = data.opponentAnswer
                     tvAnswerMe.text = "답변을 입력해 주세요"
                     setBlurText(true)
                 }
             } else {
-                if (data.isMyAnswer) {
+                if (data.isMyAnswer == true) {
                     tvAnswerMe.text = data.myAnswer
                     tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
                 }
+            }
+        }
+    }
+
+    private fun setBtnEnable(enable: Boolean?) {
+        if (enable == true) {
+            with(binding) {
+                btnAnswer.setTextColor(
+                    ContextCompat.getColor(
+                        this@QuestionAnswerActivity,
+                        R.color.primary_500
+                    )
+                )
+                btnAnswer.background = ContextCompat.getDrawable(
+                    this@QuestionAnswerActivity,
+                    R.drawable.shape_pri500_btn_stroke_r50_rect
+                )
+                btnAnswer.text = "홈으로"
             }
         }
     }
