@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
@@ -21,7 +22,11 @@ import timber.log.Timber
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val answerViewModel: ConfirmAnswerDialogFragmentViewModel by viewModels { ViewModelFactory(requireActivity()) }
+    private val answerViewModel: ConfirmAnswerDialogFragmentViewModel by viewModels {
+        ViewModelFactory(
+            requireActivity()
+        )
+    }
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
@@ -59,7 +64,9 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 dismiss()
-                answerViewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")!!))
+                Toast.makeText(requireActivity(), "답변이 전송되었습니다.", Toast.LENGTH_SHORT).show()
+                answerViewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
+                Log.e("hyeon", "answer 값은 = ${arguments?.getString("answer")}")
             }
         }
     }
