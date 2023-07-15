@@ -20,8 +20,9 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        viewModel.getQuestionAnswer()
-        observeQnaResponse()
+        showInviteDialog()
+        // viewModel.getQuestionAnswer()
+        // observeQnaResponse()
     }
 
     override fun onClick(view: View?) {
@@ -65,8 +66,15 @@ class QuestionAnswerActivity :
                     setBtnEnable(it.isMyAnswer)
                 }
 
-                2 -> showInviteDialog()
-                3 -> showNoOpponentDialog()
+                2 -> {
+                    finish()
+                    showInviteDialog()
+                }
+
+                3 -> {
+                    finish()
+                    showNoOpponentDialog()
+                }
             }
         }
     }

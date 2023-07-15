@@ -46,32 +46,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_not_have_partner" />
 
-        <TextView
-            android:id="@+id/tv_copy_invite_code"
-            style="@style/AndroidBody1_1SemiBold16"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_copy_invite_code"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape_pri500_stroke_r56_rect"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/copy_invite_code"
-            android:textColor="@color/primary_500"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_invite_code_image" />
+            app:layout_constraintTop_toBottomOf="@id/iv_invite_code_image">
 
-        <TextView
-            android:id="@+id/tv_invite_code"
-            style="@style/AndroidSubHead1SemiBold20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="umbbachoigo123"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_copy_invite_code" />
+            <TextView
+                android:id="@+id/tv_copy_invite_code"
+                style="@style/AndroidBody1_1SemiBold16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_pri500_stroke_r56_rect"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
+                android:text="@string/copy_invite_code"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/primary_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_invite_code"
+                style="@style/AndroidSubHead1SemiBold20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="umbbachoigo123"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_copy_invite_code" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_send_invitation"
@@ -86,6 +96,6 @@
             android:text="@string/send_invitation"
             android:textColor="@color/umbba_white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_invite_code" />
+            app:layout_constraintTop_toBottomOf="@id/cl_copy_invite_code" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

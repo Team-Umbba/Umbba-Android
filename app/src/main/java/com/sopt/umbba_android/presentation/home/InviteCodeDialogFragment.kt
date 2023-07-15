@@ -48,7 +48,7 @@ class InviteCodeDialogFragment : DialogFragment() {
     }
 
     private fun copyInviteCode() {
-        binding.tvInviteCode.setOnClickListener {
+        binding.clCopyInviteCode.setOnClickListener {
             val clipboard: ClipboardManager = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label",binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
