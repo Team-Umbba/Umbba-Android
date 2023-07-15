@@ -39,8 +39,9 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     private fun setPreviewAnswer() {
         with(binding) {
             tvAnswer.text = arguments?.getString("answer")
-            tvTitle.text = arguments?.getString("title")
-            tvTopic.text = arguments?.getString("topic")
+            tvTitle.text = arguments?.getString("topic")
+            tvSection.text = arguments?.getString("section")
+            tvQuestion.text = arguments?.getString("question")
         }
     }
 
@@ -55,6 +56,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 dismiss()
+                //TODO(저장 완하고 문답화면으로 돌아가는 로직 고고)
                 confirmAnswerDialogViewModel.postAnswer(tvAnswer.text.toString())
             }
         }
