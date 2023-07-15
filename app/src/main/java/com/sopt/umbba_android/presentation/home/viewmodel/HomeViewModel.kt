@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.home
+package com.sopt.umbba_android.presentation.home.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData

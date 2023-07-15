@@ -10,6 +10,7 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
 import com.sopt.umbba_android.databinding.FragmentHomeBinding
+import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.sopt.umbba_android.util.ViewModelFactory

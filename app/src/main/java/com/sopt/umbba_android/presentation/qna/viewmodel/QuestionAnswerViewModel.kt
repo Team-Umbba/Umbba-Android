@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.qna
+package com.sopt.umbba_android.presentation.qna.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
     ViewModel() {
@@ -23,6 +22,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     var isMyAnswer = MutableLiveData(false)
     var isOpponentAnswer = MutableLiveData(false)
 
+    var appbarSection = MutableLiveData<String>()
     private fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
@@ -31,6 +31,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
+                    appbarSection.value = response.data.section.toString()
                 }.onFailure { error ->
                     Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
                 }

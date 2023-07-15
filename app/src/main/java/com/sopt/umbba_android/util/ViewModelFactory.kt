@@ -7,10 +7,10 @@ import com.sopt.umbba_android.data.datasource.HomeRemoteDataSource
 import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.repository.HomeRepositoryImpl
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
-import com.sopt.umbba_android.presentation.home.HomeViewModel
-import com.sopt.umbba_android.presentation.qna.AnswerViewModel
-import com.sopt.umbba_android.presentation.qna.ConfirmAnswerDialogFragmentViewModel
-import com.sopt.umbba_android.presentation.qna.QuestionAnswerViewModel
+import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
+import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
+import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
+import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

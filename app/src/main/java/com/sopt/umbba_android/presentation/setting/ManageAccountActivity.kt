@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityManageAccountBinding
+import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class ManageAccountActivity :

@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.databinding.FragemntDeleteAccountDialogBinding
+import com.sopt.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
 
 
 class DeleteAccountDialogFragment : DialogFragment() {

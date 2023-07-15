@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.onboarding
+package com.sopt.umbba_android.presentation.onboarding.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

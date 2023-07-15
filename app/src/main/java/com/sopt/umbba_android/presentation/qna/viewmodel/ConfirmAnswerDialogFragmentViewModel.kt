@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.qna
+package com.sopt.umbba_android.presentation.qna.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

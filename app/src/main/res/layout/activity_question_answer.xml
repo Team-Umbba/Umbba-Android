@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.sopt.umbba_android.presentation.qna.QuestionAnswerViewModel" />
+            type="com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel" />
 
         <variable
             name="titleText"
@@ -32,7 +32,7 @@
             android:id="@+id/layout_appbar"
             layout="@layout/qna_appbar"
             app:clickListener="@{clickListener}"
-            app:titleText="@{`나의 어린시절`}"
+            app:titleText="@{vm.setAppbarSection()}"
             app:visibleCheck="@{false}" />
 
         <TextView

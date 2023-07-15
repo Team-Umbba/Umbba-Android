@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.qna
+package com.sopt.umbba_android.presentation.qna.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
