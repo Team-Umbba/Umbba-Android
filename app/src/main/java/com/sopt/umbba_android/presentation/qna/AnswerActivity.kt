@@ -7,12 +7,13 @@ import androidx.activity.viewModels
 import androidx.lifecycle.viewModelScope
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityAnswerBinding
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 import timber.log.Timber
 
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val answerViewModel by viewModels<AnswerViewModel>()
+    private val answerViewModel:AnswerViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
