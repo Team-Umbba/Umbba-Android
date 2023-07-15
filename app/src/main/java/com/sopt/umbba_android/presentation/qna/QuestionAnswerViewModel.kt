@@ -13,13 +13,17 @@ import timber.log.Timber
 class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
     ViewModel() {
 
+    init {
+        getQuestionAnswer()
+    }
+
     private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
 
-    var isMyAnswer = MutableLiveData<Boolean?>(false)
-    var isOpponentAnswer = MutableLiveData<Boolean?>(false)
+    var isMyAnswer = MutableLiveData(false)
+    var isOpponentAnswer = MutableLiveData(false)
 
-    fun getQuestionAnswer() {
+    private fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
                 .onSuccess { response ->
@@ -28,8 +32,8 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
                 }.onFailure { error ->
-                Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
-            }
+                    Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
+                }
         }
     }
 }
