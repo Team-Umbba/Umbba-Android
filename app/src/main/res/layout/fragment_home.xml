@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layout_root"
@@ -10,9 +11,11 @@
             android:id="@+id/iv_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_home1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -22,13 +25,13 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/shape_pri600_r84_rect"
-            android:gravity="center"
+            android:gravity="left|center"
             android:paddingHorizontal="40dp"
-            android:text="@string/answer_title"
             android:textAppearance="@style/BrandTypeBigRegular20"
             android:textColor="@color/umbba_white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tool:text="#68 가장 오래된 기억" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_answer"
@@ -37,10 +40,10 @@
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="12dp"
-            android:background="@drawable/shape_gradient_btn_r50_rect"
+            android:background="@drawable/shape_pri500_stroke_r56_rect"
             android:stateListAnimator="@null"
             android:text="@string/home_question_answer"
-            android:textColor="@color/white"
+            android:textColor="@color/primary_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
