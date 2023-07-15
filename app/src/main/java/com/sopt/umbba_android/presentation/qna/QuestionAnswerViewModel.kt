@@ -16,12 +16,17 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
 
+    var isMyAnswer = MutableLiveData<Boolean?>(false)
+    var isOpponentAnswer = MutableLiveData<Boolean?>(false)
+
     fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
                 .onSuccess { response ->
                     Log.e("hyeon", "getQuestionAnswer 성공")
                     _qnaResponse.value = response.data
+                    isMyAnswer.value = response.data.isMyAnswer
+                    isOpponentAnswer.value = response.data.isOpponentAnswer
                 }.onFailure { error ->
                 Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
             }

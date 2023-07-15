@@ -30,13 +30,6 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setDialog(responseCase: Int) {
-        when (responseCase) {
-            2 -> showInviteDialog()
-            3 -> showNoOpponentDialog()
-        }
-    }
-
     private fun showInviteDialog() {
         InviteCodeDialogFragment().show(supportFragmentManager, "InviteCodeDialogFragment")
     }
@@ -71,6 +64,7 @@ class QuestionAnswerActivity :
                     setClickEvent(it)
                     setBtnEnable(it.isMyAnswer)
                 }
+
                 2 -> showInviteDialog()
                 3 -> showNoOpponentDialog()
             }
@@ -79,8 +73,8 @@ class QuestionAnswerActivity :
 
     private fun setData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
-            layoutAppbar.titleText = data.topic
-            tvTitle.text = data.section
+            layoutAppbar.titleText = data.section
+            tvTitle.text = data.topic
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
             tvFromOther.text = data.opponentUsername
@@ -91,20 +85,22 @@ class QuestionAnswerActivity :
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             if (data.isOpponentAnswer == true) {
-                if (data.isMyAnswer!!) {
+                if (data.isMyAnswer == true) {
                     tvAnswerMe.text = data.myAnswer
                     tvAnswerOther.text = data.opponentAnswer
                     setBlurText(false)
                 } else {
                     tvAnswerOther.text = data.opponentAnswer
-                    tvAnswerMe.text = "답변을 입력해 주세요"
+                    tvAnswerMe.text = "하단 버튼을 눌러 답변을 입력하세요"
                     setBlurText(true)
                 }
             } else {
                 if (data.isMyAnswer == true) {
                     tvAnswerMe.text = data.myAnswer
-                    tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
+                } else {
+                    tvAnswerMe.text = "하단 버튼을 눌러 답변을 입력하세요"
                 }
+                tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
             }
         }
     }
