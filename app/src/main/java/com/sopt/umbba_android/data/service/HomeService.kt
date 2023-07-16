@@ -10,6 +10,6 @@ interface HomeService {
     @GET("/home")
     suspend fun getHomeData(): HomeResponseDto
     @Headers("Content-Type: application/json")
-    @GET("/home/invite")
+    @GET("/home/case")
     suspend fun getResponseCase() : HomeCaseResponseDto
 }
