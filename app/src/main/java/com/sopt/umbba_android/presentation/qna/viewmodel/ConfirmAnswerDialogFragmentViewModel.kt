@@ -7,7 +7,8 @@ import com.sopt.umbba_android.data.model.request.AnswerRequestDto
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import kotlinx.coroutines.launch
 
-class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) : ViewModel() {
+class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
+    ViewModel() {
     fun postAnswer(answerRequestDto: AnswerRequestDto) {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.postAnswer(answerRequestDto)
