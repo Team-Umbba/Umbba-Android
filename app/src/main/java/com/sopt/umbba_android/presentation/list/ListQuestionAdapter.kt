@@ -1,5 +1,6 @@
 package com.sopt.umbba_android.presentation.list
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -32,6 +33,7 @@ class ListQuestionAdapter(private val itemClick: (ListResponseDto.ListData) -> (
                 tvTopic.text = data.topic
                 root.setOnClickListener {
                     itemClick(data)
+                    Log.e("hyeon","아이템 클릭 이벤트 발생")
                 }
             }
         }

@@ -3,10 +3,12 @@ package com.sopt.umbba_android.presentation.qna
 import android.content.Intent
 import android.graphics.BlurMaskFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
@@ -21,7 +23,7 @@ class QuestionAnswerActivity :
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.vm = viewModel
-        observeQnaResponse()
+        observeQnaViewFlag()
     }
 
     override fun onClick(view: View?) {
@@ -30,12 +32,20 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
-        if (data.isMyAnswer == true) {
-            binding.btnAnswer.setOnClickListener {
-                finish()
-            }
+    private fun observeQnaViewFlag() {
+        val qnaId = intent.getLongExtra("questionId", -1)
+        Log.e("hyeon", "qnaId activity에서" + qnaId.toString())
+        if (qnaId == -1.toLong()) {
+            viewModel.getQuestionAnswer()
+            observeQnaResponse()
         } else {
+            viewModel.getListQuestionAnswer(qnaId)
+            observeListQnaResponse()
+        }
+    }
+
+    private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
+        if (data.isMyAnswer == false) {
             binding.btnAnswer.setOnClickListener {
                 Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
                     putExtra("section", data.section)
@@ -47,16 +57,34 @@ class QuestionAnswerActivity :
         }
     }
 
+    private fun observeListQnaResponse() {
+        viewModel.listQnaResponse.observe(this@QuestionAnswerActivity) {
+            setListQnaData(it)
+            setBtnEnable(true)
+        }
+    }
+
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            setData(it)
+            setQnaData(it)
             setAnswerText(it)
             setClickEvent(it)
             setBtnEnable(it.isMyAnswer)
         }
     }
 
-    private fun setData(data: QuestionAnswerResponseDto.QnaData) {
+    private fun setListQnaData(data: ListQuestionAnswerResponseDto.QnaData) {
+        with(binding) {
+            layoutAppbar.titleText = data.section
+            tvTopic.text = data.topic
+            tvQuestionMe.text = data.myQuestion
+            tvQuestionOther.text = data.opponentQuestion
+            tvFromOther.text = data.opponentUsername
+            tvFromMe.text = data.myUsername
+        }
+    }
+
+    private fun setQnaData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.section
             tvTopic.text = data.topic
@@ -104,6 +132,9 @@ class QuestionAnswerActivity :
                     R.drawable.shape_pri500_btn_stroke_r50_rect
                 )
                 btnAnswer.text = "홈으로"
+                btnAnswer.setOnClickListener {
+                    finish()
+                }
             }
         }
     }

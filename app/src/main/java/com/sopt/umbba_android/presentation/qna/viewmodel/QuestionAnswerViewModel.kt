@@ -5,25 +5,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sopt.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import kotlinx.coroutines.launch
 
 class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
     ViewModel() {
-
-    init {
-        getQuestionAnswer()
-    }
-
     private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
+
+    private var _listQnaResponse = MutableLiveData<ListQuestionAnswerResponseDto.QnaData>()
+    val listQnaResponse: LiveData<ListQuestionAnswerResponseDto.QnaData> = _listQnaResponse
 
     var isMyAnswer = MutableLiveData<Boolean?>()
     var isOpponentAnswer = MutableLiveData<Boolean?>()
 
     var appbarSection = MutableLiveData<String>()
-    private fun getQuestionAnswer() {
+    var isBeforeList = MutableLiveData(false)
+    var qnaId = MutableLiveData<Long>(-1)
+
+    fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
                 .onSuccess { response ->
@@ -34,6 +36,19 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     appbarSection.value = response.data.section.toString()
                 }.onFailure { error ->
                     Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
+                }
+        }
+    }
+
+    fun getListQuestionAnswer(qnaId: Long) {
+        viewModelScope.launch {
+            questionAnswerRepositoryImpl.getListQuestionAnswer(qnaId)
+                .onSuccess { response ->
+                    _listQnaResponse.value = response.data
+                    appbarSection.value = response.data.section.toString()
+                    Log.e("hyeon", "getListQuestionAnswer 성공")
+                }.onFailure { error ->
+                    Log.e("hyeon", "getListQuestionAnswer 실패" + error.message)
                 }
         }
     }
