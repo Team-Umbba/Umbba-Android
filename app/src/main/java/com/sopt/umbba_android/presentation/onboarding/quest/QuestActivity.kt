@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.presentation.onboarding
+package com.sopt.umbba_android.presentation.onboarding.quest
 
 import android.os.Bundle
 import android.view.View
@@ -11,7 +11,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        changeFragment(QuestSubFragment())
+        changeFragment(QuestOneFragment())
     }
 
     override fun onClick(view: View?) {
