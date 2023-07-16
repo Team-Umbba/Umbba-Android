@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_question"
+        android:id="@+id/tv_topic"
         style="@style/AndroidBody1_2Regular16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
