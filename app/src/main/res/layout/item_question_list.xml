@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_title_number"
+        android:id="@+id/tv_index"
         style="@style/BrandTypeSmallSemiBold16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_marginStart="12dp"
         android:textColor="@color/umbba_black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_title_number"
+        app:layout_constraintStart_toEndOf="@id/tv_index"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="할머니와 엄마의 꿈이 달랐어?" />
 
