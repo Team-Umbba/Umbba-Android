@@ -3,13 +3,16 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="335dp"
+        android:layout_height="324dp"
         android:background="@drawable/shape_g400_stroke_r8_rect">
 
         <TextView
@@ -17,24 +20,12 @@
             style="@style/AndroidSubHead1SemiBold20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="38dp"
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="어머니와 지금 같이 살고 있어?" />
-
-        <TextView
-            android:id="@+id/tv_sub_title"
-            style="@style/AndroidCaptionRegular12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/quest_sub_title"
-            android:textColor="@color/grey_800"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_question" />
+            android:text="심심해?" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_answer"
@@ -55,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="12dp"
+                android:checked="@={viewmodel.isClickedYes}"
                 android:text="@string/yes"
                 app:chipMinTouchTargetSize="0dp" />
 
@@ -64,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="12dp"
+                android:checked="@={viewmodel.isClickedNo}"
                 android:text="@string/no"
                 app:chipMinTouchTargetSize="0dp" />
 
@@ -72,6 +65,7 @@
                 style="@style/QuestChoiceChipStyle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:checked="@={viewmodel.isClickedAmbiguous}"
                 android:text="@string/ambiguous"
                 app:chipMinTouchTargetSize="0dp" />
         </com.google.android.material.chip.ChipGroup>
