@@ -44,7 +44,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     private fun setPreviewAnswer() {
         with(binding) {
             tvAnswer.text = arguments?.getString("answer")
-            tvTitle.text = arguments?.getString("topic")
+            tvTopic.text = arguments?.getString("topic")
             tvSection.text = arguments?.getString("section")
             tvQuestion.text = arguments?.getString("question")
         }

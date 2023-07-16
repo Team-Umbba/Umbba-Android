@@ -39,7 +39,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
     private fun setQuestionTitle() {
         with(binding) {
             tvQuestion.text = intent.getStringExtra("question")
-            tvTitle.text = intent.getStringExtra("topic")
+            tvTopic.text = intent.getStringExtra("topic")
             layoutAppbar.titleText = intent.getStringExtra("section").toString()
             Log.e("hyeon", intent.getStringExtra("section").toString())
         }

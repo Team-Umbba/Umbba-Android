@@ -32,11 +32,11 @@
             android:id="@+id/layout_appbar"
             layout="@layout/qna_appbar"
             app:clickListener="@{clickListener}"
-            app:titleText="@{vm.setAppbarSection()}"
+            app:titleText="@{` `}"
             app:visibleCheck="@{false}" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_topic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -56,7 +56,7 @@
             android:textAppearance="@style/AndroidSubHead1SemiBold20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_other"

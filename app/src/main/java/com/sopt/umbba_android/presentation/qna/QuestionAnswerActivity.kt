@@ -58,7 +58,7 @@ class QuestionAnswerActivity :
     private fun setData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.section
-            tvTitle.text = data.topic
+            tvTopic.text = data.topic
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
             tvFromOther.text = data.opponentUsername

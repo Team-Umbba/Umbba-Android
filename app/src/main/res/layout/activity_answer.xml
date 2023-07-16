@@ -42,7 +42,7 @@
             app:visibleCheck="@{true}" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_topic"
             style="@style/BrandTypeBigRegular20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

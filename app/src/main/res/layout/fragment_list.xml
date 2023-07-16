@@ -70,7 +70,7 @@
                     app:chipMinHeight="26dp"
                     app:textEndPadding="12dp"
                     app:textStartPadding="12dp"
-                    tools:text="# 타임머신" />
+                    android:text="# 어린 시절" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_2"
@@ -81,7 +81,7 @@
                     app:chipMinHeight="26dp"
                     app:textEndPadding="12dp"
                     app:textStartPadding="12dp"
-                    tools:text="# 어린 시절" />
+                    android:text="# 학창 시절" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_3"
@@ -92,7 +92,7 @@
                     app:chipMinHeight="26dp"
                     app:textEndPadding="12dp"
                     app:textStartPadding="12dp"
-                    tools:text="# 학창 시절" />
+                    android:text="# 청춘 시절" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_4"
@@ -103,7 +103,7 @@
                     app:chipMinHeight="26dp"
                     app:textEndPadding="12dp"
                     app:textStartPadding="12dp"
-                    tools:text="# 대학 생활" />
+                    android:text="# 연애 시절" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_5"
@@ -115,14 +115,14 @@
                     app:chipMinHeight="26dp"
                     app:textEndPadding="12dp"
                     app:textStartPadding="12dp"
-                    tools:text="# 회사 생활" />
+                    android:text="# 우리가 만나고" />
 
             </com.google.android.material.chip.ChipGroup>
 
         </HorizontalScrollView>
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_section"
             style="@style/BrandTypeBigRegular20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_section"
             tools:itemCount="3"
             tools:listitem="@layout/item_question_list" />
 
