@@ -19,8 +19,8 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
 
-    var isMyAnswer = MutableLiveData(false)
-    var isOpponentAnswer = MutableLiveData(false)
+    var isMyAnswer = MutableLiveData<Boolean?>()
+    var isOpponentAnswer = MutableLiveData<Boolean?>()
 
     var appbarSection = MutableLiveData<String>()
     private fun getQuestionAnswer() {

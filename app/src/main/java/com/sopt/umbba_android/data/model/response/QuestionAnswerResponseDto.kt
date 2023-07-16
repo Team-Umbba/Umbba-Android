@@ -14,8 +14,6 @@ data class QuestionAnswerResponseDto(
 ) {
     @Serializable
     data class QnaData(
-        @SerialName("response_case")
-        val responseCase: Int,
         @SerialName("qna_id")
         val qnaId: Long?,
         @SerialName("section")
@@ -37,14 +35,6 @@ data class QuestionAnswerResponseDto(
         @SerialName("opponent_username")
         val opponentUsername: String?,
         @SerialName("my_username")
-        val myUsername: String?,
-        @SerialName("invite_code")
-        val inviteCode:String?,
-        @SerialName("invite_username")
-        val inviteUserName:String?,
-        @SerialName("install_url")
-        val installUrl:String?,
-        @SerialName("relative_user_active")
-        val relativeUserActivate:Boolean?
+        val myUsername: String?
     )
 }

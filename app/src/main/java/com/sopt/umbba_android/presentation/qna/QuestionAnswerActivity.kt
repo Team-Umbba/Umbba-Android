@@ -20,6 +20,7 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        binding.vm = viewModel
         observeQnaResponse()
     }
 

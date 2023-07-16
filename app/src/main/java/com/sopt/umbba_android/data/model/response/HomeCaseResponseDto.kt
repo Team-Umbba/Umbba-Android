@@ -20,9 +20,9 @@ data class HomeCaseResponseDto(
         val inviteCode: String?,
         @SerialName("invite_username")
         val inviteUserName: String?,
-        @SerialName("invite_url")
-        val inviteUrl: String?,
-        @SerialName("relative_user_activate")
-        val relativeUserActivate: Boolean?
+        @SerialName("install_url")
+        val installUrl: String?,
+        @SerialName("relative_user_active")
+        val relativeUserActive: Boolean?
     )
 }
