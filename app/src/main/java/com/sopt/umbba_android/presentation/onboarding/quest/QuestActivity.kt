@@ -27,7 +27,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         binding.clickListener = this
 
         initFragment(QuestOneFragment())
-        observeButtonEnabled()
+        checkNextButtonEnabled()
         clickNextButton()
     }
 
@@ -38,11 +38,22 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
                     supportFragmentManager.popBackStack("$count", FragmentManager.POP_BACK_STACK_INCLUSIVE)
                     binding.progressBar.progress -= 20
                     count -= 1
+                    initChip()
+                    setBeforeButtonClick(count)
                 } else {
                     finish()
                 }
             }
         }
+    }
+
+    private fun setBeforeButtonClick(count: Int) {
+        when (quest[count].toString()) {
+            "응" -> viewModel.isClickedYes.value = true
+            "아니" -> viewModel.isClickedNo.value = true
+            "애매해" -> viewModel.isClickedAmbiguous.value = true
+        }
+        Log.d("viewmodel", "pop stack : ${count}번 : ${quest[count].toString()}")
     }
 
     private fun initFragment(fragment: Fragment) {
@@ -59,7 +70,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         }
     }
 
-    private fun observeButtonEnabled() {
+    private fun checkNextButtonEnabled() {
         viewModel.isClickedComplete.observe(this) {
             binding.btnNext.isEnabled = true
         }
@@ -67,10 +78,10 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
 
     private fun clickNextButton() {
         binding.btnNext.setOnClickListener {
-            Log.d("viewmodel", "${viewModel.clickedChipText.value.toString()}")
-            Log.d("viewmodel", "${count}")
+            Log.d("viewmodel", "chipText : ${viewModel.clickedChipText.value.toString()}")
+            Log.d("viewmodel", "count : ${count}")
             quest[count] = viewModel.clickedChipText.value.toString()
-            Log.d("QuestArray", "${quest[count]}")
+            Log.d("viewmodel", "배열 값 : ${quest[count]}")
             initChip()
             count += 1
             when (count) {
@@ -80,11 +91,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
                 3 -> changeFragment(QuestFourFragment())
                 4 -> changeFragment(QuestFiveFragment())
                 5 -> {
-                    if (true) { //초대하는 측
-                        startActivity(Intent(this, SetTimeActivity::class.java))
-                    } else { //초대받는 측
-                        startActivity(Intent(this, NotifyTimeActivity::class.java))
-                    }
+                    goNextActivity()
                     count = 4
                 }
             }
@@ -97,6 +104,14 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
             isClickedYes.value = false
             isClickedNo.value = false
             isClickedAmbiguous.value = false
+        }
+    }
+
+    private fun goNextActivity() {
+        if (true) { //초대하는 측
+            startActivity(Intent(this, SetTimeActivity::class.java))
+        } else { //초대받는 측
+            startActivity(Intent(this, NotifyTimeActivity::class.java))
         }
     }
 }
