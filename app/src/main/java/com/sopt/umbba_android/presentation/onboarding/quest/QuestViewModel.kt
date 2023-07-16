@@ -10,6 +10,8 @@ class QuestViewModel : ViewModel() {
 
     val isClickedComplete = MutableLiveData<Boolean>()
 
+    val clickedChipText = MutableLiveData<String>()
+
     fun checkButtonComplete() {
         isClickedComplete.value = isClickedYes.value == true || isClickedNo.value == true || isClickedAmbiguous.value == true
     }
