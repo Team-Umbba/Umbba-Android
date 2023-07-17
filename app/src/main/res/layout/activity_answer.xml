@@ -18,10 +18,6 @@
             type="java.lang.Boolean" />
 
         <variable
-            name="title"
-            type="String" />
-
-        <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
     </data>
@@ -47,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/answer_title"
+            tool:text="@string/answer_title"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
-            android:text="@string/answer_question"
+            tool:text="@string/answer_question"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
