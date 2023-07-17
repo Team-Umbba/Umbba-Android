@@ -1,4 +1,4 @@
-package com.sopt.umbba_android
+package com.sopt.umbba_android.application
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
