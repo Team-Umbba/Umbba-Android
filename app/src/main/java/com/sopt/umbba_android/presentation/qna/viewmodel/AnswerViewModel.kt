@@ -6,4 +6,5 @@ import androidx.lifecycle.ViewModel
 
 class AnswerViewModel : ViewModel() {
     var answer = MutableLiveData<String>()
+    var appbarTitle = MutableLiveData<String>()
 }
