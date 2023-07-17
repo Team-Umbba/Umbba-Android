@@ -16,6 +16,8 @@ data class ListQuestionAnswerResponseDto(
     data class QnaData(
         @SerialName("qna_id")
         val qnaId: Long?,
+        @SerialName("index")
+        val index: Int?,
         @SerialName("section")
         val section: String?,
         @SerialName("topic")
