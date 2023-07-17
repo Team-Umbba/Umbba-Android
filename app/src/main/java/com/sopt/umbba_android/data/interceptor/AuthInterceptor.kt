@@ -1,4 +1,4 @@
-package com.sopt.umbba_android.interceptor
+package com.sopt.umbba_android.data.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response
