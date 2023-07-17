@@ -1,7 +1,7 @@
 package com.sopt.umbba_android.data.model
 
-import com.google.firebase.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.sopt.umbba_android.BuildConfig
 import com.sopt.umbba_android.data.service.HomeService
 import com.sopt.umbba_android.data.service.ListService
 import com.sopt.umbba_android.data.service.OnBoardingService
@@ -15,6 +15,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 object ApiFactory {
+
+    const val UMBBA_URL = BuildConfig.UMBBA_BASE_URL
+
     private val client by lazy {
         OkHttpClient.Builder().addInterceptor(
             AuthInterceptor()
@@ -22,7 +25,7 @@ object ApiFactory {
     }
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("d")
+            .baseUrl(UMBBA_URL)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .client(client)
             .build()

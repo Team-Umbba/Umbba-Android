@@ -127,4 +127,10 @@
 
     <!--home fragment-->
     <string name="main_topic">#%d %s</string>
+
+    <!--quest fragment-->
+    <string name="yes">응</string>
+    <string name="no">아니</string>
+    <string name="ambiguous">애매해</string>
+
 </resources>
