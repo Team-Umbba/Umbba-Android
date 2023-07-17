@@ -15,8 +15,15 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        goBack()
         animateFadeBackground()
         goMainActivity()
+    }
+
+    private fun goBack() {
+        binding.btnBack2.setOnClickListener {
+            finish()
+        }
     }
 
     private fun animateFadeBackground() {
@@ -32,7 +39,7 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
                 startAnimation(fadeInAnim)
                 visibility = View.VISIBLE
             }
-        },2000)
+        },1000)
 
     }
 
