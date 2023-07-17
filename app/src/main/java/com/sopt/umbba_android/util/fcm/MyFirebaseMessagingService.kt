@@ -5,9 +5,9 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -17,6 +17,8 @@ import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import timber.log.Timber
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+    var isSwitchChecked = MutableLiveData<Boolean>(false)
+
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Timber.tag("hyeon").e("fcm token : " + token)
@@ -26,7 +28,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         super.onMessageReceived(message)
         Timber.tag("hyeon").e(message.notification.toString())
         Timber.tag("hyeon").e(message.data.toString())
-        createNotification(message)
+        setNotificationOnOff(isSwitchChecked.value!!, message)
+    }
+
+    private fun setNotificationOnOff(isSwitchChecked: Boolean, message: RemoteMessage) {
+        if (isSwitchChecked) {
+            createNotification(message)
+        } else {
+            Log.e("hyeon", "알림 끈 상태")
+        }
     }
 
     private fun createNotification(message: RemoteMessage) {
