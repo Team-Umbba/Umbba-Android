@@ -24,7 +24,7 @@
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="행복해?" />
+            tools:text="행복해?" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_answer"
