@@ -3,14 +3,15 @@ package com.sopt.umbba_android.presentation.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import coil.load
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
 import com.sopt.umbba_android.databinding.FragmentHomeBinding
+import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
+import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingFragment
@@ -19,15 +20,15 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getHomeData()
         observeData()
-        setClickEvent()
     }
 
-    private fun setClickEvent() {
-        with(binding) {
-            btnAnswer.setOnClickListener {
-                startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
+    private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
+        binding.btnAnswer.setOnClickListener {
+            when (responseCaseDto.responseCase) {
+                1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
+                2 -> showInviteDialog(responseCaseDto.inviteCode.toString())
+                3 -> showNoOpponentDialog()
             }
         }
     }
@@ -37,6 +38,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             setData(it)
             setBackground(it.section)
         }
+        viewModel.responseCaseData.observe(requireActivity()) {
+            setClickEvent(it)
+        }
     }
 
     @SuppressLint("StringFormatMatches")
@@ -44,6 +48,20 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         with(binding) {
             tvTitle.text = getString(R.string.main_topic, data.index, data.topic)
         }
+    }
+
+    private fun showInviteDialog(inviteCode: String) {
+        InviteCodeDialogFragment(inviteCode).show(
+            requireActivity().supportFragmentManager,
+            "InviteCodeDialogFragment"
+        )
+    }
+
+    private fun showNoOpponentDialog() {
+        NoOpponentDialogFragment().show(
+            requireActivity().supportFragmentManager,
+            "NoOpponentDialogFragment"
+        )
     }
 
     private fun setBackground(section: String) {

@@ -4,21 +4,26 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.model.request.AnswerRequestDto
 import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
-import timber.log.Timber
+import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
+import com.sopt.umbba_android.util.ViewModelFactory
 
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val confirmAnswerDialogViewModel by viewModels<ConfirmAnswerDialogFragmentViewModel>()
+    private val answerViewModel: ConfirmAnswerDialogFragmentViewModel by viewModels {
+        ViewModelFactory(
+            requireActivity()
+        )
+    }
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
@@ -39,7 +44,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     private fun setPreviewAnswer() {
         with(binding) {
             tvAnswer.text = arguments?.getString("answer")
-            tvTitle.text = arguments?.getString("topic")
+            tvTopic.text = arguments?.getString("topic")
             tvSection.text = arguments?.getString("section")
             tvQuestion.text = arguments?.getString("question")
         }
@@ -55,9 +60,11 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
                 dismiss()
             }
             btnConfirm.setOnClickListener {
+                Toast.makeText(requireActivity(), "답변이 전송되었습니다.", Toast.LENGTH_SHORT).show()
+                answerViewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
+                Log.e("hyeon", "answer 값은 = ${arguments?.getString("answer")}")
                 dismiss()
-                //TODO(저장 완하고 문답화면으로 돌아가는 로직 고고)
-                confirmAnswerDialogViewModel.postAnswer(tvAnswer.text.toString())
+                requireActivity().finish()
             }
         }
     }

@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.viewModelScope
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityAnswerBinding
+import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
-import timber.log.Timber
 
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val answerViewModel by viewModels<AnswerViewModel>()
+    private val answerViewModel: AnswerViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -39,8 +39,9 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
     private fun setQuestionTitle() {
         with(binding) {
             tvQuestion.text = intent.getStringExtra("question")
-            tvTitle.text = intent.getStringExtra("topic")
-            layoutAppbar.titleText = intent.getStringExtra("section").toString()
+            tvTopic.text = intent.getStringExtra("topic")
+            val appbarTitle = intent.getStringExtra("section").toString()
+            layoutAppbar.titleText = appbarTitle
             Log.e("hyeon", intent.getStringExtra("section").toString())
         }
     }
@@ -53,7 +54,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             putString("topic", intent.getStringExtra("topic"))
             putString("section", intent.getStringExtra("section"))
             putString("answer", answerViewModel.answer.value)
-        }
+        } // 이 부분은 변수 안쓰고.. 코드 쓰고 싶음 (일단 서버연결 완료되면 해보고, 테스트도 해보자잉)
         confirmDialog.apply {
             arguments = bundle
             show(supportFragmentManager, "ConfirmDialogFragment")

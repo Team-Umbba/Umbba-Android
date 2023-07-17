@@ -92,6 +92,8 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
                 android:checked="true"
+                android:textOn="@string/on"
+                android:textOff="@string/off"
                 android:paddingHorizontal="10dp"
                 android:thumb="@drawable/shape_switch_thumb"
                 app:layout_constraintBottom_toBottomOf="parent"

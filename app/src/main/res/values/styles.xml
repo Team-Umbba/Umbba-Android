@@ -41,7 +41,7 @@
         <item name="errorEnabled">false</item>
         <!--Counter-->
         <item name="counterEnabled">true</item>
-        <item name="counterMaxLength">300</item>
+        <item name="counterMaxLength">100</item>
         <item name="counterTextColor">@color/umbba_black</item>
         <item name="counterTextAppearance">@style/AndroidCaptionRegular10</item>
     </style>

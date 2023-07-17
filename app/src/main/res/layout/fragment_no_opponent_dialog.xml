@@ -40,18 +40,18 @@
             android:id="@+id/iv_invite_code_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/ic_umbba_logo_big"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/ic_no_opponenet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_not_have_partner" />
 
         <TextView
             android:id="@+id/tv_invite_code"
-            style="@style/AndroidSubHead1SemiBold20"
+            style="@style/AndroidBody1_2Regular16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="64dp"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

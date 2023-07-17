@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
-import com.sopt.umbba_android.presentation.home.InviteCodeDialogFragment
+import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 
@@ -20,7 +20,7 @@ class QuestionAnswerActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        viewModel.getQuestionAnswer()
+        binding.vm = viewModel
         observeQnaResponse()
     }
 
@@ -28,14 +28,6 @@ class QuestionAnswerActivity :
         when (view?.id) {
             R.id.iv_qna_back -> finish()
         }
-    }
-
-    private fun showInviteDialog() {
-        InviteCodeDialogFragment().show(supportFragmentManager, "InviteCodeDialogFragment")
-    }
-
-    private fun showNoOpponentDialog() {
-        NoOpponentDialogFragment().show(supportFragmentManager, "NoOpponentDialogFragment")
     }
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
@@ -57,24 +49,17 @@ class QuestionAnswerActivity :
 
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            when (it.responseCase) {
-                1 -> {
-                    setData(it)
-                    setAnswerText(it)
-                    setClickEvent(it)
-                    setBtnEnable(it.isMyAnswer)
-                }
-
-                2 -> showInviteDialog()
-                3 -> showNoOpponentDialog()
-            }
+            setData(it)
+            setAnswerText(it)
+            setClickEvent(it)
+            setBtnEnable(it.isMyAnswer)
         }
     }
 
     private fun setData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.section
-            tvTitle.text = data.topic
+            tvTopic.text = data.topic
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
             tvFromOther.text = data.opponentUsername

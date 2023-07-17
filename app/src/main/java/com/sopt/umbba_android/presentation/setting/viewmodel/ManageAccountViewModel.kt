@@ -1,15 +1,15 @@
-package com.sopt.umbba_android.presentation.setting
+package com.sopt.umbba_android.presentation.setting.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sopt.umbba_android.data.repository.SettingRepositoryImpl
 import kotlinx.coroutines.launch
 
-class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositoryImpl) :
+class ManageAccountViewModel(private val settingRepositoryImpl: SettingRepositoryImpl) :
     ViewModel() {
-    fun deleteAccount() {
+    fun logout() {
         viewModelScope.launch {
-            settingRepositoryImpl.deleteAccount()
+            settingRepositoryImpl.logout()
         }
     }
 }
