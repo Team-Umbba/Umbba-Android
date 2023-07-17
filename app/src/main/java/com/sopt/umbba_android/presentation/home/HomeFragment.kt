@@ -3,9 +3,13 @@ package com.sopt.umbba_android.presentation.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
@@ -22,7 +26,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         observeData()
     }
-
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
         binding.btnAnswer.setOnClickListener {
             when (responseCaseDto.responseCase) {

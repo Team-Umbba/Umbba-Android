@@ -6,10 +6,8 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 
 interface HomeService {
-    @Headers("Content-Type: application/json")
     @GET("/home")
     suspend fun getHomeData(): HomeResponseDto
-    @Headers("Content-Type: application/json")
     @GET("/home/case")
     suspend fun getResponseCase() : HomeCaseResponseDto
 }

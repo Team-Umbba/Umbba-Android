@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/sel_background_bottom_stroke">
 
     <TextView
         android:id="@+id/tv_index"
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_question"
+        android:id="@+id/tv_topic"
         style="@style/AndroidBody1_2Regular16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

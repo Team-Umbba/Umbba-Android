@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".application.UmbbaApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Umbbaandroid"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".presentation.splash.OnboardingActivity"
@@ -53,29 +55,34 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".util.fcm.MyFirebaseMessagingService"
-            android:exported="false"
-            android:enabled="true">
+
+        <service
+            android:name=".util.fcm.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value=" " />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_umbba_logo"/>
+            android:resource="@drawable/ic_umbba_logo" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/primary_400"/>
+            android:resource="@color/primary_400" />
+
         <activity
             android:name=".presentation.invite.InviteCodeActivity"
             android:exported="false"

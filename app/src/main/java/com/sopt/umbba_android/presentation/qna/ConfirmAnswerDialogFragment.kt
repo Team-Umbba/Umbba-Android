@@ -63,8 +63,8 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
                 Toast.makeText(requireActivity(), "답변이 전송되었습니다.", Toast.LENGTH_SHORT).show()
                 answerViewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
                 Log.e("hyeon", "answer 값은 = ${arguments?.getString("answer")}")
+                AnswerActivity().finish()
                 dismiss()
-                requireActivity().finish()
             }
         }
     }
