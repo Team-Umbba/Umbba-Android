@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityNotifyTimeBinding
+import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class NotifyTimeActivity :

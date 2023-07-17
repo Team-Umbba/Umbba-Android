@@ -82,7 +82,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.onboarding.QuestActivity"
+            android:name=".presentation.onboarding.quest.QuestActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
