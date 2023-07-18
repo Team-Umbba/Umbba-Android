@@ -6,12 +6,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.sopt.umbba_android.data.datasource.HomeRemoteDataSource
 import com.sopt.umbba_android.data.datasource.ListRemoteDataSource
 import com.sopt.umbba_android.data.datasource.LoginRemoteDataSource
+import com.sopt.umbba_android.data.datasource.OnboardingRemoteDataSource
 import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.sopt.umbba_android.data.repository.HomeRepositoryImpl
 import com.sopt.umbba_android.data.repository.ListRepositoryImpl
 import com.sopt.umbba_android.data.repository.LoginRepositoryImpl
+import com.sopt.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
+import com.sopt.umbba_android.data.service.LoginService
+import com.sopt.umbba_android.domain.repository.OnboardingRepository
 import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
+import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
 import com.sopt.umbba_android.presentation.list.viewmodel.ListViewModel
 import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
@@ -51,6 +56,21 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return ListViewModel(
                 ListRepositoryImpl(
                     ListRemoteDataSource()
+                )
+            ) as T
+        }
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(
+                LoginRepositoryImpl(
+                    LoginRemoteDataSource()
+                )
+            ) as T
+        }
+
+        if (modelClass.isAssignableFrom(InviteCodeViewModel::class.java)) {
+            return InviteCodeViewModel(
+                OnboardingRepositoryImpl(
+                    OnboardingRemoteDataSource()
                 )
             ) as T
         }
