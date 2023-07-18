@@ -23,7 +23,6 @@ class DeleteAccountDialogFragment : DialogFragment() {
 
     private val viewModel: DeleteAccountViewModel by viewModels { ViewModelFactory(requireActivity()) }
     private var _binding: FragemntDeleteAccountDialogBinding? = null
-    private var signOutListener: DeleteAccountDialogFragment.OnSignOutListener? = null
     private val binding get() = requireNotNull(_binding) { "DeleteAccountDialogFragment is null" }
 
     override fun onCreateView(
@@ -38,6 +37,7 @@ class DeleteAccountDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         backgroundDesign()
         setBtnClickEvent()
+        observeResponseStatus()
     }
 
     private fun backgroundDesign() {
@@ -51,11 +51,16 @@ class DeleteAccountDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 viewModel.signout()
-                dismiss()
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+        }
+    }
+
+    private fun observeResponseStatus(){
+        viewModel.responseStatus.observe(this){
+            if (it==200){
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
-                requireActivity().finish()
             }
         }
     }
@@ -71,13 +76,5 @@ class DeleteAccountDialogFragment : DialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    fun setOnSignOutListener(listener: DeleteAccountDialogFragment.OnSignOutListener) {
-        this.signOutListener = listener
-    }
-
-    interface OnSignOutListener {
-        fun onSignOutConfirmed()
     }
 }

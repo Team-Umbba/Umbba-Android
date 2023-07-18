@@ -14,7 +14,7 @@ import com.sopt.umbba_android.util.binding.BindingActivity
 
 class DeleteAccountActivity :
     BindingActivity<ActivityDeleteAccountBinding>(R.layout.activity_delete_account),
-    View.OnClickListener, DeleteAccountDialogFragment.OnSignOutListener {
+    View.OnClickListener {
     private val viewModel: DeleteAccountViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,20 +26,8 @@ class DeleteAccountActivity :
         with(binding) {
             btnDeleteAccount.setOnClickListener {
                 DeleteAccountDialogFragment().apply{
-                    setOnSignOutListener(this@DeleteAccountActivity)
                     show(supportFragmentManager, "DeleteAccountDialog")
                 }
-            }
-        }
-    }
-
-    private fun observeResponseStatus() {
-        viewModel.responseStatus.observe(this@DeleteAccountActivity) {
-            Log.e("hyeon", "responseStatus값은" + viewModel.responseStatus.value)
-            if (it == 200) {
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
             }
         }
     }
@@ -52,11 +40,4 @@ class DeleteAccountActivity :
         }
     }
 
-    override fun onSignOutConfirmed() {
-        // 여기에 로그아웃 후 할 로직 작성하면될듯
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
-        finish()
-    }
 }
