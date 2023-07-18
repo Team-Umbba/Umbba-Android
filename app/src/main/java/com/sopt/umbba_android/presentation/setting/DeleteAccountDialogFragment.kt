@@ -12,6 +12,7 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
@@ -55,9 +56,10 @@ class DeleteAccountDialogFragment : DialogFragment() {
         }
     }
 
-    private fun observeResponseStatus(){
-        viewModel.responseStatus.observe(this){
-            if (it==200){
+    private fun observeResponseStatus() {
+        viewModel.responseStatus.observe(this) {
+            if (it == 200) {
+                SharedPreferences.clearForSignout()
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
