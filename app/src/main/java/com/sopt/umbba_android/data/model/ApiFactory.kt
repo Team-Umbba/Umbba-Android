@@ -4,7 +4,7 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.sopt.umbba_android.BuildConfig
 import com.sopt.umbba_android.data.service.HomeService
 import com.sopt.umbba_android.data.service.ListService
-import com.sopt.umbba_android.data.service.OnBoardingService
+import com.sopt.umbba_android.data.service.OnboardingService
 import com.sopt.umbba_android.data.service.QuestionAnswerService
 import com.sopt.umbba_android.data.service.SettingService
 import com.sopt.umbba_android.data.interceptor.AuthInterceptor
@@ -12,7 +12,6 @@ import com.sopt.umbba_android.data.service.LoginService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 object ApiFactory {
@@ -39,7 +38,7 @@ object ServicePool {
     val questionAnswerService = ApiFactory.create<QuestionAnswerService>()
     val settingService = ApiFactory.create<SettingService>()
     val homeService = ApiFactory.create<HomeService>()
-    val onBoardingService = ApiFactory.create<OnBoardingService>()
+    val onboardingService = ApiFactory.create<OnboardingService>()
     val listService = ApiFactory.create<ListService>()
     val loginService = ApiFactory.create<LoginService>()
 }
