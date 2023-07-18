@@ -8,6 +8,7 @@ import com.sopt.umbba_android.data.service.OnBoardingService
 import com.sopt.umbba_android.data.service.QuestionAnswerService
 import com.sopt.umbba_android.data.service.SettingService
 import com.sopt.umbba_android.data.interceptor.AuthInterceptor
+import com.sopt.umbba_android.data.service.LoginService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -40,4 +41,5 @@ object ServicePool {
     val homeService = ApiFactory.create<HomeService>()
     val onBoardingService = ApiFactory.create<OnBoardingService>()
     val listService = ApiFactory.create<ListService>()
+    val loginService = ApiFactory.create<LoginService>()
 }
