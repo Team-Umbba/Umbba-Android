@@ -80,11 +80,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun getFcmToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Timber.tag("hyeon").e(task.exception, "Fetching FCM registration token failed")
+                Log.e("hyeon", "Fetching FCM registration token failed")
                 return@OnCompleteListener
             }
             val token = task.result
-            Timber.tag("hyeon").e("token is " + token)
+            Log.e("hyeon", "token is " + token)
         })
     }
 
