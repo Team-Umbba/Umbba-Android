@@ -7,18 +7,17 @@ import com.sopt.umbba_android.data.datasource.HomeRemoteDataSource
 import com.sopt.umbba_android.data.datasource.ListRemoteDataSource
 import com.sopt.umbba_android.data.datasource.LoginRemoteDataSource
 import com.sopt.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
-import com.sopt.umbba_android.data.model.ServicePool
 import com.sopt.umbba_android.data.repository.HomeRepositoryImpl
 import com.sopt.umbba_android.data.repository.ListRepositoryImpl
 import com.sopt.umbba_android.data.repository.LoginRepositoryImpl
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
-import com.sopt.umbba_android.data.service.LoginService
 import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.list.viewmodel.ListViewModel
 import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
+import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -52,14 +51,6 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
             return ListViewModel(
                 ListRepositoryImpl(
                     ListRemoteDataSource()
-                )
-            ) as T
-        }
-
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-            return LoginViewModel(
-                LoginRepositoryImpl(
-                    LoginRemoteDataSource()
                 )
             ) as T
         }

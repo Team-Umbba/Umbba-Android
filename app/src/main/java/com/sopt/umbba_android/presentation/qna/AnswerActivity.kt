@@ -12,11 +12,11 @@ import com.sopt.umbba_android.util.binding.BindingActivity
 
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val answerViewModel: AnswerViewModel by viewModels { ViewModelFactory(this) }
+    private val viewModel: AnswerViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
-        binding.vm = answerViewModel
+        binding.vm = viewModel
         setQuestionTitle()
     }
 
@@ -24,7 +24,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         when (view?.id) {
             R.id.iv_qna_back -> showBackDialog()
             R.id.iv_check -> {
-                if (!answerViewModel.answer.value.isNullOrBlank()) {
+                if (!viewModel.answer.value.isNullOrBlank()) {
                     showConfirmDialog()
                 }
             }
@@ -40,8 +40,8 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         with(binding) {
             tvQuestion.text = intent.getStringExtra("question")
             tvTopic.text = intent.getStringExtra("topic")
-            val appbarTitle = intent.getStringExtra("section").toString()
-            layoutAppbar.titleText = appbarTitle
+            viewModel.appbarTitle.value = intent.getStringExtra("section")
+            layoutAppbar.titleText = viewModel.appbarTitle.value
             Log.e("hyeon", intent.getStringExtra("section").toString())
         }
     }
@@ -53,7 +53,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             putString("question", intent.getStringExtra("question"))
             putString("topic", intent.getStringExtra("topic"))
             putString("section", intent.getStringExtra("section"))
-            putString("answer", answerViewModel.answer.value)
+            putString("answer", viewModel.answer.value)
         } // 이 부분은 변수 안쓰고.. 코드 쓰고 싶음 (일단 서버연결 완료되면 해보고, 테스트도 해보자잉)
         confirmDialog.apply {
             arguments = bundle

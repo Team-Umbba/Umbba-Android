@@ -22,8 +22,8 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     var isOpponentAnswer = MutableLiveData<Boolean?>()
 
     var appbarSection = MutableLiveData<String>()
-    var isBeforeList = MutableLiveData(false)
-    var qnaId = MutableLiveData<Long>(-1)
+
+    var isBeforeList = MutableLiveData<Boolean?>()
 
     fun getQuestionAnswer() {
         viewModelScope.launch {
