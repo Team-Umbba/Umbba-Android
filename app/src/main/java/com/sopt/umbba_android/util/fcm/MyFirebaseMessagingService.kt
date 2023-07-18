@@ -1,12 +1,15 @@
 package com.sopt.umbba_android.util.fcm
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -17,26 +20,25 @@ import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import timber.log.Timber
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
-    var isSwitchChecked = MutableLiveData<Boolean>(false)
-
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Timber.tag("hyeon").e("fcm token : " + token)
+        Log.e("hyeon", "fcm token : " + token)
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        Timber.tag("hyeon").e(message.notification.toString())
-        Timber.tag("hyeon").e(message.data.toString())
-        setNotificationOnOff(isSwitchChecked.value!!, message)
+        Log.e("hyeon", message.notification.toString())
+        Log.e("hyeon", message.data.toString())
+        if (isNotificationGranted()) {
+            createNotification(message)
+        }
     }
 
-    private fun setNotificationOnOff(isSwitchChecked: Boolean, message: RemoteMessage) {
-        if (isSwitchChecked) {
-            createNotification(message)
-        } else {
-            Log.e("hyeon", "알림 끈 상태")
-        }
+    fun isNotificationGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun createNotification(message: RemoteMessage) {
@@ -60,8 +62,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_umbba_logo)
-            .setContentTitle("엄빠도 어렸다.")
-            .setContentText("알림 내용")
+            .setContentTitle(message.notification?.title.toString())
+            .setContentText(message.notification?.body.toString())
             .setContentIntent(pendingIntent)
 
         val notificationManager: NotificationManager =
