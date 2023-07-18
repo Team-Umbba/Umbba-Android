@@ -7,5 +7,5 @@ class SettingRemoteDataSource {
 
     suspend fun logout() = settingService.logout()
 
-    suspend fun deleteAccount() = settingService.deleteAccount()
+    suspend fun signout() = settingService.signout()
 }
