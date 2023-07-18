@@ -26,6 +26,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "UMBBA_BASE_URL", properties["UMBBA_BASE_URL"]
+        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties["KAKAO_NATIVE_APP_KEY"]
+        manifestPlaceholders["NATIVE_APP_KEY"] = properties["KAKAO_NATIVE_APP_KEY_NO_QUOTES"]
     }
 
     buildTypes {
@@ -42,9 +44,9 @@ android {
         jvmTarget = '17'
     }
     buildFeatures {
+        buildConfig true
         viewBinding true
         dataBinding true
-        buildConfig true
     }
 }
 
@@ -118,4 +120,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     // Import Firebase Cloud Messaging SDK
     implementation 'com.google.firebase:firebase-messaging'
+
+    // Kakaologin
+    implementation 'com.kakao.sdk:v2-user:2.11.0'
+    implementation 'com.kakao.sdk:v2-share:2.11.0'
+
+    // EncryptedSharedPreferences
+    implementation "androidx.security:security-crypto:1.0.0"
 }
