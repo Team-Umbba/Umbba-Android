@@ -134,10 +134,10 @@
     <string name="ambiguous">애매해</string>
 
     <!-- list fragment-->
-    <string name="list_section1"># 어린 시절</string>
-    <string name="list_section2"># 학창 시절</string>
-    <string name="list_section3"># 청춘 시절</string>
-    <string name="list_section4"># 연애 시절</string>
+    <string name="list_section1"># 어린시절</string>
+    <string name="list_section2"># 학창시절</string>
+    <string name="list_section3"># 청춘시절</string>
+    <string name="list_section4"># 연애시절</string>
     <string name="list_section5"># 우리가 만나고</string>
 
 </resources>
