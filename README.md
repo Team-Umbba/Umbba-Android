@@ -7,4 +7,4 @@
 
 | [황연진](https://github.com/yeoncheong) | [신서현](https://github.com/ss99x2002) |
 | --- | --- |
-| <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/102457618/26fe6be7-2ba4-452d-b44b-13a3c84e2c26" width = "300">| <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/102457618/c611bc04-4a65-4428-a068-78cb7f678ca6" width = "300"> |
+| <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/86d88c5e-b9b6-4aa3-ac89-4415cd6c4033" width = "300"> | <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/85f7a242-f16d-4244-9a42-2b7d1847a557" width = "300"> |
