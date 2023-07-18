@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInviteCodeBinding
 import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 import java.util.regex.Pattern
 
@@ -17,7 +20,7 @@ class InviteCodeActivity :
     BindingActivity<ActivityInviteCodeBinding>(R.layout.activity_invite_code),
     View.OnClickListener {
 
-    private val viewModel by viewModels<InviteCodeViewModel>()
+    private val viewModel by viewModels<InviteCodeViewModel> { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -25,7 +28,7 @@ class InviteCodeActivity :
 
         checkCodeComplete()
         validateInviteCode()
-        goCommunicationActivity()
+        setFamilyToInviteCode()
     }
 
     override fun onClick(view: View?) {
@@ -46,6 +49,7 @@ class InviteCodeActivity :
                         layoutInputCode.error = null
                     }
                 }
+
                 override fun afterTextChanged(p0: Editable?) {}
             })
         }
@@ -57,16 +61,31 @@ class InviteCodeActivity :
         }
         viewModel.isCodeValidate.observe(this) {
             with(binding) {
-                btnNext.isEnabled = layoutInputCode.error.isNullOrEmpty() && etCode.text.toString().isNotEmpty()
+                btnNext.isEnabled =
+                    layoutInputCode.error.isNullOrEmpty() && etCode.text.toString().isNotEmpty()
+            }
+        }
+    }
+
+    private fun setFamilyToInviteCode() {
+        binding.btnNext.setOnClickListener {
+            val code = binding.etCode.text.toString()
+            Log.e("yeonjin", "초대코드 입력 : $code")
+            viewModel.setFamily(code)
+            viewModel.isCodeSuccess.observe(this) {
+                if (it) {
+                    Log.e("yeonjin", "관계 연결 성공")
+                    goCommunicationActivity()
+                } else {
+                    Snackbar.make(binding.root, "유효하지 않은 초대코드 입니다.", Snackbar.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
     private fun goCommunicationActivity() {
-        binding.btnNext.setOnClickListener {
-            //초대하는측인지 초대받는측인지 보내기
-            startActivity(Intent(this, CommunicationActivity::class.java))
-        }
+        //초대하는측인지 초대받는측인지 보내기
+        startActivity(Intent(this, CommunicationActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
     }
 
     companion object {
