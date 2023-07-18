@@ -17,19 +17,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
         initView()
         setBottomNav()
-        getToken()
-    }
-
-    private fun getToken(){
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.e("hyeon", "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-            // Get new FCM registration token
-            val token = task.result
-            Log.e("hyeon", token.toString())
-        })
     }
 
     private fun initView() {

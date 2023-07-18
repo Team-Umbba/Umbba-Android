@@ -35,11 +35,13 @@ class QuestionAnswerActivity :
     private fun observeQnaViewFlag() {
         val qnaId = intent.getLongExtra("questionId", -1)
         Log.e("hyeon", "qnaId activity에서" + qnaId.toString())
-        if (qnaId == -1.toLong()) {
+        if (qnaId == -1L) {
             viewModel.getQuestionAnswer()
+            viewModel.isBeforeList.value = false
             observeQnaResponse()
         } else {
             viewModel.getListQuestionAnswer(qnaId)
+            viewModel.isBeforeList.value = true
             observeListQnaResponse()
         }
     }
@@ -143,7 +145,7 @@ class QuestionAnswerActivity :
         with(binding) {
             tvAnswerOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply {
                 if (isBlur) tvAnswerOther.paint.maskFilter =
-                    BlurMaskFilter(13f, BlurMaskFilter.Blur.NORMAL)
+                    BlurMaskFilter(16f, BlurMaskFilter.Blur.NORMAL)
                 else tvAnswerOther.paint.maskFilter = null
             }
         }

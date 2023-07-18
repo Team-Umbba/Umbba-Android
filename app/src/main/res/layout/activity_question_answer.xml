@@ -32,7 +32,7 @@
             android:id="@+id/layout_appbar"
             layout="@layout/qna_appbar"
             app:clickListener="@{clickListener}"
-            app:titleText="@{` `}"
+            app:titleText="@{vm.isBeforeList ? vm.listQnaResponse.section : vm.qnaResponse.section}"
             app:visibleCheck="@{false}" />
 
         <TextView
