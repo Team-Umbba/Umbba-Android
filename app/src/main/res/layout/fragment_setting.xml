@@ -175,7 +175,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_notice"
+            android:id="@+id/cl_privacy_notice"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:background="@drawable/sel_background_bottom_stroke"
@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="26dp"
-                android:text="@string/setting_notice"
+                android:text="@string/setting_privacy_notice"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@color/umbba_black"
                 app:layout_constraintStart_toStartOf="parent"
