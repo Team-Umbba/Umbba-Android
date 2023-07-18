@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.databinding.ActivityManageAccountBinding
 import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
@@ -33,6 +34,7 @@ class ManageAccountActivity :
     private fun observeResponseStatus() {
         viewModel.responseStatus.observe(this@ManageAccountActivity) {
             if (it == 200) {
+                SharedPreferences.clearForLogout()
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
