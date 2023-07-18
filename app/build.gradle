@@ -121,7 +121,10 @@ dependencies {
     // Import Firebase Cloud Messaging SDK
     implementation 'com.google.firebase:firebase-messaging'
 
-    //kakaologin
+    // Kakaologin
     implementation 'com.kakao.sdk:v2-user:2.11.0'
     implementation 'com.kakao.sdk:v2-share:2.11.0'
+
+    // EncryptedSharedPreferences
+    implementation "androidx.security:security-crypto:1.0.0"
 }
