@@ -62,7 +62,7 @@
     <string name="setting_privacy_notice">개인정보 처리방침</string>
 
     <!-- answer activity-->
-    <string name="answer_edittext_hint">상대방은 아직 답변하지 않았어요</string>
+    <string name="answer_edittext_hint">답변을 입력해 주세요</string>
     <string name="answer_title">#1 가장 오래된 기억</string>
     <string name="answer_question">할머니와 엄마의 꿈이 달랐어?</string>
 

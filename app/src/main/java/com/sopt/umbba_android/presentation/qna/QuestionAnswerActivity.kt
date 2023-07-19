@@ -53,6 +53,7 @@ class QuestionAnswerActivity :
                     putExtra("section", data.section)
                     putExtra("topic", data.topic)
                     putExtra("question", data.myQuestion)
+                    putExtra("index", data.index)
                     startActivity(this)
                 }
             }
@@ -78,7 +79,7 @@ class QuestionAnswerActivity :
     private fun setListQnaData(data: ListQuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.section
-            tvTopic.text = data.topic
+            tvTopic.text = "#${data.index} ${data.topic}"
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
             tvFromOther.text = data.opponentUsername
@@ -89,7 +90,7 @@ class QuestionAnswerActivity :
     private fun setQnaData(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             layoutAppbar.titleText = data.section
-            tvTopic.text = data.topic
+            tvTopic.text = "#${data.index} ${data.topic}"
             tvQuestionMe.text = data.myQuestion
             tvQuestionOther.text = data.opponentQuestion
             tvFromOther.text = data.opponentUsername
