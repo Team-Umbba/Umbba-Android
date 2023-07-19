@@ -46,7 +46,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
     }
 
-    @SuppressLint("StringFormatMatches")
     private fun setData(data: HomeResponseDto.HomeData) {
         with(binding) {
             tvTitle.text = getString(R.string.main_topic, data.index, data.topic)

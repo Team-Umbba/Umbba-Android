@@ -22,8 +22,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_image"
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:scaleType="fitXY"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/bg_list_img1"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintTop_toTopOf="parent"
