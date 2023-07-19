@@ -150,4 +150,9 @@ class QuestionAnswerActivity :
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        observeQnaViewFlag()
+    }
 }

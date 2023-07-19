@@ -27,11 +27,13 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
         setClickEvent()
     }
 
-    private val notificationSettingsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        // 앱의 설정 화면으로 이동한 후 결과를 처리하는 로직
-        Log.e("hyeon","나 지금 돌아왔어요.")
-        setSwitchNotification()
-    }
+    private val notificationSettingsLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            // 앱의 설정 화면으로 이동한 후 결과를 처리하는 로직
+            Log.e("hyeon", "나 지금 돌아왔어요.")
+            setSwitchNotification()
+        }
+
     private fun setSwitchNotification() {
         binding.switchNotification.isChecked = ContextCompat.checkSelfPermission(
             requireActivity(),
@@ -42,13 +44,15 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private fun changeSwitchNotification() {
         binding.switchNotification.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked !=  (ContextCompat.checkSelfPermission(
+            if (isChecked != (ContextCompat.checkSelfPermission(
                     requireActivity(),
                     Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED)){
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + requireActivity().packageName))
+                ) == PackageManager.PERMISSION_GRANTED)
+            ) {
+                val intent =
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + requireActivity().packageName))
                 notificationSettingsLauncher.launch(intent)
-                Log.e("hyeon","나 지금 switch 바꿨어요.")
+                Log.e("hyeon", "나 지금 switch 바꿨어요.")
             }
         }
     }
@@ -62,7 +66,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                        Uri.parse("https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9?pvs=4")
                     )
                 )
             }
@@ -74,11 +78,11 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                     )
                 )
             }
-            clNotice.setOnClickListener {
+            clPrivacyNotice.setOnClickListener {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                        Uri.parse("https://www.notion.so/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
                     ) //공지사항 바꾸기
                 )
             }

@@ -19,7 +19,7 @@ import com.sopt.umbba_android.util.ViewModelFactory
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val answerViewModel: ConfirmAnswerDialogFragmentViewModel by viewModels {
+    private val viewModel: ConfirmAnswerDialogFragmentViewModel by viewModels {
         ViewModelFactory(
             requireActivity()
         )
@@ -39,6 +39,16 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
         setBackgroundDesign()
         setPreviewAnswer()
         setBtnClickEvent()
+        observeResponseStatus()
+    }
+
+    private fun observeResponseStatus() {
+        viewModel.responseStatus.observe(this) {
+            if (it == 201) {
+                dismiss()
+                requireActivity().finish()
+            }
+        }
     }
 
     private fun setPreviewAnswer() {
@@ -61,10 +71,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnClickListener {
                 Toast.makeText(requireActivity(), "답변이 전송되었습니다.", Toast.LENGTH_SHORT).show()
-                answerViewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
-                Log.e("hyeon", "answer 값은 = ${arguments?.getString("answer")}")
-                activity?.finish()
-                dismiss()
+                viewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
             }
         }
     }

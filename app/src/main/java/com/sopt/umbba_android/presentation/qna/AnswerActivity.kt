@@ -42,7 +42,6 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             tvTopic.text = intent.getStringExtra("topic")
             viewModel.appbarTitle.value = intent.getStringExtra("section")
             layoutAppbar.titleText = viewModel.appbarTitle.value
-            Log.e("hyeon", intent.getStringExtra("section").toString())
         }
     }
 

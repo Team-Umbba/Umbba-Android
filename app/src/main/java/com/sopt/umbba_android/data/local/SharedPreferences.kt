@@ -62,4 +62,8 @@ object SharedPreferences {
         clear()
         setBoolean(LoginActivity.DID_USER_CLEAR_ONBOARD, true)
     }
+
+    fun clearForSignout(){
+        clear()
+    }
 }

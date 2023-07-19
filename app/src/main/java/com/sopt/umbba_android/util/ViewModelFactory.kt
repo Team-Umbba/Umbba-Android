@@ -24,6 +24,7 @@ import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
+import com.sopt.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
 import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
 
 class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
@@ -79,6 +80,13 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
 
         if (modelClass.isAssignableFrom(ManageAccountViewModel::class.java)) {
             return ManageAccountViewModel(
+                SettingRepositoryImpl(
+                    SettingRemoteDataSource()
+                )
+            ) as T
+        }
+        if (modelClass.isAssignableFrom(DeleteAccountViewModel::class.java)) {
+            return DeleteAccountViewModel(
                 SettingRepositoryImpl(
                     SettingRemoteDataSource()
                 )

@@ -21,13 +21,11 @@ class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositor
             settingRepositoryImpl.signout()
                 .onSuccess { response ->
                     Log.e("hyeon", "viewModel 회원탈퇴 성공")
+                    responseStatus.value = response.status
                 }.onFailure { error ->
                     Log.e("hyeon", "viewModel 회원탈퇴 실패  " + error.message)
+                    responseStatus.value = -1
                 }
         }
-    }
-    override fun onCleared() {
-        super.onCleared()
-        // ViewModel이 소멸될 때 CoroutineScope에서 관리하는 코루틴 취소
     }
 }
