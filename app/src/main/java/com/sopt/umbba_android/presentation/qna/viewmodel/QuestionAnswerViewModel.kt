@@ -25,6 +25,12 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
 
     var isBeforeList = MutableLiveData<Boolean?>()
 
+    private var _sectionTitle = MutableLiveData<String>()
+    val sectionTitle: LiveData<String> = _sectionTitle
+
+    private var _isEnableBtn = MutableLiveData<Boolean>()
+    val isEnableBtn: LiveData<Boolean> = _isEnableBtn
+
     fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
@@ -33,6 +39,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
+                    _sectionTitle.value = "#${response.data.index} ${response.data.section}"
                     appbarSection.value = response.data.section.toString()
                 }.onFailure { error ->
                     Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
@@ -46,6 +53,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                 .onSuccess { response ->
                     _listQnaResponse.value = response.data
                     appbarSection.value = response.data.section.toString()
+                    _sectionTitle.value = "#${response.data.index} ${response.data.section}"
                     Log.e("hyeon", "getListQuestionAnswer 성공")
                 }.onFailure { error ->
                     Log.e("hyeon", "getListQuestionAnswer 실패" + error.message)

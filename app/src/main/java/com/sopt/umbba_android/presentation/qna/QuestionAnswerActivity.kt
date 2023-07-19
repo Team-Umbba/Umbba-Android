@@ -62,39 +62,15 @@ class QuestionAnswerActivity :
 
     private fun observeListQnaResponse() {
         viewModel.listQnaResponse.observe(this@QuestionAnswerActivity) {
-            setListQnaData(it)
             setBtnEnable(true)
         }
     }
 
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
-            setQnaData(it)
             setAnswerText(it)
             setClickEvent(it)
             setBtnEnable(it.isMyAnswer)
-        }
-    }
-
-    private fun setListQnaData(data: ListQuestionAnswerResponseDto.QnaData) {
-        with(binding) {
-            layoutAppbar.titleText = data.section
-            tvTopic.text = "#${data.index} ${data.topic}"
-            tvQuestionMe.text = data.myQuestion
-            tvQuestionOther.text = data.opponentQuestion
-            tvFromOther.text = data.opponentUsername
-            tvFromMe.text = data.myUsername
-        }
-    }
-
-    private fun setQnaData(data: QuestionAnswerResponseDto.QnaData) {
-        with(binding) {
-            layoutAppbar.titleText = data.section
-            tvTopic.text = "#${data.index} ${data.topic}"
-            tvQuestionMe.text = data.myQuestion
-            tvQuestionOther.text = data.opponentQuestion
-            tvFromOther.text = data.opponentUsername
-            tvFromMe.text = data.myUsername
         }
     }
 
