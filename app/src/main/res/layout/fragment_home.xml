@@ -34,7 +34,7 @@
             android:background="@drawable/shape_pri600_r84_rect"
             android:gravity="left|center"
             android:paddingHorizontal="40dp"
-            android:text="@{vm.sectionTitle}"
+            android:text="@{vm.topicTitle}"
             android:textAppearance="@style/BrandTypeBigRegular20"
             android:textColor="@color/umbba_white"
             app:layout_constraintStart_toStartOf="parent"
