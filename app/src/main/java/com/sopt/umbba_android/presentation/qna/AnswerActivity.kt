@@ -17,7 +17,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.vm = viewModel
-        setQuestionTitle()
+        setIntentResponse()
     }
 
     override fun onClick(view: View?) {
@@ -39,15 +39,8 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         BackAnswerDialogFragment()
             .show(supportFragmentManager, "BackAnswerDialog")
     }
-
-    private fun setQuestionTitle() {
-        with(binding) {
-            tvQuestion.text = intent.getStringExtra("question")
-            tvTopic.text = "#${intent.getIntExtra("index", -1)} ${intent.getStringExtra("topic")}"
-            Log.e("hyeon", "index의 값은?" + intent.getIntExtra("index", -1))
-            viewModel.appbarTitle.value = intent.getStringExtra("section")
-            layoutAppbar.titleText = viewModel.appbarTitle.value
-        }
+    private fun setIntentResponse(){
+        viewModel.setDataFromIntent(this.intent)
     }
 
     private fun showConfirmDialog() {
