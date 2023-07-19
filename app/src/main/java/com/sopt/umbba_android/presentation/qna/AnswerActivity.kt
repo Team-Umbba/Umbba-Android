@@ -24,10 +24,14 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         when (view?.id) {
             R.id.iv_qna_back -> showBackDialog()
             R.id.iv_check -> {
-                if (!viewModel.answer.value.isNullOrBlank()) {
-                    showConfirmDialog()
-                }
+                setCheckStatus()
             }
+        }
+    }
+
+    private fun setCheckStatus() {
+        if (!viewModel.answer.value.isNullOrBlank()) {
+            showConfirmDialog()
         }
     }
 
@@ -39,7 +43,8 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
     private fun setQuestionTitle() {
         with(binding) {
             tvQuestion.text = intent.getStringExtra("question")
-            tvTopic.text = intent.getStringExtra("topic")
+            tvTopic.text = "#${intent.getIntExtra("index", -1)} ${intent.getStringExtra("topic")}"
+            Log.e("hyeon", "index의 값은?" + intent.getIntExtra("index", -1))
             viewModel.appbarTitle.value = intent.getStringExtra("section")
             layoutAppbar.titleText = viewModel.appbarTitle.value
         }
