@@ -1,11 +1,14 @@
 package com.sopt.umbba_android.presentation.onboarding
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivitySelectFamilyBinding
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SelectFamilyViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
@@ -68,9 +71,30 @@ class SelectFamilyActivity :
         }
     }
 
+    private fun saveInfo(user: User) {
+        user.isInvitorChild = binding.chip1.isChecked
+        user.relationInfo =
+            if (binding.chip3.isChecked) {
+                binding.chip3.text.toString()
+            } else {
+                binding.chip4.text.toString()
+            }
+    }
+
     private fun goQuestActivity() {
         binding.btnNext.setOnClickListener {
-            startActivity(Intent(this, QuestActivity::class.java))
+            val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableExtra("userData", User::class.java)
+            } else {
+                intent.getParcelableExtra<User>("userData")
+            }
+            if (userData != null) {
+                saveInfo(userData)
+            }
+            Log.e("yeonjin", "selectFamily parcelable : ${userData?.isReceiver} + ${userData?.isInvitorChild} + ${userData?.relationInfo}")
+            startActivity(Intent(this, QuestActivity::class.java).apply {
+                putExtra("userData", userData)
+            })
         }
     }
 }
