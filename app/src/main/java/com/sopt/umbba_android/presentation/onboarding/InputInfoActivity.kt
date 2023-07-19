@@ -1,13 +1,16 @@
 package com.sopt.umbba_android.presentation.onboarding
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInputInfoBinding
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.InputInfoViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
@@ -94,12 +97,39 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
         }
     }
 
+    private fun saveInfo(user: User) {
+        user.name = binding.etName.text.toString()
+        user.gender =
+            if (binding.chip1.isChecked) {
+                binding.chip1.text.toString()
+            } else if (binding.chip2.isChecked){
+                binding.chip2.text.toString()
+            } else {
+                null
+            }
+        user.bornYear = binding.etYear.text.toString().toInt()
+    }
+
     private fun goSelectFamilyActivity() {
         binding.btnNext.setOnClickListener {
-            if (true) { //초대하는 사람
-                startActivity(Intent(this, SelectFamilyActivity::class.java))
-            } else { //초대받는 사람
-                startActivity(Intent(this, QuestActivity::class.java))
+            val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                intent.getParcelableExtra("userData", User::class.java)
+            } else {
+                intent.getParcelableExtra<User>("userData")
+            }
+            if (userData != null) {
+                saveInfo(userData)
+                if (!userData.isReceiver) { //초대하는 사람
+                    Log.e("yeonjin", "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}")
+                    startActivity(Intent(this, SelectFamilyActivity::class.java).apply {
+                        putExtra("userData", userData)
+                    })
+                } else { //초대받는 사람
+                    Log.e("yeonjin", "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}")
+                    startActivity(Intent(this, QuestActivity::class.java).apply {
+                        putExtra("userData", userData)
+                    })
+                }
             }
         }
     }
