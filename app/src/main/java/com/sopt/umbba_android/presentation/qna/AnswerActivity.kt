@@ -39,21 +39,15 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         BackAnswerDialogFragment()
             .show(supportFragmentManager, "BackAnswerDialog")
     }
-    private fun setIntentResponse(){
+
+    private fun setIntentResponse() {
         viewModel.setDataFromIntent(this.intent)
     }
 
     private fun showConfirmDialog() {
         val bundle = Bundle()
-        val confirmDialog = ConfirmAnswerDialogFragment()
-        bundle.apply {
-            putString("question", intent.getStringExtra("question"))
-            putString("topic", intent.getStringExtra("topic"))
-            putString("section", intent.getStringExtra("section"))
-            putString("answer", viewModel.answer.value)
-        } // 이 부분은 변수 안쓰고.. 코드 쓰고 싶음 (일단 서버연결 완료되면 해보고, 테스트도 해보자잉)
-        confirmDialog.apply {
-            arguments = bundle
+        ConfirmAnswerDialogFragment().apply {
+            arguments = viewModel.setBundleArgument(bundle)
             show(supportFragmentManager, "ConfirmDialogFragment")
         }
     }

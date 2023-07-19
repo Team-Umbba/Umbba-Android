@@ -1,6 +1,7 @@
 package com.sopt.umbba_android.presentation.qna.viewmodel
 
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,5 +21,15 @@ class AnswerViewModel : ViewModel() {
             "#${intent.getIntExtra("index", -1)} ${intent.getStringExtra("topic")}"
         Log.e("hyeon", "index의 값은?" + intent.getIntExtra("index", -1))
         section.value = intent.getStringExtra("section")
+    }
+
+    fun setBundleArgument(bundle:Bundle) : Bundle{
+        bundle.apply {
+            putString("question",question.value)
+            putString("topic", topic.value)
+            putString("section", section.value)
+            putString("answer", answer.value)
+        }
+        return bundle
     }
 }
