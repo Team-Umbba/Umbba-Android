@@ -132,6 +132,11 @@
     <string name="yes">응</string>
     <string name="no">아니</string>
     <string name="ambiguous">애매해</string>
+    <string name="quest_1">지금 가족과 함께 살고 있어?</string>
+    <string name="quest_2">고등학교를 졸업했어?</string>
+    <string name="quest_3">결혼을 꼭 해야 한다고 생각해?</string>
+    <string name="quest_4">뭔가를 크게 포기해본 경험이 있어?</string>
+    <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
 
     <!-- list fragment-->
     <string name="list_section1"># 어린시절</string>

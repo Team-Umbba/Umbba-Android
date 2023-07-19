@@ -21,10 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="38dp"
+            android:text="@string/quest_2"
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="배고파?" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_answer"
@@ -44,8 +44,8 @@
                 style="@style/QuestChoiceChipStyle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:checked="@={viewmodel.isClickedYes}"
                 android:layout_marginBottom="12dp"
+                android:checked="@={viewmodel.isClickedYes}"
                 android:text="@string/yes"
                 app:chipMinTouchTargetSize="0dp" />
 
