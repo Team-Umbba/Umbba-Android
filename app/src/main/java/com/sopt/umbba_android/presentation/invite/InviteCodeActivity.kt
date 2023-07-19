@@ -1,6 +1,7 @@
 package com.sopt.umbba_android.presentation.invite
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInviteCodeBinding
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.ViewModelFactory
@@ -84,8 +86,15 @@ class InviteCodeActivity :
     }
 
     private fun goCommunicationActivity() {
-        //초대하는측인지 초대받는측인지 보내기
-        startActivity(Intent(this, CommunicationActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("userData", User::class.java)
+        } else {
+            intent.getParcelableExtra<User>("userData")
+        }
+        Log.e("yeonjin", "inviteCode parcelable : ${userData?.isReceiver}")
+        startActivity(Intent(this, CommunicationActivity::class.java).apply {
+            putExtra("userData", userData)
+        })
     }
 
     companion object {

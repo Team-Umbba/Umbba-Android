@@ -1,6 +1,7 @@
 package com.sopt.umbba_android.presentation.onboarding.quest
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.sopt.umbba_android.databinding.ActivityQuestBinding
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.sopt.umbba_android.presentation.onboarding.SetTimeActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
@@ -35,7 +37,10 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         when (view?.id) {
             R.id.iv_basic_back -> {
                 if (count in 1..4) {
-                    supportFragmentManager.popBackStack("$count", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                    supportFragmentManager.popBackStack(
+                        "$count",
+                        FragmentManager.POP_BACK_STACK_INCLUSIVE
+                    )
                     binding.progressBar.progress -= 20
                     count -= 1
                     initChip()
@@ -108,10 +113,26 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     }
 
     private fun goNextActivity() {
-        if (true) { //초대하는 측
-            startActivity(Intent(this, SetTimeActivity::class.java))
-        } else { //초대받는 측
-            startActivity(Intent(this, NotifyTimeActivity::class.java))
+        Log.e("yeonjin", "${quest[0]}${quest[1]}${quest[2]}${quest[3]}${quest[4]}")
+        val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("userData", User::class.java)
+        } else {
+            intent.getParcelableExtra<User>("userData")
         }
+        val intent: Intent =
+            if (userData != null && !userData.isReceiver) {
+                Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
+                Intent(this, SetTimeActivity::class.java).apply {
+                    putExtra("questData", quest)
+                    putExtra("userData", userData)
+                }
+            } else {
+                Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
+                Intent(this, NotifyTimeActivity::class.java).apply {
+                    putExtra("questData", quest)
+                    putExtra("userData", userData)
+                }
+            }
+        startActivity(intent)
     }
 }

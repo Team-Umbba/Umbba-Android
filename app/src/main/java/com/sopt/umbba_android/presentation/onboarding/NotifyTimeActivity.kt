@@ -7,13 +7,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityNotifyTimeBinding
-import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class NotifyTimeActivity :
@@ -24,7 +25,6 @@ class NotifyTimeActivity :
         if (isGranted) {
             // 알림권한 허용 o
             Snackbar.make(binding.root, "알림 권한이 허용되었습니다.", Snackbar.LENGTH_SHORT).show()
-            startActivity(Intent(this, OnboardingFinishActivity::class.java))
         } else {
             // 알림권한 허용 x
             Snackbar.make(binding.root, "알림 권한이 없습니다.", Snackbar.LENGTH_SHORT).show()
@@ -65,7 +65,20 @@ class NotifyTimeActivity :
     private fun setClickButton() {
         with(binding) {
             btnGoPast.setOnClickListener {
-                startActivity(Intent(this@NotifyTimeActivity, QuestActivity::class.java))
+                val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra("userData", User::class.java)
+                } else {
+                    intent.getParcelableExtra<User>("userData")
+                }
+                Log.e("yeonjin", "notifyTime parcelable : ${userData?.isReceiver}")
+                val questData = intent.getStringArrayExtra("questData")
+                if (questData != null) {
+                    Log.e("yeonjin", "quest 배열 값 잘 들어옴")
+                } else {
+                    Log.e("yeonjin", "quest 배열 값 안 들어옴")
+                }
+                //서버 연결
+                startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java))
             }
         }
     }
