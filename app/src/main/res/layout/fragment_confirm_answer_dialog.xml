@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="어린 시절" />
+                android:text="@{vm.section}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_section"
-            tools:text="#1 가장 오래된 기억" />
+            android:text="@{vm.topic}" />
 
         <TextView
             android:id="@+id/tv_question"
@@ -57,11 +59,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_topic"
-            tools:text="당신과 어머니의 꿈은 달라?" />
+            android:text="@{vm.question}" />
 
         <TextView
             android:id="@+id/tv_answer"
@@ -75,7 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_question"
-            tools:text="@string/content_example" />
+            android:text="@{vm.answer}" />
 
         <TextView
             android:id="@+id/tv_save_answer"

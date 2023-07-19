@@ -3,10 +3,8 @@ package com.sopt.umbba_android.presentation.qna.viewmodel
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sopt.umbba_android.data.entity.AnswerIntentResponse
 
 class AnswerViewModel : ViewModel() {
     var answer = MutableLiveData<String>()
