@@ -21,12 +21,16 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
     private var _homeData = MutableLiveData<HomeResponseDto.HomeData>()
     val homeData: LiveData<HomeResponseDto.HomeData> = _homeData
 
+    private var _sectionTitle = MutableLiveData<String>()
+    val sectionTitle:LiveData<String> = _sectionTitle
+
     private fun getHomeData() {
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
                     Log.e("hyeon", "getHomeData 성공")
                     _homeData.value = response.data
+                    _sectionTitle.value ="#${response.data.index} ${response.data.section}"
                 }.onFailure { error ->
                     Log.e("hyeon", "getHomeData 실패  " + error.message)
                 }

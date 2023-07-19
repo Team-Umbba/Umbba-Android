@@ -24,6 +24,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vm = viewModel
         observeData()
     }
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
@@ -38,17 +39,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun observeData() {
         viewModel.homeData.observe(requireActivity()) {
-            setData(it)
             setBackground(it.section)
         }
         viewModel.responseCaseData.observe(requireActivity()) {
             setClickEvent(it)
-        }
-    }
-
-    private fun setData(data: HomeResponseDto.HomeData) {
-        with(binding) {
-            tvTitle.text = getString(R.string.main_topic, data.index, data.topic)
         }
     }
 
