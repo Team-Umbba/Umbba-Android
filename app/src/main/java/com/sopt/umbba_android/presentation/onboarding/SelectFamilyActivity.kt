@@ -72,13 +72,16 @@ class SelectFamilyActivity :
     }
 
     private fun saveInfo(user: User) {
-        user.isInvitorChild = binding.chip1.isChecked
-        user.relationInfo =
-            if (binding.chip3.isChecked) {
-                binding.chip3.text.toString()
-            } else {
-                binding.chip4.text.toString()
-            }
+        with(binding) {
+            user.isInvitorChild = chip1.isChecked
+            user.relationInfo =
+                if (chip3.isChecked) {
+                    chip3.text.toString()
+                } else {
+                    chip4.text.toString()
+                }
+        }
+
     }
 
     private fun goQuestActivity() {

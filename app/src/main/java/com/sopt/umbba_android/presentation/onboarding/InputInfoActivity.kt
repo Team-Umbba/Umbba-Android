@@ -51,6 +51,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
                         layoutInputName.error = null
                     }
                 }
+
                 override fun afterTextChanged(p0: Editable?) {}
             })
         }
@@ -70,6 +71,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
                         layoutInputYear.error = null
                     }
                 }
+
                 override fun afterTextChanged(p0: Editable?) {}
             })
         }
@@ -98,16 +100,18 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     }
 
     private fun saveInfo(user: User) {
-        user.name = binding.etName.text.toString()
-        user.gender =
-            if (binding.chip1.isChecked) {
-                binding.chip1.text.toString()
-            } else if (binding.chip2.isChecked){
-                binding.chip2.text.toString()
-            } else {
-                null
-            }
-        user.bornYear = binding.etYear.text.toString().toInt()
+        with(binding) {
+            user.name = etName.text.toString()
+            user.gender =
+                if (chip1.isChecked) {
+                    chip1.text.toString()
+                } else if (chip2.isChecked) {
+                    chip2.text.toString()
+                } else {
+                    null
+                }
+            user.bornYear = etYear.text.toString().toInt()
+        }
     }
 
     private fun goSelectFamilyActivity() {
@@ -120,12 +124,18 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             if (userData != null) {
                 saveInfo(userData)
                 if (!userData.isReceiver) { //초대하는 사람
-                    Log.e("yeonjin", "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}")
+                    Log.e(
+                        "yeonjin",
+                        "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}"
+                    )
                     startActivity(Intent(this, SelectFamilyActivity::class.java).apply {
                         putExtra("userData", userData)
                     })
                 } else { //초대받는 사람
-                    Log.e("yeonjin", "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}")
+                    Log.e(
+                        "yeonjin",
+                        "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}"
+                    )
                     startActivity(Intent(this, QuestActivity::class.java).apply {
                         putExtra("userData", userData)
                     })
