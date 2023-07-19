@@ -9,8 +9,6 @@ import com.sopt.umbba_android.data.entity.AnswerIntentResponse
 
 class AnswerViewModel : ViewModel() {
     var answer = MutableLiveData<String>()
-    var appbarTitle = MutableLiveData<String>()
-
     var question = MutableLiveData<String>()
     var section = MutableLiveData<String>()
     var topic = MutableLiveData<String>()
