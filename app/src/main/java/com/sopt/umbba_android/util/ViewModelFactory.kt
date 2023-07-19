@@ -21,6 +21,7 @@ import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
 import com.sopt.umbba_android.presentation.list.viewmodel.ListViewModel
 import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
+import com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SetTimeViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.AnswerViewModel
 import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
@@ -95,6 +96,13 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
         }
         if (modelClass.isAssignableFrom(SetTimeViewModel::class.java)) {
             return SetTimeViewModel(
+                OnboardingRepositoryImpl(
+                    OnboardingRemoteDataSource()
+                )
+            ) as T
+        }
+        if (modelClass.isAssignableFrom(QuestViewModel::class.java)) {
+            return QuestViewModel(
                 OnboardingRepositoryImpl(
                     OnboardingRemoteDataSource()
                 )
