@@ -16,8 +16,8 @@ data class LoginResponseDto(
     data class LoginData(
         @SerialName("user_id")
         val userId: Long,
-        @SerialName("is_new_user")
-        val isNewUser: Boolean,
+        @SerialName("is_match_finish")
+        val isMatchFinish: Boolean,
         @SerialName("username")
         val username: String?,
         @SerialName("gender")
