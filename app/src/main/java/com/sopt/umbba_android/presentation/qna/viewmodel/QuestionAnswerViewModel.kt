@@ -28,9 +28,6 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
     private var _sectionTitle = MutableLiveData<String>()
     val sectionTitle: LiveData<String> = _sectionTitle
 
-    private var _isEnableBtn = MutableLiveData<Boolean>()
-    val isEnableBtn: LiveData<Boolean> = _isEnableBtn
-
     fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
