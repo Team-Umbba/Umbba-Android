@@ -29,17 +29,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/tv_arrive_past1"
-                style="@style/AndroidHead1SemiBold24"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:layout_marginStart="28dp"
-                android:text="@string/arrive_past"
-                android:textColor="@color/umbba_white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btn_back1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
