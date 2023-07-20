@@ -92,10 +92,11 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     }
 
     private fun setTime() {
-        val timeFormat = "kk:mm"
         val hour =
             if (binding.tpTime.hour == 0) {
                 "24"
+            } else if (binding.tpTime.hour >= 1 || binding.tpTime.hour <= 9){
+                "0${binding.tpTime.hour}"
             } else {
                 binding.tpTime.hour
             }
@@ -105,7 +106,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             } else {
                 "30"
             }
-        time = "$hour:$minute".format(timeFormat)
+        time = "$hour:$minute"
     }
 
     private fun setQuestList(questData: Array<String>?) {
