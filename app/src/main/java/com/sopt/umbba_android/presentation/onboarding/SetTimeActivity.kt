@@ -14,9 +14,10 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
-import com.sopt.umbba_android.data.local.SharedPreferences.setBoolean
+import com.sopt.umbba_android.data.local.SharedPreferences.setOnboardingBoolean
 import com.sopt.umbba_android.databinding.ActivitySetTimeBinding
 import com.sopt.umbba_android.domain.entity.User
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
 import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SetTimeViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
@@ -123,7 +124,8 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             viewModel.setSendInfo(userData, time, questList)
             viewModel.isPostSuccess.observe(this) {
                 if (it) {
-                    setBoolean(DID_USER_CLEAR_ONBOARD, true)
+                    setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+                    setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     startActivity(Intent(this, OnboardingFinishActivity::class.java))
                 } else {
                     Snackbar.make(binding.root, "정보 등록에 실패했습니다.", Snackbar.LENGTH_SHORT).show()
