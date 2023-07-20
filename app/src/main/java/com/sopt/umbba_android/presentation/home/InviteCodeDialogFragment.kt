@@ -7,6 +7,7 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,16 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.snackbar.Snackbar
+import com.kakao.sdk.share.ShareClient
+import com.kakao.sdk.template.model.Button
+import com.kakao.sdk.template.model.Content
+import com.kakao.sdk.template.model.FeedTemplate
+import com.kakao.sdk.template.model.Link
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
 
-class InviteCodeDialogFragment(private val inviteCode: String) : DialogFragment() {
+class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) : DialogFragment() {
 
     private var _binding: FragmentInviteCodeDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "InviteCodeDialogFragment is null" }
@@ -36,6 +43,7 @@ class InviteCodeDialogFragment(private val inviteCode: String) : DialogFragment(
         closeDialog()
         setBackgroundDesign()
         setInviteCodeText(inviteCode)
+        sendInviteCodeWithKakao(inviteUserName, inviteCode)
     }
 
     private fun closeDialog() {
@@ -59,6 +67,47 @@ class InviteCodeDialogFragment(private val inviteCode: String) : DialogFragment(
             val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
             Toast.makeText(requireActivity(), "초대 코드가 복사되었습니다", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun sendInviteCodeWithKakao(inviteUserName: String, inviteCode: String) {
+        binding.btnSendInvitation.setOnClickListener {
+            val defaultFeed = FeedTemplate(
+                content = Content(
+                    title = "${inviteUserName}으로부터 초대가 왔어요. \\n초대 코드 : $inviteCode",
+                    description = "과거로 떠나 함께 추억을 나누고, \\n공감대를 형성해보세요.",
+                    imageUrl =  "https://github.com/Team-Umbba/Umbba-iOS/assets/75068759/64ba7265-9148-4f06-8235-de5f4030e92f",
+                    link = Link(
+                        webUrl = "https://developers.kakao.com",
+                        mobileWebUrl = "https://developers.kakao.com"
+                    )
+                ),
+                buttons = listOf(
+                    Button(
+                        "초대 받기",
+                        Link(
+                            androidExecutionParams = mapOf("key1" to "value1", "key2" to "value2"),
+                            iosExecutionParams = mapOf("key1" to "value1", "key2" to "value2")
+                        )
+                    )
+                )
+            )
+
+            if (ShareClient.instance.isKakaoTalkSharingAvailable(requireContext())) {
+                ShareClient.instance.shareDefault(requireContext(), defaultFeed) { sharingResult, error ->
+                    if (error != null) {
+                        Log.e("yeonjin", "카카오톡 공유 실패", error)
+                    } else if (sharingResult != null) {
+                        Log.e("yeonjin", "카카오톡 공유 성공 ${sharingResult.intent}")
+                        startActivity(sharingResult.intent)
+
+                        Log.w("yeonjin", "Warning Msg: ${sharingResult.warningMsg}")
+                        Log.w("yeonjin", "Argument Msg: ${sharingResult.argumentMsg}")
+                    }
+                }
+            } else {
+                Snackbar.make(binding.root, "카카오톡을 설치해주세요.", Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 

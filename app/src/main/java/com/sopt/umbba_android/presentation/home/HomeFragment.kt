@@ -1,18 +1,13 @@
 package com.sopt.umbba_android.presentation.home
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
-import com.sopt.umbba_android.data.model.response.HomeResponseDto
 import com.sopt.umbba_android.databinding.FragmentHomeBinding
 import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
@@ -32,7 +27,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             viewModel.getResponseCase()
             when (responseCaseDto.responseCase) {
                 1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
-                2 -> showInviteDialog(responseCaseDto.inviteCode.toString())
+                2 -> showInviteDialog(responseCaseDto.inviteUserName.toString(), responseCaseDto.inviteCode.toString())
                 3 -> showNoOpponentDialog()
             }
         }
@@ -47,8 +42,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
     }
 
-    private fun showInviteDialog(inviteCode: String) {
-        InviteCodeDialogFragment(inviteCode).show(
+    private fun showInviteDialog(inviteUserName: String, inviteCode: String) {
+        InviteCodeDialogFragment(inviteUserName, inviteCode).show(
             requireActivity().supportFragmentManager,
             "InviteCodeDialogFragment"
         )
