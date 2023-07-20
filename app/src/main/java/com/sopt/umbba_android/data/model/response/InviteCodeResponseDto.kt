@@ -16,6 +16,8 @@ data class InviteCodeResponseDto(
     data class ParentChildData(
         @SerialName("parentchild_id")
         val parentChildId: Long,
+        @SerialName("is_match_finish")
+        val isMatchFinish: Boolean,
         @SerialName("parentchild_users")
         val parentChildUsers: List<UsersData>,
         @SerialName("parentchild_relation")
