@@ -139,7 +139,11 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
             viewModel.setReceiveInfo(userData, questList)
             viewModel.isPostSuccess.observe(this) {
                 if (it) {
-                    startActivity(Intent(this, NotifyTimeActivity::class.java))
+                    val time = viewModel.notifyTime.value
+                    Log.e("yeonjin", "server 연결 : $time")
+                    startActivity(Intent(this, NotifyTimeActivity::class.java).apply {
+                        putExtra("time", time)
+                    })
                 }
             }
         }

@@ -94,7 +94,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             with(binding) {
                 btnNext.isEnabled =
                     layoutInputName.error.isNullOrEmpty() && layoutInputYear.error.isNullOrEmpty() && etYear.text.toString()
-                        .isNotEmpty() && etName.text.toString().isNotEmpty()
+                        .isNotEmpty() && etName.text.toString().isNotEmpty() && (chip1.isChecked || chip2.isChecked)
             }
         }
     }
