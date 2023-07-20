@@ -11,7 +11,8 @@ import com.sopt.umbba_android.databinding.ActivityOnboardingFinishBinding
 import com.sopt.umbba_android.presentation.MainActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 
-class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding>(R.layout.activity_onboarding_finish) {
+class OnboardingFinishActivity :
+    BindingActivity<ActivityOnboardingFinishBinding>(R.layout.activity_onboarding_finish) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,13 +40,18 @@ class OnboardingFinishActivity : BindingActivity<ActivityOnboardingFinishBinding
                 startAnimation(fadeInAnim)
                 visibility = View.VISIBLE
             }
-        },1000)
+        }, 1000)
 
     }
 
     private fun goMainActivity() {
         binding.btnStart.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(
+                Intent(
+                    this,
+                    MainActivity::class.java
+                ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
         }
     }
 }

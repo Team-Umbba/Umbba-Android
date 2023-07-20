@@ -14,14 +14,16 @@ import com.sopt.umbba_android.databinding.ActivityQuestBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.sopt.umbba_android.presentation.onboarding.SetTimeActivity
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_quest),
     View.OnClickListener {
 
-    private val viewModel by viewModels<QuestViewModel>()
+    private val viewModel by viewModels<QuestViewModel>() { ViewModelFactory(this) }
     private var count = 0
     private var quest = arrayOfNulls<String>(5)
+    private val questList = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,6 +114,12 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         }
     }
 
+    private fun setQuestList(questData: Array<String?>) {
+        for (i: Int in 0..4) {
+            questList.add(questData[i].toString())
+        }
+    }
+
     private fun goNextActivity() {
         Log.e("yeonjin", "${quest[0]}${quest[1]}${quest[2]}${quest[3]}${quest[4]}")
         val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -119,20 +127,21 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         } else {
             intent.getParcelableExtra<User>("userData")
         }
-        val intent: Intent =
-            if (userData != null && !userData.isReceiver) {
-                Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
-                Intent(this, SetTimeActivity::class.java).apply {
-                    putExtra("questData", quest)
-                    putExtra("userData", userData)
-                }
-            } else {
-                Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
-                Intent(this, NotifyTimeActivity::class.java).apply {
-                    putExtra("questData", quest)
-                    putExtra("userData", userData)
+        if (userData != null && !userData.isReceiver) {
+            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
+            startActivity(Intent(this, SetTimeActivity::class.java).apply {
+                putExtra("questData", quest)
+                putExtra("userData", userData)
+            })
+        } else {
+            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
+            setQuestList(quest)
+            viewModel.setReceiveInfo(userData, questList)
+            viewModel.isPostSuccess.observe(this) {
+                if (it) {
+                    startActivity(Intent(this, NotifyTimeActivity::class.java))
                 }
             }
-        startActivity(intent)
+        }
     }
 }

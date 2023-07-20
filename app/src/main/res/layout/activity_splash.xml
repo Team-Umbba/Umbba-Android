@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.splash.OnboardingActivity">
+        android:background="@color/umbba_white"
+        tools:context=".presentation.splash.SplashActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"

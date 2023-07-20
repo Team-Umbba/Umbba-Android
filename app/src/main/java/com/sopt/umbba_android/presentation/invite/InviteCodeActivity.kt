@@ -10,9 +10,11 @@ import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
+import com.sopt.umbba_android.data.local.SharedPreferences.setInviteCodeBoolean
 import com.sopt.umbba_android.databinding.ActivityInviteCodeBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
@@ -77,6 +79,7 @@ class InviteCodeActivity :
             viewModel.isCodeSuccess.observe(this) {
                 if (it) {
                     Log.e("yeonjin", "관계 연결 성공")
+                    setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goCommunicationActivity()
                 } else {
                     Snackbar.make(binding.root, "유효하지 않은 초대코드 입니다.", Snackbar.LENGTH_SHORT).show()

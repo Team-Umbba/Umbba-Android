@@ -10,16 +10,21 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityNotifyTimeBinding
 import com.sopt.umbba_android.domain.entity.User
+import com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel
+import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class NotifyTimeActivity :
     BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time),
     View.OnClickListener {
+
+    private val viewModel by viewModels<QuestViewModel>() { ViewModelFactory(this) }
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
@@ -36,7 +41,7 @@ class NotifyTimeActivity :
         binding.clickListener = this
 
         askNotificationPermission()
-        setClickButton()
+        goOnboardingFinishActivity()
     }
 
     override fun onClick(view: View?) {
@@ -49,7 +54,6 @@ class NotifyTimeActivity :
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
                 Snackbar.make(binding.root, "알림 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT).show()
-                startActivity(Intent(this, OnboardingFinishActivity::class.java))
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
                 // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
                 Snackbar.make(binding.root, "알림 권한을 설정하면 답변 작성 요청 알림을 받아볼 수 있습니다.", Snackbar.LENGTH_SHORT).show()
@@ -62,22 +66,9 @@ class NotifyTimeActivity :
         }
     }
 
-    private fun setClickButton() {
+    private fun goOnboardingFinishActivity() {
         with(binding) {
             btnGoPast.setOnClickListener {
-                val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    intent.getParcelableExtra("userData", User::class.java)
-                } else {
-                    intent.getParcelableExtra<User>("userData")
-                }
-                Log.e("yeonjin", "notifyTime parcelable : ${userData?.isReceiver}")
-                val questData = intent.getStringArrayExtra("questData")
-                if (questData != null) {
-                    Log.e("yeonjin", "quest 배열 값 잘 들어옴")
-                } else {
-                    Log.e("yeonjin", "quest 배열 값 안 들어옴")
-                }
-                //서버 연결
                 startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java))
             }
         }

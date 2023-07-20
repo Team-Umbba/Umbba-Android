@@ -3,9 +3,7 @@ package com.sopt.umbba_android.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -14,8 +12,10 @@ import com.kakao.sdk.user.UserApiClient
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.databinding.ActivityLoginBinding
+import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.MainActivity
 import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
+import com.sopt.umbba_android.presentation.onboarding.InputInfoActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
 
@@ -105,10 +105,14 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun showOnboardForFirst() {
-        //온보딩을 한번이라도 하지 않았다면 - 나중에 온보딩 종료뷰에서 불린 값 true로 바꾸기, 탈퇴할 때 false로 바꾸기
+        //온보딩을 한번이라도 하지 않았다면
         Log.e("yeonjin", "showOnboardForFirst")
-        if (!SharedPreferences.getBoolean(DID_USER_CLEAR_ONBOARD)) {
-            goAgreePrivacyUseActivity()
+        if (!SharedPreferences.getOnboardingBoolean(DID_USER_CLEAR_ONBOARD)) {
+            if (SharedPreferences.getInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE)) { //초대코드 연결 했다면
+                goInputInfoActivity()
+            } else { //초대코드도 연결 안했다면
+                goAgreePrivacyUseActivity()
+            }
         } else {
             //온보딩을 했다면
             goMainActivity()
@@ -123,6 +127,18 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         )
         if (!isFinishing) finish()
+    }
+
+    private fun goInputInfoActivity() {
+        val userData = User(isReceiver = true)
+        startActivity(
+            Intent(
+                this,
+                InputInfoActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).apply {
+                putExtra("userData", userData)
+            }
+        )
     }
 
     private fun goMainActivity() {
@@ -140,6 +156,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         const val USER_TOKEN = "USER_TOKEN"
         const val USER_NICKNAME = "USER_NICKNAME"
         const val USER_IMAGE = "USER_IMAGE"
-        const val DID_USER_CLEAR_ONBOARD = " DID_USER_CLEAR_ONBOARD"
+        const val DID_USER_CLEAR_ONBOARD = "DID_USER_CLEAR_ONBOARD"
+        const val DID_USER_CLEAR_INVITE_CODE = "DID_USER_CLEAR_INVITE_CODE"
     }
 }
