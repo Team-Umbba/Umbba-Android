@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.data.model.request.AnswerRequestDto
@@ -36,7 +37,8 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.setDataFromBundle(Bundle())
+        viewModel.setDataFromBundle(arguments)
+        binding.vm = viewModel
         setBackgroundDesign()
         setBtnClickEvent()
         observeResponseStatus()

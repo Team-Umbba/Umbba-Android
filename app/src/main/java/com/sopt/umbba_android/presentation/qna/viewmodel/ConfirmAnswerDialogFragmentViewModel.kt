@@ -18,11 +18,12 @@ class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryI
     var section = MutableLiveData<String>()
     var topic = MutableLiveData<String>()
 
-    fun setDataFromBundle(bundle: Bundle) {
-        answer.value = bundle.getString("answer")
-        question.value = bundle.getString("question")
-        section.value = bundle.getString("section")
-        topic.value = bundle.getString("topic")
+    fun setDataFromBundle(bundle: Bundle?) {
+        answer.value = bundle?.getString("answer")
+        question.value = bundle?.getString("question")
+        section.value = bundle?.getString("section")
+        topic.value = bundle?.getString("topic")
+        Log.e("hyeon","setData ${topic.value}")
     }
 
     fun postAnswer(answerRequestDto: AnswerRequestDto) {

@@ -63,6 +63,7 @@ class QuestionAnswerActivity :
     private fun observeListQnaResponse() {
         viewModel.listQnaResponse.observe(this@QuestionAnswerActivity) {
             setBtnEnable(true)
+            setListAnswerText(it)
         }
     }
 
@@ -74,6 +75,12 @@ class QuestionAnswerActivity :
         }
     }
 
+    private fun setListAnswerText(data:ListQuestionAnswerResponseDto.QnaData){
+        with(binding){
+            tvAnswerOther.text = data.opponentAnswer
+            tvAnswerMe.text= data.myAnswer
+        }
+    }
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             if (data.isOpponentAnswer == true) {
