@@ -38,8 +38,9 @@ class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryI
                 )
             ).onSuccess {
                 Log.e("yeonjin", "setReceiveInfo 성공")
-                _isPostSuccess.value = true
+                Log.e("yeonjin", "setReceiveInfo time : ${it.data.pushTime}")
                 notifyTime.value = it.data.pushTime
+                _isPostSuccess.value = true
             }.onFailure {
                 Log.e("yeonjin", "setReceiveInfo 실패")
                 _isPostSuccess.value = false
