@@ -34,6 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:titleText ="@{vm.section}"
             app:visibleCheck="@{true}" />
 
         <TextView
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            tool:text="@string/answer_title"
+            android:text="@{vm.topic}"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
-            tool:text="@string/answer_question"
+            android:text="@{vm.question}"
+            android:gravity="center"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

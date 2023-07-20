@@ -2,6 +2,13 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/layout_root"
         android:layout_width="match_parent"
@@ -27,11 +34,11 @@
             android:background="@drawable/shape_pri600_r84_rect"
             android:gravity="left|center"
             android:paddingHorizontal="40dp"
+            android:text="@{vm.topicTitle}"
             android:textAppearance="@style/BrandTypeBigRegular20"
             android:textColor="@color/umbba_white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tool:text="#68 가장 오래된 기억" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_answer"

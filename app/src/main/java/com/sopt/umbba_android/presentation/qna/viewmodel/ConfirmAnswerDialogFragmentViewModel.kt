@@ -1,5 +1,6 @@
 package com.sopt.umbba_android.presentation.qna.viewmodel
 
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,18 @@ class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryI
     ViewModel() {
 
     var responseStatus = MutableLiveData<Int>()
+    var answer = MutableLiveData<String>()
+    var question = MutableLiveData<String>()
+    var section = MutableLiveData<String>()
+    var topic = MutableLiveData<String>()
+
+    fun setDataFromBundle(bundle: Bundle) {
+        answer.value = bundle.getString("answer")
+        question.value = bundle.getString("question")
+        section.value = bundle.getString("section")
+        topic.value = bundle.getString("topic")
+    }
+
     fun postAnswer(answerRequestDto: AnswerRequestDto) {
         viewModelScope.launch {
             questionAnswerRepositoryImpl.postAnswer(answerRequestDto)

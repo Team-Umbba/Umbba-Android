@@ -17,7 +17,7 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.clickListener = this
         binding.vm = viewModel
-        setQuestionTitle()
+        setIntentResponse()
     }
 
     override fun onClick(view: View?) {
@@ -40,27 +40,14 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
             .show(supportFragmentManager, "BackAnswerDialog")
     }
 
-    private fun setQuestionTitle() {
-        with(binding) {
-            tvQuestion.text = intent.getStringExtra("question")
-            tvTopic.text = "#${intent.getIntExtra("index", -1)} ${intent.getStringExtra("topic")}"
-            Log.e("hyeon", "index의 값은?" + intent.getIntExtra("index", -1))
-            viewModel.appbarTitle.value = intent.getStringExtra("section")
-            layoutAppbar.titleText = viewModel.appbarTitle.value
-        }
+    private fun setIntentResponse() {
+        viewModel.setDataFromIntent(this.intent)
     }
 
     private fun showConfirmDialog() {
         val bundle = Bundle()
-        val confirmDialog = ConfirmAnswerDialogFragment()
-        bundle.apply {
-            putString("question", intent.getStringExtra("question"))
-            putString("topic", intent.getStringExtra("topic"))
-            putString("section", intent.getStringExtra("section"))
-            putString("answer", viewModel.answer.value)
-        } // 이 부분은 변수 안쓰고.. 코드 쓰고 싶음 (일단 서버연결 완료되면 해보고, 테스트도 해보자잉)
-        confirmDialog.apply {
-            arguments = bundle
+        ConfirmAnswerDialogFragment().apply {
+            arguments = viewModel.setBundleArgument(bundle)
             show(supportFragmentManager, "ConfirmDialogFragment")
         }
     }

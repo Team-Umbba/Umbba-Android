@@ -36,8 +36,8 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setDataFromBundle(Bundle())
         setBackgroundDesign()
-        setPreviewAnswer()
         setBtnClickEvent()
         observeResponseStatus()
     }
@@ -48,15 +48,6 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
                 dismiss()
                 requireActivity().finish()
             }
-        }
-    }
-
-    private fun setPreviewAnswer() {
-        with(binding) {
-            tvAnswer.text = arguments?.getString("answer")
-            tvTopic.text = arguments?.getString("topic")
-            tvSection.text = arguments?.getString("section")
-            tvQuestion.text = arguments?.getString("question")
         }
     }
 
