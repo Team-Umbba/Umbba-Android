@@ -22,6 +22,9 @@ class OnboardingFinishActivity :
     }
 
     private fun goBack() {
+        binding.btnBack1.setOnClickListener {
+            finish()
+        }
         binding.btnBack2.setOnClickListener {
             finish()
         }
