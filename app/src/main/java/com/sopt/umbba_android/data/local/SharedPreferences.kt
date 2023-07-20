@@ -6,7 +6,8 @@ import androidx.core.content.edit
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.sopt.umbba_android.BuildConfig
-import com.sopt.umbba_android.presentation.login.LoginActivity
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 
 const val FILE_NAME = "UMBBA"
 
@@ -46,11 +47,19 @@ object SharedPreferences {
         return preferences.getString(key, null)
     }
     //온보딩 완료 상태 저장
-    fun setBoolean(key: String, value: Boolean) {
+    fun setOnboardingBoolean(key: String, value: Boolean) {
         preferences.edit { putBoolean(key, value) }
     }
     //온보딩 완료했는지 가져오기 - 온보딩 완료 확인
-    fun getBoolean(key: String): Boolean {
+    fun getOnboardingBoolean(key: String): Boolean {
+        return preferences.getBoolean(key, false)
+    }
+
+    fun setInviteCodeBoolean(key: String, value: Boolean) {
+        preferences.edit { putBoolean(key, value) }
+    }
+
+    fun getInviteCodeBoolean(key: String): Boolean {
         return preferences.getBoolean(key, false)
     }
 
@@ -60,7 +69,8 @@ object SharedPreferences {
 
     fun clearForLogout() {
         clear()
-        setBoolean(LoginActivity.DID_USER_CLEAR_ONBOARD, true)
+        setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+        setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
     }
 
     fun clearForSignout(){
