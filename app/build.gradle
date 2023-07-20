@@ -127,4 +127,7 @@ dependencies {
 
     // EncryptedSharedPreferences
     implementation "androidx.security:security-crypto:1.0.0"
+
+    // Splash
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 }
