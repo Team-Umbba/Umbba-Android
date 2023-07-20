@@ -90,7 +90,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
     // 자동로그인
     private fun setAutoLogin() {
-        //토큰이 저장되어 있다면
+        //액세스 토큰이 저장되어 있다면
         Log.e("yeonjin", "setAutoLogin")
         Log.e("yeonjin", "sharedPreference : ${SharedPreferences.getString(USER_TOKEN)}")
         if (!SharedPreferences.getString(USER_TOKEN).isNullOrBlank()) {
@@ -99,7 +99,13 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             Log.e("yeonjin", "viewmodel gettokenresult")
             viewModel.getTokenResult.observe(this) { response ->
                 setUserInfo(response.accessToken)
-                goAgreePrivacyUseActivity()
+                if (SharedPreferences.getOnboardingBoolean(DID_USER_CLEAR_ONBOARD)
+                    && SharedPreferences.getInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE)
+                ) {
+                    goMainActivity()
+                } else {
+                    goAgreePrivacyUseActivity()
+                }
             }
         }
     }
