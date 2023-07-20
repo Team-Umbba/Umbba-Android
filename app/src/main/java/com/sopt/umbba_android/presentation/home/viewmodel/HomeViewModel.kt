@@ -24,7 +24,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
     private var _topicTitle = MutableLiveData<String>()
     val topicTitle:LiveData<String> = _topicTitle
 
-    private fun getHomeData() {
+    fun getHomeData() {
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
@@ -37,7 +37,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
         }
     }
 
-    private fun getResponseCase() {
+    fun getResponseCase() {
         viewModelScope.launch {
             homeRepositoryImpl.getResponseCase()
                 .onSuccess { response ->
