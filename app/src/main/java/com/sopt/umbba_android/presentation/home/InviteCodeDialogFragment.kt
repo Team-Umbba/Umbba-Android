@@ -74,8 +74,8 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
         binding.btnSendInvitation.setOnClickListener {
             val defaultFeed = FeedTemplate(
                 content = Content(
-                    title = "${inviteUserName}으로부터 초대가 왔어요. \\n초대 코드 : $inviteCode",
-                    description = "과거로 떠나 함께 추억을 나누고, \\n공감대를 형성해보세요.",
+                    title = "${inviteUserName}으로부터 초대가 왔어요.\n초대 코드 : $inviteCode",
+                    description = "과거로 떠나 함께 추억을 나누고,\n공감대를 형성해보세요.",
                     imageUrl =  "https://github.com/Team-Umbba/Umbba-iOS/assets/75068759/64ba7265-9148-4f06-8235-de5f4030e92f",
                     link = Link(
                         webUrl = "https://developers.kakao.com",

@@ -24,8 +24,6 @@ class NotifyTimeActivity :
     BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time),
     View.OnClickListener {
 
-    private val viewModel by viewModels<QuestViewModel>() { ViewModelFactory(this) }
-
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
             // 알림권한 허용 o
@@ -40,6 +38,7 @@ class NotifyTimeActivity :
         super.onCreate(savedInstanceState)
         binding.clickListener = this
 
+        setTimeText()
         askNotificationPermission()
         goOnboardingFinishActivity()
     }
@@ -47,6 +46,27 @@ class NotifyTimeActivity :
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_basic_back -> finish()
+        }
+    }
+
+    private fun setTimeText() {
+        val time = intent.getStringExtra("time").toString()
+        Log.e("yeonjin", "setTime : $time")
+        var hour = time.substring(0, 2).toInt()
+        val minute = time.substring(3, 5)
+        var hourText = ""
+        when (hour) {
+            1, 2, 3, 4, 5 -> hourText = "새벽"
+            6, 7, 8, 9, 10, 11 -> hourText = "아침"
+            12, 13, 14, 15, 16, 17 -> hourText = "낮"
+            18, 19, 20 -> hourText = "저녁"
+            21, 22, 23, 24 -> hourText = "밤"
+        }
+        if (hour >= 13) { hour %= 12 }
+        if (minute == "00") {
+            binding.tvTitle.text = "매일 ${hourText} ${hour}시에\n교신을 보내줄게"
+        } else {
+            binding.tvTitle.text = "매일 ${hourText} ${hour}시 반에\n교신을 보내줄게"
         }
     }
 
