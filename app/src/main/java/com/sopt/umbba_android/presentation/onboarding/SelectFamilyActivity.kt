@@ -63,11 +63,11 @@ class SelectFamilyActivity :
 
     private fun modifyMoreQuestion() {
         if (binding.chip1.isChecked) {
-            binding.chip3.text = "엄마"
-            binding.chip4.text = "아빠"
+            binding.chip3.text = getString(R.string.mom)
+            binding.chip4.text = getString(R.string.dad)
         } else {
-            binding.chip3.text = "아들"
-            binding.chip4.text = "딸"
+            binding.chip3.text = getString(R.string.son)
+            binding.chip4.text = getString(R.string.daughter)
         }
     }
 

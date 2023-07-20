@@ -9,6 +9,7 @@ import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
 import com.sopt.umbba_android.data.repository.HomeRepositoryImpl
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewModel() {
     init {
@@ -22,17 +23,17 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
     val homeData: LiveData<HomeResponseDto.HomeData> = _homeData
 
     private var _topicTitle = MutableLiveData<String>()
-    val topicTitle:LiveData<String> = _topicTitle
+    val topicTitle: LiveData<String> = _topicTitle
 
-    fun getHomeData() {
+    private fun getHomeData() {
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
-                    Log.e("hyeon", "getHomeData 성공")
+                    Timber.e("getHomeData 성공")
                     _homeData.value = response.data
-                    _topicTitle.value ="#${response.data.index} ${response.data.topic}"
+                    _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                 }.onFailure { error ->
-                    Log.e("hyeon", "getHomeData 실패  " + error.message)
+                    Timber.e("getHomeData 실패 " + error.message)
                 }
         }
     }
@@ -42,9 +43,9 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
             homeRepositoryImpl.getResponseCase()
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
-                    Log.e("hyeon", "getResponseCode 성공")
+                    Timber.e("getResponseCode 성공")
                 }.onFailure { error ->
-                    Log.e("hyeon", "getResponseCode 실패  " + error.message)
+                    Timber.e("getResponseCode 실패  " + error.message)
                 }
         }
     }

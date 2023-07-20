@@ -44,9 +44,9 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val namePattern = Pattern.compile(HANGUL_PATTERN)
                     if (!etName.text?.matches(namePattern.toRegex())!!) {
-                        layoutInputName.error = "*형식이 올바르지 않습니다."
+                        layoutInputName.error = getString(R.string.input_error)
                     } else if (etName.text.toString().length > 7) {
-                        layoutInputName.error = "*7글자 이하로 작성해주세요."
+                        layoutInputName.error = getString(R.string.input_error_max_seven)
                     } else {
                         layoutInputName.error = null
                     }
@@ -64,9 +64,9 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val yearPattern = Pattern.compile(NUMBER_PATTERN)
                     if (!etYear.text?.matches(yearPattern.toRegex())!!) {
-                        layoutInputYear.error = "*형식이 올바르지 않습니다."
+                        layoutInputYear.error = getString(R.string.input_error)
                     } else if (etYear.text.toString().length > 4) {
-                        layoutInputYear.error = "*4글자로 작성해주세요."
+                        layoutInputYear.error = getString(R.string.input_error_limit_four)
                     } else {
                         layoutInputYear.error = null
                     }

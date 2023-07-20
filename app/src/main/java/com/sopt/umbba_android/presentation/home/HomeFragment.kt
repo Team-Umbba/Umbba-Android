@@ -59,10 +59,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun setBackground(section: String) {
         binding.ivBackground.load(
             when (section) {
-                "어린시절" -> R.drawable.bg_home1
-                "학창시절" -> R.drawable.bg_home2
-                "청춘시절" -> R.drawable.bg_home3
-                "연애시절" -> R.drawable.bg_home4
+                getString(R.string.section1) -> R.drawable.bg_home1
+                getString(R.string.section2) -> R.drawable.bg_home2
+                getString(R.string.section3) -> R.drawable.bg_home3
+                getString(R.string.section4) -> R.drawable.bg_home4
                 else -> R.drawable.bg_home5
             }
         )

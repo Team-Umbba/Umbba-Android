@@ -14,6 +14,7 @@ import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import timber.log.Timber
 
 class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
@@ -34,7 +35,7 @@ class QuestionAnswerActivity :
 
     private fun observeQnaViewFlag() {
         val qnaId = intent.getLongExtra("questionId", -1)
-        Log.e("hyeon", "qnaId activity에서" + qnaId.toString())
+        Timber.e( "qnaId activity에서" + qnaId.toString())
         if (qnaId == -1L) {
             viewModel.getQuestionAnswer()
             viewModel.isBeforeList.value = false
@@ -63,6 +64,7 @@ class QuestionAnswerActivity :
     private fun observeListQnaResponse() {
         viewModel.listQnaResponse.observe(this@QuestionAnswerActivity) {
             setBtnEnable(true)
+            setListAnswerText(it)
         }
     }
 
@@ -74,6 +76,12 @@ class QuestionAnswerActivity :
         }
     }
 
+    private fun setListAnswerText(data:ListQuestionAnswerResponseDto.QnaData){
+        with(binding){
+            tvAnswerOther.text = data.opponentAnswer
+            tvAnswerMe.text= data.myAnswer
+        }
+    }
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             if (data.isOpponentAnswer == true) {
@@ -83,16 +91,16 @@ class QuestionAnswerActivity :
                     setBlurText(false)
                 } else {
                     tvAnswerOther.text = data.opponentAnswer
-                    tvAnswerMe.text = "하단 버튼을 눌러 답변을 입력하세요"
+                    tvAnswerMe.text = getString(R.string.answer_me_hint)
                     setBlurText(true)
                 }
             } else {
                 if (data.isMyAnswer == true) {
                     tvAnswerMe.text = data.myAnswer
                 } else {
-                    tvAnswerMe.text = "하단 버튼을 눌러 답변을 입력하세요"
+                    tvAnswerMe.text = getString(R.string.answer_me_hint)
                 }
-                tvAnswerOther.text = "상대방은 아직 답변하지 않았어요"
+                tvAnswerOther.text = getString(R.string.answer_opponent_hint)
             }
         }
     }

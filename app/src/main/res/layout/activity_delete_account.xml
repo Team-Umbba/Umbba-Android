@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/shape_error_btn_r50_rect"
             android:text="@string/btn_delete_account"
             android:textAppearance="@style/AndroidBody1_1SemiBold16"

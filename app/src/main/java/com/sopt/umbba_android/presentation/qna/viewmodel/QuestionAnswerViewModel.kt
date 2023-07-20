@@ -9,6 +9,7 @@ import com.sopt.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
     ViewModel() {
@@ -32,14 +33,14 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
                 .onSuccess { response ->
-                    Log.e("hyeon", "getQuestionAnswer 성공")
+                    Timber.e( "getQuestionAnswer 성공")
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                     appbarSection.value = response.data.section.toString()
                 }.onFailure { error ->
-                    Log.e("hyeon", "getQuestionAnswer 실패  " + error.message)
+                    Timber.e("getQuestionAnswer 실패  " + error.message)
                 }
         }
     }
@@ -51,9 +52,9 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     _listQnaResponse.value = response.data
                     appbarSection.value = response.data.section.toString()
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
-                    Log.e("hyeon", "getListQuestionAnswer 성공")
+                    Timber.e( "getListQuestionAnswer 성공")
                 }.onFailure { error ->
-                    Log.e("hyeon", "getListQuestionAnswer 실패" + error.message)
+                    Timber.e( "getListQuestionAnswer 실패" + error.message)
                 }
         }
     }

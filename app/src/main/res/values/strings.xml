@@ -28,6 +28,9 @@
     <string name="when_is_your_birth_year">태어난 연도는 언제야?</string>
     <string name="please_input_birth_year">ex) 1988</string>
 
+    <!-- input invite code activity-->
+    <string name="input_code_error">*올바른 초대코드 형식이 아닙니다.</string>
+
     <!-- select family activity-->
     <string name="travel_to_timemachine">오늘부터 매일,\n과거로 시간여행을 떠날 거야</string>
     <string name="who_want_travel">누구와 떠날래?</string>
@@ -74,6 +77,8 @@
     <string name="question_answer_quesiton_me">당신과 어머니의 꿈은 달라?</string>
     <string name="content_example">sdlkfjslkdjfklsdjfksdf\nsldkfjsldkjflksdjf</string>
     <string name="home_question_answer">질문 확인하기</string>
+    <string name="answer_me_hint">하단 버튼을 눌러 답변을 입력하세요</string>
+    <string name="answer_opponent_hint">상대방은 아직 답변하지 않았어요</string>
 
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
@@ -144,5 +149,18 @@
     <string name="list_section3"># 청춘시절</string>
     <string name="list_section4"># 연애시절</string>
     <string name="list_section5"># 우리가 만나고</string>
+
+    <!-- home fragment class -->
+    <string name="section1">어린시절</string>
+    <string name="section2">학창시절</string>
+    <string name="section3">청춘시절</string>
+    <string name="section4">연애시절</string>
+    <string name="input_error">*형식이 올바르지 않습니다.</string>
+    <string name="input_error_max_seven">*7글자 이하로 작성해주세요.</string>
+    <string name="input_error_limit_four">*4글자로 작성해주세요.</string>
+    <string name="notion_about_umbba">https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9</string>
+    <string name="notion_tos">https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb</string>
+    <string name="notion_privacy_notice">https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4</string>
+
 
 </resources>

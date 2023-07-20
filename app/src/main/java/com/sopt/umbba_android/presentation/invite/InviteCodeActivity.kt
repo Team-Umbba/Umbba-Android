@@ -48,7 +48,7 @@ class InviteCodeActivity :
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     val namePattern = Pattern.compile(INVITE_CODE_PATTERN)
                     if (!etCode.text?.matches(namePattern.toRegex())!!) {
-                        layoutInputCode.error = "*올바른 초대코드 형식이 아닙니다."
+                        layoutInputCode.error = getString(R.string.input_code_error)
                     } else {
                         layoutInputCode.error = null
                     }

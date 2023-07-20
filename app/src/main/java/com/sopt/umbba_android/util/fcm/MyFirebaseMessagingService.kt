@@ -22,13 +22,13 @@ import timber.log.Timber
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.e("hyeon", "fcm token : " + token)
+        Timber.e("fcm token : " + token)
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        Log.e("hyeon", message.notification.toString())
-        Log.e("hyeon", message.data.toString())
+        Timber.e( message.notification.toString())
+        Timber.e( message.data.toString())
         if (isNotificationGranted()) {
             createNotification(message)
         }
@@ -80,11 +80,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun getFcmToken() {
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.e("hyeon", "Fetching FCM registration token failed")
+                Timber.e("Fetching FCM registration token failed")
                 return@OnCompleteListener
             }
             val token = task.result
-            Log.e("hyeon", "token is " + token)
+            Timber.e("token is " + token)
         })
     }
 
