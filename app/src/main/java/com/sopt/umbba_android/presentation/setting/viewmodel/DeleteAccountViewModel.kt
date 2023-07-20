@@ -12,6 +12,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositoryImpl) :
     ViewModel() {
@@ -20,10 +21,10 @@ class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositor
         viewModelScope.launch {
             settingRepositoryImpl.signout()
                 .onSuccess { response ->
-                    Log.e("hyeon", "viewModel 회원탈퇴 성공")
+                    Timber.e("viewModel 회원탈퇴 성공")
                     responseStatus.value = response.status
                 }.onFailure { error ->
-                    Log.e("hyeon", "viewModel 회원탈퇴 실패  " + error.message)
+                    Timber.e("viewModel 회원탈퇴 실패  " + error.message)
                     responseStatus.value = -1
                 }
         }

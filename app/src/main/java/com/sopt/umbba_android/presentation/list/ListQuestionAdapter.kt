@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sopt.umbba_android.data.model.response.ExampleResponseDto
 import com.sopt.umbba_android.data.model.response.ListResponseDto
 import com.sopt.umbba_android.databinding.ItemQuestionListBinding
+import timber.log.Timber
 
 class ListQuestionAdapter(private val itemClick: (ListResponseDto.ListData) -> (Unit)) :
     ListAdapter<ListResponseDto.ListData, ListQuestionAdapter.ListViewHolder>(diffUtil) {
@@ -33,7 +34,7 @@ class ListQuestionAdapter(private val itemClick: (ListResponseDto.ListData) -> (
                 tvTopic.text = data.topic
                 root.setOnClickListener {
                     itemClick(data)
-                    Log.e("hyeon","아이템 클릭 이벤트 발생")
+                    Timber.e("아이템 클릭 이벤트 발생")
                 }
             }
         }

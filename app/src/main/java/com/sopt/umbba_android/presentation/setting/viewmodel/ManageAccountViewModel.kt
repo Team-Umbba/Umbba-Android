@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sopt.umbba_android.data.repository.SettingRepositoryImpl
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class ManageAccountViewModel(private val settingRepositoryImpl: SettingRepositoryImpl) :
     ViewModel() {
@@ -15,10 +16,10 @@ class ManageAccountViewModel(private val settingRepositoryImpl: SettingRepositor
         viewModelScope.launch {
             settingRepositoryImpl.logout()
                 .onSuccess { response ->
-                    Log.e("hyeon", "viewmodel logout 성공")
+                    Timber.e("viewmodel logout 성공")
                     responseStatus.value = response.status
                 }.onFailure { error ->
-                    Log.e("hyeon", "viewmodel logout 실패 " + error.message)
+                    Timber.e( "viewmodel logout 실패 " + error.message)
                     responseStatus.value = -1
                 }
         }

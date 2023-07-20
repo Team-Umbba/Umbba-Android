@@ -17,6 +17,7 @@ import com.sopt.umbba_android.databinding.FragmentSettingBinding
 import com.sopt.umbba_android.presentation.onboarding.OnboardingFinishActivity
 import com.sopt.umbba_android.util.binding.BindingFragment
 import com.sopt.umbba_android.util.fcm.MyFirebaseMessagingService
+import timber.log.Timber
 
 class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
@@ -30,7 +31,6 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
     private val notificationSettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             // 앱의 설정 화면으로 이동한 후 결과를 처리하는 로직
-            Log.e("hyeon", "나 지금 돌아왔어요.")
             setSwitchNotification()
         }
 
@@ -39,7 +39,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
             requireActivity(),
             Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
-        Log.e("hyeon", "현재 알림 허용이 되었니? " + binding.switchNotification.isChecked)
+        Timber.e("현재 알림 허용 값 =  " + binding.switchNotification.isChecked)
     }
 
     private fun changeSwitchNotification() {
@@ -52,7 +52,6 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 val intent =
                     Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + requireActivity().packageName))
                 notificationSettingsLauncher.launch(intent)
-                Log.e("hyeon", "나 지금 switch 바꿨어요.")
             }
         }
     }
@@ -66,7 +65,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9")
+                        Uri.parse(getString(R.string.notion_about_umbba))
                     )
                 )
             }
@@ -74,7 +73,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb")
+                        Uri.parse(getString(R.string.notion_tos))
                     )
                 )
             }
@@ -82,7 +81,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
+                        Uri.parse(getString(R.string.notion_privacy_notice))
                     ) //공지사항 바꾸기
                 )
             }
