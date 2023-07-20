@@ -66,7 +66,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9?pvs=4")
+                        Uri.parse("https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9")
                     )
                 )
             }
@@ -74,7 +74,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb")
+                        Uri.parse("https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb")
                     )
                 )
             }
@@ -82,7 +82,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://www.notion.so/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
+                        Uri.parse("https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
                     ) //공지사항 바꾸기
                 )
             }
