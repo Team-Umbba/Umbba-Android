@@ -93,7 +93,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
         val hour =
             if (binding.tpTime.hour == 0) {
                 "24"
-            } else if (binding.tpTime.hour >= 1 || binding.tpTime.hour <= 9){
+            } else if (binding.tpTime.hour in 1..9){
                 "0${binding.tpTime.hour}"
             } else {
                 binding.tpTime.hour
