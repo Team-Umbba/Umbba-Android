@@ -66,25 +66,40 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     }
 
     private fun askNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
-            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            Snackbar.make(binding.root, getString(R.string.allowing_notification), Snackbar.LENGTH_SHORT).show()
+        }
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+                if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                    // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
+                    Snackbar.make(
+                        binding.root,
+                        getString(R.string.if_allow_notification),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    val intent =
+                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
+                    startActivity(intent)
+                    this.finish()
+                } else {
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+            else{
                 Snackbar.make(
                     binding.root,
-                    R.string.if_allow_notification,
+                    getString(R.string.setting_noti),
                     Snackbar.LENGTH_SHORT
                 ).show()
-                val intent =
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
-                startActivity(intent)
-                this.finish()
-            } else {
-                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         }
     }

@@ -67,6 +67,7 @@
     <string name="night">밤</string>
     <string name="everyday_notification">매일 %s %d시에\n교신을 보내줄게</string>
     <string name="everyday_notification_half">매일 %s %d시 반에\n교신을 보내줄게</string>
+    <string name="setting_noti">설정에서 알림을 설정하세요.</string>
 
     <!-- quest activity-->
     <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
