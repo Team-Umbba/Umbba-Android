@@ -3,8 +3,10 @@ package com.sopt.umbba_android.application
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.kakao.sdk.common.KakaoSdk
+import com.sopt.umbba_android.BuildConfig
 import com.sopt.umbba_android.BuildConfig.KAKAO_NATIVE_APP_KEY
 import com.sopt.umbba_android.data.local.SharedPreferences
+import timber.log.Timber
 
 class UmbbaApplication: Application() {
     override fun onCreate() {
@@ -12,6 +14,7 @@ class UmbbaApplication: Application() {
         initKakao()
         setupSharedPreferences()
         stopDarkMode()
+        useTimber()
     }
 
     private fun initKakao() {
@@ -24,5 +27,11 @@ class UmbbaApplication: Application() {
 
     private fun stopDarkMode() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    private fun useTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 }
