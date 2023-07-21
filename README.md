@@ -24,7 +24,6 @@
 ┣ 📂 application
 ┣ 📂 data
 ┃ ┣ 📂 datasource
-┃ ┣ 📂 entity
 ┃ ┣ 📂 interceptor
 ┃ ┣ 📂 local
 ┃ ┣ 📂 model
@@ -42,14 +41,14 @@
 | | Tech Stack  |
 | --- | --- |
 | 아키텍처 | MVVM |
-| 소셜로그인 | KakaoLogin |
+| 소셜로그인 | KakaoLogin, KakaoLink |
+| 자동로그인 | EncryptedSharedPreferences |
 | 푸시알림 | FCM |
-| 데이터 연동 | DataBinding DataBinding  |
+| 데이터 연동 | DataBinding |
 | 사진 | Coil |
-| 서버 연결 | Retrofit2 & OkHttp3 Coroutine   |
+| 서버 연결 | Retrofit2 & OkHttp3, Coroutine   |
 | 메시지 | SnackBar / Dialog Custom |
 | Binding | BindingActivity & BindingFragment |
-| RecyclerView | DiffUtil & ListAdapter DiffUtil |
+| RecyclerView | DiffUtil & ListAdapter |
 | Log | Timber |
-| DI | Hilt |
 
