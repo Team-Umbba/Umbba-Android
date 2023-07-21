@@ -37,7 +37,7 @@
 ┃ ┣ 📂 binding
 ┃ ┣ 📂 fcm
 ```
-### Tech Stack
+### ⚒️ Tech Stack
 | | Tech Stack  |
 | --- | --- |
 | 아키텍처 | MVVM |
