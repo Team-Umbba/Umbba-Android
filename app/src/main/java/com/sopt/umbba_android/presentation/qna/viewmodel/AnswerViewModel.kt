@@ -13,11 +13,9 @@ class AnswerViewModel : ViewModel() {
     var topic = MutableLiveData<String>()
 
     fun setDataFromIntent(intent: Intent) {
-        Log.e("hyeon", "question 들어왔니?" + intent.getStringExtra("question"))
         question.value = intent.getStringExtra("question")
         topic.value =
             "#${intent.getIntExtra("index", -1)} ${intent.getStringExtra("topic")}"
-        Log.e("hyeon", "index의 값은?" + intent.getIntExtra("index", -1))
         section.value = intent.getStringExtra("section")
     }
 

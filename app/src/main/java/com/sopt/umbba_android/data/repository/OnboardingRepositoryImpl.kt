@@ -9,6 +9,7 @@ import com.sopt.umbba_android.data.model.response.InviteCodeResponseDto
 import com.sopt.umbba_android.data.model.response.ReceiveInfoResponseDto
 import com.sopt.umbba_android.data.model.response.SendInfoResponseDto
 import com.sopt.umbba_android.domain.repository.OnboardingRepository
+import timber.log.Timber
 
 class OnboardingRepositoryImpl(
     private val onboardingRemoteDataSource: OnboardingRemoteDataSource
@@ -17,26 +18,26 @@ class OnboardingRepositoryImpl(
         runCatching {
             onboardingRemoteDataSource.setFamily(inviteCodeRequestDto)
         }.onSuccess {
-            Log.e("yeonjin", "onboarding setFamily Impl 성공")
+            Timber.d("onboarding setFamily Impl 성공")
         }.onFailure {
-            Log.e("yeonjin", "onboarding setFamily Impl 실패")
+            Timber.e("onboarding setFamily Impl 실패")
         }
 
     override suspend fun setSendInfo(sendInfoRequestDto: SendInfoRequestDto): Result<SendInfoResponseDto> =
         runCatching {
             onboardingRemoteDataSource.setSendInfo(sendInfoRequestDto)
         }.onSuccess {
-            Log.e("yeonjin", "onboarding setSendInfo Impl 성공")
+            Timber.d("onboarding setSendInfo Impl 성공")
         }.onFailure {
-            Log.e("yeonjin", "onboarding setSendInfo Impl 성공")
+            Timber.e("onboarding setSendInfo Impl 성공")
         }
 
     override suspend fun setReceiveInfo(receiveInfoRequestDto: ReceiveInfoRequestDto): Result<ReceiveInfoResponseDto> =
         runCatching {
             onboardingRemoteDataSource.setReceiveInfo(receiveInfoRequestDto)
         }.onSuccess {
-            Log.e("yeonjin", "onboarding setReceiveInfo Impl 성공")
+            Timber.d("onboarding setReceiveInfo Impl 성공")
         }.onFailure {
-            Log.e("yeonjin", "onboarding setReceiveInfo Impl 성공")
+            Timber.e("onboarding setReceiveInfo Impl 성공")
         }
 }

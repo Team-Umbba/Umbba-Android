@@ -23,10 +23,8 @@ class NotifyTimeActivity :
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
-            // 알림권한 허용 o
             Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
         } else {
-            // 알림권한 허용 x
             Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
         }
     }
@@ -72,7 +70,6 @@ class NotifyTimeActivity :
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
                 Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
                 Snackbar.make(binding.root, R.string.if_allow_notification, Snackbar.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:"+ this.packageName))
                 startActivity(intent)

@@ -124,19 +124,11 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             }
             if (userData != null) {
                 saveInfo(userData)
-                if (!userData.isReceiver) { //초대하는 사람
-                    Log.e(
-                        "yeonjin",
-                        "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}"
-                    )
+                if (!userData.isReceiver) {
                     startActivity(Intent(this, SelectFamilyActivity::class.java).apply {
                         putExtra("userData", userData)
                     })
-                } else { //초대받는 사람
-                    Log.e(
-                        "yeonjin",
-                        "inputInfo parcelable : ${userData?.isReceiver} + ${userData?.name} + ${userData?.gender} + ${userData?.bornYear}"
-                    )
+                } else {
                     startActivity(Intent(this, QuestActivity::class.java).apply {
                         putExtra("userData", userData)
                     })

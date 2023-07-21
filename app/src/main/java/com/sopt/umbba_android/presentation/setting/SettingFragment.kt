@@ -31,7 +31,6 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private val notificationSettingsLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            // 앱의 설정 화면으로 이동한 후 결과를 처리하는 로직
             setSwitchNotification()
         }
 

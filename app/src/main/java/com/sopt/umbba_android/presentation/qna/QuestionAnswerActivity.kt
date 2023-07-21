@@ -35,7 +35,7 @@ class QuestionAnswerActivity :
 
     private fun observeQnaViewFlag() {
         val qnaId = intent.getLongExtra("questionId", -1)
-        Timber.e("qnaId activity에서 $qnaId")
+        Timber.d("qnaId activity에서 $qnaId")
         if (qnaId == -1L) {
             viewModel.getQuestionAnswer()
             viewModel.isBeforeList.value = false

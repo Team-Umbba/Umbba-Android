@@ -24,7 +24,6 @@ class CommunicationActivity : BindingActivity<ActivityCommunicationBinding>(R.la
             } else {
                 intent.getParcelableExtra<User>("userData")
             }
-            Log.e("yeonjin", "communication parcelable : ${userData?.isReceiver}")
             startActivity(Intent(this, InputInfoActivity::class.java).apply {
                 putExtra("userData", userData)
             })

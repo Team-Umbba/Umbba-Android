@@ -33,7 +33,7 @@ class ListQuestionAdapter(private val itemClick: (ListResponseDto.ListData) -> (
                 tvTopic.text = data.topic
                 root.setOnSingleClickListener {
                     itemClick(data)
-                    Timber.e("아이템 클릭 이벤트 발생")
+                    Timber.d("아이템 클릭 이벤트 발생")
                 }
             }
         }

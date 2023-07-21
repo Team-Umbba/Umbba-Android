@@ -9,6 +9,7 @@ import com.sopt.umbba_android.data.model.request.SendInfoRequestDto
 import com.sopt.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.sopt.umbba_android.domain.entity.User
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class SetTimeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl): ViewModel() {
 
@@ -27,12 +28,12 @@ class SetTimeViewModel(private val onboardingRepositoryImpl: OnboardingRepositor
                     onboardingAnswerList = quest
                 )
             ).onSuccess {
-                Log.e("yeonjin", "setSendInfo 성공")
                 _isPostSuccess.value = true
+                Timber.d("setSendInfo 성공")
 
             }.onFailure { error ->
-                Log.e("yeonjin", "setSendInfo 실패 " + error.message + error)
                 _isPostSuccess.value = false
+                Timber.e("setSendInfo 실패 $error")
             }
         }
     }

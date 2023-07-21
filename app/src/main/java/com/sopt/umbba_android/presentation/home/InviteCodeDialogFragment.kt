@@ -22,6 +22,7 @@ import com.kakao.sdk.template.model.Link
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
 import com.sopt.umbba_android.util.setOnSingleClickListener
+import timber.log.Timber
 
 class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) : DialogFragment() {
 
@@ -73,17 +74,17 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
         binding.btnSendInvitation.setOnSingleClickListener {
             val defaultFeed = FeedTemplate(
                 content = Content(
-                    title = "${inviteUserName}으로부터 초대가 왔어요.\n초대 코드 : $inviteCode",
-                    description = "과거로 떠나 함께 추억을 나누고,\n공감대를 형성해보세요.",
-                    imageUrl =  "https://github.com/Team-Umbba/Umbba-iOS/assets/75068759/64ba7265-9148-4f06-8235-de5f4030e92f",
+                    title = getString(R.string.kakao_title, inviteUserName, inviteCode),
+                    description = getString(R.string.kakao_description),
+                    imageUrl =  getString(R.string.kakao_image_url),
                     link = Link(
-                        webUrl = "https://developers.kakao.com",
-                        mobileWebUrl = "https://developers.kakao.com"
+                        webUrl = getString(R.string.kakao_link),
+                        mobileWebUrl = getString(R.string.kakao_link)
                     )
                 ),
                 buttons = listOf(
                     Button(
-                        "초대 받기",
+                        getString(R.string.kakao_button),
                         Link(
                             androidExecutionParams = mapOf("key1" to "value1", "key2" to "value2"),
                             iosExecutionParams = mapOf("key1" to "value1", "key2" to "value2")
@@ -95,13 +96,13 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
             if (ShareClient.instance.isKakaoTalkSharingAvailable(requireContext())) {
                 ShareClient.instance.shareDefault(requireContext(), defaultFeed) { sharingResult, error ->
                     if (error != null) {
-                        Log.e("yeonjin", "카카오톡 공유 실패", error)
+                        Timber.e(error, "카카오톡 공유 실패")
                     } else if (sharingResult != null) {
-                        Log.e("yeonjin", "카카오톡 공유 성공 ${sharingResult.intent}")
+                        Timber.d("카카오톡 공유 성공 " + sharingResult.intent)
                         startActivity(sharingResult.intent)
 
-                        Log.w("yeonjin", "Warning Msg: ${sharingResult.warningMsg}")
-                        Log.w("yeonjin", "Argument Msg: ${sharingResult.argumentMsg}")
+                        Timber.w("Warning Msg: " + sharingResult.warningMsg)
+                        Timber.w("Argument Msg: " + sharingResult.argumentMsg)
                     }
                 }
             } else {

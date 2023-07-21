@@ -22,8 +22,9 @@ class ListViewModel(private val listRepositoryImpl: ListRepositoryImpl) : ViewMo
         viewModelScope.launch {
             listRepositoryImpl.getListData(sectionId).onSuccess { response ->
                 _listResponse.value = response.data
+                Timber.d("getList 성공")
             }.onFailure { error ->
-                Timber.e("getList 실패  " + error.message)
+                Timber.e("getList 실패 $error")
             }
         }
     }

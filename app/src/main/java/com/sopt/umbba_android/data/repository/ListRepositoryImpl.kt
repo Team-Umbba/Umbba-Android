@@ -10,8 +10,8 @@ class ListRepositoryImpl(private val listRemoteDataSource: ListRemoteDataSource)
         runCatching {
             listRemoteDataSource.getListData(sectionId)
         }.onSuccess {
-            Timber.e("get list data 성공~")
+            Timber.d("get list data 성공")
         }.onFailure {
-            Timber.e("get list data 실패 크라잉 . . . ")
+            Timber.e("get list data 실패")
         }
 }

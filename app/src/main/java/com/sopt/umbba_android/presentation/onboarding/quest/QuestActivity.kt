@@ -61,7 +61,6 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
             getString(R.string.no) -> viewModel.isClickedNo.value = true
             getString(R.string.ambiguous) -> viewModel.isClickedAmbiguous.value = true
         }
-        Log.d("viewmodel", "pop stack : ${count}번 : ${quest[count].toString()}")
     }
 
     private fun initFragment(fragment: Fragment) {
@@ -86,10 +85,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
 
     private fun clickNextButton() {
         binding.btnNext.setOnSingleClickListener {
-            Log.d("viewmodel", "chipText : ${viewModel.clickedChipText.value.toString()}")
-            Log.d("viewmodel", "count : ${count}")
             quest[count] = viewModel.clickedChipText.value.toString()
-            Log.d("viewmodel", "배열 값 : ${quest[count]}")
             initChip()
             count += 1
             when (count) {
@@ -122,26 +118,22 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     }
 
     private fun goNextActivity() {
-        Log.e("yeonjin", "${quest[0]}${quest[1]}${quest[2]}${quest[3]}${quest[4]}")
         val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("userData", User::class.java)
         } else {
             intent.getParcelableExtra<User>("userData")
         }
         if (userData != null && !userData.isReceiver) {
-            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
             startActivity(Intent(this, SetTimeActivity::class.java).apply {
                 putExtra("questData", quest)
                 putExtra("userData", userData)
             })
         } else {
-            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
             setQuestList(quest)
             viewModel.setReceiveInfo(userData, questList)
             viewModel.isPostSuccess.observe(this) {
                 if (it) {
                     val time = viewModel.notifyTime.value
-                    Log.e("yeonjin", "server 연결 : $time")
                     startActivity(Intent(this, NotifyTimeActivity::class.java).apply {
                         putExtra("time", time)
                     })

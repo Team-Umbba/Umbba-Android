@@ -33,14 +33,14 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
         viewModelScope.launch {
             questionAnswerRepositoryImpl.getQuestionAnswer()
                 .onSuccess { response ->
-                    Timber.e( "getQuestionAnswer 성공")
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                     appbarSection.value = response.data.section.toString()
+                    Timber.d( "getQuestionAnswer 성공")
                 }.onFailure { error ->
-                    Timber.e("getQuestionAnswer 실패  " + error.message)
+                    Timber.e("getQuestionAnswer 실패 $error")
                 }
         }
     }
@@ -54,7 +54,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                     Timber.e( "getListQuestionAnswer 성공")
                 }.onFailure { error ->
-                    Timber.e( "getListQuestionAnswer 실패" + error.message)
+                    Timber.e("getListQuestionAnswer 실패 $error")
                 }
         }
     }

@@ -75,11 +75,9 @@ class InviteCodeActivity :
     private fun setFamilyToInviteCode() {
         binding.btnNext.setOnSingleClickListener {
             val code = binding.etCode.text.toString()
-            Log.e("yeonjin", "초대코드 입력 : $code")
             viewModel.setFamily(code)
             viewModel.isCodeSuccess.observe(this) {
                 if (it) {
-                    Log.e("yeonjin", "관계 연결 성공")
                     setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goCommunicationActivity()
                 } else {
@@ -95,7 +93,6 @@ class InviteCodeActivity :
         } else {
             intent.getParcelableExtra<User>("userData")
         }
-        Log.e("yeonjin", "inviteCode parcelable : ${userData?.isReceiver}")
         startActivity(Intent(this, CommunicationActivity::class.java).apply {
             putExtra("userData", userData)
         })

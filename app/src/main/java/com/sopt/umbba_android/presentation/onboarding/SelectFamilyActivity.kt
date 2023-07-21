@@ -95,7 +95,6 @@ class SelectFamilyActivity :
             if (userData != null) {
                 saveInfo(userData)
             }
-            Log.e("yeonjin", "selectFamily parcelable : ${userData?.isReceiver} + ${userData?.isInvitorChild} + ${userData?.relationInfo}")
             startActivity(Intent(this, QuestActivity::class.java).apply {
                 putExtra("userData", userData)
             })

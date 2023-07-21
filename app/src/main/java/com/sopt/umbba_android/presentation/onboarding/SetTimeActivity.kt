@@ -35,11 +35,9 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                // 알림권한 허용 o
-                Snackbar.make(binding.root, "알림 권한이 허용되었습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
             } else {
-                // 알림권한 허용 x
-                Snackbar.make(binding.root, "알림 권한이 없습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
             }
         }
 
@@ -76,7 +74,6 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             ) {
                 Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
                 Snackbar.make(
                     binding.root,
                     R.string.if_allow_notification,
@@ -124,9 +121,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             } else {
                 intent.getParcelableExtra<User>("userData")
             }
-            Log.e("yeonjin", "setTime parcelables : $userData")
             setTime()
-            Log.e("yeonjin", "설정 시간 : $time")
             val questData = intent.getStringArrayExtra("questData")
             setQuestList(questData)
             viewModel.setSendInfo(userData, time, questList)
