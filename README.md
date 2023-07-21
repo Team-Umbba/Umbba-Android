@@ -16,7 +16,8 @@
 ✅ [Github Convention](https://harsh-step-7dd.notion.site/af9cf86fd48b4ddb9a210fbcaa864c87?pvs=4)<br> 
 ✅ [Branch Convention](https://harsh-step-7dd.notion.site/b352a5c4a8c24ee88f066fa09866e93d?pvs=4)<br> 
 
-
+### 📸 ScreenShot
+[ScreenShot](https://harsh-step-7dd.notion.site/a1a44b35fd6d42e2aad95d22fcf1efcf?pvs=4)
 ### 📁 Foldering
 ```
 📂 com.sopt.umbba_android
