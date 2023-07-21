@@ -1,12 +1,10 @@
 package com.sopt.umbba_android.presentation.list
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sopt.umbba_android.data.model.response.ExampleResponseDto
 import com.sopt.umbba_android.data.model.response.ListResponseDto
 import com.sopt.umbba_android.databinding.ItemQuestionListBinding
 import timber.log.Timber
