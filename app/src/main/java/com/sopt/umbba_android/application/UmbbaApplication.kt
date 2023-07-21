@@ -9,9 +9,9 @@ import com.sopt.umbba_android.data.local.SharedPreferences
 class UmbbaApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         initKakao()
         setupSharedPreferences()
+        stopDarkMode()
     }
 
     private fun initKakao() {
@@ -20,5 +20,9 @@ class UmbbaApplication: Application() {
 
     private fun setupSharedPreferences() {
         SharedPreferences.init(this)
+    }
+
+    private fun stopDarkMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 }
