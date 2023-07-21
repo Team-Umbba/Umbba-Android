@@ -76,10 +76,10 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
                 content = Content(
                     title = getString(R.string.kakao_title, inviteUserName, inviteCode),
                     description = getString(R.string.kakao_description),
-                    imageUrl =  getString(R.string.kakao_image_url),
+                    imageUrl = "https://github.com/Team–Umbba/Umbba–iOS/assets/75068759/64ba7265–9148–4f06–8235-de5f4030e92f",
                     link = Link(
-                        webUrl = getString(R.string.kakao_link),
-                        mobileWebUrl = getString(R.string.kakao_link)
+                        webUrl = "https://developers.kakao.com",
+                        mobileWebUrl = "https://developers.kakao.com"
                     )
                 ),
                 buttons = listOf(
