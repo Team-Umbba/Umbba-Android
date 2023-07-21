@@ -57,9 +57,9 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
 
     private fun setBeforeButtonClick(count: Int) {
         when (quest[count].toString()) {
-            "응" -> viewModel.isClickedYes.value = true
-            "아니" -> viewModel.isClickedNo.value = true
-            "애매해" -> viewModel.isClickedAmbiguous.value = true
+            getString(R.string.yes) -> viewModel.isClickedYes.value = true
+            getString(R.string.no) -> viewModel.isClickedNo.value = true
+            getString(R.string.ambiguous) -> viewModel.isClickedAmbiguous.value = true
         }
         Log.d("viewmodel", "pop stack : ${count}번 : ${quest[count].toString()}")
     }

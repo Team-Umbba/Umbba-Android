@@ -74,12 +74,12 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
                     Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                Snackbar.make(binding.root, "알림 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
                 // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
                 Snackbar.make(
                     binding.root,
-                    "알림 권한을 설정하면 답변 작성 요청 알림을 받아볼 수 있습니다.",
+                    R.string.if_allow_notification,
                     Snackbar.LENGTH_SHORT
                 ).show()
                 val intent =
@@ -136,7 +136,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
                     setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     startActivity(Intent(this, OnboardingFinishActivity::class.java))
                 } else {
-                    Snackbar.make(binding.root, "정보 등록에 실패했습니다.", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }

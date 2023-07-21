@@ -83,7 +83,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                     Intent(
                         Intent.ACTION_VIEW,
                         Uri.parse(getString(R.string.notion_privacy_notice))
-                    ) //공지사항 바꾸기
+                    )
                 )
             }
         }

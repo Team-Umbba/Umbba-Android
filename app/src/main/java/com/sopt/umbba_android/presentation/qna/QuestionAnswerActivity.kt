@@ -35,7 +35,7 @@ class QuestionAnswerActivity :
 
     private fun observeQnaViewFlag() {
         val qnaId = intent.getLongExtra("questionId", -1)
-        Timber.e( "qnaId activity에서" + qnaId.toString())
+        Timber.e("qnaId activity에서 $qnaId")
         if (qnaId == -1L) {
             viewModel.getQuestionAnswer()
             viewModel.isBeforeList.value = false
@@ -118,7 +118,7 @@ class QuestionAnswerActivity :
                     this@QuestionAnswerActivity,
                     R.drawable.shape_pri500_btn_stroke_r50_rect
                 )
-                btnAnswer.text = "홈으로"
+                btnAnswer.text = getString(R.string.home)
                 btnAnswer.setOnSingleClickListener {
                     finish()
                 }

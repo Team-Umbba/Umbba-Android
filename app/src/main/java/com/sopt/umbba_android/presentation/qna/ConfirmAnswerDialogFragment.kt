@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.request.AnswerRequestDto
 import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
 import com.sopt.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
@@ -63,7 +64,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
                 dismiss()
             }
             btnConfirm.setOnSingleClickListener {
-                Snackbar.make(binding.root, "답변이 전송되었습니다.", Toast.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.post_answer, Toast.LENGTH_SHORT).show()
                 viewModel.postAnswer(AnswerRequestDto(arguments?.getString("answer")))
             }
         }

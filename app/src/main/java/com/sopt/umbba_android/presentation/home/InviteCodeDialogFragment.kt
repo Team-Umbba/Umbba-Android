@@ -19,6 +19,7 @@ import com.kakao.sdk.template.model.Button
 import com.kakao.sdk.template.model.Content
 import com.kakao.sdk.template.model.FeedTemplate
 import com.kakao.sdk.template.model.Link
+import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
 import com.sopt.umbba_android.util.setOnSingleClickListener
 
@@ -64,7 +65,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
                 requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(requireActivity(), "초대 코드가 복사되었습니다", Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.copy_invite_code_snackbar, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -104,7 +105,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
                     }
                 }
             } else {
-                Snackbar.make(binding.root, "카카오톡을 설치해주세요.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.install_kakaotalk, Snackbar.LENGTH_SHORT).show()
             }
         }
     }

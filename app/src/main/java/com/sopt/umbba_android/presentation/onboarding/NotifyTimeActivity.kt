@@ -24,10 +24,10 @@ class NotifyTimeActivity :
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
         if (isGranted) {
             // 알림권한 허용 o
-            Snackbar.make(binding.root, "알림 권한이 허용되었습니다.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
         } else {
             // 알림권한 허용 x
-            Snackbar.make(binding.root, "알림 권한이 없습니다.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
         }
     }
 
@@ -53,27 +53,27 @@ class NotifyTimeActivity :
         val minute = time.substring(3, 5)
         var hourText = ""
         when (hour) {
-            1, 2, 3, 4, 5 -> hourText = "새벽"
-            6, 7, 8, 9, 10, 11 -> hourText = "아침"
-            12, 13, 14, 15, 16, 17 -> hourText = "낮"
-            18, 19, 20 -> hourText = "저녁"
-            21, 22, 23, 24 -> hourText = "밤"
+            1, 2, 3, 4, 5 -> hourText = getString(R.string.dawn)
+            6, 7, 8, 9, 10, 11 -> hourText = getString(R.string.morning)
+            12, 13, 14, 15, 16, 17 -> hourText = getString(R.string.day)
+            18, 19, 20 -> hourText = getString(R.string.evening)
+            21, 22, 23, 24 -> hourText = getString(R.string.night)
         }
         if (hour >= 13) { hour %= 12 }
         if (minute == "00") {
-            binding.tvTitle.text = "매일 ${hourText} ${hour}시에\n교신을 보내줄게"
+            binding.tvTitle.text = getString(R.string.everyday_notification, hourText, hour)
         } else {
-            binding.tvTitle.text = "매일 ${hourText} ${hour}시 반에\n교신을 보내줄게"
+            binding.tvTitle.text = getString(R.string.everyday_notification_half, hourText, hour)
         }
     }
 
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                Snackbar.make(binding.root, "알림 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
                 // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
-                Snackbar.make(binding.root, "알림 권한을 설정하면 답변 작성 요청 알림을 받아볼 수 있습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.if_allow_notification, Snackbar.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:"+ this.packageName))
                 startActivity(intent)
                 this.finish()

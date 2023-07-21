@@ -83,7 +83,7 @@ class InviteCodeActivity :
                     setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goCommunicationActivity()
                 } else {
-                    Snackbar.make(binding.root, "유효하지 않은 초대코드 입니다.", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.invalid_invite_code, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
