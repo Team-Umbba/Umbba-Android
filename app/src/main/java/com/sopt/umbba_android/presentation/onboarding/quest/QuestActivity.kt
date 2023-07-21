@@ -10,8 +10,13 @@ import com.sopt.umbba_android.R
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import com.sopt.umbba_android.data.local.SharedPreferences
+import com.sopt.umbba_android.data.local.SharedPreferences.setOnboardingBoolean
 import com.sopt.umbba_android.databinding.ActivityQuestBinding
 import com.sopt.umbba_android.domain.entity.User
+import com.sopt.umbba_android.presentation.login.LoginActivity
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.sopt.umbba_android.presentation.onboarding.SetTimeActivity
 import com.sopt.umbba_android.util.ViewModelFactory
@@ -134,6 +139,8 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
             viewModel.isPostSuccess.observe(this) {
                 if (it) {
                     val time = viewModel.notifyTime.value
+                    setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+                    setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     startActivity(Intent(this, NotifyTimeActivity::class.java).apply {
                         putExtra("time", time)
                     })
