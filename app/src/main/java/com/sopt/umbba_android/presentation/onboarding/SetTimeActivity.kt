@@ -22,6 +22,7 @@ import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USE
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SetTimeViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import com.sopt.umbba_android.util.setTimeInterval
 
 class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activity_set_time),
@@ -34,11 +35,9 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                // 알림권한 허용 o
-                Snackbar.make(binding.root, "알림 권한이 허용되었습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
             } else {
-                // 알림권한 허용 x
-                Snackbar.make(binding.root, "알림 권한이 없습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
             }
         }
 
@@ -73,12 +72,11 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
                     Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                Snackbar.make(binding.root, "알림 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
                 Snackbar.make(
                     binding.root,
-                    "알림 권한을 설정하면 답변 작성 요청 알림을 받아볼 수 있습니다.",
+                    R.string.if_allow_notification,
                     Snackbar.LENGTH_SHORT
                 ).show()
                 val intent =
@@ -95,7 +93,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
         val hour =
             if (binding.tpTime.hour == 0) {
                 "24"
-            } else if (binding.tpTime.hour >= 1 || binding.tpTime.hour <= 9){
+            } else if (binding.tpTime.hour in 1..9){
                 "0${binding.tpTime.hour}"
             } else {
                 binding.tpTime.hour
@@ -116,16 +114,14 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     }
 
     private fun goOnboardingFinishActivity() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             askNotificationPermission()
             val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra("userData", User::class.java)
             } else {
                 intent.getParcelableExtra<User>("userData")
             }
-            Log.e("yeonjin", "setTime parcelables : $userData")
             setTime()
-            Log.e("yeonjin", "설정 시간 : $time")
             val questData = intent.getStringArrayExtra("questData")
             setQuestList(questData)
             viewModel.setSendInfo(userData, time, questList)
@@ -135,7 +131,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
                     setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     startActivity(Intent(this, OnboardingFinishActivity::class.java))
                 } else {
-                    Snackbar.make(binding.root, "정보 등록에 실패했습니다.", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }

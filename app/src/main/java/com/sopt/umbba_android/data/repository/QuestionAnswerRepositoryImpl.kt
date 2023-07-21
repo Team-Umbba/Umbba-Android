@@ -14,26 +14,26 @@ class QuestionAnswerRepositoryImpl(private val questionAnswerRemoteDataSource: Q
         runCatching {
             questionAnswerRemoteDataSource.getQuestionAnswer()
         }.onSuccess {
-            Timber.e("문답 data get 성공")
+            Timber.d("문답 data get 성공")
         }.onFailure {
-            Timber.e("문답 data get 실패 크라잉. . . ")
+            Timber.e("문답 data get 실패")
         }
 
     override suspend fun getListQuestionAnswer(qnaId: Long): Result<ListQuestionAnswerResponseDto> =
         runCatching {
             questionAnswerRemoteDataSource.getListQuestionAnswer(qnaId)
         }.onSuccess {
-            Timber.e("list qna data get 성공")
+            Timber.d("list qna data get 성공")
         }.onFailure {
-            Timber.e("list qna data get 시이일패")
+            Timber.e("list qna data get 실패")
         }
 
     override suspend fun postAnswer(answerRequestDto: AnswerRequestDto):Result<AnswerResponseDto> =
         runCatching {
             questionAnswerRemoteDataSource.postAnswer(answerRequestDto)
         }.onSuccess {
-            Timber.e("답변 data post 성공")
+            Timber.d("답변 data post 성공")
         }.onFailure {
-            Timber.e("답변 data post 실패 크라잉. . . ")
+            Timber.e("답변 data post 실패")
         }
 }

@@ -11,6 +11,7 @@ import com.sopt.umbba_android.presentation.list.viewmodel.ListViewModel
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingFragment
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list) {
     private val viewModel: ListViewModel by viewModels { ViewModelFactory(requireActivity()) }
@@ -40,27 +41,27 @@ class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list
 
     private fun setChipClickEvent() {
         with(binding) {
-            chip1.setOnClickListener {
+            chip1.setOnSingleClickListener {
                 viewModel.getListData(1)
                 tvSection.text = chip1.text
                 ivImage.load(R.drawable.bg_list_img1)
             }
-            chip2.setOnClickListener {
+            chip2.setOnSingleClickListener {
                 viewModel.getListData(2)
                 tvSection.text = chip2.text
                 ivImage.load(R.drawable.bg_list_img2)
             }
-            chip3.setOnClickListener {
+            chip3.setOnSingleClickListener {
                 viewModel.getListData(3)
                 tvSection.text = chip3.text
                 ivImage.load(R.drawable.bg_list_img3)
             }
-            chip4.setOnClickListener {
+            chip4.setOnSingleClickListener {
                 viewModel.getListData(4)
                 tvSection.text = chip4.text
                 ivImage.load(R.drawable.bg_list_img4)
             }
-            chip5.setOnClickListener {
+            chip5.setOnSingleClickListener {
                 viewModel.getListData(5)
                 tvSection.text = chip5.text
                 ivImage.load(R.drawable.bg_list_img5)

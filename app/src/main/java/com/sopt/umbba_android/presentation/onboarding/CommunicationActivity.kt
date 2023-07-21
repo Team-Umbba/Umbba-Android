@@ -8,6 +8,7 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityCommunicationBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class CommunicationActivity : BindingActivity<ActivityCommunicationBinding>(R.layout.activity_communication) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,13 +18,12 @@ class CommunicationActivity : BindingActivity<ActivityCommunicationBinding>(R.la
     }
 
     private fun goInputInfoActivity() {
-        binding.btnStart.setOnClickListener {
+        binding.btnStart.setOnSingleClickListener {
             val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra("userData", User::class.java)
             } else {
                 intent.getParcelableExtra<User>("userData")
             }
-            Log.e("yeonjin", "communication parcelable : ${userData?.isReceiver}")
             startActivity(Intent(this, InputInfoActivity::class.java).apply {
                 putExtra("userData", userData)
             })

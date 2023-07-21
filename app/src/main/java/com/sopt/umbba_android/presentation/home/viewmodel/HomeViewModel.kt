@@ -29,7 +29,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
-                    Timber.e("getHomeData 성공")
+                    Timber.d("getHomeData 성공")
                     _homeData.value = response.data
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                 }.onFailure { error ->
@@ -43,7 +43,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
             homeRepositoryImpl.getResponseCase()
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
-                    Timber.e("getResponseCode 성공")
+                    Timber.d("getResponseCode 성공")
                 }.onFailure { error ->
                     Timber.e("getResponseCode 실패  " + error.message)
                 }

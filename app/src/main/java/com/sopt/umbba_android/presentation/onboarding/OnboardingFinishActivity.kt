@@ -10,6 +10,7 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityOnboardingFinishBinding
 import com.sopt.umbba_android.presentation.MainActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class OnboardingFinishActivity :
     BindingActivity<ActivityOnboardingFinishBinding>(R.layout.activity_onboarding_finish) {
@@ -22,10 +23,10 @@ class OnboardingFinishActivity :
     }
 
     private fun goBack() {
-        binding.btnBack1.setOnClickListener {
+        binding.btnBack1.setOnSingleClickListener {
             finish()
         }
-        binding.btnBack2.setOnClickListener {
+        binding.btnBack2.setOnSingleClickListener {
             finish()
         }
     }
@@ -48,12 +49,12 @@ class OnboardingFinishActivity :
     }
 
     private fun goMainActivity() {
-        binding.btnStart.setOnClickListener {
+        binding.btnStart.setOnSingleClickListener {
             startActivity(
                 Intent(
                     this,
                     MainActivity::class.java
-                ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             )
         }
     }

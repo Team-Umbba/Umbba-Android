@@ -10,6 +10,7 @@ import com.sopt.umbba_android.data.model.request.LoginRequestDto
 import com.sopt.umbba_android.data.model.response.LoginResponseDto
 import com.sopt.umbba_android.data.repository.LoginRepositoryImpl
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : ViewModel() {
 
@@ -19,17 +20,16 @@ class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : Vie
 
     fun login(fcmToken: String) {
         viewModelScope.launch {
-            Log.e("yeonjin", "서버 연결 : fcmToken.$fcmToken")
             loginRepositoryImpl.postLogin(
                 LoginRequestDto(
                     "KAKAO",
                     fcmToken
                 )
             ).onSuccess { response ->
-                Log.e("yeonjin", "login 성공")
+                Timber.d("login 성공")
                 _getTokenResult.value = response.data.tokenDto
             }.onFailure { error ->
-                Log.e("yeonjin", "login 실패 " + error.message)
+                Timber.e("login 실패 $error")
             }
         }
     }

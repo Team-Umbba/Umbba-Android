@@ -13,21 +13,18 @@ class AuthInterceptor : Interceptor {
 
         val token = if (SharedPreferences.getString(USER_TOKEN).isNullOrBlank()) {
             SharedPreferences.getKakaoString(USER_KAKAO_TOKEN)
-            // 저장된 서버 액세스 토큰이 없다면 카카오 토큰 전송 -> 회원가입
         } else {
             "Bearer ${SharedPreferences.getString(USER_TOKEN)}"
-            // 저장된 서버 액세스 토큰이 있다면 Bearer 붙여서 전송 -> 로그인
         }
 
         val originalRequest = chain.request()
 
-        val headerRequest = originalRequest.newBuilder() // 헤더를 추가한 req
+        val headerRequest = originalRequest.newBuilder()
             .header(
                 "Authorization",
                 "$token"
             )
             .build()
-        Log.e("yeonjin", "헤더 $token")
         return chain.proceed(headerRequest)
     }
 }

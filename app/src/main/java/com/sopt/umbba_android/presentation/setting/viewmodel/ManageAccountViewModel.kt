@@ -16,11 +16,11 @@ class ManageAccountViewModel(private val settingRepositoryImpl: SettingRepositor
         viewModelScope.launch {
             settingRepositoryImpl.logout()
                 .onSuccess { response ->
-                    Timber.e("viewmodel logout 성공")
                     responseStatus.value = response.status
+                    Timber.d("viewmodel logout 성공")
                 }.onFailure { error ->
-                    Timber.e( "viewmodel logout 실패 " + error.message)
                     responseStatus.value = -1
+                    Timber.e("viewmodel logout 실패 $error")
                 }
         }
         return responseStatus.value

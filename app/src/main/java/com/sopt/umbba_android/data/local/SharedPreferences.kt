@@ -38,19 +38,18 @@ object SharedPreferences {
         return preferences.getString(key, null)
     }
 
-    //토큰 저장
     fun setString(key: String, value: String?) {
         preferences.edit { putString(key, value) }
     }
-    //토큰 가져오기 - 자동 로그인 확인
+
     fun getString(key: String): String? {
         return preferences.getString(key, null)
     }
-    //온보딩 완료 상태 저장
+
     fun setOnboardingBoolean(key: String, value: Boolean) {
         preferences.edit { putBoolean(key, value) }
     }
-    //온보딩 완료했는지 가져오기 - 온보딩 완료 확인
+
     fun getOnboardingBoolean(key: String): Boolean {
         return preferences.getBoolean(key, false)
     }

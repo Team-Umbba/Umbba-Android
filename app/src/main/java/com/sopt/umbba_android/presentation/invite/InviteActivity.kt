@@ -8,6 +8,8 @@ import com.sopt.umbba_android.databinding.ActivityInviteBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
+import timber.log.Timber
 
 class InviteActivity : BindingActivity<ActivityInviteBinding>(R.layout.activity_invite) {
 
@@ -19,10 +21,8 @@ class InviteActivity : BindingActivity<ActivityInviteBinding>(R.layout.activity_
     }
 
     private fun goCommunicationActivity() {
-        // 초대하는 측
-        binding.btnStart.setOnClickListener {
+        binding.btnStart.setOnSingleClickListener {
             val userData = User(isReceiver = false)
-            Log.e("yeonjin", "invite parcelable : ${userData.isReceiver}")
             startActivity(Intent(this, CommunicationActivity::class.java).apply {
                 putExtra("userData", userData)
             })
@@ -30,10 +30,8 @@ class InviteActivity : BindingActivity<ActivityInviteBinding>(R.layout.activity_
     }
 
     private fun goInviteCodeActivity() {
-        // 초대받는 측
-        binding.btnInputCode.setOnClickListener {
+        binding.btnInputCode.setOnSingleClickListener {
             val userData = User(isReceiver = true)
-            Log.e("yeonjin", "invite parcelable : ${userData.isReceiver}")
             startActivity(Intent(this, InviteCodeActivity::class.java).apply {
                 putExtra("userData", userData)
             })

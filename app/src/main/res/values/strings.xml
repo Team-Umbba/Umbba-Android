@@ -6,6 +6,7 @@
     <!--invite code activity-->
     <string name="invite_code_hint">ex) ORWO-11yzwx</string>
     <string name="invite_code_title">초대코드를 입력해줘</string>
+    <string name="invalid_invite_code">유효하지 않은 초대코드 입니다.</string>
 
     <!--login activity-->
     <string name="app_title">엄빠도 어렸다</string>
@@ -27,6 +28,9 @@
     <string name="please_input_name">ex) 홍길동</string>
     <string name="when_is_your_birth_year">태어난 연도는 언제야?</string>
     <string name="please_input_birth_year">ex) 1988</string>
+    <string name="input_error">*형식이 올바르지 않습니다.</string>
+    <string name="input_error_max_seven">*7글자 이하로 작성해주세요.</string>
+    <string name="input_error_limit_four">*4글자로 작성해주세요.</string>
 
     <!-- input invite code activity-->
     <string name="input_code_error">*올바른 초대코드 형식이 아닙니다.</string>
@@ -45,12 +49,24 @@
     <!-- set time activity-->
     <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
     <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드려요</string>
+    <string name="fail_information_post">정보 등록에 실패했습니다.</string>
 
     <!-- notify time activity-->
     <string name="timemachine_description">오늘부터 매일, 과거로 시간 여행을 떠날 거야</string>
     <string name="time_description">초대자가 선택한 시간에 따라 푸시 알림을 보내드려요</string>
     <string name="go_past">과거로 떠나기</string>
     <string name="go_past_title">매일 밤 11시에\n교신을 보내줄게</string>
+    <string name="allow_notification">알림 권한이 허용되었습니다.</string>
+    <string name="not_allow_notification">알림 권한이 없습니다.</string>
+    <string name="allowing_notification">알림 권한이 허용되어 있습니다.</string>
+    <string name="if_allow_notification">알림 권한을 설정하면 답변 작성 요청 알림을 받아볼 수 있습니다.</string>
+    <string name="dawn">새벽</string>
+    <string name="morning">아침</string>
+    <string name="day">낮</string>
+    <string name="evening">저녁</string>
+    <string name="night">밤</string>
+    <string name="everyday_notification">매일 %s %d시에\n교신을 보내줄게</string>
+    <string name="everyday_notification_half">매일 %s %d시 반에\n교신을 보내줄게</string>
 
     <!-- quest activity-->
     <string name="quest_progressbar_comment">거의 다 왔어! 조금만 힘내줘!</string>
@@ -63,6 +79,9 @@
     <string name="setting_about_umbba">About 엄빠도 어렸다</string>
     <string name="setting_tos">이용약관</string>
     <string name="setting_privacy_notice">개인정보 처리방침</string>
+    <string name="notion_about_umbba">https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9</string>
+    <string name="notion_tos">https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb</string>
+    <string name="notion_privacy_notice">https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4</string>
 
     <!-- answer activity-->
     <string name="answer_edittext_hint">답변을 입력해 주세요</string>
@@ -79,20 +98,34 @@
     <string name="home_question_answer">질문 확인하기</string>
     <string name="answer_me_hint">하단 버튼을 눌러 답변을 입력하세요</string>
     <string name="answer_opponent_hint">상대방은 아직 답변하지 않았어요</string>
+    <string name="home">홈으로</string>
 
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
     <string name="copy_invite_code">초대코드 복사</string>
     <string name="send_invitation">카카오톡으로 초대 보내기</string>
+    <string name="copy_invite_code_snackbar">초대 코드가 복사되었습니다.</string>
+    <string name="install_kakaotalk">카카오톡을 설치해주세요.</string>
+    <string name="kakao_title">%s으로부터 초대가 왔어요.\n초대코드 : %s</string>
+    <string name="kakao_description">과거로 떠나 함께 추억을 나누고,\n공감대를 형성해보세요.</string>
+    <string name="kakao_image_url">https://github.com/Team–Umbba/Umbba–iOS/assets/75068759/64ba7265–9148–4f06–8235-de5f4030e92f</string>
+    <string name="kakao_link">https://developers.kakao.com</string>
+    <string name="kakao_button">초대 받기</string>
 
     <!--confirm answer dialog fragment-->
     <string name="save_answer">답변을 저장하시겠어요?</string>
     <string name="back">돌아가기</string>
     <string name="save">저장</string>
+    <string name="post_answer">답변이 전송되었습니다.</string>
 
     <!--list fragment-->
     <string name="list">리스트</string>
     <string name="question_number">#%d</string>
+    <string name="list_section1"># 어린시절</string>
+    <string name="list_section2"># 학창시절</string>
+    <string name="list_section3"># 청춘시절</string>
+    <string name="list_section4"># 연애시절</string>
+    <string name="list_section5"># 우리가 만나고</string>
 
     <!-- back answer dialog fragment-->
     <string name="back_confirm">답변 작성을 취소하시겠어요?\n작성 중인 답변은 저장되지 않아요</string>
@@ -125,13 +158,19 @@
     <string name="agree_terms_and_condition">[필수] 서비스 이용약관에 동의합니다.</string>
     <string name="agree_privacy">[필수] 개인정보 수집 및 이용에 동의합니다.</string>
     <string name="agree_privacy_description">\'(주)이승준 컴퍼니\'(이하 \'회사\')가 운영하는 \'엄빠도 어렸다\'는 개인정보보호법 제30조 의거 이용자의 개인정보보호와 권익을 보호하고 관련된 고충 및 애로사항을 신속하게 처리하기 위해 아래의 개인정보처리방침을 제정·운영하고 있습니다.</string>
-
+    <string name="terms_and_condition">서비스 이용약관</string>
+    <string name="privacy">개인정보 수집 및 이용</string>
+    
     <!--communication activity-->
     <string name="answer_phone">전화 받기</string>
     <string name="call_description">오래된 공중전화에서 수신음이 들린다</string>
 
     <!--home fragment-->
     <string name="main_topic">#%d %s</string>
+    <string name="section1">어린시절</string>
+    <string name="section2">학창시절</string>
+    <string name="section3">청춘시절</string>
+    <string name="section4">연애시절</string>
 
     <!--quest fragment-->
     <string name="yes">응</string>
@@ -142,25 +181,5 @@
     <string name="quest_3">결혼을 꼭 해야 한다고 생각해?</string>
     <string name="quest_4">뭔가를 크게 포기해본 경험이 있어?</string>
     <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
-
-    <!-- list fragment-->
-    <string name="list_section1"># 어린시절</string>
-    <string name="list_section2"># 학창시절</string>
-    <string name="list_section3"># 청춘시절</string>
-    <string name="list_section4"># 연애시절</string>
-    <string name="list_section5"># 우리가 만나고</string>
-
-    <!-- home fragment class -->
-    <string name="section1">어린시절</string>
-    <string name="section2">학창시절</string>
-    <string name="section3">청춘시절</string>
-    <string name="section4">연애시절</string>
-    <string name="input_error">*형식이 올바르지 않습니다.</string>
-    <string name="input_error_max_seven">*7글자 이하로 작성해주세요.</string>
-    <string name="input_error_limit_four">*4글자로 작성해주세요.</string>
-    <string name="notion_about_umbba">https://brawny-guan-098.notion.site/7b3e5f70a471468f8acbe56a1a4f4ec9</string>
-    <string name="notion_tos">https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb</string>
-    <string name="notion_privacy_notice">https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4</string>
-
 
 </resources>

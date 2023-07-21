@@ -10,12 +10,18 @@ import com.sopt.umbba_android.R
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import com.sopt.umbba_android.data.local.SharedPreferences
+import com.sopt.umbba_android.data.local.SharedPreferences.setOnboardingBoolean
 import com.sopt.umbba_android.databinding.ActivityQuestBinding
 import com.sopt.umbba_android.domain.entity.User
+import com.sopt.umbba_android.presentation.login.LoginActivity
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
+import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.sopt.umbba_android.presentation.onboarding.SetTimeActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_quest),
     View.OnClickListener {
@@ -56,11 +62,10 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
 
     private fun setBeforeButtonClick(count: Int) {
         when (quest[count].toString()) {
-            "응" -> viewModel.isClickedYes.value = true
-            "아니" -> viewModel.isClickedNo.value = true
-            "애매해" -> viewModel.isClickedAmbiguous.value = true
+            getString(R.string.yes) -> viewModel.isClickedYes.value = true
+            getString(R.string.no) -> viewModel.isClickedNo.value = true
+            getString(R.string.ambiguous) -> viewModel.isClickedAmbiguous.value = true
         }
-        Log.d("viewmodel", "pop stack : ${count}번 : ${quest[count].toString()}")
     }
 
     private fun initFragment(fragment: Fragment) {
@@ -84,11 +89,8 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     }
 
     private fun clickNextButton() {
-        binding.btnNext.setOnClickListener {
-            Log.d("viewmodel", "chipText : ${viewModel.clickedChipText.value.toString()}")
-            Log.d("viewmodel", "count : ${count}")
+        binding.btnNext.setOnSingleClickListener {
             quest[count] = viewModel.clickedChipText.value.toString()
-            Log.d("viewmodel", "배열 값 : ${quest[count]}")
             initChip()
             count += 1
             when (count) {
@@ -121,26 +123,24 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     }
 
     private fun goNextActivity() {
-        Log.e("yeonjin", "${quest[0]}${quest[1]}${quest[2]}${quest[3]}${quest[4]}")
         val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("userData", User::class.java)
         } else {
             intent.getParcelableExtra<User>("userData")
         }
         if (userData != null && !userData.isReceiver) {
-            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
             startActivity(Intent(this, SetTimeActivity::class.java).apply {
                 putExtra("questData", quest)
                 putExtra("userData", userData)
             })
         } else {
-            Log.e("yeonjin", "quest parcelable : ${userData?.isReceiver}")
             setQuestList(quest)
             viewModel.setReceiveInfo(userData, questList)
             viewModel.isPostSuccess.observe(this) {
                 if (it) {
                     val time = viewModel.notifyTime.value
-                    Log.e("yeonjin", "server 연결 : $time")
+                    setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+                    setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     startActivity(Intent(this, NotifyTimeActivity::class.java).apply {
                         putExtra("time", time)
                     })

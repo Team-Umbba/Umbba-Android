@@ -30,11 +30,11 @@ class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryI
         viewModelScope.launch {
             questionAnswerRepositoryImpl.postAnswer(answerRequestDto)
                 .onSuccess { reseponse ->
-                    Timber.e( "postAnswer 성공")
                     responseStatus.value = reseponse.status
+                    Timber.d( "postAnswer 성공")
                 }.onFailure { error ->
-                    Timber.e("postAnswer 실패  " + error.message)
                     responseStatus.value = -1
+                    Timber.e("postAnswer 실패 $error")
                 }
         }
     }

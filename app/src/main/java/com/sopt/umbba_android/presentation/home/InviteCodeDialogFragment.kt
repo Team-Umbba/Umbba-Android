@@ -2,7 +2,6 @@ package com.sopt.umbba_android.presentation.home
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.kakao.sdk.share.ShareClient
@@ -23,6 +21,8 @@ import com.kakao.sdk.template.model.FeedTemplate
 import com.kakao.sdk.template.model.Link
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
+import com.sopt.umbba_android.util.setOnSingleClickListener
+import timber.log.Timber
 
 class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) : DialogFragment() {
 
@@ -47,7 +47,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
     }
 
     private fun closeDialog() {
-        binding.btnClose.setOnClickListener {
+        binding.btnClose.setOnSingleClickListener {
             dismiss()
         }
     }
@@ -61,30 +61,30 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
     }
 
     private fun copyInviteCode() {
-        binding.clCopyInviteCode.setOnClickListener {
+        binding.clCopyInviteCode.setOnSingleClickListener {
             val clipboard: ClipboardManager =
                 requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(requireActivity(), "초대 코드가 복사되었습니다", Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.copy_invite_code_snackbar, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun sendInviteCodeWithKakao(inviteUserName: String, inviteCode: String) {
-        binding.btnSendInvitation.setOnClickListener {
+        binding.btnSendInvitation.setOnSingleClickListener {
             val defaultFeed = FeedTemplate(
                 content = Content(
-                    title = "${inviteUserName}으로부터 초대가 왔어요.\n초대 코드 : $inviteCode",
-                    description = "과거로 떠나 함께 추억을 나누고,\n공감대를 형성해보세요.",
-                    imageUrl =  "https://github.com/Team-Umbba/Umbba-iOS/assets/75068759/64ba7265-9148-4f06-8235-de5f4030e92f",
+                    title = getString(R.string.kakao_title, inviteUserName, inviteCode),
+                    description = getString(R.string.kakao_description),
+                    imageUrl =  getString(R.string.kakao_image_url),
                     link = Link(
-                        webUrl = "https://developers.kakao.com",
-                        mobileWebUrl = "https://developers.kakao.com"
+                        webUrl = getString(R.string.kakao_link),
+                        mobileWebUrl = getString(R.string.kakao_link)
                     )
                 ),
                 buttons = listOf(
                     Button(
-                        "초대 받기",
+                        getString(R.string.kakao_button),
                         Link(
                             androidExecutionParams = mapOf("key1" to "value1", "key2" to "value2"),
                             iosExecutionParams = mapOf("key1" to "value1", "key2" to "value2")
@@ -96,17 +96,17 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
             if (ShareClient.instance.isKakaoTalkSharingAvailable(requireContext())) {
                 ShareClient.instance.shareDefault(requireContext(), defaultFeed) { sharingResult, error ->
                     if (error != null) {
-                        Log.e("yeonjin", "카카오톡 공유 실패", error)
+                        Timber.e(error, "카카오톡 공유 실패")
                     } else if (sharingResult != null) {
-                        Log.e("yeonjin", "카카오톡 공유 성공 ${sharingResult.intent}")
+                        Timber.d("카카오톡 공유 성공 " + sharingResult.intent)
                         startActivity(sharingResult.intent)
 
-                        Log.w("yeonjin", "Warning Msg: ${sharingResult.warningMsg}")
-                        Log.w("yeonjin", "Argument Msg: ${sharingResult.argumentMsg}")
+                        Timber.w("Warning Msg: " + sharingResult.warningMsg)
+                        Timber.w("Argument Msg: " + sharingResult.argumentMsg)
                     }
                 }
             } else {
-                Snackbar.make(binding.root, "카카오톡을 설치해주세요.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.install_kakaotalk, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
