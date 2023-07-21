@@ -83,7 +83,8 @@ class NotifyTimeActivity :
     private fun goOnboardingFinishActivity() {
         with(binding) {
             btnGoPast.setOnSingleClickListener {
-                startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java))
+                startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
             }
         }
     }
