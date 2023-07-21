@@ -84,7 +84,7 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun setHyperLinkAndColorInTermsTextView() {
         with(binding) {
-            setHyperLinkToTextView("서비스 이용약관", tvAgreeTermsAndCondition, "https://www.notion.so/f1a14bf60ed4421f9b3761ef88906adb?pvs=4")
+            setHyperLinkToTextView("서비스 이용약관", tvAgreeTermsAndCondition, "https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb")
             setLinkTextColorToBlack(tvAgreeTermsAndCondition)
             setLinkBold(tvAgreeTermsAndCondition, 13)
         }
@@ -92,7 +92,7 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun setHyperLinkAndColorInPrivacyTextView() {
         with(binding) {
-            setHyperLinkToTextView("개인정보 수집 및 이용", tvAgreePrivacy, "https://www.notion.so/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
+            setHyperLinkToTextView("개인정보 수집 및 이용", tvAgreePrivacy, "https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
             setLinkTextColorToBlack(tvAgreePrivacy)
             setLinkBold(tvAgreePrivacy, 17)
         }
