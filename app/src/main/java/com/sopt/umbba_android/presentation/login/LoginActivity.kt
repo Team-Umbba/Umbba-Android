@@ -18,6 +18,7 @@ import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.sopt.umbba_android.presentation.onboarding.InputInfoActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
@@ -49,7 +50,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             }
         }
 
-        binding.btnKakaoLogin.setOnClickListener {
+        binding.btnKakaoLogin.setOnSingleClickListener {
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
                     if (error != null) {

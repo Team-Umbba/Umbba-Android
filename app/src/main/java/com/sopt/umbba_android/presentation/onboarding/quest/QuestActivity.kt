@@ -16,6 +16,7 @@ import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.sopt.umbba_android.presentation.onboarding.SetTimeActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_quest),
     View.OnClickListener {
@@ -84,7 +85,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     }
 
     private fun clickNextButton() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             Log.d("viewmodel", "chipText : ${viewModel.clickedChipText.value.toString()}")
             Log.d("viewmodel", "count : ${count}")
             quest[count] = viewModel.clickedChipText.value.toString()

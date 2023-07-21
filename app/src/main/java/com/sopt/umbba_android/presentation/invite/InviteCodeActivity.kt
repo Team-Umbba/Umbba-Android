@@ -18,6 +18,7 @@ import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USE
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
 class InviteCodeActivity :
@@ -72,7 +73,7 @@ class InviteCodeActivity :
     }
 
     private fun setFamilyToInviteCode() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             val code = binding.etCode.text.toString()
             Log.e("yeonjin", "초대코드 입력 : $code")
             viewModel.setFamily(code)

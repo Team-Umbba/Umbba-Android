@@ -14,6 +14,7 @@ import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.InputInfoViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info),
@@ -115,7 +116,7 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     }
 
     private fun goSelectFamilyActivity() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra("userData", User::class.java)
             } else {

@@ -2,9 +2,7 @@ package com.sopt.umbba_android.presentation.setting
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.local.SharedPreferences
@@ -13,6 +11,7 @@ import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class ManageAccountActivity :
     BindingActivity<ActivityManageAccountBinding>(R.layout.activity_manage_account),
@@ -44,10 +43,10 @@ class ManageAccountActivity :
 
     private fun setClickEvent() {
         with(binding) {
-            clLogout.setOnClickListener {
+            clLogout.setOnSingleClickListener {
                 viewModel.logout()
             }
-            clDeleteAccount.setOnClickListener {
+            clDeleteAccount.setOnSingleClickListener {
                 startActivity(Intent(this@ManageAccountActivity, DeleteAccountActivity::class.java))
             }
         }

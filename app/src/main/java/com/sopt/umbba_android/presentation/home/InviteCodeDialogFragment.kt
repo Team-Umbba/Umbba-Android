@@ -2,7 +2,6 @@ package com.sopt.umbba_android.presentation.home
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -13,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.kakao.sdk.share.ShareClient
@@ -21,8 +19,8 @@ import com.kakao.sdk.template.model.Button
 import com.kakao.sdk.template.model.Content
 import com.kakao.sdk.template.model.FeedTemplate
 import com.kakao.sdk.template.model.Link
-import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) : DialogFragment() {
 
@@ -47,7 +45,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
     }
 
     private fun closeDialog() {
-        binding.btnClose.setOnClickListener {
+        binding.btnClose.setOnSingleClickListener {
             dismiss()
         }
     }
@@ -61,7 +59,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
     }
 
     private fun copyInviteCode() {
-        binding.clCopyInviteCode.setOnClickListener {
+        binding.clCopyInviteCode.setOnSingleClickListener {
             val clipboard: ClipboardManager =
                 requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
@@ -71,7 +69,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
     }
 
     private fun sendInviteCodeWithKakao(inviteUserName: String, inviteCode: String) {
-        binding.btnSendInvitation.setOnClickListener {
+        binding.btnSendInvitation.setOnSingleClickListener {
             val defaultFeed = FeedTemplate(
                 content = Content(
                     title = "${inviteUserName}으로부터 초대가 왔어요.\n초대 코드 : $inviteCode",

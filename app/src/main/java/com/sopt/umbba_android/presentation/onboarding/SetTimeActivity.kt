@@ -22,6 +22,7 @@ import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USE
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SetTimeViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import com.sopt.umbba_android.util.setTimeInterval
 
 class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activity_set_time),
@@ -116,7 +117,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     }
 
     private fun goOnboardingFinishActivity() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             askNotificationPermission()
             val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra("userData", User::class.java)

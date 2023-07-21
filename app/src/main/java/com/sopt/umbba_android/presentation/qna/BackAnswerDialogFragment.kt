@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.sopt.umbba_android.databinding.FragmentBackAnswerDialogBinding
-import com.sopt.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class BackAnswerDialogFragment : DialogFragment() {
 
@@ -40,10 +40,10 @@ class BackAnswerDialogFragment : DialogFragment() {
 
     private fun setBtnClickEvent() {
         with(binding) {
-            btnCancel.setOnClickListener {
+            btnCancel.setOnSingleClickListener {
                 dismiss()
             }
-            btnConfirm.setOnClickListener {
+            btnConfirm.setOnSingleClickListener {
                 dismiss()
                 requireActivity().finish()
             }

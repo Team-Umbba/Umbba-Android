@@ -17,6 +17,7 @@ import com.sopt.umbba_android.databinding.FragmentSettingBinding
 import com.sopt.umbba_android.presentation.onboarding.OnboardingFinishActivity
 import com.sopt.umbba_android.util.binding.BindingFragment
 import com.sopt.umbba_android.util.fcm.MyFirebaseMessagingService
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import timber.log.Timber
 
 class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
@@ -58,10 +59,10 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private fun setClickEvent() {
         with(binding) {
-            clManageAccount.setOnClickListener {
+            clManageAccount.setOnSingleClickListener {
                 startActivity(Intent(requireActivity(), ManageAccountActivity::class.java))
             }
-            clAboutUmbba.setOnClickListener {
+            clAboutUmbba.setOnSingleClickListener {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
@@ -69,7 +70,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                     )
                 )
             }
-            clTos.setOnClickListener {
+            clTos.setOnSingleClickListener {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
@@ -77,7 +78,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
                     )
                 )
             }
-            clPrivacyNotice.setOnClickListener {
+            clPrivacyNotice.setOnSingleClickListener {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,

@@ -12,6 +12,7 @@ import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.SelectFamilyViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class SelectFamilyActivity :
     BindingActivity<ActivitySelectFamilyBinding>(R.layout.activity_select_family),
@@ -85,7 +86,7 @@ class SelectFamilyActivity :
     }
 
     private fun goQuestActivity() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra("userData", User::class.java)
             } else {

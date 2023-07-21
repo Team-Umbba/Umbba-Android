@@ -2,7 +2,6 @@ package com.sopt.umbba_android.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import coil.load
@@ -14,6 +13,7 @@ import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingFragment
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
@@ -23,7 +23,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         observeData()
     }
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
-        binding.btnAnswer.setOnClickListener {
+        binding.btnAnswer.setOnSingleClickListener {
             viewModel.getResponseCase()
             when (responseCaseDto.responseCase) {
                 1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))

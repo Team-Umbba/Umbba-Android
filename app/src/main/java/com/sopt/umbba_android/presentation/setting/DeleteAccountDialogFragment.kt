@@ -4,21 +4,18 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import androidx.activity.viewModels
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
-import com.sopt.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
-
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class DeleteAccountDialogFragment : DialogFragment() {
 
@@ -47,10 +44,10 @@ class DeleteAccountDialogFragment : DialogFragment() {
 
     private fun setBtnClickEvent() {
         with(binding) {
-            btnCancel.setOnClickListener {
+            btnCancel.setOnSingleClickListener {
                 dismiss()
             }
-            btnConfirm.setOnClickListener {
+            btnConfirm.setOnSingleClickListener {
                 viewModel.signout()
             }
         }

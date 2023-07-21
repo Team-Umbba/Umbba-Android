@@ -13,6 +13,7 @@ import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityAgreePrivacyUseBinding
 import com.sopt.umbba_android.presentation.invite.InviteActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
 class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(R.layout.activity_agree_privacy_use) {
@@ -29,7 +30,7 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun clickAllAgreeButton() {
         with(binding) {
-            btnAllAgreeCheck.setOnClickListener {
+            btnAllAgreeCheck.setOnSingleClickListener {
                 btnAllAgreeCheck.isSelected = !btnAllAgreeCheck.isSelected
                 checkAllAgreeButton()
             }
@@ -54,15 +55,15 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun clickCircleButton() {
         with(binding) {
-            btnUp14.setOnClickListener {
+            btnUp14.setOnSingleClickListener {
                 btnUp14.isSelected = !btnUp14.isSelected
                 checkAllCircleButton()
             }
-            btnAgreeTermsAndCondition.setOnClickListener {
+            btnAgreeTermsAndCondition.setOnSingleClickListener {
                 btnAgreeTermsAndCondition.isSelected = !btnAgreeTermsAndCondition.isSelected
                 checkAllCircleButton()
             }
-            btnAgreePrivacy.setOnClickListener {
+            btnAgreePrivacy.setOnSingleClickListener {
                 btnAgreePrivacy.isSelected = !btnAgreePrivacy.isSelected
                 checkAllCircleButton()
             }
@@ -115,7 +116,7 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
     }
 
     private fun goInviteActivity() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             startActivity(Intent(this, InviteActivity::class.java))
         }
     }

@@ -10,15 +10,12 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityNotifyTimeBinding
-import com.sopt.umbba_android.domain.entity.User
-import com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel
-import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class NotifyTimeActivity :
     BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time),
@@ -88,7 +85,7 @@ class NotifyTimeActivity :
 
     private fun goOnboardingFinishActivity() {
         with(binding) {
-            btnGoPast.setOnClickListener {
+            btnGoPast.setOnSingleClickListener {
                 startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java))
             }
         }
