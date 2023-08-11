@@ -1,7 +1,6 @@
 package com.sopt.umbba_android.presentation.qna
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R

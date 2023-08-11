@@ -11,7 +11,7 @@ class HomeRepositoryImpl(private val homeRemoteDataSource: HomeRemoteDataSource)
         runCatching {
             homeRemoteDataSource.getHomeData()
         }.onSuccess {
-            Timber.e("get home data 성공~")
+            Timber.d("get home data 성공")
         }.onFailure {
             Timber.e("get home data 실패")
         }
@@ -20,7 +20,7 @@ class HomeRepositoryImpl(private val homeRemoteDataSource: HomeRemoteDataSource)
         runCatching {
             homeRemoteDataSource.getResponseCase()
         }.onSuccess {
-            Timber.e("get response case 성공~")
+            Timber.d("get response case 성공")
         }.onFailure {
             Timber.e("get response case 실패")
         }

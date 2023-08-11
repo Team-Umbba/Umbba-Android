@@ -14,8 +14,8 @@ class LoginRepositoryImpl(
         runCatching {
             loginRemoteDataSource.postLogin(loginRequestDto)
         }.onSuccess {
-            Log.e("yeonjin", "Impl login 성공")
+            Timber.d("Impl login 성공")
         }.onFailure {
-            Log.e("yeonjin", "Impl login 실패")
+            Timber.e("Impl login 실패")
         }
 }

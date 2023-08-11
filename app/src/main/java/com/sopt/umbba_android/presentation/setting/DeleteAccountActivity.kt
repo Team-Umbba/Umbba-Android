@@ -1,16 +1,14 @@
 package com.sopt.umbba_android.presentation.setting
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityDeleteAccountBinding
-import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class DeleteAccountActivity :
     BindingActivity<ActivityDeleteAccountBinding>(R.layout.activity_delete_account),
@@ -24,7 +22,7 @@ class DeleteAccountActivity :
 
     private fun setClickEvent() {
         with(binding) {
-            btnDeleteAccount.setOnClickListener {
+            btnDeleteAccount.setOnSingleClickListener {
                 DeleteAccountDialogFragment().apply{
                     show(supportFragmentManager, "DeleteAccountDialog")
                 }

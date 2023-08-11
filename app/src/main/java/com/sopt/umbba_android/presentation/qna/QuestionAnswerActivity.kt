@@ -3,7 +3,6 @@ package com.sopt.umbba_android.presentation.qna
 import android.content.Intent
 import android.graphics.BlurMaskFilter
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -14,6 +13,7 @@ import com.sopt.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import timber.log.Timber
 
 class QuestionAnswerActivity :
@@ -35,7 +35,7 @@ class QuestionAnswerActivity :
 
     private fun observeQnaViewFlag() {
         val qnaId = intent.getLongExtra("questionId", -1)
-        Timber.e( "qnaId activity에서" + qnaId.toString())
+        Timber.d("qnaId activity에서 $qnaId")
         if (qnaId == -1L) {
             viewModel.getQuestionAnswer()
             viewModel.isBeforeList.value = false
@@ -49,7 +49,7 @@ class QuestionAnswerActivity :
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
         if (data.isMyAnswer == false) {
-            binding.btnAnswer.setOnClickListener {
+            binding.btnAnswer.setOnSingleClickListener {
                 Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
                     putExtra("section", data.section)
                     putExtra("topic", data.topic)
@@ -118,8 +118,8 @@ class QuestionAnswerActivity :
                     this@QuestionAnswerActivity,
                     R.drawable.shape_pri500_btn_stroke_r50_rect
                 )
-                btnAnswer.text = "홈으로"
-                btnAnswer.setOnClickListener {
+                btnAnswer.text = getString(R.string.home)
+                btnAnswer.setOnSingleClickListener {
                     finish()
                 }
             }

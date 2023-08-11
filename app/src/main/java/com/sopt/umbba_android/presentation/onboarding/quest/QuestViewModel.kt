@@ -9,21 +9,19 @@ import com.sopt.umbba_android.data.model.request.ReceiveInfoRequestDto
 import com.sopt.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.sopt.umbba_android.domain.entity.User
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl) : ViewModel() {
     val isClickedYes = MutableLiveData<Boolean>()
     val isClickedNo = MutableLiveData<Boolean>()
     val isClickedAmbiguous = MutableLiveData<Boolean>()
-
     val isClickedComplete = MutableLiveData<Boolean>()
-
     val clickedChipText = MutableLiveData<String>()
+    val notifyTime = MutableLiveData<String>()
 
     private val _isPostSuccess: MutableLiveData<Boolean> = MutableLiveData()
     val isPostSuccess: LiveData<Boolean>
         get() = _isPostSuccess
-
-    val notifyTime = MutableLiveData<String>()
 
     fun checkButtonComplete() {
         isClickedComplete.value = isClickedYes.value == true || isClickedNo.value == true || isClickedAmbiguous.value == true
@@ -37,13 +35,12 @@ class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryI
                     onboardingAnswerList = quest
                 )
             ).onSuccess {
-                Log.e("yeonjin", "setReceiveInfo 성공")
-                Log.e("yeonjin", "setReceiveInfo time : ${it.data.pushTime}")
                 notifyTime.value = it.data.pushTime
                 _isPostSuccess.value = true
+                Timber.d("setReceiveInfo 성공")
             }.onFailure {
-                Log.e("yeonjin", "setReceiveInfo 실패")
                 _isPostSuccess.value = false
+                Timber.e("setReceiveInfo 실패")
             }
         }
     }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.sopt.umbba_android.databinding.FragmentNoOpponentDialogBinding
+import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class NoOpponentDialogFragment : DialogFragment() {
 
@@ -34,7 +35,7 @@ class NoOpponentDialogFragment : DialogFragment() {
     }
 
     private fun closeDialog() {
-        binding.btnClose.setOnClickListener {
+        binding.btnClose.setOnSingleClickListener {
             dismiss()
         }
     }

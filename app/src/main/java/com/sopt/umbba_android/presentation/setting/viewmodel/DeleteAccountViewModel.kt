@@ -21,11 +21,11 @@ class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositor
         viewModelScope.launch {
             settingRepositoryImpl.signout()
                 .onSuccess { response ->
-                    Timber.e("viewModel 회원탈퇴 성공")
                     responseStatus.value = response.status
+                    Timber.d("viewModel 회원탈퇴 성공")
                 }.onFailure { error ->
-                    Timber.e("viewModel 회원탈퇴 실패  " + error.message)
                     responseStatus.value = -1
+                    Timber.e("viewModel 회원탈퇴 실패 $error")
                 }
         }
     }

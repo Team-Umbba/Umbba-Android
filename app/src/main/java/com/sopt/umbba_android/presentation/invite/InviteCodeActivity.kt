@@ -18,6 +18,7 @@ import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USE
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.ViewModelFactory
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
 class InviteCodeActivity :
@@ -72,17 +73,15 @@ class InviteCodeActivity :
     }
 
     private fun setFamilyToInviteCode() {
-        binding.btnNext.setOnClickListener {
+        binding.btnNext.setOnSingleClickListener {
             val code = binding.etCode.text.toString()
-            Log.e("yeonjin", "초대코드 입력 : $code")
             viewModel.setFamily(code)
             viewModel.isCodeSuccess.observe(this) {
                 if (it) {
-                    Log.e("yeonjin", "관계 연결 성공")
                     setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goCommunicationActivity()
                 } else {
-                    Snackbar.make(binding.root, "유효하지 않은 초대코드 입니다.", Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.invalid_invite_code, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
@@ -94,7 +93,6 @@ class InviteCodeActivity :
         } else {
             intent.getParcelableExtra<User>("userData")
         }
-        Log.e("yeonjin", "inviteCode parcelable : ${userData?.isReceiver}")
         startActivity(Intent(this, CommunicationActivity::class.java).apply {
             putExtra("userData", userData)
         })
