@@ -96,7 +96,6 @@
             android:stateListAnimator="@null"
             android:textAppearance="@style/AndroidBody1_1SemiBold16"
             android:textColor="@color/umbba_white"
-            android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
