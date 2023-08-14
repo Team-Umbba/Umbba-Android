@@ -122,6 +122,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
+                android:gravity="right"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
                 android:textColor="@{vm.isMyAnswer ? @color/umbba_black : @color/grey_800 }"
                 app:layout_constraintBottom_toTopOf="@id/tv_from_me"
