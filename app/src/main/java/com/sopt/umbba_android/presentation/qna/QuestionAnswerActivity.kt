@@ -49,14 +49,17 @@ class QuestionAnswerActivity :
 
     private fun setClickEvent(data: QuestionAnswerResponseDto.QnaData) {
         if (data.isMyAnswer == false) {
+            var intent = Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
+                putExtra("section", data.section)
+                putExtra("topic", data.topic)
+                putExtra("question", data.myQuestion)
+                putExtra("index", data.index)
+            }
             binding.btnAnswer.setOnSingleClickListener {
-                Intent(this@QuestionAnswerActivity, AnswerActivity::class.java).apply {
-                    putExtra("section", data.section)
-                    putExtra("topic", data.topic)
-                    putExtra("question", data.myQuestion)
-                    putExtra("index", data.index)
-                    startActivity(this)
-                }
+                startActivity(intent)
+            }
+            binding.tvAnswerMe.setOnSingleClickListener {
+                startActivity(intent)
             }
         }
     }
@@ -76,12 +79,13 @@ class QuestionAnswerActivity :
         }
     }
 
-    private fun setListAnswerText(data:ListQuestionAnswerResponseDto.QnaData){
-        with(binding){
+    private fun setListAnswerText(data: ListQuestionAnswerResponseDto.QnaData) {
+        with(binding) {
             tvAnswerOther.text = data.opponentAnswer
-            tvAnswerMe.text= data.myAnswer
+            tvAnswerMe.text = data.myAnswer
         }
     }
+
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
             if (data.isOpponentAnswer == true) {

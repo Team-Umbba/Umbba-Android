@@ -93,9 +93,9 @@
             android:layout_marginBottom="24dp"
             android:background="@drawable/shape_error_btn_r50_rect"
             android:text="@string/btn_delete_account"
+            android:stateListAnimator="@null"
             android:textAppearance="@style/AndroidBody1_1SemiBold16"
             android:textColor="@color/umbba_white"
-            android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
