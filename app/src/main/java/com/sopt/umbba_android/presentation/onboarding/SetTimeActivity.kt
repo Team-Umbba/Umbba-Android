@@ -89,10 +89,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
                         getString(R.string.if_allow_notification),
                         Snackbar.LENGTH_SHORT
                     ).show()
-                    val intent =
-                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
-                    startActivity(intent)
-                    this.finish()
+                    sendUserData()
                 } else {
                     requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 }
