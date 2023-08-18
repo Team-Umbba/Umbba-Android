@@ -136,7 +136,8 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             if (it) {
                 setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
                 setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
-                startActivity(Intent(this, OnboardingFinishActivity::class.java))
+                startActivity(Intent(this, OnboardingFinishActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
             } else {
                 Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
             }
