@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -35,10 +34,13 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
+                //권한을 승인할 경우
                 Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
             } else {
+                //권한을 거절할 경우
                 Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
             }
+            sendUserData()
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,40 +68,32 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
     }
 
     private fun askNotificationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            Snackbar.make(binding.root, getString(R.string.allowing_notification), Snackbar.LENGTH_SHORT).show()
-        }
-
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            //권한이 허용되어 있는 경우
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.allowing_notification),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                sendUserData()
+            } else {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                    // 왜 알림을 허용해야 하는지에 대한 설명 + 권한 거절 시 권한 설정 화면으로 이동
+                    // 이미 한번 권한을 거절한 경우
                     Snackbar.make(
                         binding.root,
                         getString(R.string.if_allow_notification),
                         Snackbar.LENGTH_SHORT
                     ).show()
-                    val intent =
-                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
-                    startActivity(intent)
-                    this.finish()
+                    sendUserData()
                 } else {
                     requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                 }
-            }
-            else{
-                Snackbar.make(
-                    binding.root,
-                    getString(R.string.setting_noti),
-                    Snackbar.LENGTH_SHORT
-                ).show()
+
             }
         }
     }
@@ -108,7 +102,7 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
         val hour =
             if (binding.tpTime.hour == 0) {
                 "24"
-            } else if (binding.tpTime.hour in 1..9){
+            } else if (binding.tpTime.hour in 1..9) {
                 "0${binding.tpTime.hour}"
             } else {
                 binding.tpTime.hour
@@ -128,27 +122,31 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
         }
     }
 
+    private fun sendUserData() {
+        val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("userData", User::class.java)
+        } else {
+            intent.getParcelableExtra<User>("userData")
+        }
+        setTime()
+        val questData = intent.getStringArrayExtra("questData")
+        setQuestList(questData)
+        viewModel.setSendInfo(userData, time, questList)
+        viewModel.isPostSuccess.observe(this) {
+            if (it) {
+                setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+                setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
+                startActivity(Intent(this, OnboardingFinishActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+            } else {
+                Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun goOnboardingFinishActivity() {
         binding.btnNext.setOnSingleClickListener {
             askNotificationPermission()
-            val userData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                intent.getParcelableExtra("userData", User::class.java)
-            } else {
-                intent.getParcelableExtra<User>("userData")
-            }
-            setTime()
-            val questData = intent.getStringArrayExtra("questData")
-            setQuestList(questData)
-            viewModel.setSendInfo(userData, time, questList)
-            viewModel.isPostSuccess.observe(this) {
-                if (it) {
-                    setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
-                    setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
-                    startActivity(Intent(this, OnboardingFinishActivity::class.java))
-                } else {
-                    Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
-                }
-            }
         }
     }
 }
