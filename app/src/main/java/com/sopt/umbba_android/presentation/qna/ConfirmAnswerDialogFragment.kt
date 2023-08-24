@@ -46,7 +46,7 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     }
 
     private fun observeResponseStatus() {
-        viewModel.responseStatus.observe(this) {
+        viewModel.responseStatus.observe(viewLifecycleOwner) {
             if (it == 201) {
                 dismiss()
                 requireActivity().finish()
