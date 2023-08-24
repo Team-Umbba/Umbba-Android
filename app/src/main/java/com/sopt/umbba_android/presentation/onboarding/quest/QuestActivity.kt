@@ -3,18 +3,16 @@ package com.sopt.umbba_android.presentation.onboarding.quest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import com.sopt.umbba_android.R
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import com.sopt.umbba_android.data.local.SharedPreferences
+import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.local.SharedPreferences.setOnboardingBoolean
 import com.sopt.umbba_android.databinding.ActivityQuestBinding
 import com.sopt.umbba_android.domain.entity.User
-import com.sopt.umbba_android.presentation.login.LoginActivity
 import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
 import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.sopt.umbba_android.presentation.onboarding.NotifyTimeActivity
@@ -26,6 +24,12 @@ import com.sopt.umbba_android.util.setOnSingleClickListener
 class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_quest),
     View.OnClickListener {
 
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            clickBeforeButton()
+        }
+    }
+
     private val viewModel by viewModels<QuestViewModel>() { ViewModelFactory(this) }
     private var count = 0
     private var quest = arrayOfNulls<String>(5)
@@ -35,6 +39,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         super.onCreate(savedInstanceState)
         binding.viewmodel = viewModel
         binding.clickListener = this
+        this.onBackPressedDispatcher.addCallback(this, backPressedCallback)
 
         initFragment(QuestOneFragment())
         checkNextButtonEnabled()
@@ -44,19 +49,23 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_basic_back -> {
-                if (count in 1..4) {
-                    supportFragmentManager.popBackStack(
-                        "$count",
-                        FragmentManager.POP_BACK_STACK_INCLUSIVE
-                    )
-                    binding.progressBar.progress -= 20
-                    count -= 1
-                    initChip()
-                    setBeforeButtonClick(count)
-                } else {
-                    finish()
-                }
+                clickBeforeButton()
             }
+        }
+    }
+
+    private fun clickBeforeButton() {
+        if (count in 1..4) {
+            supportFragmentManager.popBackStack(
+                "$count",
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+            binding.progressBar.progress -= 20
+            count -= 1
+            initChip()
+            setBeforeButtonClick(count)
+        } else {
+            finish()
         }
     }
 
