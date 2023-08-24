@@ -2,12 +2,16 @@ package com.sopt.umbba_android.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import coil.load
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.databinding.FragmentHomeBinding
+import com.sopt.umbba_android.presentation.MainActivity
 import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.sopt.umbba_android.presentation.qna.QuestionAnswerActivity
@@ -22,12 +26,16 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         binding.vm = viewModel
         observeData()
     }
+
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
         binding.btnAnswer.setOnSingleClickListener {
             viewModel.getResponseCase()
             when (responseCaseDto.responseCase) {
                 1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
-                2 -> showInviteDialog(responseCaseDto.inviteUserName.toString(), responseCaseDto.inviteCode.toString())
+                2 -> showInviteDialog(
+                    responseCaseDto.inviteUserName.toString(),
+                    responseCaseDto.inviteCode.toString()
+                )
                 3 -> showNoOpponentDialog()
             }
         }
@@ -66,6 +74,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 else -> R.drawable.bg_home5
             }
         )
+        Handler(Looper.getMainLooper()).postDelayed({
+            (activity as MainActivity).getLoadingView().visibility = View.INVISIBLE
+        }, 1000)
     }
 
     override fun onResume() {

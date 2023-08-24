@@ -8,26 +8,51 @@
         android:layout_height="match_parent"
         tools:context=".presentation.MainActivity">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fcv_main"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/bnv_main"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bnv_main"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/umbba_white"
-            app:itemActiveIndicatorStyle="@null"
-            app:itemBackground="@drawable/sel_bottom_nav_indicator"
-            app:itemIconSize="24dp"
-            app:itemIconTint="@color/sel_bottom_nav_icon"
-            app:itemTextColor="@color/sel_bottom_nav_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_bottom" />
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fcv_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/bnv_main"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bnv_main"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/umbba_white"
+                app:itemActiveIndicatorStyle="@null"
+                app:itemBackground="@drawable/sel_bottom_nav_indicator"
+                app:itemIconSize="24dp"
+                app:itemIconTint="@color/sel_bottom_nav_icon"
+                app:itemTextColor="@color/sel_bottom_nav_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/menu_bottom" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/umbba_black_opacity70"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_logo_gif"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>
