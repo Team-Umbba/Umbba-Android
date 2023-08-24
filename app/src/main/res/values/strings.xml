@@ -104,7 +104,7 @@
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
     <string name="copy_invite_code">초대코드 복사</string>
-    <string name="send_invitation">카카오톡으로 초대 보내기</string>
+    <string name="send_invitation">초대장 보내기</string>
     <string name="copy_invite_code_snackbar">초대 코드가 복사되었습니다.</string>
     <string name="install_kakaotalk">카카오톡을 설치해주세요.</string>
     <string name="kakao_title">%s으로부터 초대가 왔어요.\n초대코드 : %s</string>
