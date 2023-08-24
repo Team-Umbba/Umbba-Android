@@ -24,7 +24,7 @@ class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list
     }
 
     private fun observeData() {
-        viewModel.listResponseDto.observe(requireActivity()) {
+        viewModel.listResponseDto.observe(viewLifecycleOwner) {
             listQuestionAdapter.submitList(it)
         }
     }

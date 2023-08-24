@@ -42,10 +42,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun observeData() {
-        viewModel.homeData.observe(requireActivity()) {
+        viewModel.homeData.observe(viewLifecycleOwner) {
             setBackground(it.section)
         }
-        viewModel.responseCaseData.observe(requireActivity()) {
+        viewModel.responseCaseData.observe(viewLifecycleOwner) {
             setClickEvent(it)
         }
     }
@@ -75,7 +75,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             }
         )
         Handler(Looper.getMainLooper()).postDelayed({
-            (activity as MainActivity).getLoadingView().visibility = View.INVISIBLE
+            if (activity != null) {
+                (activity as MainActivity).getLoadingView().visibility = View.INVISIBLE
+            }
         }, 1000)
     }
 
