@@ -84,17 +84,28 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
     }
 
     private fun setAutoLogin() {
+        // 액세스 토큰이 있을 때 - 앱을 그냥 껐다 켰을 때
         if (!SharedPreferences.getString(USER_TOKEN).isNullOrBlank()) {
             showOnboardForFirst()
+        // 액세스 토큰이 없을 때 - 최초 가입인가? or 로그아웃이나 앱삭제를 이유로 다시 로그인하는가?
         } else {
             viewModel.getTokenResult.observe(this) { response ->
-                setUserInfo(response.accessToken)
-                if (SharedPreferences.getOnboardingBoolean(DID_USER_CLEAR_ONBOARD)
-                    && SharedPreferences.getInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE)
-                ) {
-                    goMainActivity()
-                } else {
+                setUserInfo(response.tokenDto.accessToken)
+
+                // 온보딩 x 연결 x
+                if (response.username == null && !response.isMatchFinish) {
+                    Log.d("LoginActivity", "온보딩 x 연결 x")
                     goAgreePrivacyUseActivity()
+                }
+                // 온보딩 x 연결 o -> 초대받는 측
+                else if (response.username == null) {
+                    Log.d("LoginActivity", "온보딩 x 연결 o")
+                    goInputInfoActivity()
+                }
+                // 온보딩 o -> 연결 여부와 관계 없이 main으로 이동임
+                else {
+                    Log.d("LoginActivity", "온보딩 o")
+                    goMainActivity()
                 }
             }
         }
