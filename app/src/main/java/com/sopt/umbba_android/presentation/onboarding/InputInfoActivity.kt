@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R
@@ -14,6 +15,7 @@ import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.sopt.umbba_android.presentation.onboarding.viewmodel.InputInfoViewModel
 import com.sopt.umbba_android.util.binding.BindingActivity
+import com.sopt.umbba_android.util.hideKeyboard
 import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
@@ -140,5 +142,14 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
     companion object {
         const val HANGUL_PATTERN = "^[가-힣]*$"
         const val NUMBER_PATTERN = "^([12]\\d{3})*$"
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        this.currentFocus?.let { hideKeyboard(it) }
+        with(binding) {
+            etName.clearFocus()
+            etYear.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }
