@@ -23,5 +23,7 @@
     <color name="gradient_center">#EBA787</color>
     <color name="gradient_end">#D87E7E</color>
 
+    <color name="ending_gradient_start">#46D87E7E</color>
+
     <color name="kakao_yellow">#FBE44D</color>
 </resources>

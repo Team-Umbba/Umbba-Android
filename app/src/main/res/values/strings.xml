@@ -181,4 +181,16 @@
     <string name="quest_4">뭔가를 크게 포기해본 경험이 있어?</string>
     <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
 
+
+    <!-- ending activity-->
+    <string name="ending_title">잠시 교신을 종료할게\n어쩌구</string>
+    <string name="ending_survey_title">문구문구문구</string>
+    <string name="ending_survey_caption">설문조사에 참여하여 피드백을 남겨주세요.</string>
+    <string name="ending_btn_survey">설문하러 가기</string>
+    <string name="ending_delete_account">문구문구문구</string>
+    <string name="ending_delete_account_caption">회원을 탈퇴하고 새로운 상대와 연결하세요.</string>
+    <string name="ending_btn_delete_account">연결 종료하기</string>
+
+    <!-- ending activity-->
+
 </resources>
