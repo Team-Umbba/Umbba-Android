@@ -16,7 +16,7 @@
     <!--invite activity-->
     <string name="btn_start">시작하기</string>
     <string name="or">----------------- or ----------------</string>
-    <string name="did_you_receive_code">카카오톡 초대 코드를 받고 왔어요</string>
+    <string name="did_you_receive_code">초대 코드를 받고 왔어요</string>
     <string name="btn_start_code">초대코드로 시작하기</string>
 
     <!--input info activity-->

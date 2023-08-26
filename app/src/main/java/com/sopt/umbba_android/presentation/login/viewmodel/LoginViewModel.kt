@@ -14,8 +14,8 @@ import timber.log.Timber
 
 class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : ViewModel() {
 
-    private val _getTokenResult: MutableLiveData<LoginResponseDto.LoginData.TokenData> = MutableLiveData()
-    val getTokenResult: LiveData<LoginResponseDto.LoginData.TokenData>
+    private val _getTokenResult: MutableLiveData<LoginResponseDto.LoginData> = MutableLiveData()
+    val getTokenResult: LiveData<LoginResponseDto.LoginData>
         get() = _getTokenResult
 
     fun login(fcmToken: String) {
@@ -27,7 +27,7 @@ class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : Vie
                 )
             ).onSuccess { response ->
                 Timber.d("login 성공")
-                _getTokenResult.value = response.data.tokenDto
+                _getTokenResult.value = response.data
             }.onFailure { error ->
                 Timber.e("login 실패 $error")
             }
