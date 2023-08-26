@@ -19,19 +19,30 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
 
     private var _responseCaseData = MutableLiveData<HomeCaseResponseDto.HomeCaseData>()
     val responseCaseData: LiveData<HomeCaseResponseDto.HomeCaseData> = _responseCaseData
+
     private var _homeData = MutableLiveData<HomeResponseDto.HomeData>()
     val homeData: LiveData<HomeResponseDto.HomeData> = _homeData
+
+    private var _isCloseEnding = MutableLiveData(false)
+    val isCloseEnding: LiveData<Boolean> = _isCloseEnding
+
+    private var _isObserveIndex = MutableLiveData(false)
+    val isObserveIndex: LiveData<Boolean> = _isObserveIndex
 
     private var _topicTitle = MutableLiveData<String>()
     val topicTitle: LiveData<String> = _topicTitle
 
-    private fun getHomeData() {
+    fun getHomeData() {
         viewModelScope.launch {
             homeRepositoryImpl.getHomeData()
                 .onSuccess { response ->
                     Timber.d("getHomeData 성공")
                     _homeData.value = response.data
-                    _topicTitle.value = "#${response.data.index} ${response.data.topic}"
+                    _topicTitle.value = if (response.data.index != 8) {
+                        "#${response.data.index} ${response.data.topic}"
+                    } else {
+                        "#${(response.data.index) - 1} ${response.data.topic}"
+                    }
                 }.onFailure { error ->
                     Timber.e("getHomeData 실패 " + error.message)
                 }
@@ -48,5 +59,13 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
                     Timber.e("getResponseCode 실패  " + error.message)
                 }
         }
+    }
+
+    fun setStateCloseEnding() {
+        _isCloseEnding.value = true
+    }
+
+    fun setStateObserveIndex() {
+        _isObserveIndex.value = true
     }
 }
