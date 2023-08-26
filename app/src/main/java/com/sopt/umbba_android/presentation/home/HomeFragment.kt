@@ -1,11 +1,15 @@
 package com.sopt.umbba_android.presentation.home
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import coil.load
 import com.sopt.umbba_android.R
@@ -21,15 +25,23 @@ import com.sopt.umbba_android.util.setOnSingleClickListener
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
+
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                viewModel.setStateCloseEnding()
+            }
+        }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
         observeData()
     }
 
+
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
         binding.btnAnswer.setOnSingleClickListener {
-            viewModel.getResponseCase()
             when (responseCaseDto.responseCase) {
                 1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
                 2 -> showInviteDialog(
@@ -44,6 +56,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun observeData() {
         viewModel.homeData.observe(viewLifecycleOwner) {
             setBackground(it.section)
+            if (it.index == 8 && viewModel.isCloseEnding.value == false && viewModel.isObserveIndex.value == false) {
+                viewModel.setStateObserveIndex()
+                startForResult.launch(Intent(requireActivity(), EndingActivity::class.java))
+            }
         }
         viewModel.responseCaseData.observe(viewLifecycleOwner) {
             setClickEvent(it)
@@ -83,6 +99,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     override fun onResume() {
         super.onResume()
+        if (viewModel.isObserveIndex.value != true) {
+            viewModel.getHomeData()
+        }
         viewModel.getResponseCase()
     }
 }
