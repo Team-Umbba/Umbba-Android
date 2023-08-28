@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityEndingBinding
+import com.sopt.umbba_android.presentation.setting.ManageAccountActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 
 class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_ending) {
@@ -16,7 +17,6 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
     private fun setBtnClickListener() {
         with(binding) {
             ivClose.setOnClickListener {
-                Log.e("hyeon","x btn click 됨")
                 setResult(RESULT_OK)
                 finish()
             }
@@ -24,7 +24,7 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
                 TODO("설문조사 링크 넣기")
             }
             btnDeleteAccount.setOnClickListener {
-                TODO("회원탈퇴 로직 넣기")
+               startActivity(Intent(this@EndingActivity, ManageAccountActivity::class.java))
             }
         }
     }
