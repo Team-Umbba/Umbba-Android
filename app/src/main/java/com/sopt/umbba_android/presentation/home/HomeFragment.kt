@@ -56,7 +56,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun observeData() {
         viewModel.homeData.observe(viewLifecycleOwner) {
             setBackground(it.section)
-            if (it.index == 8 && viewModel.isCloseEnding.value == false && viewModel.isObserveIndex.value == false) {
+            if (it.index == 8 && viewModel.isShowedEndingPage()) {
                 viewModel.setStateObserveIndex()
                 startForResult.launch(Intent(requireActivity(), EndingActivity::class.java))
             }
@@ -99,7 +99,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     override fun onResume() {
         super.onResume()
-        if (viewModel.isObserveIndex.value != true) {
+        if (viewModel.isObserveIndex.value == false) {
             viewModel.getHomeData()
         }
         viewModel.getResponseCase()

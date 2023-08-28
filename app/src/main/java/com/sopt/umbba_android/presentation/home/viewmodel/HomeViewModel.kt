@@ -68,4 +68,8 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
     fun setStateObserveIndex() {
         _isObserveIndex.value = true
     }
+
+    fun isShowedEndingPage(): Boolean {
+        return (_isCloseEnding.value == false && _isObserveIndex.value == false)
+    }
 }
