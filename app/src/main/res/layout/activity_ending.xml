@@ -28,15 +28,26 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="72dp"
-            android:text="@string/ending_title"
+            android:text="@string/ending_title1"
             android:textAppearance="@style/AndroidHead1SemiBold24"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:text="@string/ending_title2"
+            android:textAppearance="@style/AndroidHead2Regular24"
+            android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title1"/>
 
         <TextView
             android:id="@+id/tv_survey_title"
@@ -46,8 +57,9 @@
             android:layout_marginTop="40dp"
             android:text="@string/ending_survey_title"
             android:textAppearance="@style/AndroidSubHead2Regular20"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_title2" />
 
         <TextView
             android:id="@+id/tv_survey_caption"
@@ -57,6 +69,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/ending_survey_caption"
             android:textAppearance="@style/AndroidCaptionRegular10"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_survey_title" />
 
@@ -91,6 +104,7 @@
             android:layout_marginTop="40dp"
             android:text="@string/ending_delete_account"
             android:textAppearance="@style/AndroidSubHead2Regular20"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_dot_line" />
 
@@ -102,6 +116,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/ending_delete_account_caption"
             android:textAppearance="@style/AndroidCaptionRegular10"
+            android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_delete_account_title" />
 
