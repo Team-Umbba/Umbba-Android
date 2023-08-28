@@ -24,18 +24,8 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
                 TODO("설문조사 링크 넣기")
             }
             btnDeleteAccount.setOnClickListener {
-               startActivity(Intent(this@EndingActivity, ManageAccountActivity::class.java))
+                startActivity(Intent(this@EndingActivity, ManageAccountActivity::class.java))
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e("hyeon", "ending = onResume()")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("hyeon", "ending = onDestroy()")
     }
 }

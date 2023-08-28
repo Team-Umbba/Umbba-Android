@@ -48,6 +48,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                     responseCaseDto.inviteUserName.toString(),
                     responseCaseDto.inviteCode.toString()
                 )
+
                 3 -> showNoOpponentDialog()
             }
         }
