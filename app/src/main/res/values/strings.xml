@@ -47,7 +47,7 @@
     <string name="dad">아빠</string>
 
     <!-- set time activity-->
-    <string name="every_night_send_push">매일 너에게\n교신을 보내줄게</string>
+    <string name="every_day_send_push">매일 너에게\n교신을 보내줄게</string>
     <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드려요</string>
     <string name="fail_information_post">정보 등록에 실패했습니다.</string>
 
