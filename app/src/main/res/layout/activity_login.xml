@@ -46,23 +46,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_app_title" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
             android:id="@+id/btn_kakao_login"
-            style="@style/AndroidBody1_2Regular16"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_kakao_login_large_wide"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginVertical="24dp"
-            android:background="@drawable/shape_yellow_btn_r50_rect"
-            android:drawableStart="@drawable/ic_kakao_talk_logo"
-            android:paddingStart="20dp"
-            android:paddingEnd="44dp"
-            android:stateListAnimator="@null"
-            android:text="@string/kakao_login"
-            android:textColor="@color/umbba_black"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginBottom="7dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
