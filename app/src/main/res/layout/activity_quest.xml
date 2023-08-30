@@ -59,7 +59,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="12dp"
             android:max="100"
-            android:progress="20"
+            android:progress="0"
             android:progressDrawable="@drawable/progress_bar_quest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

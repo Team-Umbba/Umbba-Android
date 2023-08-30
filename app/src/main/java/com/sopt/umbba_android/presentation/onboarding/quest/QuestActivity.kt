@@ -3,6 +3,8 @@ package com.sopt.umbba_android.presentation.onboarding.quest
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -156,5 +158,12 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
                 }
             }
         }
+        delayProgreesBar()
+    }
+
+    private fun delayProgreesBar() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.progressBar.progress -= 20
+        }, 1000)
     }
 }
