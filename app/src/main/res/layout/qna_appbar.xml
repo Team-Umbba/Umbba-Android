@@ -10,10 +10,6 @@
             type="String" />
 
         <variable
-            name="visibleCheck"
-            type="java.lang.Boolean" />
-
-        <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
     </data>
@@ -68,18 +64,6 @@
                         tools:text="어린시절" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <ImageView
-                    android:id="@+id/iv_check"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:onClick="@{clickListener}"
-                    android:src="@drawable/ic_check"
-                    android:visibility="@{visibleCheck ? View.VISIBLE : View.GONE }"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

@@ -34,8 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText="@{vm.section}"
-            app:visibleCheck="@{false}" />
+            app:titleText="@{vm.section}" />
 
         <TextView
             android:id="@+id/tv_topic"
