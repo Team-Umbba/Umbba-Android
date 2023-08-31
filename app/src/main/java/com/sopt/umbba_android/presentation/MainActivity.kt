@@ -83,7 +83,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         if (boolean) {
             binding.clLoading.visibility = View.VISIBLE
         } else {
-            binding.clLoading.visibility = View.INVISIBLE
+            binding.clLoading.visibility = View.GONE
         }
     }
 
