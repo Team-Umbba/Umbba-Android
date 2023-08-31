@@ -90,7 +90,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         )
         Handler(Looper.getMainLooper()).postDelayed({
             if (activity != null) {
-                (activity as MainActivity).getLoadingView().visibility = View.INVISIBLE
+                (activity as MainActivity).getLoadingView().visibility = View.GONE
             }
         }, 1000)
     }
