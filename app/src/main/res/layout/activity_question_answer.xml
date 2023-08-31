@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.sopt.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel" />
+            type="com.ubcompany.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel" />
 
         <variable
             name="titleText"

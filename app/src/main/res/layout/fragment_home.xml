@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel" />
+            type="com.ubcompany.umbba_android.presentation.home.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

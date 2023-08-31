@@ -13,7 +13,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel" />
+            type="com.ubcompany.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel" />
 
     </data>
 

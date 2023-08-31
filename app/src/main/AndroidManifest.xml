@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.sopt.umbba_android">
+    package="com.ubcompany.umbba_android">
 
     <queries>
         <package android:name="com.kakao.talk" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".application.UmbbaApplication"
+        android:name="com.ubcompany.umbba_android.application.UmbbaApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.splash.SplashActivity"
+            android:name="com.ubcompany.umbba_android.presentation.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Umbbaandroid.Splash">
@@ -49,27 +49,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.onboarding.CommunicationActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.CommunicationActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.login.AgreePrivacyUseActivity"
+            android:name="com.ubcompany.umbba_android.presentation.login.AgreePrivacyUseActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.OnboardingFinishActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.OnboardingFinishActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.SetTimeActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.SetTimeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.invite.InviteActivity"
+            android:name="com.ubcompany.umbba_android.presentation.invite.InviteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.login.LoginActivity"
+            android:name="com.ubcompany.umbba_android.presentation.login.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -85,15 +85,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.onboarding.InputInfoActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.InputInfoActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.SelectFamilyActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.SelectFamilyActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="com.ubcompany.umbba_android.presentation.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -110,7 +110,7 @@
         </activity>
 
         <service
-            android:name=".util.fcm.MyFirebaseMessagingService"
+            android:name="com.ubcompany.umbba_android.util.fcm.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -129,36 +129,36 @@
             android:resource="@color/primary_400" />
 
         <activity
-            android:name=".presentation.invite.InviteCodeActivity"
+            android:name="com.ubcompany.umbba_android.presentation.invite.InviteCodeActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.onboarding.quest.QuestActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.quest.QuestActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.onboarding.NotifyTimeActivity"
+            android:name="com.ubcompany.umbba_android.presentation.onboarding.NotifyTimeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.qna.AnswerActivity"
+            android:name="com.ubcompany.umbba_android.presentation.qna.AnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.qna.QuestionAnswerActivity"
+            android:name="com.ubcompany.umbba_android.presentation.qna.QuestionAnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.setting.ManageAccountActivity"
+            android:name="com.ubcompany.umbba_android.presentation.setting.ManageAccountActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.setting.DeleteAccountActivity"
+            android:name="com.ubcompany.umbba_android.presentation.setting.DeleteAccountActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.home.EndingActivity"
+            android:name="com.ubcompany.umbba_android.presentation.home.EndingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
     </application>
