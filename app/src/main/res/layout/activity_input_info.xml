@@ -153,6 +153,7 @@
                             android:layout_height="wrap_content"
                             android:checked="@={viewmodel.man}"
                             android:text="@string/man"
+                            android:textAppearance="@style/AndroidBody1_2Regular16"
                             app:chipMinHeight="52dp" />
 
                         <com.google.android.material.chip.Chip
@@ -162,6 +163,7 @@
                             android:layout_height="wrap_content"
                             android:checked="@={viewmodel.woman}"
                             android:text="@string/woman"
+                            android:textAppearance="@style/AndroidBody1_2Regular16"
                             app:chipMinHeight="52dp" />
                     </com.google.android.material.chip.ChipGroup>
 

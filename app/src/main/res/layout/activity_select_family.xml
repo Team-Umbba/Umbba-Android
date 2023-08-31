@@ -88,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@={viewmodel.parent}"
                     android:text="@string/parent"
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:chipMinHeight="52dp" />
 
                 <com.google.android.material.chip.Chip
@@ -97,6 +98,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@={viewmodel.child}"
                     android:text="@string/child"
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:chipMinHeight="52dp" />
             </com.google.android.material.chip.ChipGroup>
 
@@ -110,8 +112,8 @@
             android:layout_marginHorizontal="28dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/shape_g400_stroke_r8_rect"
-            app:layout_constraintTop_toBottomOf="@id/cl_family"
-            android:visibility="gone">
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/cl_family">
 
             <TextView
                 android:id="@+id/tv_more"
@@ -147,6 +149,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@={viewmodel.mom}"
                     android:text="@string/mom"
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:chipMinHeight="52dp" />
 
                 <com.google.android.material.chip.Chip
@@ -156,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:checked="@={viewmodel.dad}"
                     android:text="@string/dad"
+                    android:textAppearance="@style/AndroidBody1_2Regular16"
                     app:chipMinHeight="52dp" />
             </com.google.android.material.chip.ChipGroup>
 

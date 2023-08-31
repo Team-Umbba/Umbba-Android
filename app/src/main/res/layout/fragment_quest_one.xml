@@ -49,9 +49,8 @@
                 android:layout_height="48dp"
                 android:checked="@={viewmodel.isClickedYes}"
                 android:text="@string/yes"
-                app:chipMinTouchTargetSize="0dp"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="110dp" />
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                app:chipMinTouchTargetSize="0dp"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/btn_answer2"
@@ -61,6 +60,7 @@
                 android:layout_marginBottom="12dp"
                 android:checked="@={viewmodel.isClickedNo}"
                 android:text="@string/no"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 app:chipMinTouchTargetSize="0dp" />
 
             <com.google.android.material.chip.Chip
@@ -70,6 +70,7 @@
                 android:layout_height="48dp"
                 android:checked="@={viewmodel.isClickedAmbiguous}"
                 android:text="@string/ambiguous"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
                 app:chipMinTouchTargetSize="0dp" />
         </com.google.android.material.chip.ChipGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
