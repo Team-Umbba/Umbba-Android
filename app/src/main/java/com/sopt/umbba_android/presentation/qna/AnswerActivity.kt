@@ -17,20 +17,23 @@ class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_
         binding.clickListener = this
         binding.vm = viewModel
         setIntentResponse()
+        setClickBtnSave()
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_qna_back -> showBackDialog()
-            R.id.iv_check -> {
-                setCheckStatus()
-            }
         }
     }
 
-    private fun setCheckStatus() {
-        if (!viewModel.answer.value.isNullOrBlank()) {
-            showConfirmDialog()
+    private fun setClickBtnSave() {
+        with(binding) {
+            viewModel.answer.observe(this@AnswerActivity) {
+                btnSave.isEnabled = !it.isNullOrBlank()
+            }
+            btnSave.setOnClickListener {
+                showConfirmDialog()
+            }
         }
     }
 

@@ -27,7 +27,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun initView() {
-        setLoadingView()
+        setLoadingView(true)
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
         if (currentFragment == null) {
             changeFragment(HomeFragment())
@@ -48,16 +48,24 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun setBottomNav() {
-        binding.bnvMain.run() {
+        binding.bnvMain.run {
             setOnItemSelectedListener {
                 changeFragment(
                     when (it.itemId) {
                         R.id.menu_home -> {
-                            setLoadingView()
+                            setLoadingView(true)
                             HomeFragment()
                         }
-                        R.id.menu_setting -> SettingFragment()
-                        else -> ListFragment()
+
+                        R.id.menu_setting -> {
+                            setLoadingView(false)
+                            SettingFragment()
+                        }
+
+                        else -> {
+                            setLoadingView(false)
+                            ListFragment()
+                        }
                     }
                 )
                 true
@@ -71,8 +79,12 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             .commit()
     }
 
-    private fun setLoadingView() {
-        binding.clLoading.visibility = View.VISIBLE
+    private fun setLoadingView(boolean: Boolean) {
+        if (boolean) {
+            binding.clLoading.visibility = View.VISIBLE
+        } else {
+            binding.clLoading.visibility = View.GONE
+        }
     }
 
     fun getLoadingView(): View = binding.clLoading

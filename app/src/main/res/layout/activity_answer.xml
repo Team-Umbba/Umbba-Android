@@ -34,8 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleText ="@{vm.section}"
-            app:visibleCheck="@{true}" />
+            app:titleText="@{vm.section}" />
 
         <TextView
             android:id="@+id/tv_topic"
@@ -55,8 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="19dp"
-            android:text="@{vm.question}"
             android:gravity="center"
+            android:text="@{vm.question}"
             android:textColor="@color/umbba_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,8 +91,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:hint="@string/answer_edittext_hint"
-                    android:minHeight="172dp"
                     android:maxLength="100"
+                    android:minHeight="172dp"
                     android:text="@={vm.answer}"
                     android:textAppearance="@style/AndroidBody1_2Regular16"
                     android:textColorHint="@color/grey_800"
@@ -104,5 +103,19 @@
 
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/sel_btn_next"
+            android:enabled="false"
+            android:stateListAnimator="@null"
+            android:text="저장하기"
+            android:textAppearance="@style/AndroidBody1_1SemiBold16"
+            android:textColor="@color/umbba_white"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

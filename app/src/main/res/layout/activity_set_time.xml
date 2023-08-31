@@ -51,6 +51,7 @@
 
         <TimePicker
             android:id="@+id/tp_time"
+            style="@style/AndroidBody1_2Regular16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:timePickerMode="spinner"

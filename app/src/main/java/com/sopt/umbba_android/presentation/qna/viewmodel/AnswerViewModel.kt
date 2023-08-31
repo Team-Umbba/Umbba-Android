@@ -19,9 +19,9 @@ class AnswerViewModel : ViewModel() {
         section.value = intent.getStringExtra("section")
     }
 
-    fun setBundleArgument(bundle:Bundle) : Bundle{
+    fun setBundleArgument(bundle: Bundle): Bundle {
         bundle.apply {
-            putString("question",question.value)
+            putString("question", question.value)
             putString("topic", topic.value)
             putString("section", section.value)
             putString("answer", answer.value)
