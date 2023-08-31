@@ -23,7 +23,7 @@ class DeleteAccountActivity :
     private fun setClickEvent() {
         with(binding) {
             btnDeleteAccount.setOnSingleClickListener {
-                DeleteAccountDialogFragment().apply{
+                DeleteAccountDialogFragment().apply {
                     show(supportFragmentManager, "DeleteAccountDialog")
                 }
             }

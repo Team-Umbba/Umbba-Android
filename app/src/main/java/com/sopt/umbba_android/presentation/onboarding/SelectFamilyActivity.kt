@@ -3,7 +3,6 @@ package com.sopt.umbba_android.presentation.onboarding
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.sopt.umbba_android.R

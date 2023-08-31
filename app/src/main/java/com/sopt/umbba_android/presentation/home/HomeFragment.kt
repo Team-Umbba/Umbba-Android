@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -84,11 +83,11 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun setBackground(section: String) {
         binding.ivBackground.load(
             when (section) {
-                getString(R.string.section1) -> R.drawable.bg_home1
-                getString(R.string.section2) -> R.drawable.bg_home2
-                getString(R.string.section3) -> R.drawable.bg_home3
-                getString(R.string.section4) -> R.drawable.bg_home4
-                else -> R.drawable.bg_home5
+                getString(R.string.section1) -> R.drawable.img_home1
+                getString(R.string.section2) -> R.drawable.img_home2
+                getString(R.string.section3) -> R.drawable.img_home3
+                getString(R.string.section4) -> R.drawable.img_home4
+                else -> R.drawable.img_home5
             }
         )
         Handler(Looper.getMainLooper()).postDelayed({

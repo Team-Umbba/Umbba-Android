@@ -9,7 +9,8 @@ import com.sopt.umbba_android.data.repository.OnboardingRepositoryImpl
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class InviteCodeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl) : ViewModel() {
+class InviteCodeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl):
+    ViewModel() {
     val code = MutableLiveData<String>()
     val isCodeValidate = MutableLiveData<Boolean>()
 

@@ -6,6 +6,6 @@ import com.sopt.umbba_android.data.model.response.LoginResponseDto
 
 class LoginRemoteDataSource {
     private val loginService = ServicePool.loginService
-    suspend fun postLogin(loginRequestDto: LoginRequestDto) : LoginResponseDto =
+    suspend fun postLogin(loginRequestDto: LoginRequestDto): LoginResponseDto =
         loginService.postLogin(loginRequestDto)
 }

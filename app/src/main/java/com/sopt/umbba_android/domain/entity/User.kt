@@ -11,4 +11,4 @@ data class User(
     var bornYear: Int? = null,
     var isInvitorChild: Boolean? = null,
     var relationInfo: String? = null
-): Parcelable
+) : Parcelable

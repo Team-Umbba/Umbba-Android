@@ -2,7 +2,6 @@ package com.sopt.umbba_android.data.model.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.time.LocalTime
 
 @Serializable
 data class SendInfoResponseDto(

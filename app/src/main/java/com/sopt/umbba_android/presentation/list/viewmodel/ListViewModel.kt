@@ -11,14 +11,14 @@ import timber.log.Timber
 
 class ListViewModel(private val listRepositoryImpl: ListRepositoryImpl) : ViewModel() {
 
-    init{
+    init {
         getListData(1)
     }
 
     private var _listResponse = MutableLiveData<List<ListResponseDto.ListData>>()
     val listResponseDto: LiveData<List<ListResponseDto.ListData>> = _listResponse
 
-    fun getListData(sectionId:Int) {
+    fun getListData(sectionId: Int) {
         viewModelScope.launch {
             listRepositoryImpl.getListData(sectionId).onSuccess { response ->
                 _listResponse.value = response.data

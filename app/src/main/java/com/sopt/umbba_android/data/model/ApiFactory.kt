@@ -2,13 +2,13 @@ package com.sopt.umbba_android.data.model
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sopt.umbba_android.BuildConfig
+import com.sopt.umbba_android.data.interceptor.AuthInterceptor
 import com.sopt.umbba_android.data.service.HomeService
 import com.sopt.umbba_android.data.service.ListService
+import com.sopt.umbba_android.data.service.LoginService
 import com.sopt.umbba_android.data.service.OnboardingService
 import com.sopt.umbba_android.data.service.QuestionAnswerService
 import com.sopt.umbba_android.data.service.SettingService
-import com.sopt.umbba_android.data.interceptor.AuthInterceptor
-import com.sopt.umbba_android.data.service.LoginService
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

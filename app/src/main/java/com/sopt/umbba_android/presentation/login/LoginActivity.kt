@@ -1,9 +1,11 @@
 package com.sopt.umbba_android.presentation.login
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -14,6 +16,7 @@ import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.databinding.ActivityLoginBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.MainActivity
+import com.sopt.umbba_android.presentation.invite.InviteCodeActivity
 import com.sopt.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.sopt.umbba_android.presentation.onboarding.InputInfoActivity
 import com.sopt.umbba_android.util.ViewModelFactory
@@ -87,7 +90,7 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
         // 액세스 토큰이 있을 때 - 앱을 그냥 껐다 켰을 때
         if (!SharedPreferences.getString(USER_TOKEN).isNullOrBlank()) {
             showOnboardForFirst()
-        // 액세스 토큰이 없을 때 - 최초 가입인가? or 로그아웃이나 앱삭제를 이유로 다시 로그인하는가?
+            // 액세스 토큰이 없을 때 - 최초 가입인가? or 로그아웃이나 앱삭제를 이유로 다시 로그인하는가?
         } else {
             viewModel.getTokenResult.observe(this) { response ->
                 setUserInfo(response.tokenDto.accessToken)
@@ -116,10 +119,29 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
             if (SharedPreferences.getInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE)) {
                 goInputInfoActivity()
             } else {
+                checkInviteCode()
                 goAgreePrivacyUseActivity()
             }
         } else {
             goMainActivity()
+        }
+    }
+
+    private fun checkInviteCode() {
+        FirebaseDynamicLinks.getInstance().getDynamicLink(intent).addOnSuccessListener {
+            var deepLink: Uri? = null
+            if (it != null) {
+                deepLink = it.link
+            }
+
+            if (deepLink != null) {
+                val inviteCode = deepLink.getQueryParameter("code")
+                startActivity(
+                    Intent(this, InviteCodeActivity::class.java)
+                        .putExtra("inviteCode", inviteCode)
+                )
+                if (!isFinishing) finish()
+            }
         }
     }
 

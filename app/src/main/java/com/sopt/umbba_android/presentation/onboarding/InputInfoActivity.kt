@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.viewModels
@@ -97,7 +96,8 @@ class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.act
             with(binding) {
                 btnNext.isEnabled =
                     layoutInputName.error.isNullOrEmpty() && layoutInputYear.error.isNullOrEmpty() && etYear.text.toString()
-                        .isNotEmpty() && etName.text.toString().isNotEmpty() && (chip1.isChecked || chip2.isChecked)
+                        .isNotEmpty() && etName.text.toString()
+                        .isNotEmpty() && (chip1.isChecked || chip2.isChecked)
             }
         }
     }

@@ -16,7 +16,7 @@ class ListQuestionAdapter(private val itemClick: (ListResponseDto.ListData) -> (
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding =
             ItemQuestionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding,itemClick)
+        return ListViewHolder(binding, itemClick)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {

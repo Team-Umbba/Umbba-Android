@@ -7,6 +7,7 @@ import retrofit2.http.PATCH
 interface SettingService {
     @PATCH("/log-out")
     suspend fun logout(): LogOutResponseDto
+
     @PATCH("/sign-out")
     suspend fun signout(): SignOutResponseDto
 }

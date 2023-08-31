@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.data.interceptor
 
-import android.util.Log
 import com.sopt.umbba_android.data.local.SharedPreferences
 import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.USER_KAKAO_TOKEN
 import com.sopt.umbba_android.presentation.login.LoginActivity.Companion.USER_TOKEN

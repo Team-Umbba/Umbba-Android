@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.presentation.onboarding.quest
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,14 +23,19 @@ class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryI
         get() = _isPostSuccess
 
     fun checkButtonComplete() {
-        isClickedComplete.value = isClickedYes.value == true || isClickedNo.value == true || isClickedAmbiguous.value == true
+        isClickedComplete.value =
+            isClickedYes.value == true || isClickedNo.value == true || isClickedAmbiguous.value == true
     }
 
     fun setReceiveInfo(info: User?, quest: List<String>) {
         viewModelScope.launch {
             onboardingRepositoryImpl.setReceiveInfo(
                 ReceiveInfoRequestDto(
-                    ReceiveInfoRequestDto.UserInfoData(name = info?.name!!, gender = info.gender!!, bornYear = info.bornYear!!),
+                    ReceiveInfoRequestDto.UserInfoData(
+                        name = info?.name!!,
+                        gender = info.gender!!,
+                        bornYear = info.bornYear!!
+                    ),
                     onboardingAnswerList = quest
                 )
             ).onSuccess {

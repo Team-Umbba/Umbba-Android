@@ -2,14 +2,12 @@ package com.sopt.umbba_android.presentation.invite
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.ActivityInviteBinding
 import com.sopt.umbba_android.domain.entity.User
 import com.sopt.umbba_android.presentation.onboarding.CommunicationActivity
 import com.sopt.umbba_android.util.binding.BindingActivity
 import com.sopt.umbba_android.util.setOnSingleClickListener
-import timber.log.Timber
 
 class InviteActivity : BindingActivity<ActivityInviteBinding>(R.layout.activity_invite) {
 

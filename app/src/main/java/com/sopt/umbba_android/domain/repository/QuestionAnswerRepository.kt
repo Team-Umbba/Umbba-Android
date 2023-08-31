@@ -7,6 +7,6 @@ import com.sopt.umbba_android.data.model.response.QuestionAnswerResponseDto
 
 interface QuestionAnswerRepository {
     suspend fun getQuestionAnswer(): Result<QuestionAnswerResponseDto>
-    suspend fun getListQuestionAnswer(qnaId:Long): Result<ListQuestionAnswerResponseDto>
+    suspend fun getListQuestionAnswer(qnaId: Long): Result<ListQuestionAnswerResponseDto>
     suspend fun postAnswer(answerRequestDto: AnswerRequestDto): Result<AnswerResponseDto>
 }

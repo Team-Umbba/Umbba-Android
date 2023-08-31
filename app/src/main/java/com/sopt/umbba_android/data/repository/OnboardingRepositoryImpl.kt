@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.data.repository
 
-import android.util.Log
 import com.sopt.umbba_android.data.datasource.OnboardingRemoteDataSource
 import com.sopt.umbba_android.data.model.request.InviteCodeRequestDto
 import com.sopt.umbba_android.data.model.request.ReceiveInfoRequestDto

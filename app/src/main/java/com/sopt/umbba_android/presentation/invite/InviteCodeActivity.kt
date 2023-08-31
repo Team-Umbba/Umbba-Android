@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
@@ -31,6 +30,7 @@ class InviteCodeActivity :
         binding.clickListener = this
         binding.viewmodel = viewModel
 
+        initInviteCode()
         checkCodeComplete()
         validateInviteCode()
         setFamilyToInviteCode()
@@ -39,6 +39,13 @@ class InviteCodeActivity :
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_basic_back -> finish()
+        }
+    }
+
+    private fun initInviteCode() {
+        val inviteCode = intent.getStringExtra("inviteCode")
+        if (inviteCode != null) {
+            binding.etCode.setText(inviteCode)
         }
     }
 
@@ -81,7 +88,8 @@ class InviteCodeActivity :
                     setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goCommunicationActivity()
                 } else {
-                    Snackbar.make(binding.root, R.string.invalid_invite_code, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.invalid_invite_code, Snackbar.LENGTH_SHORT)
+                        .show()
                 }
             }
         }

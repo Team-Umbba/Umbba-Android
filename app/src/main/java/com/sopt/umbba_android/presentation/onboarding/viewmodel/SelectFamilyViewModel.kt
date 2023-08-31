@@ -12,6 +12,7 @@ class SelectFamilyViewModel : ViewModel() {
     val isAllSelectFamily = MutableLiveData<Boolean>()
 
     fun checkSelectFamily() {
-        isAllSelectFamily.value = (parent.value == true || child.value == true) && (mom.value == true || dad.value == true)
+        isAllSelectFamily.value =
+            (parent.value == true || child.value == true) && (mom.value == true || dad.value == true)
     }
 }

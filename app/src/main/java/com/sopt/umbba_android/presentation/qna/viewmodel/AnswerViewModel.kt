@@ -2,7 +2,6 @@ package com.sopt.umbba_android.presentation.qna.viewmodel
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 

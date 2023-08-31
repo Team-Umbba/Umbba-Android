@@ -23,7 +23,7 @@ fun TimePicker.setTimeInterval(
             minValue = MINUTES_MIN
             maxValue = MINUTES_MAX / timeInterval - 1
             displayedValues = mutableListOf<String>().apply {
-                for (i in MINUTES_MIN .. MINUTES_MAX step timeInterval) {
+                for (i in MINUTES_MIN..MINUTES_MAX step timeInterval) {
                     add(String.format("%02d", i))
                 }
             }.toTypedArray()

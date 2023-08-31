@@ -6,17 +6,13 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import com.google.android.material.snackbar.Snackbar
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentSettingBinding
-import com.sopt.umbba_android.presentation.onboarding.OnboardingFinishActivity
 import com.sopt.umbba_android.util.binding.BindingFragment
-import com.sopt.umbba_android.util.fcm.MyFirebaseMessagingService
 import com.sopt.umbba_android.util.setOnSingleClickListener
 import timber.log.Timber
 

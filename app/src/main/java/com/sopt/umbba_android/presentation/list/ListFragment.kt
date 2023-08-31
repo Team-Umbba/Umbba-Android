@@ -44,27 +44,27 @@ class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list
             chip1.setOnSingleClickListener {
                 viewModel.getListData(1)
                 tvSection.text = chip1.text
-                ivImage.load(R.drawable.bg_list_img1)
+                ivImage.load(R.drawable.img_list1)
             }
             chip2.setOnSingleClickListener {
                 viewModel.getListData(2)
                 tvSection.text = chip2.text
-                ivImage.load(R.drawable.bg_list_img2)
+                ivImage.load(R.drawable.img_list2)
             }
             chip3.setOnSingleClickListener {
                 viewModel.getListData(3)
                 tvSection.text = chip3.text
-                ivImage.load(R.drawable.bg_list_img3)
+                ivImage.load(R.drawable.img_list3)
             }
             chip4.setOnSingleClickListener {
                 viewModel.getListData(4)
                 tvSection.text = chip4.text
-                ivImage.load(R.drawable.bg_list_img4)
+                ivImage.load(R.drawable.img_list4)
             }
             chip5.setOnSingleClickListener {
                 viewModel.getListData(5)
                 tvSection.text = chip5.text
-                ivImage.load(R.drawable.bg_list_img5)
+                ivImage.load(R.drawable.img_list5)
             }
         }
     }

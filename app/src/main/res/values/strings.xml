@@ -47,7 +47,7 @@
     <string name="dad">아빠</string>
 
     <!-- set time activity-->
-    <string name="every_night_send_push">매일 밤\n교신을 보내줄게</string>
+    <string name="every_day_send_push">매일 너에게\n교신을 보내줄게</string>
     <string name="send_push_description">선택한 시간에 따라 푸시 알림을 보내드려요</string>
     <string name="fail_information_post">정보 등록에 실패했습니다.</string>
 
@@ -106,10 +106,7 @@
     <string name="copy_invite_code">초대코드 복사</string>
     <string name="send_invitation">초대장 보내기</string>
     <string name="copy_invite_code_snackbar">초대 코드가 복사되었습니다.</string>
-    <string name="install_kakaotalk">카카오톡을 설치해주세요.</string>
-    <string name="kakao_title">%s으로부터 초대가 왔어요.\n초대코드 : %s</string>
-    <string name="kakao_description">과거로 떠나 함께 추억을 나누고,\n공감대를 형성해보세요.</string>
-    <string name="kakao_button">초대 받기</string>
+    <string name="message_title">\'%s\'으로부터 초대가 왔어요💌\n\n당신의 가장 오래된 기억이 무엇인가요?\n과거로 떠나 함께 추억을 나누고, 공감대를 형성해보세요.\n\n어플 설치 후 하단의 초대코드를 입력해, 상대방과 연결하세요.\n\n초대코드 : %s\n\nhttps://umbba.page.link/umbba?code=%s</string>
 
     <!--confirm answer dialog fragment-->
     <string name="save_answer">답변을 저장하시겠어요?</string>
@@ -156,10 +153,10 @@
     <string name="up_14_description">엄빠도 어렸다 서비스를 이용하기 위해서는 만 14세 이상이 되어야 합니다. 만 14세 미만의 이용자의 경우 서비스 이용이 제한됩니다.</string>
     <string name="agree_terms_and_condition">[필수] 서비스 이용약관에 동의합니다.</string>
     <string name="agree_privacy">[필수] 개인정보 수집 및 이용에 동의합니다.</string>
-    <string name="agree_privacy_description">\'(주)이승준 컴퍼니\'(이하 \'회사\')가 운영하는 \'엄빠도 어렸다\'는 개인정보보호법 제30조 의거 이용자의 개인정보보호와 권익을 보호하고 관련된 고충 및 애로사항을 신속하게 처리하기 위해 아래의 개인정보처리방침을 제정·운영하고 있습니다.</string>
+    <string name="agree_privacy_description">\'ub company\'(이하 \'회사\')가 운영하는 \'엄빠도 어렸다\'는 개인정보보호법 제30조 의거 이용자의 개인정보보호와 권익을 보호하고 관련된 고충 및 애로사항을 신속하게 처리하기 위해 아래의 개인정보처리방침을 제정·운영하고 있습니다.</string>
     <string name="terms_and_condition">서비스 이용약관</string>
     <string name="privacy">개인정보 수집 및 이용</string>
-    
+
     <!--communication activity-->
     <string name="answer_phone">전화 받기</string>
     <string name="call_description">오래된 공중전화에서 수신음이 들린다</string>

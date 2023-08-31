@@ -1,9 +1,7 @@
 package com.sopt.umbba_android.presentation.onboarding.quest
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentQuestOneBinding
