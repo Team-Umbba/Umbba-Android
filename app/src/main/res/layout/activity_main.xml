@@ -28,6 +28,8 @@
                 app:itemBackground="@drawable/sel_bottom_nav_indicator"
                 app:itemIconSize="24dp"
                 app:itemIconTint="@color/sel_bottom_nav_icon"
+                app:itemTextAppearanceActive="@style/AndroidBody2_2Regular12"
+                app:itemTextAppearanceInactive="@style/AndroidBody2_2Regular12"
                 app:itemTextColor="@color/sel_bottom_nav_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
