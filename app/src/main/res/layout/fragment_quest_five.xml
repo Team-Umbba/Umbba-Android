@@ -48,7 +48,6 @@
                 android:checked="@={viewmodel.isClickedYes}"
                 android:text="@string/yes"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
-                android:textColor="@color/umbba_black"
                 app:chipMinTouchTargetSize="0dp" />
 
             <com.google.android.material.chip.Chip
