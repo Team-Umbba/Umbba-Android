@@ -191,6 +191,7 @@
     <string name="ending_delete_account">이제, 새로운 여행을 떠나자</string>
     <string name="ending_delete_account_caption">회원 탈퇴 후 다른 가족과 연결하세요.</string>
     <string name="ending_btn_delete_account">연결 종료하기</string>
+    <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
 
     <!-- ending activity-->
 

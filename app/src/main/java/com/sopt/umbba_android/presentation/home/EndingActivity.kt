@@ -1,6 +1,7 @@
 package com.sopt.umbba_android.presentation.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.sopt.umbba_android.R
@@ -21,7 +22,12 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
                 finish()
             }
             btnSurvey.setOnClickListener {
-                TODO("설문조사 링크 넣기")
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(getString(R.string.ending_survey_uri))
+                    )
+                )
             }
             btnDeleteAccount.setOnClickListener {
                 startActivity(Intent(this@EndingActivity, ManageAccountActivity::class.java))
