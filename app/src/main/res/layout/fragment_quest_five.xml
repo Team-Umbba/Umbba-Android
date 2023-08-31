@@ -6,7 +6,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel" />
+            type="com.ubcompany.umbba_android.presentation.onboarding.quest.QuestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +48,6 @@
                 android:checked="@={viewmodel.isClickedYes}"
                 android:text="@string/yes"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
-                android:textColor="@color/umbba_black"
                 app:chipMinTouchTargetSize="0dp" />
 
             <com.google.android.material.chip.Chip

@@ -14,7 +14,7 @@
 
         <variable
             name="viewmodel"
-            type="com.sopt.umbba_android.presentation.onboarding.quest.QuestViewModel" />
+            type="com.ubcompany.umbba_android.presentation.onboarding.quest.QuestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

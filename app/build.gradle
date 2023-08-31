@@ -12,11 +12,11 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
-    namespace 'com.sopt.umbba_android'
+    namespace 'com.ubcompany.umbba_android'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.sopt.umbba_android"
+        applicationId "com.ubcompany.umbba_android"
         minSdk 26
         targetSdk 33
         versionCode 1
