@@ -7,7 +7,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +14,12 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.snackbar.Snackbar
-import com.kakao.sdk.share.ShareClient
-import com.kakao.sdk.template.model.Button
-import com.kakao.sdk.template.model.Content
-import com.kakao.sdk.template.model.FeedTemplate
-import com.kakao.sdk.template.model.Link
 import com.sopt.umbba_android.R
 import com.sopt.umbba_android.databinding.FragmentInviteCodeDialogBinding
 import com.sopt.umbba_android.util.setOnSingleClickListener
-import timber.log.Timber
 
-class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) : DialogFragment() {
+class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) :
+    DialogFragment() {
 
     private var _binding: FragmentInviteCodeDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "InviteCodeDialogFragment is null" }
@@ -67,7 +61,8 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
                 requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", binding.tvInviteCode.text)
             clipboard.setPrimaryClip(clip)
-            Snackbar.make(binding.root, R.string.copy_invite_code_snackbar, Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, R.string.copy_invite_code_snackbar, Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

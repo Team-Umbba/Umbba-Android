@@ -10,12 +10,12 @@ import com.sopt.umbba_android.data.model.response.SendInfoResponseDto
 
 class OnboardingRemoteDataSource {
     private val onboardingService = ServicePool.onboardingService
-    suspend fun setFamily(onboardingRequestDto: InviteCodeRequestDto) : InviteCodeResponseDto =
+    suspend fun setFamily(onboardingRequestDto: InviteCodeRequestDto): InviteCodeResponseDto =
         onboardingService.setFamily(onboardingRequestDto)
 
-    suspend fun setSendInfo(sendInfoRequestDto: SendInfoRequestDto) : SendInfoResponseDto =
+    suspend fun setSendInfo(sendInfoRequestDto: SendInfoRequestDto): SendInfoResponseDto =
         onboardingService.setSendInfo(sendInfoRequestDto)
 
-    suspend fun setReceiveInfo(receiveInfoRequestDto: ReceiveInfoRequestDto) : ReceiveInfoResponseDto =
+    suspend fun setReceiveInfo(receiveInfoRequestDto: ReceiveInfoRequestDto): ReceiveInfoResponseDto =
         onboardingService.setReceiveInfo(receiveInfoRequestDto)
 }

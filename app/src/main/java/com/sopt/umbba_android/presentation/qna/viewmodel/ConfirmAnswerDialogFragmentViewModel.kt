@@ -31,7 +31,7 @@ class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryI
             questionAnswerRepositoryImpl.postAnswer(answerRequestDto)
                 .onSuccess { reseponse ->
                     responseStatus.value = reseponse.status
-                    Timber.d( "postAnswer 성공")
+                    Timber.d("postAnswer 성공")
                 }.onFailure { error ->
                     responseStatus.value = -1
                     Timber.e("postAnswer 실패 $error")

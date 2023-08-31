@@ -4,6 +4,6 @@ import com.sopt.umbba_android.data.model.response.HomeCaseResponseDto
 import com.sopt.umbba_android.data.model.response.HomeResponseDto
 
 interface HomeRepository {
-    suspend fun getHomeData():Result<HomeResponseDto>
-    suspend fun getResponseCase():Result<HomeCaseResponseDto>
+    suspend fun getHomeData(): Result<HomeResponseDto>
+    suspend fun getResponseCase(): Result<HomeCaseResponseDto>
 }

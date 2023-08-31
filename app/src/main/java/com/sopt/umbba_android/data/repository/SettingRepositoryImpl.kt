@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.data.repository
 
-import android.util.Log
 import com.sopt.umbba_android.data.datasource.SettingRemoteDataSource
 import com.sopt.umbba_android.data.model.response.LogOutResponseDto
 import com.sopt.umbba_android.data.model.response.SignOutResponseDto

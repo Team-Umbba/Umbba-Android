@@ -10,8 +10,8 @@ data class ListResponseDto(
     @SerialName("message")
     val message: String,
     @SerialName("data")
-    val data : List<ListData>
-){
+    val data: List<ListData>
+) {
     @Serializable
     data class ListData(
         @SerialName("index")

@@ -14,8 +14,6 @@ import com.sopt.umbba_android.data.repository.ListRepositoryImpl
 import com.sopt.umbba_android.data.repository.LoginRepositoryImpl
 import com.sopt.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.sopt.umbba_android.data.repository.QuestionAnswerRepositoryImpl
-import com.sopt.umbba_android.data.service.LoginService
-import com.sopt.umbba_android.domain.repository.OnboardingRepository
 import com.sopt.umbba_android.data.repository.SettingRepositoryImpl
 import com.sopt.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.sopt.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel

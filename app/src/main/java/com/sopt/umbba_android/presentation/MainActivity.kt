@@ -56,6 +56,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                             setLoadingView()
                             HomeFragment()
                         }
+
                         R.id.menu_setting -> SettingFragment()
                         else -> ListFragment()
                     }

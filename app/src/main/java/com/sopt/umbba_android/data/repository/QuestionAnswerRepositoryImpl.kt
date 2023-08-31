@@ -28,7 +28,7 @@ class QuestionAnswerRepositoryImpl(private val questionAnswerRemoteDataSource: Q
             Timber.e("list qna data get 실패")
         }
 
-    override suspend fun postAnswer(answerRequestDto: AnswerRequestDto):Result<AnswerResponseDto> =
+    override suspend fun postAnswer(answerRequestDto: AnswerRequestDto): Result<AnswerResponseDto> =
         runCatching {
             questionAnswerRemoteDataSource.postAnswer(answerRequestDto)
         }.onSuccess {

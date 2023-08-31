@@ -3,10 +3,8 @@ package com.sopt.umbba_android.presentation.onboarding
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -35,10 +33,12 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
                 //권한을 승인할 경우
-                Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT)
+                    .show()
             } else {
                 //권한을 거절할 경우
-                Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT)
+                    .show()
             }
             sendUserData()
         }
@@ -136,10 +136,13 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
             if (it) {
                 setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
                 setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
-                startActivity(Intent(this, OnboardingFinishActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                startActivity(
+                    Intent(this, OnboardingFinishActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
             } else {
-                Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.fail_information_post, Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
     }

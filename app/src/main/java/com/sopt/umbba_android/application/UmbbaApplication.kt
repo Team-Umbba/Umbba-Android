@@ -8,7 +8,7 @@ import com.sopt.umbba_android.BuildConfig.KAKAO_NATIVE_APP_KEY
 import com.sopt.umbba_android.data.local.SharedPreferences
 import timber.log.Timber
 
-class UmbbaApplication: Application() {
+class UmbbaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initKakao()

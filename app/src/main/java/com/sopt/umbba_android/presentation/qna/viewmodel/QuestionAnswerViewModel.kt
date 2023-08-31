@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.presentation.qna.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,7 +37,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     isOpponentAnswer.value = response.data.isOpponentAnswer
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                     appbarSection.value = response.data.section.toString()
-                    Timber.d( "getQuestionAnswer 성공")
+                    Timber.d("getQuestionAnswer 성공")
                 }.onFailure { error ->
                     Timber.e("getQuestionAnswer 실패 $error")
                 }
@@ -52,7 +51,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
                     _listQnaResponse.value = response.data
                     appbarSection.value = response.data.section.toString()
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
-                    Timber.e( "getListQuestionAnswer 성공")
+                    Timber.e("getListQuestionAnswer 성공")
                 }.onFailure { error ->
                     Timber.e("getListQuestionAnswer 실패 $error")
                 }

@@ -6,5 +6,5 @@ import retrofit2.http.Path
 
 interface ListService {
     @GET("qna/list/{sectionId}")
-    suspend fun getListData(@Path("sectionId") sectionId:Int):ListResponseDto
+    suspend fun getListData(@Path("sectionId") sectionId: Int): ListResponseDto
 }

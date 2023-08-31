@@ -21,13 +21,16 @@ class NotifyTimeActivity :
     BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time),
     View.OnClickListener {
 
-    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-        if (isGranted) {
-            Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT).show()
-        } else {
-            Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT).show()
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                Snackbar.make(binding.root, R.string.allow_notification, Snackbar.LENGTH_SHORT)
+                    .show()
+            } else {
+                Snackbar.make(binding.root, R.string.not_allow_notification, Snackbar.LENGTH_SHORT)
+                    .show()
+            }
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +60,9 @@ class NotifyTimeActivity :
             18, 19, 20 -> hourText = getString(R.string.evening)
             21, 22, 23, 24 -> hourText = getString(R.string.night)
         }
-        if (hour >= 13) { hour %= 12 }
+        if (hour >= 13) {
+            hour %= 12
+        }
         if (minute == "00") {
             binding.tvTitle.text = getString(R.string.everyday_notification, hourText, hour)
         } else {
@@ -67,11 +72,18 @@ class NotifyTimeActivity :
 
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT).show()
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                Snackbar.make(binding.root, R.string.allowing_notification, Snackbar.LENGTH_SHORT)
+                    .show()
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                Snackbar.make(binding.root, R.string.if_allow_notification, Snackbar.LENGTH_SHORT).show()
-                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:"+ this.packageName))
+                Snackbar.make(binding.root, R.string.if_allow_notification, Snackbar.LENGTH_SHORT)
+                    .show()
+                val intent =
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
                 startActivity(intent)
                 this.finish()
             } else {
@@ -83,8 +95,10 @@ class NotifyTimeActivity :
     private fun goOnboardingFinishActivity() {
         with(binding) {
             btnGoPast.setOnSingleClickListener {
-                startActivity(Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                startActivity(
+                    Intent(this@NotifyTimeActivity, OnboardingFinishActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
             }
         }
     }

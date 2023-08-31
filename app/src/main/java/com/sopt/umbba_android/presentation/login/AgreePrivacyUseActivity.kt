@@ -16,7 +16,8 @@ import com.sopt.umbba_android.util.binding.BindingActivity
 import com.sopt.umbba_android.util.setOnSingleClickListener
 import java.util.regex.Pattern
 
-class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(R.layout.activity_agree_privacy_use) {
+class AgreePrivacyUseActivity :
+    BindingActivity<ActivityAgreePrivacyUseBinding>(R.layout.activity_agree_privacy_use) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +85,11 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun setHyperLinkAndColorInTermsTextView() {
         with(binding) {
-            setHyperLinkToTextView(getString(R.string.terms_and_condition), tvAgreeTermsAndCondition, "https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb")
+            setHyperLinkToTextView(
+                getString(R.string.terms_and_condition),
+                tvAgreeTermsAndCondition,
+                "https://harsh-step-7dd.notion.site/f1a14bf60ed4421f9b3761ef88906adb"
+            )
             setLinkTextColorToBlack(tvAgreeTermsAndCondition)
             setLinkBold(tvAgreeTermsAndCondition, 13)
         }
@@ -92,7 +97,11 @@ class AgreePrivacyUseActivity : BindingActivity<ActivityAgreePrivacyUseBinding>(
 
     private fun setHyperLinkAndColorInPrivacyTextView() {
         with(binding) {
-            setHyperLinkToTextView(getString(R.string.privacy), tvAgreePrivacy, "https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4")
+            setHyperLinkToTextView(
+                getString(R.string.privacy),
+                tvAgreePrivacy,
+                "https://harsh-step-7dd.notion.site/99fe0f58825d4f87bd3b987fadc623b6?pvs=4"
+            )
             setLinkTextColorToBlack(tvAgreePrivacy)
             setLinkBold(tvAgreePrivacy, 17)
         }

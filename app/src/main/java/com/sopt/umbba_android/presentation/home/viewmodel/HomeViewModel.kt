@@ -1,6 +1,5 @@
 package com.sopt.umbba_android.presentation.home.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,11 +1,9 @@
 package com.sopt.umbba_android.presentation.login.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sopt.umbba_android.data.model.ServicePool
 import com.sopt.umbba_android.data.model.request.LoginRequestDto
 import com.sopt.umbba_android.data.model.response.LoginResponseDto
 import com.sopt.umbba_android.data.repository.LoginRepositoryImpl

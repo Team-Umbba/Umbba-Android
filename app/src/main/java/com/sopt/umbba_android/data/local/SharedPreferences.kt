@@ -72,7 +72,7 @@ object SharedPreferences {
         setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
     }
 
-    fun clearForSignout(){
+    fun clearForSignout() {
         clear()
     }
 }
