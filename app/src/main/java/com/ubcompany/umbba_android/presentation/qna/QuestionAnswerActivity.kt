@@ -92,9 +92,7 @@ class QuestionAnswerActivity :
             tvAnswerOther.text = data.opponentAnswer
             tvAnswerMe.text = data.myAnswer
         }
-        Handler(Looper.getMainLooper()).postDelayed({
-            binding.clLoading.visibility = View.GONE
-        }, 1000)
+        binding.clLoading.visibility = View.GONE
     }
 
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
@@ -119,7 +117,6 @@ class QuestionAnswerActivity :
             }
         }
      binding.clLoading.visibility = View.GONE
-
     }
 
     private fun setBtnEnable(enable: Boolean?) {

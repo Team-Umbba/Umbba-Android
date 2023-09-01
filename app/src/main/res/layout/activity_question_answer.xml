@@ -155,7 +155,7 @@
             android:id="@+id/cl_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/umbba_black_opacity70"
+            android:background="@color/umbba_white"
             android:visibility="visible">
 
             <ImageView
