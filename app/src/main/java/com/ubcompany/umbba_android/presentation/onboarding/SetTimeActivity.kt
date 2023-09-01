@@ -149,7 +149,11 @@ class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activit
 
     private fun goOnboardingFinishActivity() {
         binding.btnNext.setOnSingleClickListener {
-            askNotificationPermission()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                askNotificationPermission()
+            } else {
+                sendUserData()
+            }
         }
     }
 }
