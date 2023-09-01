@@ -15,8 +15,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_start"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/img_past_trip_start">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_background1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_past_trip_start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/btn_back1"
@@ -35,9 +45,19 @@
             android:id="@+id/cl_arrive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/img_past_trip_arrive"
             android:visibility="invisible"
             tools:context=".presentation.onboarding.OnboardingFinishActivity">
+
+            <ImageView
+                android:id="@+id/iv_background2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_past_trip_arrive"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/btn_back2"
