@@ -178,7 +178,6 @@
     <string name="quest_4">뭔가를 크게 포기해본 경험이 있어?</string>
     <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
 
-
     <!-- ending activity-->
     <string name="ending_title1">잠시 교신을 종료할게</string>
     <string name="ending_title2">즐거운 여행이 됐기를 바라</string>
@@ -190,6 +189,7 @@
     <string name="ending_btn_delete_account">연결 종료하기</string>
     <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
 
-    <!-- ending activity-->
+    <!-- communication activity-->
+    <string name="communication">오래된 공중전화에서 수신음이 들린다</string>
 
 </resources>
