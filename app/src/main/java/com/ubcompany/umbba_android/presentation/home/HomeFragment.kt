@@ -39,6 +39,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
         binding.btnAnswer.setOnSingleClickListener {
+            viewModel.getResponseCase()
             when (responseCaseDto.responseCase) {
                 1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
                 2 -> showInviteDialog(
@@ -92,7 +93,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             if (activity != null) {
                 (activity as MainActivity).getLoadingView().visibility = View.GONE
             }
-        }, 1000)
+        }, 500)
     }
 
     override fun onResume() {

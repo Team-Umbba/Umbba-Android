@@ -14,6 +14,7 @@
     <color name="umbba_black">#32211B</color>
     <color name="umbba_black_opacity70">#B332211B</color>
     <color name="umbba_white">#FCFAF8</color>
+    <color name="umbba_white_opacity50">#80FCFAF8</color>
 
     <color name="primary_400">#F1BD9B</color>
     <color name="primary_500">#E99F74</color>
