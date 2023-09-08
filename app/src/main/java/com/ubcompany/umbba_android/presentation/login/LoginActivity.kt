@@ -103,11 +103,14 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
                 // 온보딩 x 연결 o -> 초대받는 측
                 else if (response.username == null) {
                     Log.d("LoginActivity", "온보딩 x 연결 o")
+                    SharedPreferences.setInviteCodeBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goInputInfoActivity()
                 }
                 // 온보딩 o -> 연결 여부와 관계 없이 main으로 이동임
                 else {
                     Log.d("LoginActivity", "온보딩 o")
+                    SharedPreferences.setOnboardingBoolean(DID_USER_CLEAR_ONBOARD, true)
+                    SharedPreferences.setOnboardingBoolean(DID_USER_CLEAR_INVITE_CODE, true)
                     goMainActivity()
                 }
             }
