@@ -4,12 +4,14 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.kakao.sdk.user.UserApiClient
 import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 import com.ubcompany.umbba_android.presentation.login.LoginActivity
@@ -57,9 +59,20 @@ class DeleteAccountDialogFragment : DialogFragment() {
         viewModel.responseStatus.observe(this) {
             if (it == 200) {
                 SharedPreferences.clearForSignout()
+                unlinkForKakao()
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
+            }
+        }
+    }
+
+    private fun unlinkForKakao() {
+        UserApiClient.instance.unlink { error ->
+            if (error != null) {
+                Log.e("Unlink for Kakao", "연결 끊기 실패", error)
+            } else {
+                Log.d("Unlink for Kakao", "연결 끊기 성공")
             }
         }
     }

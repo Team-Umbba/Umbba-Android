@@ -2,8 +2,10 @@ package com.ubcompany.umbba_android.presentation.setting
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import com.kakao.sdk.user.UserApiClient
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.databinding.ActivityManageAccountBinding
@@ -34,9 +36,20 @@ class ManageAccountActivity :
         viewModel.responseStatus.observe(this@ManageAccountActivity) {
             if (it == 200) {
                 SharedPreferences.clearForLogout()
+                logoutForKakao()
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
+            }
+        }
+    }
+
+    private fun logoutForKakao() {
+        UserApiClient.instance.logout { error ->
+            if (error != null) {
+                Log.e("logout for Kakao", "로그아웃 실패, 토큰 삭제", error)
+            } else {
+                Log.d("logout for Kakao", "로그아웃 성공, 토큰 삭제")
             }
         }
     }
