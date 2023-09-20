@@ -7,9 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.LoginRequestDto
 import com.ubcompany.umbba_android.data.model.response.LoginResponseDto
 import com.ubcompany.umbba_android.data.repository.LoginRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
+@HiltViewModel
 class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : ViewModel() {
 
     private val _getTokenResult: MutableLiveData<LoginResponseDto.LoginData> = MutableLiveData()

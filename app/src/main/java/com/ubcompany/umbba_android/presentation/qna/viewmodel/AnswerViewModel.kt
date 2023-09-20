@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@HiltViewModel
 class AnswerViewModel : ViewModel() {
     var answer = MutableLiveData<String>()
     var question = MutableLiveData<String>()

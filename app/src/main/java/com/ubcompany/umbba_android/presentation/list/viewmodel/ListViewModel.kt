@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.ListResponseDto
 import com.ubcompany.umbba_android.data.repository.ListRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
+@HiltViewModel
 class ListViewModel(private val listRepositoryImpl: ListRepositoryImpl) : ViewModel() {
 
     init {

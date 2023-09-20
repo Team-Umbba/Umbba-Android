@@ -4,9 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.repository.SettingRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
+@HiltViewModel
 class DeleteAccountViewModel(private val settingRepositoryImpl: SettingRepositoryImpl) :
     ViewModel() {
     var responseStatus = MutableLiveData<Int>()

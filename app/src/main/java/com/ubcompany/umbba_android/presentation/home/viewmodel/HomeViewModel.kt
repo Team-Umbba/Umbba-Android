@@ -7,9 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
 import com.ubcompany.umbba_android.data.repository.HomeRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@HiltViewModel
 class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewModel() {
     init {
         getHomeData()
