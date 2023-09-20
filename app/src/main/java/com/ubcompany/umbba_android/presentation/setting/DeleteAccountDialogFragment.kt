@@ -18,7 +18,9 @@ import com.ubcompany.umbba_android.presentation.login.LoginActivity
 import com.ubcompany.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DeleteAccountDialogFragment : DialogFragment() {
 
     private val viewModel: DeleteAccountViewModel by viewModels { ViewModelFactory(requireActivity()) }

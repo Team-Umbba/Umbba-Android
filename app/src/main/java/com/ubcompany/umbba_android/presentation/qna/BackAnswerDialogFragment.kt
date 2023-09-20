@@ -10,7 +10,9 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.ubcompany.umbba_android.databinding.FragmentBackAnswerDialogBinding
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BackAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentBackAnswerDialogBinding? = null

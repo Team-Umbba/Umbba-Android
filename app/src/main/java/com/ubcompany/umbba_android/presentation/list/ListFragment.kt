@@ -12,7 +12,9 @@ import com.ubcompany.umbba_android.presentation.qna.QuestionAnswerActivity
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list) {
     private val viewModel: ListViewModel by viewModels { ViewModelFactory(requireActivity()) }
     private lateinit var listQuestionAdapter: ListQuestionAdapter

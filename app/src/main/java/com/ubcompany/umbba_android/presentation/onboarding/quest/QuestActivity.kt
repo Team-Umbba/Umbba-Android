@@ -22,7 +22,9 @@ import com.ubcompany.umbba_android.presentation.onboarding.SetTimeActivity
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_quest),
     View.OnClickListener {
 
