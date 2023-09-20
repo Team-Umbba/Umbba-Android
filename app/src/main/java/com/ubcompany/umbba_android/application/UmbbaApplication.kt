@@ -6,8 +6,9 @@ import com.kakao.sdk.common.KakaoSdk
 import com.ubcompany.umbba_android.BuildConfig
 import com.ubcompany.umbba_android.BuildConfig.KAKAO_NATIVE_APP_KEY
 import com.ubcompany.umbba_android.data.local.SharedPreferences
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-
+@HiltAndroidApp
 class UmbbaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
