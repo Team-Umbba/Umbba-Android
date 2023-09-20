@@ -7,12 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
 import com.ubcompany.umbba_android.data.repository.HomeRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewModel() {
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) :
+    ViewModel() {
     init {
         getHomeData()
         getResponseCase()
@@ -35,7 +38,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
 
     fun getHomeData() {
         viewModelScope.launch {
-            homeRepositoryImpl.getHomeData()
+            homeRepository.getHomeData()
                 .onSuccess { response ->
                     Timber.d("getHomeData 성공")
                     _homeData.value = response.data
@@ -52,7 +55,7 @@ class HomeViewModel(private val homeRepositoryImpl: HomeRepositoryImpl) : ViewMo
 
     fun getResponseCase() {
         viewModelScope.launch {
-            homeRepositoryImpl.getResponseCase()
+            homeRepository.getResponseCase()
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
                     Timber.d("getResponseCode 성공")

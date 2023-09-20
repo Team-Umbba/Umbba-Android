@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.InviteCodeRequestDto
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.OnboardingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
+
 @HiltViewModel
-class InviteCodeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl):
+class InviteCodeViewModel @Inject constructor(private val onboardingRepository: OnboardingRepository) :
     ViewModel() {
     val code = MutableLiveData<String>()
     val isCodeValidate = MutableLiveData<Boolean>()
@@ -25,7 +28,7 @@ class InviteCodeViewModel(private val onboardingRepositoryImpl: OnboardingReposi
 
     fun setFamily(inviteCode: String) {
         viewModelScope.launch {
-            onboardingRepositoryImpl.setFamily(
+            onboardingRepository.setFamily(
                 InviteCodeRequestDto(inviteCode)
             ).onSuccess {
                 Timber.d("Set Family 성공")

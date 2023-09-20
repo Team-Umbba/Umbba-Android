@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.ListResponseDto
 import com.ubcompany.umbba_android.data.repository.ListRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.ListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
+
 @HiltViewModel
-class ListViewModel(private val listRepositoryImpl: ListRepositoryImpl) : ViewModel() {
+class ListViewModel @Inject constructor (private val listRepository: ListRepository) : ViewModel() {
 
     init {
         getListData(1)
@@ -21,7 +24,7 @@ class ListViewModel(private val listRepositoryImpl: ListRepositoryImpl) : ViewMo
 
     fun getListData(sectionId: Int) {
         viewModelScope.launch {
-            listRepositoryImpl.getListData(sectionId).onSuccess { response ->
+            listRepository.getListData(sectionId).onSuccess { response ->
                 _listResponse.value = response.data
                 Timber.d("getList 성공")
             }.onFailure { error ->
