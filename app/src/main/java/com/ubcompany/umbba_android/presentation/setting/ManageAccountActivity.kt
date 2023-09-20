@@ -11,7 +11,6 @@ import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.databinding.ActivityManageAccountBinding
 import com.ubcompany.umbba_android.presentation.login.LoginActivity
 import com.ubcompany.umbba_android.presentation.setting.viewmodel.ManageAccountViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ManageAccountActivity :
     BindingActivity<ActivityManageAccountBinding>(R.layout.activity_manage_account),
     View.OnClickListener {
-    private val viewModel: ManageAccountViewModel by viewModels { ViewModelFactory(this) }
+    private val viewModel: ManageAccountViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this

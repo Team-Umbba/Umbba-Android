@@ -16,14 +16,13 @@ import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.databinding.FragemntDeleteAccountDialogBinding
 import com.ubcompany.umbba_android.presentation.login.LoginActivity
 import com.ubcompany.umbba_android.presentation.setting.viewmodel.DeleteAccountViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DeleteAccountDialogFragment : DialogFragment() {
 
-    private val viewModel: DeleteAccountViewModel by viewModels { ViewModelFactory(requireActivity()) }
+    private val viewModel: DeleteAccountViewModel by viewModels ()
     private var _binding: FragemntDeleteAccountDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "DeleteAccountDialogFragment is null" }
 

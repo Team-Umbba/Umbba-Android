@@ -9,14 +9,13 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentListBinding
 import com.ubcompany.umbba_android.presentation.list.viewmodel.ListViewModel
 import com.ubcompany.umbba_android.presentation.qna.QuestionAnswerActivity
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ListFragment : BindingFragment<FragmentListBinding>(R.layout.fragment_list) {
-    private val viewModel: ListViewModel by viewModels { ViewModelFactory(requireActivity()) }
+    private val viewModel: ListViewModel by viewModels()
     private lateinit var listQuestionAdapter: ListQuestionAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
