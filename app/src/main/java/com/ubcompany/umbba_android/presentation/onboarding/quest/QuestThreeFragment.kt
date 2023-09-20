@@ -6,7 +6,9 @@ import androidx.fragment.app.activityViewModels
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentQuestThreeBinding
 import com.ubcompany.umbba_android.util.binding.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestThreeFragment :
     BindingFragment<FragmentQuestThreeBinding>(R.layout.fragment_quest_three) {
 

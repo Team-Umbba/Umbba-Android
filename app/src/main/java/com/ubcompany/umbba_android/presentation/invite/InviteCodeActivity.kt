@@ -18,8 +18,9 @@ import com.ubcompany.umbba_android.presentation.onboarding.CommunicationActivity
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
-
+@AndroidEntryPoint
 class InviteCodeActivity :
     BindingActivity<ActivityInviteCodeBinding>(R.layout.activity_invite_code),
     View.OnClickListener {

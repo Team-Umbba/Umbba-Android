@@ -8,7 +8,9 @@ import com.ubcompany.umbba_android.domain.entity.User
 import com.ubcompany.umbba_android.presentation.onboarding.CommunicationActivity
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InviteActivity : BindingActivity<ActivityInviteBinding>(R.layout.activity_invite) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

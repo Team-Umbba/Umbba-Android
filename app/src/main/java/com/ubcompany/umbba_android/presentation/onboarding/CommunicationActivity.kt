@@ -8,7 +8,9 @@ import com.ubcompany.umbba_android.databinding.ActivityCommunicationBinding
 import com.ubcompany.umbba_android.domain.entity.User
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CommunicationActivity :
     BindingActivity<ActivityCommunicationBinding>(R.layout.activity_communication) {
     override fun onCreate(savedInstanceState: Bundle?) {

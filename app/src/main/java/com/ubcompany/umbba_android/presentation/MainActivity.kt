@@ -15,7 +15,9 @@ import com.ubcompany.umbba_android.presentation.home.HomeFragment
 import com.ubcompany.umbba_android.presentation.list.ListFragment
 import com.ubcompany.umbba_android.presentation.setting.SettingFragment
 import com.ubcompany.umbba_android.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {

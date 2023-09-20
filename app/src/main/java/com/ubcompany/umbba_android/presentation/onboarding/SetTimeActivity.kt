@@ -21,7 +21,9 @@ import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import com.ubcompany.umbba_android.util.setTimeInterval
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activity_set_time),
     View.OnClickListener {
 

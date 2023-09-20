@@ -14,7 +14,9 @@ import com.ubcompany.umbba_android.presentation.setting.viewmodel.ManageAccountV
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ManageAccountActivity :
     BindingActivity<ActivityManageAccountBinding>(R.layout.activity_manage_account),
     View.OnClickListener {

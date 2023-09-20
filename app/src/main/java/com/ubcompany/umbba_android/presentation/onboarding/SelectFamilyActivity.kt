@@ -12,7 +12,9 @@ import com.ubcompany.umbba_android.presentation.onboarding.quest.QuestActivity
 import com.ubcompany.umbba_android.presentation.onboarding.viewmodel.SelectFamilyViewModel
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelectFamilyActivity :
     BindingActivity<ActivitySelectFamilyBinding>(R.layout.activity_select_family),
     View.OnClickListener {

@@ -6,7 +6,9 @@ import androidx.fragment.app.activityViewModels
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentQuestFiveBinding
 import com.ubcompany.umbba_android.util.binding.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestFiveFragment : BindingFragment<FragmentQuestFiveBinding>(R.layout.fragment_quest_five) {
     private val viewModel by activityViewModels<QuestViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

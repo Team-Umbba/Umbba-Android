@@ -9,7 +9,9 @@ import com.ubcompany.umbba_android.presentation.setting.viewmodel.DeleteAccountV
 import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DeleteAccountActivity :
     BindingActivity<ActivityDeleteAccountBinding>(R.layout.activity_delete_account),
     View.OnClickListener {

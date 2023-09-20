@@ -17,7 +17,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentInviteCodeDialogBinding
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InviteCodeDialogFragment(private val inviteUserName: String, private val inviteCode: String) :
     DialogFragment() {
 
