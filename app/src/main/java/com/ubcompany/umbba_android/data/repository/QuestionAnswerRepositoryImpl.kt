@@ -7,8 +7,9 @@ import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerRespons
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.domain.repository.QuestionAnswerRepository
 import timber.log.Timber
+import javax.inject.Inject
 
-class QuestionAnswerRepositoryImpl(private val questionAnswerRemoteDataSource: QuestionAnswerRemoteDataSource) :
+class QuestionAnswerRepositoryImpl @Inject constructor(private val questionAnswerRemoteDataSource: QuestionAnswerRemoteDataSource) :
     QuestionAnswerRepository {
     override suspend fun getQuestionAnswer(): Result<QuestionAnswerResponseDto> =
         runCatching {

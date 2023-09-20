@@ -5,8 +5,9 @@ import com.ubcompany.umbba_android.data.model.request.LoginRequestDto
 import com.ubcompany.umbba_android.data.model.response.LoginResponseDto
 import com.ubcompany.umbba_android.domain.repository.LoginRepository
 import timber.log.Timber
+import javax.inject.Inject
 
-class LoginRepositoryImpl(
+class LoginRepositoryImpl @Inject constructor(
     private val loginRemoteDataSource: LoginRemoteDataSource
 ) : LoginRepository {
     override suspend fun postLogin(loginRequestDto: LoginRequestDto): Result<LoginResponseDto> =
