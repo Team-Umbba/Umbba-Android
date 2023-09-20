@@ -7,9 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.ReceiveInfoRequestDto
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.ubcompany.umbba_android.domain.entity.User
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
+@HiltViewModel
 class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl) : ViewModel() {
     val isClickedYes = MutableLiveData<Boolean>()
     val isClickedNo = MutableLiveData<Boolean>()

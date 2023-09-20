@@ -6,9 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.InviteCodeRequestDto
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
+@HiltViewModel
 class InviteCodeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl):
     ViewModel() {
     val code = MutableLiveData<String>()
