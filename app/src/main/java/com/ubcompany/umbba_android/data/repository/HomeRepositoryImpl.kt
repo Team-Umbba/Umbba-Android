@@ -5,8 +5,11 @@ import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
 import com.ubcompany.umbba_android.domain.repository.HomeRepository
 import timber.log.Timber
+import javax.inject.Inject
 
-class HomeRepositoryImpl(private val homeRemoteDataSource: HomeRemoteDataSource) : HomeRepository {
+class HomeRepositoryImpl @Inject constructor(
+    private val homeRemoteDataSource: HomeRemoteDataSource
+) : HomeRepository {
     override suspend fun getHomeData(): Result<HomeResponseDto> =
         runCatching {
             homeRemoteDataSource.getHomeData()
