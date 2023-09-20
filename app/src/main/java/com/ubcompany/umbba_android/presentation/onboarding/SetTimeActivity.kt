@@ -17,7 +17,6 @@ import com.ubcompany.umbba_android.domain.entity.User
 import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
 import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.ubcompany.umbba_android.presentation.onboarding.viewmodel.SetTimeViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import com.ubcompany.umbba_android.util.setTimeInterval
@@ -27,7 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SetTimeActivity : BindingActivity<ActivitySetTimeBinding>(R.layout.activity_set_time),
     View.OnClickListener {
 
-    private val viewModel by viewModels<SetTimeViewModel> { ViewModelFactory(this) }
+    private val viewModel by viewModels<SetTimeViewModel>()
     private var time = ""
     private val questList = mutableListOf<String>()
 

@@ -19,7 +19,6 @@ import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.DI
 import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_ONBOARD
 import com.ubcompany.umbba_android.presentation.onboarding.NotifyTimeActivity
 import com.ubcompany.umbba_android.presentation.onboarding.SetTimeActivity
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +33,7 @@ class QuestActivity : BindingActivity<ActivityQuestBinding>(R.layout.activity_qu
         }
     }
 
-    private val viewModel by viewModels<QuestViewModel>() { ViewModelFactory(this) }
+    private val viewModel by viewModels<QuestViewModel>()
     private var count = 0
     private var quest = arrayOfNulls<String>(5)
     private val questList = mutableListOf<String>()

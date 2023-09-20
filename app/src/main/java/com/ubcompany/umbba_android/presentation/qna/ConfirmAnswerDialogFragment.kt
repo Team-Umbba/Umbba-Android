@@ -15,7 +15,6 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
 import com.ubcompany.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
 import com.ubcompany.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,11 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val viewModel: ConfirmAnswerDialogFragmentViewModel by viewModels {
-        ViewModelFactory(
-            requireActivity()
-        )
-    }
+    private val viewModel by viewModels<ConfirmAnswerDialogFragmentViewModel> ()
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
