@@ -11,8 +11,10 @@ import com.ubcompany.umbba_android.domain.repository.OnboardingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
+
 @HiltViewModel
-class SetTimeViewModel(private val onboardingRepository: OnboardingRepository) :
+class SetTimeViewModel @Inject constructor (private val onboardingRepository: OnboardingRepository) :
     ViewModel() {
 
     private val _isPostSuccess: MutableLiveData<Boolean> = MutableLiveData()
