@@ -5,8 +5,9 @@ import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.US
 import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.USER_TOKEN
 import okhttp3.Interceptor
 import okhttp3.Response
+import javax.inject.Inject
 
-class AuthInterceptor : Interceptor {
+class AuthInterceptor @Inject constructor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 

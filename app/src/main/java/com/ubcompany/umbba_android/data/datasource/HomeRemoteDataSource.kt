@@ -1,6 +1,5 @@
 package com.ubcompany.umbba_android.data.datasource
 
-import com.ubcompany.umbba_android.data.model.ServicePool
 import com.ubcompany.umbba_android.data.service.HomeService
 import javax.inject.Inject
 
