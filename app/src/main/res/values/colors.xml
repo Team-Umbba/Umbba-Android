@@ -2,4 +2,29 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black_opacity60">#99000000</color>
+    <color name="white_opacity50">#80FFFFFF</color>
+
+    <color name="grey_300">#F7F2F0</color>
+    <color name="grey_400">#F0EBE8</color>
+    <color name="grey_800">#BBADA4</color>
+
+    <color name="error_red">#FF3A1F</color>
+    <color name="success">#419277</color>
+    <color name="umbba_black">#32211B</color>
+    <color name="umbba_black_opacity70">#B332211B</color>
+    <color name="umbba_white">#FCFAF8</color>
+    <color name="umbba_white_opacity50">#80FCFAF8</color>
+
+    <color name="primary_400">#F1BD9B</color>
+    <color name="primary_500">#E99F74</color>
+    <color name="primary_600">#C87759</color>
+
+    <color name="gradient_start">#F8C8AE</color>
+    <color name="gradient_center">#EBA787</color>
+    <color name="gradient_end">#D87E7E</color>
+
+    <color name="ending_gradient_start">#46D87E7E</color>
+
+    <color name="kakao_yellow">#FBE44D</color>
 </resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.ubcompany.umbba_android.presentation.onboarding.quest.QuestViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="324dp"
+        android:background="@drawable/shape_g400_stroke_r8_rect">
+
+        <TextView
+            android:id="@+id/tv_question"
+            style="@style/AndroidSubHead1SemiBold20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="38dp"
+            android:text="@string/quest_3"
+            android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_question"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_answer1"
+                style="@style/QuestChoiceChipStyle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:checked="@={viewmodel.isClickedYes}"
+                android:text="@string/yes"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                app:chipMinTouchTargetSize="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_answer2"
+                style="@style/QuestChoiceChipStyle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:checked="@={viewmodel.isClickedNo}"
+                android:text="@string/no"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                app:chipMinTouchTargetSize="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_answer3"
+                style="@style/QuestChoiceChipStyle"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:checked="@={viewmodel.isClickedAmbiguous}"
+                android:text="@string/ambiguous"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                app:chipMinTouchTargetSize="0dp" />
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

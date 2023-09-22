@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.ubcompany.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel" />
+
+        <variable
+            name="titleText"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/umbba_white">
+
+        <include
+            android:id="@+id/layout_appbar"
+            layout="@layout/qna_appbar"
+            app:clickListener="@{clickListener}"
+            app:titleText="@{vm.isBeforeList ? vm.listQnaResponse.section : vm.qnaResponse.section}" />
+
+        <TextView
+            android:id="@+id/tv_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{vm.topicTitle}"
+            android:textAppearance="@style/BrandTypeBigRegular20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
+
+        <TextView
+            android:id="@+id/tv_question_other"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="32dp"
+            android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentQuestion : vm.qnaResponse.opponentQuestion}"
+            android:textAppearance="@style/AndroidSubHead1SemiBold20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_answer_other"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_grey_fill_r17_rect"
+            app:layout_constraintTop_toBottomOf="@id/tv_question_other">
+
+            <TextView
+                android:id="@+id/tv_answer_other"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:textColor="@{vm.isOpponentAnswer ? @color/umbba_black : @color/grey_800 }"
+                app:layout_constraintBottom_toTopOf="@id/tv_from_other"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_from_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentUsername : vm.qnaResponse.opponentUsername}"
+                android:textAppearance="@style/BrandTypeSmallSemiBold16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_question_me"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginTop="43dp"
+            android:gravity="right"
+            android:text="@{vm.isBeforeList ? vm.listQnaResponse.myQuestion : vm.qnaResponse.myQuestion}"
+            android:textAppearance="@style/AndroidSubHead1SemiBold20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_answer_other" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_answer_me"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_grey_fill_r17_rect"
+            app:layout_constraintTop_toBottomOf="@id/tv_question_me">
+
+            <TextView
+                android:id="@+id/tv_answer_me"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="right"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:textColor="@{vm.isMyAnswer ? @color/umbba_black : @color/grey_800 }"
+                app:layout_constraintBottom_toTopOf="@id/tv_from_me"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_from_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@{vm.isBeforeList ? vm.listQnaResponse.myUsername : vm.qnaResponse.myUsername}"
+                android:textAppearance="@style/BrandTypeSmallSemiBold16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_answer"
+            style="@style/AndroidBody1_1SemiBold16"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/sel_btn_answer"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_question_answer"
+            android:textColor="@color/sel_btn_white_text"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/umbba_white_opacity50"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iv_logo_gif"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

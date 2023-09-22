@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/umbba_white"
+        tools:context=".presentation.list.ListFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_list1"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/CornerRadiusImageView" />
+
+            <TextView
+                android:id="@+id/tv_list"
+                style="@style/AndroidBody1_2Regular16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:text="@string/list"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/sv_titlegroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/cl_image">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:checkedChip="@id/chip_1"
+                app:chipSpacingHorizontal="12dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_1"
+                    style="@style/ListChoiceChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:checked="true"
+                    android:text="@string/list_section1"
+                    android:textAppearance="@style/AndroidBody2_2Regular12"
+                    app:chipMinHeight="26dp"
+                    app:textEndPadding="12dp"
+                    app:textStartPadding="12dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_2"
+                    style="@style/ListChoiceChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_section2"
+                    android:textAppearance="@style/AndroidBody2_2Regular12"
+                    app:chipMinHeight="26dp"
+                    app:textEndPadding="12dp"
+                    app:textStartPadding="12dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_3"
+                    style="@style/ListChoiceChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_section3"
+                    android:textAppearance="@style/AndroidBody2_2Regular12"
+                    app:chipMinHeight="26dp"
+                    app:textEndPadding="12dp"
+                    app:textStartPadding="12dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_4"
+                    style="@style/ListChoiceChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_section4"
+                    android:textAppearance="@style/AndroidBody2_2Regular12"
+                    app:chipMinHeight="26dp"
+                    app:textEndPadding="12dp"
+                    app:textStartPadding="12dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_5"
+                    style="@style/ListChoiceChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="@string/list_section5"
+                    android:textAppearance="@style/AndroidBody2_2Regular12"
+                    app:chipMinHeight="26dp"
+                    app:textEndPadding="12dp"
+                    app:textStartPadding="12dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_section"
+            style="@style/BrandTypeBigRegular20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/list_section1"
+            android:textColor="@color/primary_600"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_titlegroup" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_question_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            app:layout_constrainedHeight="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/tv_section"
+            tools:itemCount="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_question_list" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
