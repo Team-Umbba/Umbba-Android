@@ -7,10 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.ReceiveInfoRequestDto
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.ubcompany.umbba_android.domain.entity.User
+import com.ubcompany.umbba_android.domain.repository.OnboardingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl) : ViewModel() {
+@HiltViewModel
+class QuestViewModel @Inject constructor (private val onboardingRepository: OnboardingRepository) : ViewModel() {
     val isClickedYes = MutableLiveData<Boolean>()
     val isClickedNo = MutableLiveData<Boolean>()
     val isClickedAmbiguous = MutableLiveData<Boolean>()
@@ -29,7 +33,7 @@ class QuestViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryI
 
     fun setReceiveInfo(info: User?, quest: List<String>) {
         viewModelScope.launch {
-            onboardingRepositoryImpl.setReceiveInfo(
+            onboardingRepository.setReceiveInfo(
                 ReceiveInfoRequestDto(
                     ReceiveInfoRequestDto.UserInfoData(
                         name = info?.name!!,

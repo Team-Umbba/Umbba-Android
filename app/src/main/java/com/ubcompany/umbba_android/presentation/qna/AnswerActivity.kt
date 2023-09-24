@@ -6,12 +6,13 @@ import androidx.activity.viewModels
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityAnswerBinding
 import com.ubcompany.umbba_android.presentation.qna.viewmodel.AnswerViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AnswerActivity : BindingActivity<ActivityAnswerBinding>(R.layout.activity_answer),
     View.OnClickListener {
-    private val viewModel: AnswerViewModel by viewModels { ViewModelFactory(this) }
+    private val viewModel: AnswerViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this

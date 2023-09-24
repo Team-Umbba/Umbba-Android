@@ -7,10 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.SendInfoRequestDto
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.ubcompany.umbba_android.domain.entity.User
+import com.ubcompany.umbba_android.domain.repository.OnboardingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class SetTimeViewModel(private val onboardingRepositoryImpl: OnboardingRepositoryImpl) :
+@HiltViewModel
+class SetTimeViewModel @Inject constructor (private val onboardingRepository: OnboardingRepository) :
     ViewModel() {
 
     private val _isPostSuccess: MutableLiveData<Boolean> = MutableLiveData()
@@ -19,7 +23,7 @@ class SetTimeViewModel(private val onboardingRepositoryImpl: OnboardingRepositor
 
     fun setSendInfo(info: User?, pushTime: String, quest: List<String>) {
         viewModelScope.launch {
-            onboardingRepositoryImpl.setSendInfo(
+            onboardingRepository.setSendInfo(
                 SendInfoRequestDto(
                     SendInfoRequestDto.SenderData(
                         name = info?.name!!,

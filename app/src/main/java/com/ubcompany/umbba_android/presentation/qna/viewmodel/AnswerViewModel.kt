@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class AnswerViewModel : ViewModel() {
+@HiltViewModel
+class AnswerViewModel @Inject constructor() : ViewModel() {
     var answer = MutableLiveData<String>()
     var question = MutableLiveData<String>()
     var section = MutableLiveData<String>()

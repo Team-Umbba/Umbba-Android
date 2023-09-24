@@ -13,9 +13,10 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivitySplashBinding
 import com.ubcompany.umbba_android.presentation.login.LoginActivity
 import com.ubcompany.umbba_android.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
+@AndroidEntryPoint
 class SplashActivity : BindingActivity<ActivitySplashBinding>(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()

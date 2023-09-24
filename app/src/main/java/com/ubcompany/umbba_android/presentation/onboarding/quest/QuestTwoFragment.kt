@@ -6,7 +6,9 @@ import androidx.fragment.app.activityViewModels
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentQuestTwoBinding
 import com.ubcompany.umbba_android.util.binding.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestTwoFragment : BindingFragment<FragmentQuestTwoBinding>(R.layout.fragment_quest_two) {
 
     private val viewModel by activityViewModels<QuestViewModel>()

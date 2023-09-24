@@ -9,8 +9,9 @@ import com.ubcompany.umbba_android.data.model.response.ReceiveInfoResponseDto
 import com.ubcompany.umbba_android.data.model.response.SendInfoResponseDto
 import com.ubcompany.umbba_android.domain.repository.OnboardingRepository
 import timber.log.Timber
+import javax.inject.Inject
 
-class OnboardingRepositoryImpl(
+class OnboardingRepositoryImpl @Inject constructor(
     private val onboardingRemoteDataSource: OnboardingRemoteDataSource
 ) : OnboardingRepository {
     override suspend fun setFamily(inviteCodeRequestDto: InviteCodeRequestDto): Result<InviteCodeResponseDto> =

@@ -16,7 +16,9 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityNotifyTimeBinding
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotifyTimeActivity :
     BindingActivity<ActivityNotifyTimeBinding>(R.layout.activity_notify_time),
     View.OnClickListener {

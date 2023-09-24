@@ -15,16 +15,16 @@ import com.ubcompany.umbba_android.domain.entity.User
 import com.ubcompany.umbba_android.presentation.invite.viewmodel.InviteCodeViewModel
 import com.ubcompany.umbba_android.presentation.login.LoginActivity.Companion.DID_USER_CLEAR_INVITE_CODE
 import com.ubcompany.umbba_android.presentation.onboarding.CommunicationActivity
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
-
+@AndroidEntryPoint
 class InviteCodeActivity :
     BindingActivity<ActivityInviteCodeBinding>(R.layout.activity_invite_code),
     View.OnClickListener {
 
-    private val viewModel by viewModels<InviteCodeViewModel> { ViewModelFactory(this) }
+    private val viewModel by viewModels<InviteCodeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this

@@ -11,7 +11,9 @@ import com.ubcompany.umbba_android.databinding.ActivityOnboardingFinishBinding
 import com.ubcompany.umbba_android.presentation.MainActivity
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OnboardingFinishActivity :
     BindingActivity<ActivityOnboardingFinishBinding>(R.layout.activity_onboarding_finish) {
     override fun onCreate(savedInstanceState: Bundle?) {

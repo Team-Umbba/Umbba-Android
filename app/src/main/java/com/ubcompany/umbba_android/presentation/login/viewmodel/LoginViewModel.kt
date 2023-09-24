@@ -7,10 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.LoginRequestDto
 import com.ubcompany.umbba_android.data.model.response.LoginResponseDto
 import com.ubcompany.umbba_android.data.repository.LoginRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.LoginRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val _getTokenResult: MutableLiveData<LoginResponseDto.LoginData> = MutableLiveData()
     val getTokenResult: LiveData<LoginResponseDto.LoginData>
@@ -18,7 +22,7 @@ class LoginViewModel(private val loginRepositoryImpl: LoginRepositoryImpl) : Vie
 
     fun login(fcmToken: String) {
         viewModelScope.launch {
-            loginRepositoryImpl.postLogin(
+            loginRepository.postLogin(
                 LoginRequestDto(
                     "KAKAO",
                     fcmToken

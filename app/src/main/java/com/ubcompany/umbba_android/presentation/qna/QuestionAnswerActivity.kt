@@ -19,15 +19,16 @@ import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.databinding.ActivityQuestionAnswerBinding
 import com.ubcompany.umbba_android.presentation.MainActivity
 import com.ubcompany.umbba_android.presentation.qna.viewmodel.QuestionAnswerViewModel
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
     View.OnClickListener {
-    private val viewModel: QuestionAnswerViewModel by viewModels { ViewModelFactory(this) }
+    private val viewModel by viewModels<QuestionAnswerViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -116,7 +117,7 @@ class QuestionAnswerActivity :
                 tvAnswerOther.text = getString(R.string.answer_opponent_hint)
             }
         }
-     binding.clLoading.visibility = View.GONE
+        binding.clLoading.visibility = View.GONE
     }
 
     private fun setBtnEnable(enable: Boolean?) {

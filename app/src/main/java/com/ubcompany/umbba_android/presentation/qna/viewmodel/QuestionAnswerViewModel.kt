@@ -7,10 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.repository.QuestionAnswerRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.QuestionAnswerRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
+@HiltViewModel
+class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepository: QuestionAnswerRepository) :
     ViewModel() {
     private var _qnaResponse = MutableLiveData<QuestionAnswerResponseDto.QnaData>()
     val qnaResponse: LiveData<QuestionAnswerResponseDto.QnaData> = _qnaResponse
@@ -30,7 +34,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
 
     fun getQuestionAnswer() {
         viewModelScope.launch {
-            questionAnswerRepositoryImpl.getQuestionAnswer()
+            questionAnswerRepository.getQuestionAnswer()
                 .onSuccess { response ->
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
@@ -46,7 +50,7 @@ class QuestionAnswerViewModel(private val questionAnswerRepositoryImpl: Question
 
     fun getListQuestionAnswer(qnaId: Long) {
         viewModelScope.launch {
-            questionAnswerRepositoryImpl.getListQuestionAnswer(qnaId)
+            questionAnswerRepository.getListQuestionAnswer(qnaId)
                 .onSuccess { response ->
                     _listQnaResponse.value = response.data
                     appbarSection.value = response.data.section.toString()

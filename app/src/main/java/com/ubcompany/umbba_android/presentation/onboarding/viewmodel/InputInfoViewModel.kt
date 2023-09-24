@@ -2,8 +2,11 @@ package com.ubcompany.umbba_android.presentation.onboarding.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class InputInfoViewModel : ViewModel() {
+@HiltViewModel
+class InputInfoViewModel @Inject constructor() : ViewModel() {
     val name = MutableLiveData<String>()
     val man = MutableLiveData<Boolean>()
     val woman = MutableLiveData<Boolean>()

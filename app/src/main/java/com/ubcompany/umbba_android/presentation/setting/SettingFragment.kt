@@ -14,8 +14,9 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentSettingBinding
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-
+@AndroidEntryPoint
 class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

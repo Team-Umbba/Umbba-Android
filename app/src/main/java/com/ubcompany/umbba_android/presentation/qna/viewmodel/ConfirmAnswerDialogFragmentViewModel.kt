@@ -6,10 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
 import com.ubcompany.umbba_android.data.repository.QuestionAnswerRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.QuestionAnswerRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryImpl: QuestionAnswerRepositoryImpl) :
+@HiltViewModel
+class ConfirmAnswerDialogFragmentViewModel @Inject constructor(private val questionAnswerRepository: QuestionAnswerRepository) :
     ViewModel() {
 
     var responseStatus = MutableLiveData<Int>()
@@ -28,7 +32,7 @@ class ConfirmAnswerDialogFragmentViewModel(private val questionAnswerRepositoryI
 
     fun postAnswer(answerRequestDto: AnswerRequestDto) {
         viewModelScope.launch {
-            questionAnswerRepositoryImpl.postAnswer(answerRequestDto)
+            questionAnswerRepository.postAnswer(answerRequestDto)
                 .onSuccess { reseponse ->
                     responseStatus.value = reseponse.status
                     Timber.d("postAnswer 성공")

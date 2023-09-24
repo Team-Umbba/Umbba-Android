@@ -16,12 +16,13 @@ import com.ubcompany.umbba_android.presentation.MainActivity
 import com.ubcompany.umbba_android.presentation.home.viewmodel.HomeViewModel
 import com.ubcompany.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.ubcompany.umbba_android.presentation.qna.QuestionAnswerActivity
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireActivity()) }
+    private val viewModel: HomeViewModel by viewModels ()
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {

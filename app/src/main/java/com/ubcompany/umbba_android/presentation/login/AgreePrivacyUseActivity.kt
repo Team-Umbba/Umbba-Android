@@ -14,8 +14,9 @@ import com.ubcompany.umbba_android.databinding.ActivityAgreePrivacyUseBinding
 import com.ubcompany.umbba_android.presentation.invite.InviteActivity
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
-
+@AndroidEntryPoint
 class AgreePrivacyUseActivity :
     BindingActivity<ActivityAgreePrivacyUseBinding>(R.layout.activity_agree_privacy_use) {
 

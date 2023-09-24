@@ -16,8 +16,9 @@ import com.ubcompany.umbba_android.presentation.onboarding.viewmodel.InputInfoVi
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.hideKeyboard
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
-
+@AndroidEntryPoint
 class InputInfoActivity : BindingActivity<ActivityInputInfoBinding>(R.layout.activity_input_info),
     View.OnClickListener {
 

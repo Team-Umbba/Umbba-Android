@@ -19,16 +19,14 @@ import com.ubcompany.umbba_android.presentation.MainActivity
 import com.ubcompany.umbba_android.presentation.invite.InviteCodeActivity
 import com.ubcompany.umbba_android.presentation.login.viewmodel.LoginViewModel
 import com.ubcompany.umbba_android.presentation.onboarding.InputInfoActivity
-import com.ubcompany.umbba_android.util.ViewModelFactory
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-
+@AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
-    private val viewModel: LoginViewModel by viewModels {
-        ViewModelFactory(this)
-    }
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
