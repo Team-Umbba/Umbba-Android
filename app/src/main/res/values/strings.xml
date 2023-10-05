@@ -191,5 +191,8 @@
 
     <!-- communication activity-->
     <string name="communication">오래된 공중전화에서 수신음이 들린다</string>
+    <string name="update_content">부모와 자식이 함께 떠나는 시간여행,\n엄빠도 어렸다가 개선되었어요\n더 나은 서비스를 즐겨보세요</string>
+    <string name="btn_update">업데이트 하기</string>
+    <string name="update_title">새로운 버전이 업데이트 되었어요</string>
 
 </resources>
