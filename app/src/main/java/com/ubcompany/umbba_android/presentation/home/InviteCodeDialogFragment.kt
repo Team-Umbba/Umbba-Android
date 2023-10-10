@@ -6,6 +6,7 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.dynamiclinks.DynamicLink.AndroidParameters
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentInviteCodeDialogBinding
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
@@ -40,7 +43,7 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
         closeDialog()
         setBackgroundDesign()
         setInviteCodeText(inviteCode)
-        shareMessage(inviteUserName, inviteCode)
+        makeInviteLink()
     }
 
     private fun closeDialog() {
@@ -68,12 +71,29 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
         }
     }
 
-    private fun shareMessage(inviteUserName: String, inviteCode: String) {
+    private fun makeInviteLink() {
+        val invitationLink = "https://umbba.page.link/umbba?code=$inviteCode"
+
+        val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
+            .setLink(Uri.parse(invitationLink))
+            .setDomainUriPrefix("https://umbba.page.link")
+            .setAndroidParameters(
+                AndroidParameters.Builder().build()
+            )
+            .buildShortDynamicLink()
+
+        dynamicLink.addOnSuccessListener { task ->
+            val inviteLink = task.shortLink
+            if (inviteLink != null) {
+                shareMessage(inviteLink)
+            }
+        }
+    }
+
+    private fun shareMessage(inviteLink : Uri) {
         binding.btnSendInvitation.setOnSingleClickListener {
-            // 카카오톡에서 동적링크가 활성화 되는지 안드로이드 폰에서 테스트 필요
-            // 만약 활성화가 안될 경우 uri를 따로 지정한 후 putExtra 해줘야 함
-            // 현재 ShareSheet, 썸네일 이미지는 잘 되는 중
-            val text = getString(R.string.message_title, inviteUserName, inviteCode, inviteCode)
+            // 초대 링크를 눌렀을 때 inviteCode가 자동으로 입력되는지 테스트 필요
+            val text = getString(R.string.message_title, inviteUserName, inviteCode, inviteLink)
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, text)
