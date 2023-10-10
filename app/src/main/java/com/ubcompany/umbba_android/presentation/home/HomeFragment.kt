@@ -5,11 +5,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import coil.load
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import com.ubcompany.umbba_android.BuildConfig
 import com.ubcompany.umbba_android.R
+import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.databinding.FragmentHomeBinding
 import com.ubcompany.umbba_android.presentation.MainActivity
@@ -22,7 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val viewModel: HomeViewModel by viewModels ()
+    private val viewModel: HomeViewModel by viewModels()
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -35,6 +45,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
         observeData()
+        isUpdateAppVersion()
     }
 
 
@@ -80,6 +91,20 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         )
     }
 
+    private fun showUpdateDialog() {
+        UpdateDialogFragment().show(
+            requireActivity().supportFragmentManager,
+            "UpdateDialogFragment"
+        )
+    }
+
+    private fun isUpdateAppVersion() {
+        Log.e("hyeon","${SharedPreferences.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
+        if(SharedPreferences.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)){
+            showUpdateDialog()
+        }
+    }
+
     private fun setBackground(section: String) {
         binding.ivBackground.load(
             when (section) {
@@ -103,5 +128,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             viewModel.getHomeData()
         }
         viewModel.getResponseCase()
+    }
+    companion object {
+        const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
     }
 }

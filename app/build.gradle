@@ -121,8 +121,8 @@ dependencies {
     // Import Firebase Cloud Messaging SDK
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
-    //Firebase Remote Config
-    implementation("com.google.firebase:firebase-config-ktx")
+    //Firebase Remote Config SDK
+    implementation 'com.google.firebase:firebase-config-ktx'
 
     // Kakaologin
     implementation 'com.kakao.sdk:v2-user:2.11.0'
@@ -134,6 +134,9 @@ dependencies {
 
     // Splash
     implementation "androidx.core:core-splashscreen:1.0.0"
+
+    //인앱 Update
+    implementation 'com.google.android.play:app-update-ktx:2.1.0'
 
 
 }
