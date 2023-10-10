@@ -132,6 +132,11 @@ dependencies {
 
     // Splash
     implementation "androidx.core:core-splashscreen:1.0.0"
+
+    //인앱 Update
+    implementation 'com.google.android.play:app-update-ktx:2.1.0'
+
+
 }
 
 kapt{
