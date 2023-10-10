@@ -121,8 +121,6 @@ dependencies {
     // Import Firebase Cloud Messaging SDK
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
-    //Firebase Remote Config SDK
-    implementation 'com.google.firebase:firebase-config-ktx'
 
     // Kakaologin
     implementation 'com.kakao.sdk:v2-user:2.11.0'
