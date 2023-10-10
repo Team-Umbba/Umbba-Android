@@ -19,6 +19,7 @@ import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
+
 @AndroidEntryPoint
 class InviteCodeActivity :
     BindingActivity<ActivityInviteCodeBinding>(R.layout.activity_invite_code),
@@ -45,7 +46,7 @@ class InviteCodeActivity :
     private fun initInviteCode() {
         val inviteCode = intent.getStringExtra("inviteCode")
         if (inviteCode != null) {
-            binding.etCode.setText(inviteCode)
+            viewModel.code.value = inviteCode
         }
     }
 
