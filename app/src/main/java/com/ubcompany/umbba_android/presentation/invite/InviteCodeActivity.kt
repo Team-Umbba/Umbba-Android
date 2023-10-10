@@ -102,9 +102,13 @@ class InviteCodeActivity :
         } else {
             intent.getParcelableExtra<User>("userData")
         }
-        startActivity(Intent(this, CommunicationActivity::class.java).apply {
-            putExtra("userData", userData)
-        })
+        startActivity(
+            Intent(
+                this,
+                CommunicationActivity::class.java
+            ).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).apply {
+                putExtra("userData", userData)
+            })
     }
 
     companion object {
