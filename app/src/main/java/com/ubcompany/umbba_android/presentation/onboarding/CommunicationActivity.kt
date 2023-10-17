@@ -3,6 +3,14 @@ package com.ubcompany.umbba_android.presentation.onboarding
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.view.animation.AnimationUtils
+import coil.ImageLoader
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
+import coil.load
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityCommunicationBinding
 import com.ubcompany.umbba_android.domain.entity.User
@@ -17,6 +25,8 @@ class CommunicationActivity :
         super.onCreate(savedInstanceState)
 
         goInputInfoActivity()
+        initLoadingGif()
+        animateFadeBackground()
     }
 
     private fun goInputInfoActivity() {
@@ -31,4 +41,35 @@ class CommunicationActivity :
             })
         }
     }
+
+    private fun initLoadingGif() {
+        val imageLoader = ImageLoader.Builder(applicationContext)
+            .components {
+                if (Build.VERSION.SDK_INT >= 28) {
+                    add(ImageDecoderDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+            }.build()
+
+        binding.ivGif.load(R.raw.communication, imageLoader = imageLoader)
+    }
+
+    private fun animateFadeBackground() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            val fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout)
+            with(binding.clStart) {
+                startAnimation(fadeOutAnim)
+                visibility = View.INVISIBLE
+            }
+            val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein)
+            binding.clEnd.startAnimation(fadeInAnim)
+            with(binding.clEnd) {
+                startAnimation(fadeInAnim)
+                visibility = View.VISIBLE
+            }
+        }, 2000)
+
+    }
+
 }
