@@ -109,7 +109,7 @@
     <string name="message_title">\'%s\'으로부터 초대가 왔어요💌\n\n당신의 가장 오래된 기억이 무엇인가요?\n과거로 떠나 함께 추억을 나누고, 공감대를 형성해보세요.\n\n어플 설치 후 하단의 초대코드를 입력해, 상대방과 연결하세요.\n\n초대코드 : %s\n\n%s</string>
 
     <!--confirm answer dialog fragment-->
-    <string name="save_answer">답변을 저장하시겠어요?</string>
+    <string name="save_answer">답변을 저장하시겠어요?\n저장 후에는 수정이 불가능해요</string>
     <string name="back">돌아가기</string>
     <string name="save">저장</string>
     <string name="post_answer">답변이 전송되었습니다.</string>
