@@ -23,6 +23,7 @@ import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+
 @AndroidEntryPoint
 class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
@@ -137,9 +138,11 @@ class LoginActivity : BindingActivity<ActivityLoginBinding>(R.layout.activity_lo
 
             if (deepLink != null) {
                 val inviteCode = deepLink.getQueryParameter("code")
+                val userData = User(isReceiver = true)
                 startActivity(
                     Intent(this, InviteCodeActivity::class.java)
                         .putExtra("inviteCode", inviteCode)
+                        .putExtra("userData", userData)
                 )
                 if (!isFinishing) finish()
             }

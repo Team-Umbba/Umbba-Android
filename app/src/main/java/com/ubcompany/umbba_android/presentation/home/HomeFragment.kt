@@ -121,6 +121,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         }
         viewModel.getResponseCase()
     }
+
     companion object {
         const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
     }

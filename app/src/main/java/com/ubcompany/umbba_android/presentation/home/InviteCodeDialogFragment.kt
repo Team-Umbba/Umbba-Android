@@ -92,7 +92,6 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
 
     private fun shareMessage(inviteLink : Uri) {
         binding.btnSendInvitation.setOnSingleClickListener {
-            // 초대 링크를 눌렀을 때 inviteCode가 자동으로 입력되는지 테스트 필요
             val text = getString(R.string.message_title, inviteUserName, inviteCode, inviteLink)
             val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
