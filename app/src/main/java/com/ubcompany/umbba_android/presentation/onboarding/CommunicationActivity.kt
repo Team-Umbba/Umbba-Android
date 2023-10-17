@@ -57,19 +57,17 @@ class CommunicationActivity :
 
     private fun animateFadeBackground() {
         Handler(Looper.getMainLooper()).postDelayed({
-            val fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout)
+            val fadeOutAnim = AnimationUtils.loadAnimation(this, R.anim.fadeout_short)
             with(binding.clStart) {
                 startAnimation(fadeOutAnim)
                 visibility = View.INVISIBLE
             }
-            val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.fadein)
-            binding.clEnd.startAnimation(fadeInAnim)
+        }, 2000)
+        Handler(Looper.getMainLooper()).postDelayed({
             with(binding.clEnd) {
-                startAnimation(fadeInAnim)
                 visibility = View.VISIBLE
             }
-        }, 2000)
-
+        }, 3000)
     }
 
 }
