@@ -12,41 +12,67 @@
         android:layout_height="match_parent"
         tools:context=".presentation.onboarding.CommunicationActivity">
 
-        <ImageView
-            android:id="@+id/iv_background"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_communication"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_communication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:text="@string/communication"
+                android:textAppearance="@style/AndroidSubHead1SemiBold20"
+                android:textColor="@color/umbba_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_end"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_communication"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:visibility="invisible">
 
-        <TextView
-            android:id="@+id/tv_communication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:text="@string/communication"
-            android:textAppearance="@style/AndroidSubHead1SemiBold20"
-            android:textColor="@color/umbba_white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/iv_gif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_start"
-            style="@style/AndroidBody1_1SemiBold16"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/shape_pri500_btn_stroke_r50_rect"
-            android:enabled="true"
-            android:stateListAnimator="@null"
-            android:text="@string/answer_phone"
-            android:textColor="@color/primary_500"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_start"
+                style="@style/AndroidBody1_1SemiBold16"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/shape_pri500_btn_stroke_r50_rect"
+                android:enabled="true"
+                android:stateListAnimator="@null"
+                android:text="@string/answer_phone"
+                android:textColor="@color/primary_500"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
