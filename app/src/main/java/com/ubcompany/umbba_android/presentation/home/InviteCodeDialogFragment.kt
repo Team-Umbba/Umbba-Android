@@ -15,6 +15,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.DynamicLink.AndroidParameters
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.ubcompany.umbba_android.R
@@ -79,6 +80,9 @@ class InviteCodeDialogFragment(private val inviteUserName: String, private val i
             .setDomainUriPrefix("https://umbba.page.link")
             .setAndroidParameters(
                 AndroidParameters.Builder().build()
+            )
+            .setIosParameters(
+                DynamicLink.IosParameters.Builder("org.umbba.Umbba-iOS").build()
             )
             .buildShortDynamicLink()
 
