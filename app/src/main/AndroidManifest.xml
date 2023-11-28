@@ -72,9 +72,8 @@
             android:name="com.ubcompany.umbba_android.presentation.login.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
