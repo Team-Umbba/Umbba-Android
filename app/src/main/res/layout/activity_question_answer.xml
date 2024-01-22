@@ -36,31 +36,33 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{vm.topicTitle}"
+            tool:text="topic"
             android:textAppearance="@style/BrandTypeBigRegular20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
 
-        <TextView
-            android:id="@+id/tv_question_other"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="28dp"
-            android:layout_marginTop="32dp"
-            android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentQuestion : vm.qnaResponse.opponentQuestion}"
-            android:textAppearance="@style/AndroidSubHead1SemiBold20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_topic" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_other"
             android:layout_width="match_parent"
             android:layout_height="172dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape_grey_fill_r17_rect"
-            app:layout_constraintTop_toBottomOf="@id/tv_question_other">
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/shape_grey300_fill_r17_rect"
+            app:layout_constraintTop_toBottomOf="@id/tv_topic">
+
+            <TextView
+                android:id="@+id/tv_question_other"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                tool:text = "냠"
+                android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentQuestion : vm.qnaResponse.opponentQuestion}"
+                android:textAppearance="@style/AndroidSubHead1SemiBold20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_answer_other"
@@ -88,27 +90,29 @@
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_question_me"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="28dp"
-            android:layout_marginTop="43dp"
-            android:gravity="right"
-            android:text="@{vm.isBeforeList ? vm.listQnaResponse.myQuestion : vm.qnaResponse.myQuestion}"
-            android:textAppearance="@style/AndroidSubHead1SemiBold20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_answer_other" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_me"
             android:layout_width="match_parent"
             android:layout_height="172dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape_grey_fill_r17_rect"
-            app:layout_constraintTop_toBottomOf="@id/tv_question_me">
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_grey300_fill_r17_rect"
+            app:layout_constraintTop_toBottomOf="@id/cl_answer_other">
+
+            <TextView
+                android:id="@+id/tv_question_me"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="right"
+                tool:text = "냠"
+                android:text="@{vm.isBeforeList ? vm.listQnaResponse.myQuestion : vm.qnaResponse.myQuestion}"
+                android:textAppearance="@style/AndroidSubHead1SemiBold20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tv_answer_me"
