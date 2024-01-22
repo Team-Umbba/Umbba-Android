@@ -195,4 +195,16 @@
     <string name="btn_update">업데이트 하기</string>
     <string name="update_title">새로운 버전이 업데이트 되었어요</string>
 
+    <!-- mypage fragment -->
+    <string name="now">지금은</string>
+    <string name="travel">여행을 떠난 지</string>
+    <string name="answer">나눈 문답 수</string>
+    <string name="gift">선물하기</string>
+    <string name="gift_description">세상에 단 하나뿐인 선물을 건네보세요</string>
+    <string name="getclose">가까워지기</string>
+    <string name="getclose_description">서로에 대한\n퀴즈를 풀어보세요</string>
+    <string name="record">기록하기</string>
+    <string name="record_description">소중한 순간을\n기록하세요</string>
+    <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
+
 </resources>
