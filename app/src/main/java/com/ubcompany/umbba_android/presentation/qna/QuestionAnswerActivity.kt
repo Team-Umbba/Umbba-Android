@@ -104,6 +104,7 @@ class QuestionAnswerActivity :
                     tvAnswerOther.text = data.opponentAnswer
                     setBlurText(false)
                 } else {
+                    clAnswerMe.setBackgroundResource((R.drawable.shape_pri500_btn_stroke_r50_rect))
                     tvAnswerOther.text = data.opponentAnswer
                     tvAnswerMe.text = getString(R.string.answer_me_hint)
                     setBlurText(true)
@@ -113,6 +114,7 @@ class QuestionAnswerActivity :
                     tvAnswerMe.text = data.myAnswer
                 } else {
                     tvAnswerMe.text = getString(R.string.answer_me_hint)
+                    clAnswerMe.setBackgroundResource((R.drawable.shape_pri500_btn_stroke_r50_rect))
                 }
                 tvAnswerOther.text = getString(R.string.answer_opponent_hint)
             }
