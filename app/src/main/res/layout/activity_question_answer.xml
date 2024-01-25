@@ -45,7 +45,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_other"
             android:layout_width="match_parent"
-            android:layout_height="172dp"
+            android:layout_height="wrap_content"
+            android:minHeight="172dp"
             android:layout_marginHorizontal="21dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/shape_grey300_fill_r17_rect"
@@ -75,8 +76,7 @@
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tool:text="냠" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_answer_other"
@@ -90,7 +90,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_from_other"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tv_question_other" />
 
             <TextView
                 android:id="@+id/tv_from_other"
@@ -107,7 +107,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_me"
             android:layout_width="match_parent"
-            android:layout_height="172dp"
+            android:layout_height="wrap_content"
+            android:minHeight="172dp"
             android:layout_marginHorizontal="21dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_grey300_fill_r17_rect"
@@ -124,8 +125,7 @@
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tool:text="냠" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_me_blur_hint"
@@ -154,7 +154,7 @@
                 app:layout_constraintBottom_toTopOf="@id/tv_from_me"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tv_question_me" />
 
             <TextView
                 android:id="@+id/tv_from_me"
