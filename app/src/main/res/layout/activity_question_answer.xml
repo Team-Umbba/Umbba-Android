@@ -36,11 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{vm.topicTitle}"
-            tool:text="topic"
             android:textAppearance="@style/BrandTypeBigRegular20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar"
+            tool:text="topic" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_answer_other"
@@ -52,17 +52,31 @@
             app:layout_constraintTop_toBottomOf="@id/tv_topic">
 
             <TextView
+                android:id="@+id/tv_other_blur_hint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:textColor="@color/grey_900"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="아래 질문에 답하고 내용을 확인하세요" />
+
+            <TextView
                 android:id="@+id/tv_question_other"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                tool:text = "냠"
                 android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentQuestion : vm.qnaResponse.opponentQuestion}"
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="냠" />
 
             <TextView
                 android:id="@+id/tv_answer_other"
@@ -106,13 +120,26 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:gravity="right"
-                tool:text = "냠"
                 android:text="@{vm.isBeforeList ? vm.listQnaResponse.myQuestion : vm.qnaResponse.myQuestion}"
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="냠" />
 
+            <TextView
+                android:id="@+id/tv_me_blur_hint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="@style/AndroidBody1_2Regular16"
+                android:textColor="@color/grey_900"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tool:text="하단 버튼을 눌러 답변을 입력하세요" />
 
             <TextView
                 android:id="@+id/tv_answer_me"

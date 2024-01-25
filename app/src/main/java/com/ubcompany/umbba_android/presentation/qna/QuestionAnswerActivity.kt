@@ -9,6 +9,7 @@ import android.os.Looper
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
@@ -98,28 +99,84 @@ class QuestionAnswerActivity :
 
     private fun setAnswerText(data: QuestionAnswerResponseDto.QnaData) {
         with(binding) {
-            if (data.isOpponentAnswer == true) {
-                if (data.isMyAnswer == true) {
+            if (data.isOpponentAnswer == true) { //상대 답변 완료
+                tvAnswerOther.text = data.opponentAnswer
+                if (data.isMyAnswer == true) { // 내 답변 완료 (둘다 답변 한 상황)
                     tvAnswerMe.text = data.myAnswer
-                    tvAnswerOther.text = data.opponentAnswer
-                    setBlurText(false)
-                } else {
-                    clAnswerMe.setBackgroundResource((R.drawable.shape_pri500_btn_stroke_r50_rect))
-                    tvAnswerOther.text = data.opponentAnswer
-                    tvAnswerMe.text = getString(R.string.answer_me_hint)
-                    setBlurText(true)
+                    setOtherAnswerBlur(false)
+                    isOtherHintVisible(false)
+                    isMeHintVisible(false)
+                } else { // 내 답변 x
+                    setOtherAnswerBlur(true)
+                    isOtherHintVisible(true)
+                    isMeHintVisible(true)
+                    isOnlyMeAnswered(false)
+                    clAnswerMe.setBackgroundResource(R.drawable.shape_pri500_btn_stroke_r50_rect)
                 }
-            } else {
-                if (data.isMyAnswer == true) {
+            } else { // 상대 답변 x
+                if (data.isMyAnswer == true) { // 내 답변 완료
                     tvAnswerMe.text = data.myAnswer
-                } else {
-                    tvAnswerMe.text = getString(R.string.answer_me_hint)
-                    clAnswerMe.setBackgroundResource((R.drawable.shape_pri500_btn_stroke_r50_rect))
+                    setOtherQuestionBlur(false)
+                    isOnlyMeAnswered(true)
+                    isMeHintVisible(false)
+                    isOtherHintVisible(true)
+                } else { // 내 답변 x (둘다 답변하지 않은 상황)
+                    setOtherQuestionBlur(true)
+                    isOnlyMeAnswered(false)
+                    isMeHintVisible(true)
+                    isOtherHintVisible(true)
+                    clAnswerMe.setBackgroundResource(R.drawable.shape_pri500_btn_stroke_r50_rect)
                 }
-                tvAnswerOther.text = getString(R.string.answer_opponent_hint)
             }
         }
         binding.clLoading.visibility = View.GONE
+    }
+
+    private fun isOtherHintVisible(visibility : Boolean ){
+        if (visibility){
+            binding.tvOtherBlurHint.visibility = View.VISIBLE
+        }
+        else{
+            binding.tvOtherBlurHint.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun isMeHintVisible(visibility : Boolean ){
+        if (visibility){
+            binding.tvMeBlurHint.visibility = View.VISIBLE
+        }
+        else{
+            binding.tvMeBlurHint.visibility = View.INVISIBLE
+        }
+    }
+    private fun isOnlyMeAnswered (isOnlyMeAnswered: Boolean) {
+        with(binding) {
+            if (isOnlyMeAnswered) {
+                tvOtherBlurHint.text = getString(R.string.answer_only_me_hint)
+            } else {
+                tvOtherBlurHint.text = getString(R.string.answer_opponent_hint)
+            }
+        }
+    }
+
+    private fun setOtherQuestionBlur(isBlur: Boolean) {
+        with(binding) {
+            tvQuestionOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply {
+                if (isBlur) tvQuestionOther.paint.maskFilter =
+                    BlurMaskFilter(16f, BlurMaskFilter.Blur.NORMAL)
+                else tvQuestionOther.paint.maskFilter = null
+            }
+        }
+    }
+
+    private fun setOtherAnswerBlur(isBlur: Boolean) {
+        with(binding) {
+            tvAnswerOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply {
+                if (isBlur) tvAnswerOther.paint.maskFilter =
+                    BlurMaskFilter(16f, BlurMaskFilter.Blur.NORMAL)
+                else tvAnswerOther.paint.maskFilter = null
+            }
+        }
     }
 
     private fun setBtnEnable(enable: Boolean?) {
@@ -139,16 +196,6 @@ class QuestionAnswerActivity :
                 btnAnswer.setOnSingleClickListener {
                     finish()
                 }
-            }
-        }
-    }
-
-    private fun setBlurText(isBlur: Boolean) {
-        with(binding) {
-            tvAnswerOther.setLayerType(View.LAYER_TYPE_SOFTWARE, null).apply {
-                if (isBlur) tvAnswerOther.paint.maskFilter =
-                    BlurMaskFilter(16f, BlurMaskFilter.Blur.NORMAL)
-                else tvAnswerOther.paint.maskFilter = null
             }
         }
     }
