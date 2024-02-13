@@ -23,7 +23,7 @@
                 android:id="@+id/bnv_main"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/umbba_white"
+                android:background="@color/white_500"
                 app:itemActiveIndicatorStyle="@null"
                 app:itemBackground="@drawable/sel_bottom_nav_indicator"
                 app:itemIconSize="24dp"
@@ -41,7 +41,7 @@
             android:id="@+id/cl_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/umbba_white_opacity50"
+            android:background="@color/white500_opacity50"
             android:visibility="visible">
 
             <ImageView

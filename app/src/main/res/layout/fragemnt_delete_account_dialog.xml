@@ -54,7 +54,7 @@
                 android:layout_height="48dp"
                 android:background="@drawable/shape_error_btn_r50_rect"
                 android:text="@string/confirm"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_cancel"
                 app:layout_constraintTop_toTopOf="parent" />

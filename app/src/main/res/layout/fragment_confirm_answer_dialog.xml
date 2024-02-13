@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/shape_pri500_btn_r50_rect"
                 android:text="@string/save"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_back"
                 app:layout_constraintTop_toTopOf="parent" />

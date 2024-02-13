@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/umbba_white">
+    android:background="@color/white_500">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_app_bar"
@@ -85,7 +85,7 @@
         android:enabled="false"
         android:stateListAnimator="@null"
         android:text="결과 확인하기"
-        android:textColor="@color/umbba_white"
+        android:textColor="@color/white_500"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -35,7 +35,7 @@
                 android:layout_marginTop="72dp"
                 android:text="@string/communication"
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

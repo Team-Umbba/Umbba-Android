@@ -14,9 +14,9 @@
     <color name="success">#419277</color>
     <color name="umbba_black">#32211B</color>
     <color name="umbba_black_opacity70">#B332211B</color>
-    <color name="umbba_white">#FCFAF8</color>
+    <color name="white_500">#FCFAF8</color>
     <color name="white_400">#FFFCFC</color>
-    <color name="umbba_white_opacity50">#80FCFAF8</color>
+    <color name="white500_opacity50">#80FCFAF8</color>
 
     <color name="primary_400">#E7B8B7</color>
     <color name="primary_500">#E09490</color>
