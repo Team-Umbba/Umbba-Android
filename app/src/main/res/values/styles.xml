@@ -13,12 +13,12 @@
         <item name="boxStrokeColor">@color/sel_invite_code_input_layout</item>
         <!--Error-->
         <item name="errorEnabled">true</item>
-        <item name="colorError">@color/error_red</item>
+        <item name="colorError">@color/error</item>
         <item name="errorIconDrawable">@drawable/ic_close</item>
-        <item name="errorIconTint">@color/error_red</item>
-        <item name="boxStrokeErrorColor">@color/error_red</item>
+        <item name="errorIconTint">@color/error</item>
+        <item name="boxStrokeErrorColor">@color/error</item>
         <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
-        <item name="errorTextColor">@color/error_red</item>
+        <item name="errorTextColor">@color/error</item>
         <item name="hintTextColor">@color/grey_800</item>
         <!--Radius-->
         <item name="boxCornerRadiusTopStart">50dp</item>

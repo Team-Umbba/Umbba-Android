@@ -10,7 +10,7 @@
     <color name="grey_800">#BBADA4</color>
     <color name="grey_900">#897D76</color>
 
-    <color name="error_red">#FF3A1F</color>
+    <color name="error">#FF3A1F</color>
     <color name="success">#419277</color>
     <color name="umbba_black">#32211B</color>
     <color name="umbba_black_opacity70">#B332211B</color>
