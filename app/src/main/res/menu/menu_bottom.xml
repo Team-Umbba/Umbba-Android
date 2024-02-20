@@ -9,7 +9,7 @@
         android:title="리스트"
         android:icon="@drawable/ic_list"  />
     <item
-        android:id="@+id/menu_setting"
-        android:title="설정"
-        android:icon="@drawable/ic_setting" />
+        android:id="@+id/menu_mypage"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_mypage" />
 </menu>
