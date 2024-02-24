@@ -56,7 +56,7 @@
                 android:background="@drawable/shape_pri500_btn_r50_rect"
                 android:text="@string/confirm"
                 android:layout_marginStart="8dp"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_cancel"
                 app:layout_constraintTop_toTopOf="parent" />

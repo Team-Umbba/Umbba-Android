@@ -92,7 +92,7 @@
                 android:background="@drawable/sel_btn_next"
                 android:stateListAnimator="@null"
                 android:text="@string/btn_start"
-                android:textColor="@color/umbba_white"
+                android:textColor="@color/white_500"
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

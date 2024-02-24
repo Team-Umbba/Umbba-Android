@@ -36,7 +36,7 @@
             android:paddingHorizontal="40dp"
             android:text="@{vm.topicTitle}"
             android:textAppearance="@style/BrandTypeBigRegular20"
-            android:textColor="@color/umbba_white"
+            android:textColor="@color/white_500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

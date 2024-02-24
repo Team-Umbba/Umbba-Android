@@ -16,7 +16,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/umbba_white">
+        android:background="@color/white_500">
 
         <androidx.appcompat.widget.Toolbar
             style="@style/toolbar"
@@ -26,7 +26,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/umbba_white">
+                android:background="@color/white_500">
 
                 <ImageView
                     android:id="@+id/iv_basic_back"

@@ -22,13 +22,13 @@
         <androidx.appcompat.widget.Toolbar
             style="@style/toolbar"
             android:layout_height="60dp"
-            android:background="@color/umbba_white"
+            android:background="@color/white_500"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/umbba_white">
+                android:background="@color/white_500">
 
                 <ImageView
                     android:id="@+id/iv_qna_back"
@@ -56,7 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{titleText == null ? null : titleText}"
-                        android:textColor="@color/umbba_white"
+                        android:textColor="@color/white_500"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
