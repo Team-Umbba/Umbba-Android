@@ -13,7 +13,7 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityMainBinding
 import com.ubcompany.umbba_android.presentation.home.HomeFragment
 import com.ubcompany.umbba_android.presentation.list.ListFragment
-import com.ubcompany.umbba_android.presentation.setting.SettingFragment
+import com.ubcompany.umbba_android.presentation.mypage.MypageFragment
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -58,9 +58,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                             setLoadingView(true)
                             HomeFragment()
                         }
-                        R.id.menu_setting -> {
+                        R.id.menu_mypage -> {
                             setLoadingView(false)
-                            SettingFragment()
+                            MypageFragment()
                         }
                         else -> {
                             setLoadingView(false)
