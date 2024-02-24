@@ -208,4 +208,11 @@
     <string name="record_description">소중한 순간을\n기록하세요</string>
     <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
 
+    <!-- getcloser activity-->
+    <string name="get_closer_my_choice">나의 선택</string>
+    <string name="get_closer_other_choice">상대방의 선택</string>
+    <string name="get_closer_result_same">우리는 통했어요</string>
+    <string name="get_closer_result_diff">선택이 엇갈렸어요</string>
+    <string name="get_closer_check_result">결과 확인</string>
+
 </resources>
