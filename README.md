@@ -8,39 +8,16 @@
 | [황연진](https://github.com/yeoncheong) | [신서현](https://github.com/ss99x2002) |
 | --- | --- |
 | <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/86d88c5e-b9b6-4aa3-ac89-4415cd6c4033" width = "300"> | <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/85f7a242-f16d-4244-9a42-2b7d1847a557" width = "300"> |
-| `온보딩` `소셜로그인` `카카오 초대공유` | `홈` `리스트` `설정` `fcm 알림` |
-
-### 💬 Convention
-✅ [Coding Convention](https://harsh-step-7dd.notion.site/425bab5d382c464d8b347348de387523?pvs=4)<br>
-✅ [Commit Convention](https://harsh-step-7dd.notion.site/6f342bbb078e46c0ac0fc71c563e2a45?pvs=4)<br>
-✅ [Github Convention](https://harsh-step-7dd.notion.site/af9cf86fd48b4ddb9a210fbcaa864c87?pvs=4)<br> 
-✅ [Branch Convention](https://harsh-step-7dd.notion.site/b352a5c4a8c24ee88f066fa09866e93d?pvs=4)<br> 
+| `온보딩` `소셜로그인` `카카오 초대공유` | `홈` `리스트` `설정` `fcm 알림` `문답` |
 
 ### 📸 ScreenShot
 [ScreenShot](https://harsh-step-7dd.notion.site/a1a44b35fd6d42e2aad95d22fcf1efcf?pvs=4)
-### 📁 Foldering
-```
-📂 com.sopt.umbba_android
-┣ 📂 application
-┣ 📂 data
-┃ ┣ 📂 datasource
-┃ ┣ 📂 interceptor
-┃ ┣ 📂 local
-┃ ┣ 📂 model
-┃ ┣ 📂 repository
-┃ ┣ 📂 service
-┣ 📂 domain
-┃ ┣ 📂 entity
-┃ ┣ 📂 repository
-┣ 📂 presentation
-┣ 📂 util
-┃ ┣ 📂 binding
-┃ ┣ 📂 fcm
-```
+
 ### ⚒️ Tech Stack
 | | Tech Stack  |
 | --- | --- |
-| 아키텍처 | MVVM |
+| 아키텍처 | MVVM , Clean Architecture |
+| DI | Hilt |
 | 소셜로그인 | KakaoLogin, KakaoLink |
 | 자동로그인 | EncryptedSharedPreferences |
 | 푸시알림 | FCM |
@@ -52,3 +29,29 @@
 | RecyclerView | DiffUtil & ListAdapter |
 | Log | Timber |
 
+### 💬 Convention
+✅ [Coding Convention](https://harsh-step-7dd.notion.site/425bab5d382c464d8b347348de387523?pvs=4)<br>
+✅ [Commit Convention](https://harsh-step-7dd.notion.site/6f342bbb078e46c0ac0fc71c563e2a45?pvs=4)<br>
+✅ [Github Convention](https://harsh-step-7dd.notion.site/af9cf86fd48b4ddb9a210fbcaa864c87?pvs=4)<br> 
+✅ [Branch Convention](https://harsh-step-7dd.notion.site/b352a5c4a8c24ee88f066fa09866e93d?pvs=4)<br> 
+
+### 📁 Foldering
+```
+📂 com.ubcompany.umbba_android
+┣ 📂 application
+┣ 📂 data
+┃ ┣ 📂 datasource
+┃ ┣ 📂 interceptor
+┃ ┣ 📂 local
+┃ ┣ 📂 model
+┃ ┣ 📂 repository
+┃ ┣ 📂 service
+┣ 📂 di
+┣ 📂 domain
+┃ ┣ 📂 entity
+┃ ┣ 📂 repository
+┣ 📂 presentation
+┣ 📂 util
+┃ ┣ 📂 binding
+┃ ┣ 📂 fcm
+```
