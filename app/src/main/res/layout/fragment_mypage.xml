@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_info"
         android:layout_width="match_parent"
-        android:layout_height="357dp"
+        android:layout_height="312dp"
         android:background="@drawable/shape_umbba_white_radius_16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,60 +22,88 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <ImageView
+            android:id="@+id/btn_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_setting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_family_profile"
             android:layout_width="match_parent"
-            android:layout_height="145dp"
+            android:layout_height="140dp"
             android:layout_marginHorizontal="33dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape_g800_stroke_13dp_rect"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/btn_setting">
 
-            <TextView
-                android:id="@+id/tv_older_name"
-                style="@style/AndroidSubHead1SemiBold20"
+            <ImageView
+                android:id="@+id/iv_connect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/tv_older_id"
-                app:layout_constraintEnd_toStartOf="@id/tv_younger_name"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_connect"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_other_nickname"
+                style="@style/AndroidHead1SemiBold24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintBottom_toBottomOf="@id/iv_connect"
+                app:layout_constraintEnd_toStartOf="@id/iv_connect"
+                tools:text="닉네임" />
+
+            <TextView
+                android:id="@+id/tv_other_relation"
+                style="@style/AndroidBody1_2Regular16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_800"
+                app:layout_constraintBottom_toTopOf="@+id/tv_other_nickname"
+                app:layout_constraintEnd_toEndOf="@id/tv_other_nickname"
                 tools:text="엄마" />
 
             <TextView
-                android:id="@+id/tv_older_id"
-                style="@style/AndroidBody2_2Regular12"
+                android:id="@+id/tv_my_nickname"
+                style="@style/AndroidHead1SemiBold24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:textColor="@color/grey_800"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_older_name"
-                app:layout_constraintStart_toStartOf="@id/tv_older_name"
-                tools:text="tmdwns0527" />
+                android:layout_marginStart="10dp"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintBottom_toBottomOf="@id/iv_connect"
+                app:layout_constraintStart_toEndOf="@id/iv_connect"
+                tools:text="닉네임" />
 
             <TextView
-                android:id="@+id/tv_younger_name"
-                style="@style/AndroidSubHead1SemiBold20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@id/tv_younger_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_older_name"
-                tools:text="아들" />
+                android:id="@+id/tv_me"
+                style="@style/AndroidBody2_1SemiBold12"
+                android:layout_width="23dp"
+                android:layout_height="15dp"
+                android:textAlignment="center"
+                android:text="나"
+                android:textColor="@color/primary_400"
+                android:background="@drawable/shape_g800_r50_rect"
+                app:layout_constraintTop_toTopOf="@id/tv_my_relation"
+                app:layout_constraintStart_toStartOf="@id/tv_my_nickname"
+                app:layout_constraintBottom_toTopOf="@id/tv_my_nickname" />
 
             <TextView
-                android:id="@+id/tv_younger_id"
-                style="@style/AndroidBody2_2Regular12"
+                android:id="@+id/tv_my_relation"
+                style="@style/AndroidBody1_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:textColor="@color/grey_800"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/tv_younger_name"
-                app:layout_constraintStart_toStartOf="@id/tv_younger_name"
-                tools:text="tmdwns0527" />
+                app:layout_constraintBottom_toTopOf="@id/tv_my_nickname"
+                app:layout_constraintStart_toEndOf="@id/tv_me"
+                android:layout_marginStart="6dp"
+                tools:text="아들"
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -83,7 +111,6 @@
             android:id="@+id/cl_now_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_family_profile">
