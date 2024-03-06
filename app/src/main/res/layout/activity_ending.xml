@@ -75,9 +75,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
-            android:text="건너뛰기"
+            android:text="@string/ending_close_page"
             android:textAppearance="@style/AndroidBody1_2Regular16"
             android:textColor="@color/grey_900"
+            android:textColorLink="@color/grey_900"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
