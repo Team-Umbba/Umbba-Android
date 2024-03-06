@@ -84,25 +84,24 @@
                 style="@style/AndroidBody2_1SemiBold12"
                 android:layout_width="23dp"
                 android:layout_height="15dp"
-                android:textAlignment="center"
-                android:text="나"
-                android:textColor="@color/primary_400"
                 android:background="@drawable/shape_g800_r50_rect"
-                app:layout_constraintTop_toTopOf="@id/tv_my_relation"
+                android:text="@string/tv_me"
+                android:textAlignment="center"
+                android:textColor="@color/primary_400"
+                app:layout_constraintBottom_toTopOf="@id/tv_my_nickname"
                 app:layout_constraintStart_toStartOf="@id/tv_my_nickname"
-                app:layout_constraintBottom_toTopOf="@id/tv_my_nickname" />
+                app:layout_constraintTop_toTopOf="@id/tv_my_relation" />
 
             <TextView
                 android:id="@+id/tv_my_relation"
                 style="@style/AndroidBody1_2Regular16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
                 android:textColor="@color/grey_800"
                 app:layout_constraintBottom_toTopOf="@id/tv_my_nickname"
                 app:layout_constraintStart_toEndOf="@id/tv_me"
-                android:layout_marginStart="6dp"
-                tools:text="아들"
-
+                tools:text="아들" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
