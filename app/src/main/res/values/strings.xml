@@ -184,6 +184,7 @@
     <string name="ending_survey_title">설문에 참여하고, 다시 문답을 이어가자</string>
     <string name="ending_survey_caption">설문조사에 참여하여 피드백을 남겨주세요.</string>
     <string name="ending_btn_survey">설문하러 가기</string>
+    <string name="ending_close_page"><u>건너뛰기</u></string>
     <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
 
     <!-- communication activity-->
