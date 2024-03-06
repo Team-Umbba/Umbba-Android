@@ -79,29 +79,40 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tv_now"
-            style="@style/BrandTypeSmallSemiBold16"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_now_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
             android:layout_marginTop="30dp"
-            android:text="@string/now"
-            android:textColor="@color/umbba_black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_family_profile" />
+            app:layout_constraintTop_toBottomOf="@id/cl_family_profile">
 
-        <TextView
-            android:id="@+id/tv_now_days"
-            style="@style/BrandTypeBigRegular20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintBottom_toBottomOf="@id/tv_now"
-            app:layout_constraintStart_toEndOf="@id/tv_now"
-            app:layout_constraintTop_toTopOf="@id/tv_now"
-            tools:text="어린시절" />
+            <TextView
+                android:id="@+id/tv_now"
+                style="@style/BrandTypeSmallSemiBold16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/now"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintEnd_toStartOf="@id/tv_now_days"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_now_days"
+                style="@style/BrandTypeBigRegular20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/umbba_black"
+                app:layout_constraintBottom_toBottomOf="@id/tv_now"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_now"
+                app:layout_constraintTop_toTopOf="@id/tv_now"
+                tools:text="어린시절" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tv_travel"
@@ -112,7 +123,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/travel"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_now_days" />
+            app:layout_constraintTop_toBottomOf="@id/cl_now_days" />
 
         <TextView
             android:id="@+id/tv_travel_days"
@@ -145,7 +156,7 @@
             android:layout_marginEnd="43dp"
             android:text="@string/answer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_now" />
+            app:layout_constraintTop_toBottomOf="@id/cl_now_days" />
 
         <TextView
             android:id="@+id/tv_answer_numbers"
