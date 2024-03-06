@@ -203,9 +203,9 @@
     <string name="gift">선물하기</string>
     <string name="gift_description">세상에 단 하나뿐인 선물을 건네보세요</string>
     <string name="getclose">가까워지기</string>
-    <string name="getclose_description">서로에 대한\n퀴즈를 풀어보세요</string>
+    <string name="getclose_description">서로에 대한 퀴즈를 풀어보세요</string>
     <string name="record">기록하기</string>
-    <string name="record_description">소중한 순간을\n기록하세요</string>
+    <string name="record_description">소중한 순간을 기록하세요</string>
     <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
 
     <!-- getcloser activity-->

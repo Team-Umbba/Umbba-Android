@@ -173,60 +173,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_gift"
+        android:id="@+id/cl_getclose"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="128dp"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_g400_stroke_r10_rect"
         app:layout_constraintTop_toBottomOf="@id/cl_info">
-
-        <TextView
-            android:id="@+id/tv_gift"
-            style="@style/AndroidSubHead1SemiBold20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/gift"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_gift_description"
-            style="@style/AndroidBody1_2Regular16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/gift_description"
-            android:textColor="@color/grey_900"
-            app:layout_constraintStart_toStartOf="@id/tv_gift"
-            app:layout_constraintTop_toBottomOf="@id/tv_gift" />
-
-        <ImageView
-            android:id="@+id/iv_gift"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_gift"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_getclose"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="6dp"
-        android:background="@drawable/shape_g400_stroke_r10_rect"
-        app:layout_constraintEnd_toStartOf="@id/cl_record"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_gift">
 
         <TextView
             android:id="@+id/tv_getclose"
@@ -256,8 +209,8 @@
             android:id="@+id/iv_getclose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
             android:src="@drawable/ic_getclose"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -266,15 +219,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_record"
-        android:layout_width="0dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginHorizontal="22dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
         android:background="@drawable/shape_g400_stroke_r10_rect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cl_getclose"
-        app:layout_constraintTop_toBottomOf="@id/cl_gift">
+        app:layout_constraintTop_toBottomOf="@id/cl_getclose">
 
         <TextView
             android:id="@+id/tv_record"
@@ -304,8 +254,8 @@
             android:id="@+id/iv_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
             android:src="@drawable/ic_camera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -317,11 +267,11 @@
         style="@style/AndroidCaptionRegular12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="60dp"
         android:text="@string/umbba_version"
         android:textColor="@color/grey_800"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cl_getclose" />
+        app:layout_constraintTop_toBottomOf="@id/cl_record" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
