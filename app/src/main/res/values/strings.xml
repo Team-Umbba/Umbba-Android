@@ -180,14 +180,11 @@
     <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
 
     <!-- ending activity-->
-    <string name="ending_title1">잠시 교신을 종료할게</string>
-    <string name="ending_title2">즐거운 여행이 됐기를 바라</string>
-    <string name="ending_survey_title">함께한 여정이 어땠는지 알려줘</string>
+    <string name="ending_title">지금까지의 여정이 어땠는지 알려줘</string>
+    <string name="ending_survey_title">설문에 참여하고, 다시 문답을 이어가자</string>
     <string name="ending_survey_caption">설문조사에 참여하여 피드백을 남겨주세요.</string>
     <string name="ending_btn_survey">설문하러 가기</string>
-    <string name="ending_delete_account">이제, 새로운 여행을 떠나자</string>
-    <string name="ending_delete_account_caption">회원 탈퇴 후 다른 가족과 연결하세요.</string>
-    <string name="ending_btn_delete_account">연결 종료하기</string>
+    <string name="ending_close_page"><u>건너뛰기</u></string>
     <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
 
     <!-- communication activity-->

@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_ending_gradient">
+        android:background="@color/primary_400">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/iv_close"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="11dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="72dp"
-            android:text="@string/ending_title1"
+            android:text="@string/ending_title"
             android:textAppearance="@style/AndroidHead1SemiBold24"
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,105 +44,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:text="@string/ending_title2"
-            android:textAppearance="@style/AndroidHead2Regular24"
+            android:text="@string/ending_survey_title"
+            android:layout_marginTop="12dp"
+            android:textAppearance="@style/AndroidBody1_2Regular16"
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title1"/>
 
-        <TextView
-            android:id="@+id/tv_survey_title"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/ending_survey_title"
-            android:textAppearance="@style/AndroidSubHead2Regular20"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title2" />
-
+            android:src="@drawable/bg_einding_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_title2"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <TextView
             android:id="@+id/tv_survey_caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/ending_survey_caption"
-            android:textAppearance="@style/AndroidCaptionRegular10"
-            android:textColor="@color/umbba_black"
+            android:layout_marginBottom="12dp"
+            android:text="설문조사에 참여하여 피드백을 남겨주세요"
+            android:textAppearance="@style/AndroidBody1_2Regular16"
+            android:textColor="@color/grey_900"
+            app:layout_constraintBottom_toTopOf="@id/btn_survey"
+
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_title" />
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_close_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:text="@string/ending_close_page"
+            android:textAppearance="@style/AndroidBody1_2Regular16"
+            android:textColor="@color/grey_900"
+            android:textColorLink="@color/grey_900"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_survey"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/shape_pri500_btn_r50_rect"
             android:stateListAnimator="@null"
             android:text="@string/ending_btn_survey"
             android:textAppearance="@style/AndroidBody1_1SemiBold16"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/tv_survey_caption" />
-
-        <View
-            android:id="@+id/view_dot_line"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/shape_g800_dot_stroke_rect"
-            app:layout_constraintTop_toBottomOf="@id/btn_survey" />
-
-
-        <TextView
-            android:id="@+id/tv_delete_account_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="40dp"
-            android:text="@string/ending_delete_account"
-            android:textAppearance="@style/AndroidSubHead2Regular20"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_dot_line" />
-
-        <TextView
-            android:id="@+id/tv_delete_account_caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/ending_delete_account_caption"
-            android:textAppearance="@style/AndroidCaptionRegular10"
-            android:textColor="@color/umbba_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_delete_account_title" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_delete_account"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/shape_pri500_btn_stroke_r50_rect"
-            android:stateListAnimator="@null"
-            android:text="@string/ending_btn_delete_account"
-            android:textAppearance="@style/AndroidBody1_1SemiBold16"
-            android:textColor="@color/primary_500"
-            app:layout_constraintTop_toBottomOf="@id/tv_delete_account_caption" />
-
-
-        <ImageView
-            android:id="@+id/bg_ending"
-            android:layout_width="match_parent"
-            android:layout_height="270dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/img_ending"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toTopOf="@id/tv_close_page"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -59,7 +59,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     private fun observeData() {
         viewModel.homeData.observe(viewLifecycleOwner) {
             setBackground(it.section)
-            if (it.index == 8 && viewModel.isShowedEndingPage()) {
+            if (it.index == IS_AFTER_7DAYS_INDEX && viewModel.isShowedEndingPage()) {
                 viewModel.setStateObserveIndex()
                 startForResult.launch(Intent(requireActivity(), EndingActivity::class.java))
             }
@@ -111,7 +111,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             if (activity != null) {
                 (activity as MainActivity).getLoadingView().visibility = View.GONE
             }
-        }, 500)
+        }, DELAY_MILLIS)
     }
 
     override fun onResume() {
@@ -124,5 +124,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     companion object {
         const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
+        const val IS_AFTER_7DAYS_INDEX = 8
+        const val DELAY_MILLIS = 500L
     }
 }

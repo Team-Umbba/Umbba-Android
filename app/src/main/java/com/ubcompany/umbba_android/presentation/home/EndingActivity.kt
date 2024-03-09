@@ -30,8 +30,9 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
                     )
                 )
             }
-            btnDeleteAccount.setOnClickListener {
-                startActivity(Intent(this@EndingActivity, ManageAccountActivity::class.java))
+            tvClosePage.setOnClickListener {
+                setResult(RESULT_OK)
+                finish()
             }
         }
     }
