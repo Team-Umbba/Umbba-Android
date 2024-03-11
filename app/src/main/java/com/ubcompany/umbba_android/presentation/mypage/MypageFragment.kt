@@ -1,20 +1,35 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.ubcompany.umbba_android.R
+import com.ubcompany.umbba_android.databinding.FragmentMypageBinding
+import com.ubcompany.umbba_android.presentation.setting.SettingFragment
+import com.ubcompany.umbba_android.util.binding.BindingFragment
+import com.ubcompany.umbba_android.util.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
-class MypageFragment : Fragment() {
+@AndroidEntryPoint
+class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mypage, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setClickEvent()
+    }
+
+    private fun setClickEvent() {
+        with(binding) {
+            btnSetting.setOnSingleClickListener {
+                startActivity(Intent(requireActivity(), SettingFragment::class.java))
+            }
+            clGetclose.setOnSingleClickListener {
+                // 가까워지기
+            }
+            clRecord.setOnSingleClickListener {
+                // 기록하기
+            }
+        }
     }
 
 }
