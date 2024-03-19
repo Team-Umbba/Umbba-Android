@@ -70,6 +70,13 @@ object SharedPreferences {
         return preferences.getBoolean(key, false)
     }
 
+    fun setTutorialBoolean(key: String, value: Boolean) {
+        preferences.edit { putBoolean(key, value) }
+    }
+
+    fun getTutorialBoolean(key: String) : Boolean {
+        return preferences.getBoolean(key,false)
+    }
 
     private fun clear() {
         preferences.edit { clear() }

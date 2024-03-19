@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import coil.load
+import com.skydoves.balloon.ArrowOrientation
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.overlay.BalloonOverlayRoundRect
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
@@ -25,6 +30,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
+    private var isShowedInviteCodeCoachMark = false
+    private var isShowedTutorialCoachMark = false
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -40,33 +47,122 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         isUpdateAppVersion()
     }
 
-
-    private fun setClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
-        binding.btnAnswer.setOnSingleClickListener {
-            viewModel.getResponseCase()
-            when (responseCaseDto.responseCase) {
-                1 -> startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
-                2 -> showInviteDialog(
-                    responseCaseDto.inviteUserName.toString(),
-                    responseCaseDto.inviteCode.toString()
-                )
-
-                3 -> showNoOpponentDialog()
-            }
-        }
-    }
-
     private fun observeData() {
+        Log.e("hyeon","observedata 함수 호출")
         viewModel.homeData.observe(viewLifecycleOwner) {
-            setBackground(it.section)
+            setBackgroundImage(it.section)
             if (it.index == IS_AFTER_7DAYS_INDEX && viewModel.isShowedEndingPage()) {
                 viewModel.setStateObserveIndex()
                 startForResult.launch(Intent(requireActivity(), EndingActivity::class.java))
             }
         }
         viewModel.responseCaseData.observe(viewLifecycleOwner) {
-            setClickEvent(it)
+            setBtnClickEvent(it)
+            checkBtnCoachMark(it)
         }
+    }
+
+
+    private fun setBtnClickEvent(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
+        binding.btnAnswer.setOnSingleClickListener {
+            viewModel.getResponseCase()
+            when (responseCaseDto.responseCase) {
+                MATCHED_OPPONENT -> {
+                    startActivity(
+                        Intent(
+                            requireActivity(),
+                            QuestionAnswerActivity::class.java
+                        )
+                    )
+                }
+                NO_MATCHED_OPPONENT -> {
+                    if (SharedPreferences.getTutorialBoolean(DID_TUTORIAL)) {
+                        showInviteDialog(responseCaseDto.inviteUserName!!, responseCaseDto.inviteCode!!)
+                    }
+
+                    else {
+                        startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
+                    }
+                }
+                DELETE_OPPONENT -> showDeleteOpponentDialog()
+            }
+        }
+    }
+
+    private fun checkBtnCoachMark(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
+        if (responseCaseDto.responseCase == NO_MATCHED_OPPONENT
+            && !SharedPreferences.getTutorialBoolean(DID_TUTORIAL)
+        ) {
+            if (!isShowedTutorialCoachMark)
+            {
+                showTutorialClickCoachMark()
+                isShowedTutorialCoachMark = true
+            }
+        }
+
+        if (responseCaseDto.responseCase == NO_MATCHED_OPPONENT
+            && SharedPreferences.getTutorialBoolean(DID_TUTORIAL)
+        ) {
+            if (!isShowedInviteCodeCoachMark)
+            {
+                showInviteOpponentCoachMark()
+                isShowedInviteCodeCoachMark = true
+            }
+        }
+    }
+
+    private fun showTutorialClickCoachMark() {
+        Log.e("hyeon", "show tutorial coach mark ")
+        val btnTutorialCoachMark = Balloon.Builder(requireContext())
+            .setWidth(BalloonSizeSpec.WRAP)
+            .setHeight(BalloonSizeSpec.WRAP)
+            .setTextColorResource(R.color.grey_900)
+            .setBackgroundColorResource(R.color.white_500)
+            .setText("클릭하여 오늘의 질문을 확인하자")
+            .setTextSize(16f)
+            .setPaddingHorizontal(16)
+            .setPaddingVertical(6)
+            .setCornerRadius(4f)
+            .setIsVisibleArrow(true)
+            .setTextGravity(Gravity.CENTER)
+            .setArrowSize(12)
+            .setArrowPosition(0.5f)
+            .setLifecycleOwner(viewLifecycleOwner)
+            .setArrowOrientation(ArrowOrientation.BOTTOM)
+            .setOverlayColorResource(R.color.black_opacity50)
+            .setIsVisibleOverlay(true)
+            .setDismissWhenOverlayClicked(true)
+            .setOverlayShape(BalloonOverlayRoundRect(74f, 74f))
+            .build()
+        btnTutorialCoachMark.showAlignTop(binding.btnAnswer)
+    }
+
+    private fun showInviteOpponentCoachMark() {
+        Log.e("hyeon", "show invite coach mark ")
+        val btnInviteCoachMark = Balloon.Builder(requireContext())
+            .setWidth(BalloonSizeSpec.WRAP)
+            .setHeight(BalloonSizeSpec.WRAP)
+            .setTextColorResource(R.color.grey_900)
+            .setBackgroundColorResource(R.color.white_500)
+            .setTextGravity(Gravity.CENTER)
+            .setText("상대를 초대하고 답장을 받아보자")
+            .setTextSize(16f)
+            .setPaddingHorizontal(16)
+            .setPaddingVertical(6)
+            .setCornerRadius(4f)
+            .setIsVisibleArrow(true)
+            .setArrowSize(12)
+            .setArrowPosition(0.5f)
+            .setIsVisibleOverlay(true)
+            .setLifecycleOwner(viewLifecycleOwner)
+            .setArrowOrientation(ArrowOrientation.BOTTOM)
+            .setOverlayColorResource(R.color.black_opacity50)
+            .setOverlayShape(BalloonOverlayRoundRect(74f, 74f))
+            .setMarginBottom(8)
+            .setDismissWhenOverlayClicked(true)
+            .build()
+        btnInviteCoachMark.showAlignTop(binding.btnAnswer)
+
     }
 
     private fun showInviteDialog(inviteUserName: String, inviteCode: String) {
@@ -76,7 +172,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         )
     }
 
-    private fun showNoOpponentDialog() {
+    private fun showDeleteOpponentDialog() {
         NoOpponentDialogFragment().show(
             requireActivity().supportFragmentManager,
             "NoOpponentDialogFragment"
@@ -91,13 +187,12 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun isUpdateAppVersion() {
-        Log.e("hyeon","${SharedPreferences.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)}")
-        if(SharedPreferences.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)){
+        if (SharedPreferences.getUpdateAvailableBoolean(IS_UPDATE_AVAILABLE)) {
             showUpdateDialog()
         }
     }
 
-    private fun setBackground(section: String) {
+    private fun setBackgroundImage(section: String) {
         binding.ivBackground.load(
             when (section) {
                 getString(R.string.section1) -> R.drawable.img_home1
@@ -107,11 +202,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 else -> R.drawable.img_home5
             }
         )
+
         Handler(Looper.getMainLooper()).postDelayed({
             if (activity != null) {
                 (activity as MainActivity).getLoadingView().visibility = View.GONE
             }
         }, DELAY_MILLIS)
+
     }
 
     override fun onResume() {
@@ -126,5 +223,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
         const val IS_AFTER_7DAYS_INDEX = 8
         const val DELAY_MILLIS = 500L
+        const val MATCHED_OPPONENT = 1
+        const val NO_MATCHED_OPPONENT = 2
+        const val DELETE_OPPONENT = 3
+        const val DID_TUTORIAL = "DID_TUTORIAL"
     }
 }

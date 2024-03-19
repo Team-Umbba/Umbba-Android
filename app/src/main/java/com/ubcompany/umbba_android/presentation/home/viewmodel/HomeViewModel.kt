@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     ViewModel() {
     init {
         getHomeData()
-        getResponseCase()
+     //   getResponseCase()
     }
 
     private var _responseCaseData = MutableLiveData<HomeCaseResponseDto.HomeCaseData>()
