@@ -136,6 +136,9 @@ dependencies {
     //인앱 Update
     implementation 'com.google.android.play:app-update-ktx:2.1.0'
 
+    // Tool tip, coach mark
+    implementation 'com.github.skydoves:balloon:1.6.4'
+
 
 }
 
