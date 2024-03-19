@@ -160,6 +160,10 @@
             android:name="com.ubcompany.umbba_android.presentation.home.EndingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ubcompany.umbba_android.presentation.setting.SettingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

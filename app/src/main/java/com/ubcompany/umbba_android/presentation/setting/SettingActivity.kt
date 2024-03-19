@@ -6,21 +6,20 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.ubcompany.umbba_android.R
-import com.ubcompany.umbba_android.databinding.FragmentSettingBinding
-import com.ubcompany.umbba_android.util.binding.BindingFragment
+import com.ubcompany.umbba_android.databinding.ActivitySettingBinding
+import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 @AndroidEntryPoint
-class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
+class SettingActivity : BindingActivity<ActivitySettingBinding>(R.layout.activity_setting) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         changeSwitchNotification()
         setSwitchNotification()
         setClickEvent()
@@ -33,7 +32,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
 
     private fun setSwitchNotification() {
         binding.switchNotification.isChecked = ContextCompat.checkSelfPermission(
-            requireActivity(),
+            this,
             Manifest.permission.POST_NOTIFICATIONS
         ) == PackageManager.PERMISSION_GRANTED
         Timber.e("현재 알림 허용 값 =  " + binding.switchNotification.isChecked)
@@ -42,12 +41,12 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
     private fun changeSwitchNotification() {
         binding.switchNotification.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked != (ContextCompat.checkSelfPermission(
-                    requireActivity(),
+                    this,
                     Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED)
             ) {
                 val intent =
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + requireActivity().packageName))
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + this.packageName))
                 notificationSettingsLauncher.launch(intent)
             }
         }
@@ -56,7 +55,7 @@ class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragmen
     private fun setClickEvent() {
         with(binding) {
             clManageAccount.setOnSingleClickListener {
-                startActivity(Intent(requireActivity(), ManageAccountActivity::class.java))
+                startActivity(Intent(this@SettingActivity, ManageAccountActivity::class.java))
             }
             clAboutUmbba.setOnSingleClickListener {
                 startActivity(
