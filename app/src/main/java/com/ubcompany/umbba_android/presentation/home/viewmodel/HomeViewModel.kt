@@ -1,5 +1,6 @@
 package com.ubcompany.umbba_android.presentation.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -59,6 +60,8 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
                     Timber.d("getResponseCode 성공")
+                    Log.e("hyeon","responseCase data 서버연결 성공")
+                    Log.e("hyeon",responseCaseData.value.toString())
                 }.onFailure { error ->
                     Timber.e("getResponseCode 실패  " + error.message)
                 }
