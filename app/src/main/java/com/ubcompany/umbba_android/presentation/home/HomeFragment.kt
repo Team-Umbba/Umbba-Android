@@ -112,40 +112,21 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun showTutorialClickCoachMark() {
-        Log.e("hyeon", "show tutorial coach mark ")
-        val btnTutorialCoachMark = Balloon.Builder(requireContext())
-            .setWidth(BalloonSizeSpec.WRAP)
-            .setHeight(BalloonSizeSpec.WRAP)
-            .setTextColorResource(R.color.grey_900)
-            .setBackgroundColorResource(R.color.white_500)
-            .setText("클릭하여 오늘의 질문을 확인하자")
-            .setTextSize(16f)
-            .setPaddingHorizontal(16)
-            .setPaddingVertical(6)
-            .setCornerRadius(4f)
-            .setIsVisibleArrow(true)
-            .setTextGravity(Gravity.CENTER)
-            .setArrowSize(12)
-            .setArrowPosition(0.5f)
-            .setLifecycleOwner(viewLifecycleOwner)
-            .setArrowOrientation(ArrowOrientation.BOTTOM)
-            .setOverlayColorResource(R.color.black_opacity50)
-            .setIsVisibleOverlay(true)
-            .setDismissWhenOverlayClicked(true)
-            .setOverlayShape(BalloonOverlayRoundRect(74f, 74f))
-            .build()
-        btnTutorialCoachMark.showAlignTop(binding.btnAnswer)
+      createBalloon("클릭하여 오늘의 질문을 확인하자")
     }
 
     private fun showInviteOpponentCoachMark() {
-        Log.e("hyeon", "show invite coach mark ")
-        val btnInviteCoachMark = Balloon.Builder(requireContext())
+        createBalloon("상대를 초대하고 답장을 받아보자")
+    }
+
+    private fun createBalloon(text: String){
+        val balloon = Balloon.Builder(requireContext())
             .setWidth(BalloonSizeSpec.WRAP)
             .setHeight(BalloonSizeSpec.WRAP)
             .setTextColorResource(R.color.grey_900)
             .setBackgroundColorResource(R.color.white_500)
             .setTextGravity(Gravity.CENTER)
-            .setText("상대를 초대하고 답장을 받아보자")
+            .setText(text)
             .setTextSize(16f)
             .setPaddingHorizontal(16)
             .setPaddingVertical(6)
@@ -161,8 +142,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             .setMarginBottom(8)
             .setDismissWhenOverlayClicked(true)
             .build()
-        btnInviteCoachMark.showAlignTop(binding.btnAnswer)
-
+        balloon.showAlignTop(binding.btnAnswer)
     }
 
     private fun showInviteDialog(inviteUserName: String, inviteCode: String) {
