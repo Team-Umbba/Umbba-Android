@@ -213,6 +213,6 @@
 
     <!-- record activity-->
     <string name="record_upload_title">사진으로 추억을 기록해요</string>
-    <string name="record_upload_description">간단한 설명과 함께 사진을 업로드하세요.</string>
+    <string name="record_upload_description">간단한 설명과 함께 사진을 업로드하세요</string>
 
 </resources>
