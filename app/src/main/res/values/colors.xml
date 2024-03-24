@@ -21,6 +21,7 @@
     <color name="primary_400">#FCF4F4</color>
     <color name="primary_500">#E09490</color>
     <color name="primary_600">#D67E78</color>
+    <color name="primary600_opacity50">#80D67E78</color>
 
     <color name="ending_gradient_start">#46D87E7E</color>
     <color name="gradient_start">#E7B8B7</color>
