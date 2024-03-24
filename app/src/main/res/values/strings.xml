@@ -215,4 +215,19 @@
     <string name="record_upload_title">사진으로 추억을 기록해요</string>
     <string name="record_upload_description">간단한 설명과 함께 사진을 업로드하세요</string>
 
+    <!-- upload record activity -->
+    <string name="title">제목</string>
+    <string name="title_record_description">사진의 제목을 작성해주세요</string>
+    <string name="introduce">소개</string>
+    <string name="introduce_record_description">사진에 대해 소개해주세요</string>
+    <string name="upload">등록하기</string>
+    <string name="input_error_max_fifteen">*최대 15자까지 입력 가능합니다.</string>
+
+    <!-- back record dialog fragment-->
+    <string name="back_record_confirm">작성을 취소하시겠어요?\n작성 중인 글은 저장되지 않아요</string>\
+
+    <!-- delete record dialog fragment -->
+    <string name="delete_record_confirm">정말 기록을 삭제하시겠어요?</string>
+    <string name="delete">삭제</string>
+
 </resources>
