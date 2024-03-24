@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewmodel"
+            type="com.ubcompany.umbba_android.presentation.mypage.viewmodel.UploadRecordViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_500"
+        tools:context=".presentation.mypage.UploadRecordActivity">
+
+        <include
+            android:id="@+id/layout_appbar"
+            layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_record"
+            style="@style/AndroidHead1SemiBold24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/record"
+            android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
+
+        <TextView
+            android:id="@+id/tv_record_description"
+            style="@style/AndroidBody1_2Regular16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/record_upload_description"
+            android:textColor="@color/grey_900"
+            app:layout_constraintStart_toStartOf="@id/tv_record"
+            app:layout_constraintTop_toBottomOf="@id/tv_record" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/sv_upload_record"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:isScrollContainer="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/btn_upload"
+            app:layout_constraintTop_toBottomOf="@id/tv_record_description">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_record_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_g400_stroke_r8_rect"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_record_title"
+                        style="@style/AndroidSubHead1SemiBold20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/title"
+                        android:textColor="@color/umbba_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_record_title"
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="16sp"
+                        app:endIconDrawable="@drawable/ic_close_grey"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/grey_800"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_record_title">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_record_title"
+                            style="@style/AndroidBody1_2Regular16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/title_record_description"
+                            android:maxLines="1"
+                            android:text="@={viewmodel.title}"
+                            android:textColor="@color/umbba_black"
+                            android:textColorHint="@color/grey_800" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_record_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/shape_g400_stroke_r8_rect"
+                    app:layout_constraintTop_toBottomOf="@id/cl_record_title">
+
+                    <TextView
+                        android:id="@+id/tv_record_introduce"
+                        style="@style/AndroidSubHead1SemiBold20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/introduce"
+                        android:textColor="@color/umbba_black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_record_introduce"
+                        style="@style/RecordTextInputLayoutStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="28dp"
+                        android:textSize="16sp"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_record_introduce">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_record_introduce"
+                            style="@style/AndroidBody1_2Regular16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:hint="@string/introduce_record_description"
+                            android:maxLength="32"
+                            android:maxLines="2"
+                            android:minHeight="104dp"
+                            android:text="@={viewmodel.description}"
+                            android:textColor="@color/umbba_black"
+                            android:textColorHint="@color/grey_800" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_upload"
+            style="@style/AndroidBody1_1SemiBold16"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/sel_btn_next"
+            android:enabled="false"
+            android:stateListAnimator="@null"
+            android:text="@string/upload"
+            android:textColor="@color/white_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sv_upload_record" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -23,6 +23,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.mypage.UploadRecordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".presentation.mypage.RecordActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
