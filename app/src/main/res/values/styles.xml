@@ -95,6 +95,10 @@
         <item name="cornerSizeBottomRight">20dp</item>
     </style>
 
+    <style name="CornerRadius17ImageView">
+        <item name="cornerSize">17dp</item>
+    </style>
+
     <style name="SettingSwitchStyle">
         <item name="android:thumb">@drawable/shape_switch_thumb</item>
         <item name="android:track">@drawable/sel_switch_notification</item>
