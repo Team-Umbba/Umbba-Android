@@ -11,6 +11,7 @@ import com.ubcompany.umbba_android.data.repository.HomeRepositoryImpl
 import com.ubcompany.umbba_android.domain.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -19,7 +20,6 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     ViewModel() {
     init {
         getHomeData()
-     //   getResponseCase()
     }
 
     private var _responseCaseData = MutableLiveData<HomeCaseResponseDto.HomeCaseData>()
@@ -60,8 +60,6 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
                     Timber.d("getResponseCode 성공")
-                    Log.e("hyeon","responseCase data 서버연결 성공")
-                    Log.e("hyeon",responseCaseData.value.toString())
                 }.onFailure { error ->
                     Timber.e("getResponseCode 실패  " + error.message)
                 }
