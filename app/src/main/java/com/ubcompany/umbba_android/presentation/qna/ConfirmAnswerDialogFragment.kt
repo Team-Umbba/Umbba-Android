@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.ubcompany.umbba_android.R
+import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
 import com.ubcompany.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
 import com.ubcompany.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
@@ -22,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ConfirmAnswerDialogFragment : DialogFragment() {
 
     private var _binding: FragmentConfirmAnswerDialogBinding? = null
-    private val viewModel by viewModels<ConfirmAnswerDialogFragmentViewModel> ()
+    private val viewModel by viewModels<ConfirmAnswerDialogFragmentViewModel>()
     private val binding get() = requireNotNull(_binding) { "ConfirmAnswerDialogFragment is null" }
 
     override fun onCreateView(
@@ -39,15 +40,22 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
         binding.vm = viewModel
         setBackgroundDesign()
         setBtnClickEvent()
-        observeResponseStatus()
+        observePostAnswerResponseStatus()
     }
 
-    private fun observeResponseStatus() {
-        viewModel.responseStatus.observe(viewLifecycleOwner) {
-            if (it == 201) {
+    private fun observePostAnswerResponseStatus() {
+        viewModel.responseStatus.observe(viewLifecycleOwner) { responseStatus ->
+            if (responseStatus == SUCCESS_POST_ANSWER) {
                 dismiss()
+                setTutorialCompletion()
                 requireActivity().finish()
             }
+        }
+    }
+
+    private fun setTutorialCompletion() {
+        if (!SharedPreferences.getTutorialBoolean(DID_TUTORIAL)) {
+            SharedPreferences.setTutorialBoolean(DID_TUTORIAL, true)
         }
     }
 
@@ -78,5 +86,10 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val SUCCESS_POST_ANSWER = 201
+        const val DID_TUTORIAL = "DID_TUTORIAL"
     }
 }
