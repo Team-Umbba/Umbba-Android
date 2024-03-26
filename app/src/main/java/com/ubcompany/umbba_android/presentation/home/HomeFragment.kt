@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -48,7 +47,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun observeData() {
-        Log.e("hyeon","observedata 함수 호출")
         viewModel.homeData.observe(viewLifecycleOwner) {
             setBackgroundImage(it.section)
             if (it.index == IS_AFTER_7DAYS_INDEX && viewModel.isShowedEndingPage()) {
@@ -75,36 +73,31 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                         )
                     )
                 }
-                NO_MATCHED_OPPONENT -> {
-                    if (SharedPreferences.getTutorialBoolean(DID_TUTORIAL)) {
-                        showInviteDialog(responseCaseDto.inviteUserName!!, responseCaseDto.inviteCode!!)
-                    }
 
-                    else {
-                        startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
-                    }
+                REQUIRE_INVITE_CODE -> {
+                    showInviteDialog(responseCaseDto.inviteUserName!!, responseCaseDto.inviteCode!!)
                 }
+
                 DELETE_OPPONENT -> showDeleteOpponentDialog()
+
+                REQUIRE_TUTORIAL -> {
+                    SharedPreferences.setTutorialBoolean(DID_TUTORIAL,false)
+                    startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
+                }
             }
         }
     }
 
     private fun checkBtnCoachMark(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
-        if (responseCaseDto.responseCase == NO_MATCHED_OPPONENT
-            && !SharedPreferences.getTutorialBoolean(DID_TUTORIAL)
-        ) {
-            if (!isShowedTutorialCoachMark)
-            {
+        if (responseCaseDto.responseCase == REQUIRE_TUTORIAL) {
+            if (!isShowedTutorialCoachMark) {
                 showTutorialClickCoachMark()
                 isShowedTutorialCoachMark = true
             }
         }
 
-        if (responseCaseDto.responseCase == NO_MATCHED_OPPONENT
-            && SharedPreferences.getTutorialBoolean(DID_TUTORIAL)
-        ) {
-            if (!isShowedInviteCodeCoachMark)
-            {
+        if (responseCaseDto.responseCase == REQUIRE_INVITE_CODE) {
+            if (!isShowedInviteCodeCoachMark) {
                 showInviteOpponentCoachMark()
                 isShowedInviteCodeCoachMark = true
             }
@@ -112,14 +105,14 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun showTutorialClickCoachMark() {
-      createBalloon("클릭하여 오늘의 질문을 확인하자")
+        createBalloon("클릭하여 오늘의 질문을 확인하자")
     }
 
     private fun showInviteOpponentCoachMark() {
         createBalloon("상대를 초대하고 답장을 받아보자")
     }
 
-    private fun createBalloon(text: String){
+    private fun createBalloon(text: String) {
         val balloon = Balloon.Builder(requireContext())
             .setWidth(BalloonSizeSpec.WRAP)
             .setHeight(BalloonSizeSpec.WRAP)
@@ -138,7 +131,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             .setLifecycleOwner(viewLifecycleOwner)
             .setArrowOrientation(ArrowOrientation.BOTTOM)
             .setOverlayColorResource(R.color.black_opacity50)
-            .setOverlayShape(BalloonOverlayRoundRect(74f, 74f))
+            .setOverlayShape(BalloonOverlayRoundRect(80f, 80f))
             .setMarginBottom(8)
             .setDismissWhenOverlayClicked(true)
             .build()
@@ -204,8 +197,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         const val IS_AFTER_7DAYS_INDEX = 8
         const val DELAY_MILLIS = 500L
         const val MATCHED_OPPONENT = 1
-        const val NO_MATCHED_OPPONENT = 2
+        const val REQUIRE_INVITE_CODE = 2
         const val DELETE_OPPONENT = 3
+        const val REQUIRE_TUTORIAL = 4
         const val DID_TUTORIAL = "DID_TUTORIAL"
     }
 }
