@@ -23,6 +23,8 @@ data class HomeCaseResponseDto(
         @SerialName("install_url")
         val installUrl: String?,
         @SerialName("relative_user_active")
-        val relativeUserActive: Boolean?
+        val relativeUserActive: Boolean?,
+        @SerialName("is_user_first_answer")
+        val isUserFirstAnswer: Boolean?
     )
 }
