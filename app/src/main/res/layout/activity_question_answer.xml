@@ -46,7 +46,7 @@
             android:id="@+id/cl_answer_other"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="172dp"
+            android:minHeight="212dp"
             android:layout_marginHorizontal="21dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/shape_grey300_fill_r17_rect"
@@ -74,7 +74,7 @@
                 android:layout_marginTop="20dp"
                 android:text="@{vm.isBeforeList ? vm.listQnaResponse.opponentQuestion : vm.qnaResponse.opponentQuestion}"
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/black_500_opacity30"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +86,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:textAppearance="@style/AndroidBody1_2Regular16"
-                android:textColor="@{vm.isOpponentAnswer ? @color/umbba_black : @color/grey_800 }"
+                android:textColor="@{vm.isOpponentAnswer ? @color/umbba_black : @color/black_500_opacity30 }"
                 app:layout_constraintBottom_toTopOf="@id/tv_from_other"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -108,10 +108,10 @@
             android:id="@+id/cl_answer_me"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="172dp"
+            android:minHeight="212dp"
             android:layout_marginHorizontal="21dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/shape_grey300_fill_r17_rect"
+            android:background="@drawable/shape_pri400_fill_pri500_stroke_r17_rect"
             app:layout_constraintTop_toBottomOf="@id/cl_answer_other">
 
             <TextView
@@ -124,7 +124,6 @@
                 android:text="@{vm.isBeforeList ? vm.listQnaResponse.myQuestion : vm.qnaResponse.myQuestion}"
                 android:textAppearance="@style/AndroidSubHead1SemiBold20"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -139,7 +138,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tool:text="하단 버튼을 눌러 답변을 입력하세요" />
+                android:text="하단 버튼을 눌러 답변을 입력하세요" />
 
             <TextView
                 android:id="@+id/tv_answer_me"
