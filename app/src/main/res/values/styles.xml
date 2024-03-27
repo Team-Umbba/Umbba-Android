@@ -46,6 +46,23 @@
         <item name="counterTextAppearance">@style/AndroidCaptionRegular10</item>
     </style>
 
+    <style name="RecordTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!--FilledBox일 경우 밑줄 색상, OutlinedBox일 경우 테두리 색상-->
+        <item name="boxStrokeColor">@color/sel_invite_code_input_layout</item>
+        <!--Error-->
+        <item name="errorEnabled">false</item>
+        <!--Counter-->
+        <item name="counterEnabled">true</item>
+        <item name="counterMaxLength">32</item>
+        <item name="counterTextColor">@color/umbba_black</item>
+        <item name="counterTextAppearance">@style/AndroidCaptionRegular10</item>
+        <!--Radius-->
+        <item name="boxCornerRadiusTopStart">17dp</item>
+        <item name="boxCornerRadiusTopEnd">17dp</item>
+        <item name="boxCornerRadiusBottomEnd">17dp</item>
+        <item name="boxCornerRadiusBottomStart">17dp</item>
+    </style>
+
     <style name="ChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <!--Text Style-->
         <item name="android:fontFamily">@font/pretendard_regular</item>
@@ -93,6 +110,10 @@
     <style name="CornerRadiusImageView">
         <item name="cornerSizeBottomLeft">20dp</item>
         <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+
+    <style name="CornerRadius17ImageView">
+        <item name="cornerSize">17dp</item>
     </style>
 
     <style name="SettingSwitchStyle">

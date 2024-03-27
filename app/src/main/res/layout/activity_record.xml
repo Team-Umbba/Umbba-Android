@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_500"
+        tools:context=".presentation.mypage.RecordActivity">
+
+        <include
+            android:id="@+id/layout_appbar"
+            layout="@layout/basic_appbar"
+            app:clickListener="@{clickListener}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_record"
+            style="@style/AndroidHead1SemiBold24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/record_upload_title"
+            android:textColor="@color/umbba_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_appbar" />
+
+        <TextView
+            android:id="@+id/tv_record_description"
+            style="@style/AndroidBody1_2Regular16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/record_upload_description"
+            android:textColor="@color/grey_900"
+            app:layout_constraintStart_toStartOf="@id/tv_record"
+            app:layout_constraintTop_toBottomOf="@id/tv_record" />
+
+        <ScrollView
+            android:id="@+id/sv_record"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_record_description">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:reverseLayout="true"
+                    app:stackFromEnd="true"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_record_list" />
+
+                <ImageView
+                    android:id="@+id/iv_not_upload_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:src="@drawable/img_not_upload_pic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_upload"
+            style="@style/AndroidBody1_1SemiBold16"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="28dp"
+            android:background="@drawable/shape_gradient_btn_r50_rect"
+            android:stateListAnimator="@null"
+            android:text="사진 업로드하기"
+            android:textColor="@color/white_500"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

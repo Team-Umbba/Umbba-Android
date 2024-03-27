@@ -27,7 +27,7 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 // 가까워지기
             }
             clRecord.setOnSingleClickListener {
-                // 기록하기
+                startActivity(Intent(requireActivity(), RecordActivity::class.java))
             }
         }
     }
