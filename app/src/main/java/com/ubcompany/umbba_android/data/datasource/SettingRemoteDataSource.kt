@@ -6,6 +6,9 @@ import javax.inject.Inject
 class SettingRemoteDataSource @Inject constructor(
     private val settingService : SettingService
 ) {
+
+    suspend fun getMypage() = settingService.getMypage()
+
     suspend fun logout() = settingService.logout()
 
     suspend fun signout() = settingService.signout()
