@@ -204,6 +204,9 @@
     <string name="record_description">소중한 순간을 기록하세요</string>
     <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
     <string name="tv_me">나</string>
+    <string name="other_not_connect">상대 미연결</string>
+    <string name="days">%d일 째</string>
+    <string name="numbers">%d 개</string>
 
     <!-- getcloser activity-->
     <string name="get_closer_my_choice">나의 선택</string>
