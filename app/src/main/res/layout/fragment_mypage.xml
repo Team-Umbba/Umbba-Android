@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.ubcompany.umbba_android.presentation.mypage.viewmodel.MypageViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,7 +62,8 @@
                     style="@style/AndroidHead1SemiBold24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{vm.isOpponentNull ? @string/other_not_connect : vm.opponentUsername}"
                     android:textColor="@color/umbba_black"
                     app:layout_constraintBottom_toBottomOf="@id/iv_connect"
                     app:layout_constraintEnd_toStartOf="@id/iv_connect"
@@ -69,6 +74,7 @@
                     style="@style/AndroidBody1_2Regular16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{vm.opponentUserType}"
                     android:textColor="@color/grey_800"
                     app:layout_constraintBottom_toTopOf="@+id/tv_other_nickname"
                     app:layout_constraintEnd_toEndOf="@id/tv_other_nickname"
@@ -79,7 +85,8 @@
                     style="@style/AndroidHead1SemiBold24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@{vm.myUserName}"
                     android:textColor="@color/umbba_black"
                     app:layout_constraintBottom_toBottomOf="@id/iv_connect"
                     app:layout_constraintStart_toEndOf="@id/iv_connect"
@@ -104,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
+                    android:text="@{vm.myUserType}"
                     android:textColor="@color/grey_800"
                     app:layout_constraintBottom_toTopOf="@id/tv_my_nickname"
                     app:layout_constraintStart_toEndOf="@id/tv_me"
@@ -137,6 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:text="@{vm.section}"
                     android:textColor="@color/umbba_black"
                     app:layout_constraintBottom_toBottomOf="@id/tv_now"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:text="@{@string/days(vm.matchedDate)}"
                 android:textColor="@color/umbba_black"
                 app:layout_constraintEnd_toEndOf="@id/tv_travel"
                 app:layout_constraintStart_toStartOf="@id/tv_travel"
@@ -196,6 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:text="@{@string/numbers(vm.qnaCount)}"
                 android:textColor="@color/umbba_black"
                 app:layout_constraintEnd_toEndOf="@id/tv_answer"
                 app:layout_constraintStart_toStartOf="@id/tv_answer"
@@ -299,7 +310,7 @@
             style="@style/AndroidCaptionRegular12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:text="@string/umbba_version"
             android:textColor="@color/grey_800"
             app:layout_constraintEnd_toEndOf="parent"
