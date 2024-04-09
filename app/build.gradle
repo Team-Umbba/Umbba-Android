@@ -24,10 +24,39 @@ android {
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-        buildConfigField "String", "UMBBA_BASE_URL", properties["UMBBA_BASE_URL"]
-        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties["KAKAO_NATIVE_APP_KEY"]
-        manifestPlaceholders["NATIVE_APP_KEY"] = properties["KAKAO_NATIVE_APP_KEY_NO_QUOTES"]
+    flavorDimensions += "version"
+    productFlavors {
+        dev {
+            dimension = "version"
+            applicationId = "com.ubcompany.umbba_android"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            versionCode = 1
+            versionName = "1.0.0"
+            archivesBaseName = "umbba_dev"
+            buildConfigField "boolean", "IS_DEV", "true"
+            buildConfigField "String", "UMBBA_BASE_URL", properties["UMBBA_DEV_URL"]
+            buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties["KAKAO_NATIVE_APP_KEY"]
+            manifestPlaceholders["appLabel"] = "@string/app_name_dev"
+            manifestPlaceholders["NATIVE_APP_KEY"] = properties["KAKAO_NATIVE_APP_KEY_NO_QUOTES"]
+        }
+
+        store {
+            dimension = "version"
+            applicationId = "com.ubcompany.umbba_android"
+            applicationIdSuffix = ".store"
+            versionNameSuffix = "-store"
+            versionCode = 2
+            versionName = "1.1.0"
+            archivesBaseName = "umbba_store"
+            buildConfigField "boolean", "IS_DEV", "false"
+            buildConfigField "String", "UMBBA_BASE_URL", properties["UMBBA_BASE_URL"]
+            buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties["KAKAO_NATIVE_APP_KEY"]
+            manifestPlaceholders["appLabel"] = "@string/app_name"
+            manifestPlaceholders["NATIVE_APP_KEY"] = properties["KAKAO_NATIVE_APP_KEY_NO_QUOTES"]
+        }
     }
 
     buildTypes {
