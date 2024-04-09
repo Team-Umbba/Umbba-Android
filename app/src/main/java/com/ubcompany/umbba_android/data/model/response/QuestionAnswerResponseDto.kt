@@ -37,6 +37,8 @@ data class QuestionAnswerResponseDto(
         @SerialName("opponent_username")
         val opponentUsername: String?,
         @SerialName("my_username")
-        val myUsername: String?
+        val myUsername: String?,
+        @SerialName("is_reroll_time")
+        val isRerollTime: Boolean?
     )
 }
