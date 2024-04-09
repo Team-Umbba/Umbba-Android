@@ -1,11 +1,13 @@
 package com.ubcompany.umbba_android.di
 
+import com.ubcompany.umbba_android.data.repository.CloserRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.HomeRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.ListRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.LoginRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.OnboardingRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.QuestionAnswerRepositoryImpl
 import com.ubcompany.umbba_android.data.repository.SettingRepositoryImpl
+import com.ubcompany.umbba_android.domain.repository.CloserRepository
 import com.ubcompany.umbba_android.domain.repository.HomeRepository
 import com.ubcompany.umbba_android.domain.repository.ListRepository
 import com.ubcompany.umbba_android.domain.repository.LoginRepository
@@ -44,4 +46,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindSettingRepository(settingRepositoryImpl: SettingRepositoryImpl): SettingRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCloserRepository(closerRepositoryImpl: CloserRepositoryImpl): CloserRepository
 }
