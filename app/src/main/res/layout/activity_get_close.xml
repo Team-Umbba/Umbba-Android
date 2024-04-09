@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.ubcompany.umbba_android.presentation.mypage.GetCloserViewModel" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,19 +25,9 @@
             android:layout_height="24dp"
             android:layout_marginStart="24dp"
             android:src="@drawable/ic_arrow_back"
+            android:onClick="onClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <ImageView
-            android:id="@+id/iv_love_people"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_love_people"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -64,28 +59,15 @@
         android:textAppearance="@style/AndroidBody1_2Regular16"/>
 
     <FrameLayout
-        android:id="@+id/fragment_qna"
+        android:id="@+id/fragment_closer_question"
         android:layout_width="match_parent"
-        android:layout_height="335dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_sub_title_balance_game" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_check_result"
-        style="@style/AndroidBody1_1SemiBold16"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="28dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/sel_btn_next"
-        android:enabled="false"
-        android:stateListAnimator="@null"
-        android:text="결과 확인하기"
-        android:textColor="@color/white_500"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
