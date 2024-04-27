@@ -1,0 +1,33 @@
+package com.ubcompany.umbba_android.presentation.mypage.viewmodel
+
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.ubcompany.umbba_android.data.model.request.RecordImageRequestDto
+import com.ubcompany.umbba_android.domain.repository.SettingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+@HiltViewModel
+class RecordViewModel @Inject constructor(private val settingRepository: SettingRepository) :
+    ViewModel() {
+
+    val fileName = MutableLiveData<String>()
+    val presignedUrl = MutableLiveData<String>()
+
+    fun receivePresignedUrl() {
+        viewModelScope.launch {
+            settingRepository.getImageUrl(
+                RecordImageRequestDto()
+            ).onSuccess {
+                fileName.value = it.data.fileName
+                presignedUrl.value = it.data.fileName
+                Log.d("yeonjin", "receivePresignedUrl 성공")
+            }.onFailure {
+                Log.e("yeonjin", "receivePresignedUrl 실패")
+            }
+        }
+    }
+}
