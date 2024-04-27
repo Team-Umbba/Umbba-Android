@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentMypageBinding
+import com.ubcompany.umbba_android.presentation.home.InviteCodeDialogFragment
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.MypageViewModel
 import com.ubcompany.umbba_android.presentation.setting.SettingActivity
 import com.ubcompany.umbba_android.util.binding.BindingFragment
@@ -39,7 +40,12 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 startActivity(Intent(requireActivity(), SettingActivity::class.java))
             }
             clGetclose.setOnSingleClickListener {
-                // 가까워지기
+                if (viewModel.isOpponentNull.value == true){
+                    showInviteDialog(viewModel.mypageResponse.value!!.myUserName, viewModel.mypageResponse.value!!.inviteCode!!)
+                }
+                else{
+                    startActivity(Intent(requireActivity(),GetCloserActivity::class.java))
+                }
             }
             clRecord.setOnSingleClickListener {
                 startActivity(Intent(requireActivity(), RecordActivity::class.java))
@@ -47,6 +53,12 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
         }
     }
 
+    private fun showInviteDialog(inviteUserName: String, inviteCode: String) {
+        InviteCodeDialogFragment(inviteUserName, inviteCode).show(
+            requireActivity().supportFragmentManager,
+            "InviteCodeDialogFragment"
+        )
+    }
     override fun onResume() {
         super.onResume()
         viewModel.getMypage()

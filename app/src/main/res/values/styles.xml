@@ -93,6 +93,20 @@
         <item name="chipBackgroundColor">@color/sel_choice_chip_pri500_color</item>
     </style>
 
+    <style name="CloserChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <!--Text Style-->
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/sel_closer_choice_pri600_text</item>
+        <item name="android:textAlignment">center</item>
+
+        <!--Chip Design-->
+        <item name="chipCornerRadius">17dp</item>
+        <item name="chipStrokeColor">@color/sel_choice_chip_pri500_stroke</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="chipBackgroundColor">@color/sel_closer_choice_chip_pri600</item>
+    </style>
+
     <style name="ListChoiceChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <!--Text Style-->
         <item name="android:fontFamily">@font/pretendard_regular</item>
