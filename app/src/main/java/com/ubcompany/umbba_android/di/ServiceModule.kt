@@ -1,5 +1,6 @@
 package com.ubcompany.umbba_android.di
 
+import com.ubcompany.umbba_android.data.service.CloserService
 import com.ubcompany.umbba_android.data.service.HomeService
 import com.ubcompany.umbba_android.data.service.ListService
 import com.ubcompany.umbba_android.data.service.LoginService
@@ -45,5 +46,10 @@ object ServiceModule {
     @Provides
     fun provideSettingService(retrofit: Retrofit): SettingService =
         retrofit.create(SettingService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideCloserService(retrofit: Retrofit): CloserService =
+        retrofit.create(CloserService::class.java)
 
 }
