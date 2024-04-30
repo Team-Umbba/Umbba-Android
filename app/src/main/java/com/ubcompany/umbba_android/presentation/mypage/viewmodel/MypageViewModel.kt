@@ -27,8 +27,8 @@ class MypageViewModel @Inject constructor(private val settingRepository: Setting
     val section = MutableLiveData<String>()
     val matchedDate = MutableLiveData<Long>()
     val qnaCount = MutableLiveData<Int>()
-
     val isOpponentNull = MutableLiveData<Boolean>()
+    val isOpponentExit = MutableLiveData<Boolean>()
 
     fun getMypage() {
         viewModelScope.launch {
@@ -42,6 +42,7 @@ class MypageViewModel @Inject constructor(private val settingRepository: Setting
                     section.value = response.data.section
                     matchedDate.value = response.data.matchedDate
                     qnaCount.value = response.data.qnaCount
+                    isOpponentExit.value = response.data.isOpponentExit
                     Timber.d("getMypage 성공")
                 }.onFailure { error ->
                     if (error is HttpException) {
