@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RecordImageRequestDto(
     @SerialName("img_prefix")
-    val imgPrefix: String = "album/"
+    val imgPrefix: String
 )
