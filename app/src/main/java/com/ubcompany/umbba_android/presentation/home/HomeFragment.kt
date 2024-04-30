@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -80,8 +81,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
                 DELETE_OPPONENT -> showDeleteOpponentDialog()
 
-                REQUIRE_TUTORIAL -> {
-                    SharedPreferences.setTutorialBoolean(DID_TUTORIAL,false)
+                REQUIRE_QNA_TUTORIAL -> {
+                    SharedPreferences.setQnaTutorialNeededBoolean(NEEDED_TUTORIAL, true)
                     startActivity(Intent(requireActivity(), QuestionAnswerActivity::class.java))
                 }
             }
@@ -89,18 +90,20 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
     }
 
     private fun checkBtnCoachMark(responseCaseDto: HomeCaseResponseDto.HomeCaseData) {
-        if (responseCaseDto.responseCase == REQUIRE_TUTORIAL) {
-            if (!isShowedTutorialCoachMark) {
-                showTutorialClickCoachMark()
-                isShowedTutorialCoachMark = true
-            }
-        }
-
+        Log.e("hyeon", "responseCase == ${responseCaseDto.responseCase}")
         if (responseCaseDto.responseCase == REQUIRE_INVITE_CODE) {
             if (!isShowedInviteCodeCoachMark) {
                 showInviteOpponentCoachMark()
                 isShowedInviteCodeCoachMark = true
             }
+        }
+
+        if (responseCaseDto.responseCase == REQUIRE_QNA_TUTORIAL && viewModel.getIsFirstEntry()) {
+            if (!isShowedTutorialCoachMark) {
+                showTutorialClickCoachMark()
+                isShowedTutorialCoachMark = true
+            }
+            Log.e("hyeon", "tutorial click 나타남")
         }
     }
 
@@ -199,7 +202,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         const val MATCHED_OPPONENT = 1
         const val REQUIRE_INVITE_CODE = 2
         const val DELETE_OPPONENT = 3
-        const val REQUIRE_TUTORIAL = 4
-        const val DID_TUTORIAL = "DID_TUTORIAL"
+        const val REQUIRE_QNA_TUTORIAL = 4
+        const val NEEDED_TUTORIAL = "NEEDED_TUTORIAL"
     }
 }

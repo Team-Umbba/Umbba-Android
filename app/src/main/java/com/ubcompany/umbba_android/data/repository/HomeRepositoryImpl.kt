@@ -3,6 +3,7 @@ package com.ubcompany.umbba_android.data.repository
 import android.util.Log
 import com.ubcompany.umbba_android.data.datasource.HomeRemoteDataSource
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
+import com.ubcompany.umbba_android.data.model.response.HomeFirstResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
 import com.ubcompany.umbba_android.domain.repository.HomeRepository
 import retrofit2.HttpException
@@ -33,5 +34,18 @@ class HomeRepositoryImpl @Inject constructor(
                 Log.e("hyeon","겟 실패 ${errorBody}")
             }
             Log.e("hyeon", "getresponse 실패 ${error.message} ")
+        }
+
+    override suspend fun patchHomeFirst(): Result<HomeFirstResponseDto> =
+        runCatching {
+            homeRemoteDataSource.patchHomeFirst()
+        }.onSuccess {
+            Log.e("hyeon","patch first 성공")
+        }.onFailure { error->
+            if(error is HttpException){
+                val errorBody = error.response()?.errorBody()?.string()
+                Log.e("hyeon","patch 실패 ${errorBody}")
+            }
+            Log.e("hyeon", "patch first 실패 ${error.message} ")
         }
 }
