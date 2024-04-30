@@ -19,6 +19,8 @@ class RecordViewModel @Inject constructor(
     val fileName = MutableLiveData<String>()
     val presignedUrl = MutableLiveData<String>()
 
+    val image = MutableLiveData<Bitmap>()
+
     fun receivePresignedUrl() {
         viewModelScope.launch {
             settingRepository.getImageUrl(
@@ -34,4 +36,14 @@ class RecordViewModel @Inject constructor(
             }
         }
     }
+    
+    fun uploadImage(url: String, imageBitmap: Bitmap) {
+        viewModelScope.launch {
+            settingRepository.uploadImage(
+                url, imageBitmap
+            )
+            image.value = imageBitmap
+        }
+    }
+
 }
