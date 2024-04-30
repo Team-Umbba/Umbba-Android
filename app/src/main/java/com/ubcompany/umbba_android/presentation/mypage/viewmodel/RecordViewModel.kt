@@ -11,7 +11,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RecordViewModel @Inject constructor(private val settingRepository: SettingRepository) :
+class RecordViewModel @Inject constructor(
+    private val settingRepository: SettingRepository,
+) :
     ViewModel() {
 
     val fileName = MutableLiveData<String>()
@@ -20,13 +22,15 @@ class RecordViewModel @Inject constructor(private val settingRepository: Setting
     fun receivePresignedUrl() {
         viewModelScope.launch {
             settingRepository.getImageUrl(
-                RecordImageRequestDto()
+                RecordImageRequestDto(
+                    imgPrefix = "album/"
+                )
             ).onSuccess {
                 fileName.value = it.data.fileName
-                presignedUrl.value = it.data.fileName
-                Log.d("yeonjin", "receivePresignedUrl 성공")
-            }.onFailure {
-                Log.e("yeonjin", "receivePresignedUrl 실패")
+                presignedUrl.value = it.data.url
+                Log.d("yeonjin", "receivePresignedUrl 성공 presigned url : ${presignedUrl.value}")
+            }.onFailure { error ->
+                Log.e("yeonjin", "receivePresignedUrl 실패 $error")
             }
         }
     }
