@@ -66,6 +66,15 @@ class RecordViewModel @Inject constructor(
         }
     }
 
+    fun deleteRecord(albumId: Int) {
+        viewModelScope.launch {
+            settingRepository.deleteRecord(
+                albumId.toLong()
+            ).onSuccess {
+                Log.d("yeonjin", "delete record 성공")
+            }.onFailure { error ->
+                Log.e("yeonjin", "delete record 실패 $error")
+            }
         }
     }
 }
