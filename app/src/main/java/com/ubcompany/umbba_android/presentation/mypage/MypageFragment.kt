@@ -8,6 +8,7 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentMypageBinding
 import com.ubcompany.umbba_android.presentation.home.InviteCodeDialogFragment
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.MypageViewModel
+import com.ubcompany.umbba_android.presentation.qna.NoOpponentDialogFragment
 import com.ubcompany.umbba_android.presentation.setting.SettingActivity
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
@@ -20,18 +21,7 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
-        observeConnect()
         setClickEvent()
-    }
-
-    private fun observeConnect() {
-        viewModel.mypageResponse.observe(viewLifecycleOwner) {
-            if (it.opponentUsername == null) {
-                viewModel.isOpponentNull.value = true
-            } else {
-                viewModel.isOpponentNull.value = false
-            }
-        }
     }
 
     private fun setClickEvent() {
@@ -40,11 +30,17 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 startActivity(Intent(requireActivity(), SettingActivity::class.java))
             }
             clGetclose.setOnSingleClickListener {
-                if (viewModel.isOpponentNull.value == true){
-                    showInviteDialog(viewModel.mypageResponse.value!!.myUserName, viewModel.mypageResponse.value!!.inviteCode!!)
-                }
-                else{
-                    startActivity(Intent(requireActivity(),GetCloserActivity::class.java))
+                if (viewModel.isOpponentExit.value == false) {
+                    if (viewModel.isOpponentNull.value == null) {
+                        showInviteDialog(
+                            viewModel.mypageResponse.value!!.myUserName,
+                            viewModel.mypageResponse.value!!.inviteCode!!
+                        )
+                    } else {
+                        showDeleteOpponentDialog()
+                    }
+                } else {
+                    startActivity(Intent(requireActivity(), GetCloserActivity::class.java))
                 }
             }
             clRecord.setOnSingleClickListener {
@@ -59,6 +55,14 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
             "InviteCodeDialogFragment"
         )
     }
+
+    private fun showDeleteOpponentDialog() {
+        NoOpponentDialogFragment().show(
+            requireActivity().supportFragmentManager,
+            "NoOpponentDialogFragment"
+        )
+    }
+
     override fun onResume() {
         super.onResume()
         viewModel.getMypage()
