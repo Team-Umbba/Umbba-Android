@@ -3,6 +3,7 @@ package com.ubcompany.umbba_android.data.model.response
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Serializable
 data class RecordListResponseDto(
     @SerialName("status")
     val status: Int,
@@ -14,7 +15,7 @@ data class RecordListResponseDto(
     @Serializable
     data class RecordListData(
         @SerialName("album_id")
-        val id: String,
+        val id: Int,
         @SerialName("title")
         val title: String,
         @SerialName("content")
@@ -25,3 +26,4 @@ data class RecordListResponseDto(
         val imgUrl: String
     )
 }
+
