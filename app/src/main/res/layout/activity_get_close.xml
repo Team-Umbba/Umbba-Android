@@ -59,7 +59,7 @@
         android:textAppearance="@style/AndroidBody1_2Regular16"/>
 
     <FrameLayout
-        android:id="@+id/fragment_closer_question"
+        android:id="@+id/fl_closer_fragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="24dp"

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
+import com.ubcompany.umbba_android.data.model.response.HomeFirstResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
 import com.ubcompany.umbba_android.data.repository.HomeRepositoryImpl
 import com.ubcompany.umbba_android.domain.repository.HomeRepository
@@ -19,6 +20,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) :
     ViewModel() {
     init {
+        getHomeFirst()
         getHomeData()
     }
 
@@ -36,6 +38,9 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     private var _topicTitle = MutableLiveData<String>()
     val topicTitle: LiveData<String> = _topicTitle
+
+    private var _isFirstEntry = MutableLiveData(false)
+    val isFirstEntry : LiveData<Boolean> = _isFirstEntry
 
     fun getHomeData() {
         viewModelScope.launch {
@@ -59,11 +64,27 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
             homeRepository.getResponseCase()
                 .onSuccess { response ->
                     _responseCaseData.value = response.data
-                    Timber.d("getResponseCode 성공")
+                    Log.e("hyeon","getResponseCode 성공")
                 }.onFailure { error ->
                     Timber.e("getResponseCode 실패  " + error.message)
                 }
         }
+    }
+
+    fun getHomeFirst(){
+        viewModelScope.launch{
+            homeRepository.patchHomeFirst()
+                .onSuccess {
+                   _isFirstEntry.value =  it.data.isFirstEntry
+                    Log.e("hyeon","data = ${it.data.isFirstEntry}")
+                }.onFailure {
+
+                }
+        }
+    }
+
+    fun getIsFirstEntry() : Boolean {
+        return _isFirstEntry.value?:false
     }
 
     fun setStateCloseEnding() {

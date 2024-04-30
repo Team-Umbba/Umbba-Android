@@ -35,6 +35,8 @@ data class MypageResponseDto(
         @SerialName("invite_code")
         val inviteCode: String?,
         @SerialName("install_url")
-        val url: String?
+        val url: String?,
+        @SerialName("is_opponent_exit")
+        val isOpponentExit: Boolean
     )
 }

@@ -1,14 +1,17 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.app.NotificationCompat.getColor
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.FragmentCloserCheckResultBinding
 import com.ubcompany.umbba_android.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GetCloserResultFragment(private val viewModel: GetCloserViewModel) :
@@ -17,8 +20,8 @@ class GetCloserResultFragment(private val viewModel: GetCloserViewModel) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewmodel = viewModel
-        initChangeQuestionFragment()
         setResultFragmentData()
+        initChangeQuestionFragment()
         changeQuestionFragment()
     }
 
@@ -83,9 +86,9 @@ class GetCloserResultFragment(private val viewModel: GetCloserViewModel) :
     }
 
     companion object {
-        const val ME_NO_ANSWER = 1
         const val OPPONENT_NO_ANSWER = 2
         const val BOTH_ANSWER_SAME = 3
         const val BOTH_ANSWER_DIFFERENT = 4
     }
+
 }
