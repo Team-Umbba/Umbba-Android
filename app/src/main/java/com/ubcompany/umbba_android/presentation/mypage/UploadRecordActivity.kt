@@ -23,6 +23,7 @@ class UploadRecordActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        binding.viewmodel = viewModel
 
         validateTitle()
         checkAllInfoComplete()
@@ -61,7 +62,9 @@ class UploadRecordActivity :
         }
         viewModel.isAllInfoComplete.observe(this) {
             with(binding) {
-                btnUpload.isEnabled = it
+                btnUpload.isEnabled =
+                    layoutRecordTitle.error.isNullOrEmpty() && etRecordTitle.text.toString()
+                        .isNotEmpty() && etRecordIntroduce.text.toString().isNotEmpty()
             }
         }
     }
