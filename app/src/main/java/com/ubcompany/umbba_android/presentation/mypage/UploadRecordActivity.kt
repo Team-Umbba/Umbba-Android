@@ -74,8 +74,14 @@ class UploadRecordActivity :
     }
 
     private fun uploadRecord() {
+        val fileName = intent.getStringExtra("fileName")
+        viewModel.imgName.value = fileName
+        Log.d("yeonjin", "전달받은 사진 이름 $fileName")
         binding.btnUpload.setOnSingleClickListener {
-            // 사진 전송 및 기록하기 화면으로 이동
+            Log.d("yeonjin", "서버에 올라가는 사진 이름 ${viewModel.imgName.value}")
+            viewModel.uploadRecord()
+            finish()
+            finish()
         }
     }
 
