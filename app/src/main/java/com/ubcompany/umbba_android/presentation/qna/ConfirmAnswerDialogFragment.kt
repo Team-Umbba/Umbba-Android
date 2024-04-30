@@ -15,6 +15,7 @@ import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
 import com.ubcompany.umbba_android.databinding.FragmentConfirmAnswerDialogBinding
+import com.ubcompany.umbba_android.presentation.home.HomeFragment
 import com.ubcompany.umbba_android.presentation.qna.viewmodel.ConfirmAnswerDialogFragmentViewModel
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,8 +55,8 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
     }
 
     private fun setTutorialCompletion() {
-        if (!SharedPreferences.getTutorialBoolean(DID_TUTORIAL)) {
-            SharedPreferences.setTutorialBoolean(DID_TUTORIAL, true)
+        if (SharedPreferences.getQnaTutorialNeededBoolean("NEEDED_TUTORIAL")) {
+            SharedPreferences.setQnaTutorialNeededBoolean("NEEDED_TUTORIAL",false)
         }
     }
 
@@ -90,6 +91,5 @@ class ConfirmAnswerDialogFragment : DialogFragment() {
 
     companion object {
         const val SUCCESS_POST_ANSWER = 201
-        const val DID_TUTORIAL = "DID_TUTORIAL"
     }
 }
