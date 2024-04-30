@@ -68,10 +68,9 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone"
+                    android:paddingBottom="68dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:reverseLayout="true"
-                    app:stackFromEnd="true"
                     tools:itemCount="3"
                     tools:listitem="@layout/item_record_list" />
 

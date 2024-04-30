@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp"
-    android:clickable="true">
+    android:clickable="true"
+    android:id="@+id/cl_record">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_record"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"

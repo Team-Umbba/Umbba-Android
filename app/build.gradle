@@ -168,6 +168,8 @@ dependencies {
     // Tool tip, coach mark
     implementation 'com.github.skydoves:balloon:1.6.4'
 
+    // aws s3
+    implementation "com.amazonaws:aws-android-sdk-s3:2.13.5"
 
 }
 
