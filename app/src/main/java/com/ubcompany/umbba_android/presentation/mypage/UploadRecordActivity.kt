@@ -3,6 +3,7 @@ package com.ubcompany.umbba_android.presentation.mypage
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.viewModels
@@ -27,13 +28,12 @@ class UploadRecordActivity :
 
         validateTitle()
         checkAllInfoComplete()
-        showBackDialog()
         uploadRecord()
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.iv_basic_back -> finish()
+            R.id.iv_basic_back -> showBackDialog()
         }
     }
 
