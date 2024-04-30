@@ -98,6 +98,13 @@ class QuestionAnswerActivity :
         with(binding) {
             tvAnswerOther.text = data.opponentAnswer
             tvAnswerMe.text = data.myAnswer
+            setOtherAnswerBlur(false)
+            isOtherHintVisible(false)
+            isMeHintVisible(false)
+            setOtherQuestionTextColor(tvQuestionOther)
+            setOtherQuestionTextColor(tvAnswerOther)
+            setOtherQuestionTextColor(tvAnswerMe)
+            clAnswerMe.setBackgroundResource(R.drawable.shape_grey300_stroke_r17_rect)
         }
         binding.clLoading.visibility = View.GONE
     }
