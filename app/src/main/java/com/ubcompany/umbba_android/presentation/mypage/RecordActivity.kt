@@ -1,16 +1,23 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
+import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityRecordBinding
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.RecordViewModel
+import com.ubcompany.umbba_android.util.BitmapUtil
 import com.ubcompany.umbba_android.util.binding.BindingActivity
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +58,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         bitmapUtil = BitmapUtil(this)
 
         initAdapter()
+        observeRecordData()
         goUploadActivity()
 
     }
@@ -73,9 +81,23 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         binding.rvRecord.adapter = recordAdapter
     }
 
+    private fun observeRecordData() {
+        viewModel.getRecordListData()
+        viewModel.recordListResponse.observe(this) {
+            recordAdapter.submitList(it.toList())
+            if (viewModel.recordListResponse.value.isNullOrEmpty()) {
+                binding.rvRecord.visibility = View.GONE
+                binding.ivNotUploadPic.visibility = View.VISIBLE
+            } else {
+                binding.rvRecord.visibility = View.VISIBLE
+                binding.ivNotUploadPic.visibility = View.GONE
+            }
+        }
+    }
 
     private fun goUploadActivity() {
         binding.btnUpload.setOnSingleClickListener {
+            askNotificationPermission()
             viewModel.receivePresignedUrl()
             viewModel.presignedUrl.observe(this) {
                 if (it.isNotEmpty()) {
@@ -84,8 +106,11 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
                         putExtra("fileName", viewModel.fileName.value.toString())
                     })
                 }
+                })
             }
         }
+    }
+
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(
@@ -127,4 +152,8 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         private val PERMISSION_ALBUM = 101
     }
 
+    override fun onResume() {
+        super.onResume()
+        observeRecordData()
+    }
 }
