@@ -8,12 +8,17 @@ import com.ubcompany.umbba_android.data.model.response.MypageResponseDto
 import com.ubcompany.umbba_android.data.model.response.RecordImageResponseDto
 import com.ubcompany.umbba_android.data.model.response.RecordListResponseDto
 import com.ubcompany.umbba_android.data.model.response.SignOutResponseDto
+import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Url
 
 interface SettingService {
     @GET("/user/me")
@@ -28,6 +33,13 @@ interface SettingService {
     suspend fun getImageUrl(
         @Body body: RecordImageRequestDto
     ): RecordImageResponseDto
+
+    @Headers("Content-Type: image/*")
+    @PUT
+    suspend fun uploadImage(
+        @Url url: String,
+        @Body imageFile: RequestBody
+    ): Response<Unit>
 
     @DELETE("/album/{album_id}")
     suspend fun deleteRecord(

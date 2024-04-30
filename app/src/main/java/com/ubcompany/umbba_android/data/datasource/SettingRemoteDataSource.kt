@@ -1,8 +1,10 @@
 package com.ubcompany.umbba_android.data.datasource
 
+import android.graphics.Bitmap
 import com.ubcompany.umbba_android.data.model.request.RecordImageRequestDto
 import com.ubcompany.umbba_android.data.model.request.RecordUploadRequestDto
 import com.ubcompany.umbba_android.data.service.SettingService
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class SettingRemoteDataSource @Inject constructor(
@@ -16,6 +18,9 @@ class SettingRemoteDataSource @Inject constructor(
 
     suspend fun getImageUrl(recordImageRequestDto: RecordImageRequestDto) =
         settingService.getImageUrl(recordImageRequestDto)
+
+    suspend fun uploadImage(url: String, image: RequestBody) =
+        settingService.uploadImage(url, image)
 
     suspend fun deleteRecord(albumId: Long) = settingService.deleteRecord(albumId)
 
