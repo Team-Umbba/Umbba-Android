@@ -102,10 +102,11 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
             viewModel.presignedUrl.observe(this) {
                 if (it.isNotEmpty()) {
                     launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                    startActivity(Intent(this, UploadRecordActivity::class.java).apply {
-                        putExtra("fileName", viewModel.fileName.value.toString())
-                    })
                 }
+            }
+            viewModel.image.observe(this) {
+                startActivity(Intent(this, UploadRecordActivity::class.java).apply {
+                    putExtra("fileName", viewModel.fileName.value.toString())
                 })
             }
         }
