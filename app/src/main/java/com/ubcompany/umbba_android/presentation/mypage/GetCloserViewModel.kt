@@ -17,9 +17,13 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class GetCloserViewModel @Inject constructor(private val closerRepository: CloserRepository) : ViewModel() {
+class GetCloserViewModel @Inject constructor(private val closerRepository: CloserRepository) :
+    ViewModel() {
 
-    init{
+    var closerActivityCallback: CloserQuestionCallback? = null
+    var responseStatus = MutableLiveData<Int>()
+
+    init {
         getCloserQuestion()
     }
 
@@ -27,48 +31,57 @@ class GetCloserViewModel @Inject constructor(private val closerRepository: Close
     val isCheckedAnswerTwo = MutableLiveData<Boolean>()
     val isCompletedAnswer = MutableLiveData<Boolean>()
     val checkedUserAnswer = MutableLiveData<Int>()
-    val changeResultFragment = MutableLiveData<Boolean>()
-    val changeQuestionFragment = MutableLiveData<Boolean>()
+    val changeResultFragment = MutableLiveData(false)
+    val changeQuestionFragment = MutableLiveData(false)
+    var isAnswered = MutableLiveData<Int>()
+    private var isCompletedInitFragment = false
 
     private var _closerQuestionResponse = MutableLiveData<CloserQuestionResponseDto.CloserData>()
-    val closerQuestionResponse: LiveData<CloserQuestionResponseDto.CloserData> = _closerQuestionResponse
+    val closerQuestionResponse: LiveData<CloserQuestionResponseDto.CloserData> =
+        _closerQuestionResponse
 
     private var _closerAnswerQuestionResponse = MutableLiveData<CloserAnswerResponseDto>()
-    val closerAnswerQuestionResponse: LiveData<CloserAnswerResponseDto> = _closerAnswerQuestionResponse
+    val closerAnswerQuestionResponse: LiveData<CloserAnswerResponseDto> =
+        _closerAnswerQuestionResponse
 
     private var _closerNextQuestionResponse = MutableLiveData<CloserNextResponseDto>()
     val closerNextQuestionResponse: LiveData<CloserNextResponseDto> = _closerNextQuestionResponse
 
     fun checkCompletedAnswer() {
-        Log.e("hyeon", "isCheckedAnswerOne : ${isCheckedAnswerOne.value} isCheckedAnswerTwo: ${isCheckedAnswerTwo.value}")
-        isCompletedAnswer.value =  (isCheckedAnswerOne.value == true ) || (isCheckedAnswerTwo.value == true)
+        isCompletedAnswer.value =
+            (isCheckedAnswerOne.value == true) || (isCheckedAnswerTwo.value == true)
     }
 
-    fun showResultFragment(){
-       changeResultFragment.value = true
+    fun showResultFragment() {
+        changeResultFragment.value = true
+        changeQuestionFragment.value = false
     }
 
-    fun showQuestionFragment(){
+    fun showQuestionFragment() {
         changeQuestionFragment.value = true
+        changeResultFragment.value = false
     }
-    fun patchUserAnswer(){
+
+    fun patchUserAnswer() {
         viewModelScope.launch {
-            closerRepository.answerCloserQuestion(CloserAnswerRequestDto(checkedUserAnswer.value!!)).onSuccess {
-                Log.e("hyeon","answer 전달 잘 됨.")
-            }.onFailure { error ->
-                if (error is HttpException) {
-                    val errorBody = error.response()?.errorBody()?.string()
-                    Log.e("hyeon", "answer question http 연결 실패 $errorBody")
+            closerRepository.answerCloserQuestion(CloserAnswerRequestDto(checkedUserAnswer.value!!))
+                .onSuccess {
+                    getCloserQuestion()
+                }.onFailure { error ->
+                    if (error is HttpException) {
+                        val errorBody = error.response()?.errorBody()?.string()
+                        Log.e("hyeon", "answer question http 연결 실패 $errorBody")
+                    }
+                    Log.e("hyeon", "answer question 실패 ${error.message}")
                 }
-                Log.e("hyeon", "answer question 실패 ${error.message}")
-            }
         }
     }
 
-    fun patchNextQuestion(){
-        viewModelScope.launch{
+    fun patchNextQuestion() {
+        viewModelScope.launch {
             closerRepository.getNextCloserQuestion().onSuccess {
-                Log.e("hyeon","next 전달 잘 됨.")
+                Log.e("hyeon","next 성공")
+                getCloserQuestion()
             }.onFailure { error ->
                 if (error is HttpException) {
                     val errorBody = error.response()?.errorBody()?.string()
@@ -79,11 +92,17 @@ class GetCloserViewModel @Inject constructor(private val closerRepository: Close
         }
     }
 
-    fun getCloserQuestion(){
+    private fun getCloserQuestion() {
         viewModelScope.launch {
             closerRepository.getCloserQuestion().onSuccess { response ->
                 _closerQuestionResponse.value = response.data
-                Log.e("hyeon","closerQuestionResponse 성공 ${response.data}")
+                isAnswered.value = response.data.responseCase
+                responseStatus.value = response.status
+
+                if (!isCompletedInitFragment) {
+                    closerActivityCallback?.onQuestionRetrieved()
+                    isCompletedInitFragment = true
+                } // 가까워지기 activity 실행시 한번만 실행되도록 flag 설정.
             }.onFailure { error ->
                 if (error is HttpException) {
                     val errorBody = error.response()?.errorBody()?.string()

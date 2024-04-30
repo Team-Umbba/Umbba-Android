@@ -11,17 +11,20 @@ import com.ubcompany.umbba_android.util.binding.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GetCloserActivity : BindingActivity<ActivityGetCloseBinding>(R.layout.activity_get_close), View.OnClickListener {
+class GetCloserActivity : BindingActivity<ActivityGetCloseBinding>(R.layout.activity_get_close),
+    View.OnClickListener, CloserQuestionCallback {
 
     private val viewModel by viewModels<GetCloserViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewmodel = viewModel
+        viewModel.closerActivityCallback = this
+        initCloserFragment()
         changeFragmentObserve()
-        initFragmentView()
     }
 
-    override fun onClick(view : View) {
+    override fun onClick(view: View) {
         when (view.id) {
             R.id.iv_back -> {
                 finish()
@@ -29,47 +32,62 @@ class GetCloserActivity : BindingActivity<ActivityGetCloseBinding>(R.layout.acti
         }
     }
 
-    private fun changeFragmentObserve(){
-        viewModel.changeResultFragment.observe(this@GetCloserActivity){
-            if (it) changeFragment(GetCloserResultFragment(viewModel))
-        }
+    override fun onQuestionRetrieved() {
+        initCloserFragment()
+    }
 
-        viewModel.changeQuestionFragment.observe(this@GetCloserActivity) {
-            if (it) changeFragment(GetCloserQuestionFragment(viewModel))
+
+    private fun changeFragmentObserve() {
+        viewModel.responseStatus.observe(this@GetCloserActivity) {
+            if (it == SUCCESS_GET_CLOSER_RESPONSE) {
+                if (viewModel.changeQuestionFragment.value == true) {
+                    changeFragment(GetCloserQuestionFragment(viewModel))
+                    Log.e("hyeon", "response 200 question")
+                }
+                if (viewModel.changeResultFragment.value == true) {
+                    changeFragment(GetCloserResultFragment(viewModel))
+                    Log.e("hyeon", "response 200 ** result")
+                }
+            }
         }
     }
-    private fun initFragment(fragment: Fragment){
+
+    private fun initFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_closer_question,fragment)
+            .add(R.id.fl_closer_fragment, fragment)
             .commit()
     }
 
-    private fun changeFragment(fragment :Fragment){
+    private fun changeFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_closer_question, fragment)
+            .replace(R.id.fl_closer_fragment, fragment)
             .commit()
         initAnswerChip()
     }
 
-    private fun initAnswerChip(){
+    private fun initCloserFragment() {
+        val userAnswerCase = viewModel.closerQuestionResponse.value?.responseCase
+        if (userAnswerCase != null) {
+            if (userAnswerCase == ME_NO_ANSWER) {
+                initFragment(GetCloserQuestionFragment(viewModel))
+            } else {
+                initFragment(GetCloserResultFragment(viewModel))
+            }
+        }
+    }
+
+    private fun initAnswerChip() {
         viewModel.isCheckedAnswerOne.value = false
         viewModel.isCheckedAnswerTwo.value = false
     }
 
-    private fun initFragmentView(){
-        viewModel.closerQuestionResponse.observe(this@GetCloserActivity){
-            Log.e("hyeon","closer response 들어옴 ${it}")
-            if (it.responseCase == ME_NO_ANSWER) {
-                initFragment(GetCloserQuestionFragment(viewModel))
-            }
-            else initFragment(GetCloserResultFragment(viewModel))
-        }
-    }
-
-    companion object{
+    companion object {
         const val ME_NO_ANSWER = 1
-        const val OPPONENT_NO_ANSWER = 2
-        const val BOTH_ANSWER_SAME = 3
-        const val BOTH_ANSWER_DIFFERENT = 4
+        const val SUCCESS_GET_CLOSER_RESPONSE = 200
     }
+}
+
+interface CloserQuestionCallback {
+    fun onQuestionRetrieved()
+
 }
