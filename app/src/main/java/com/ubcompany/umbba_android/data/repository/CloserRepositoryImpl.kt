@@ -17,16 +17,13 @@ class CloserRepositoryImpl @Inject constructor(
         runCatching {
             closerRemoteDataSource.getCloserQuestion()
         }.onSuccess {
-            Log.e("hyeon","get home data 성공")
         }.onFailure {
-            Log.e("hyeon","get home data 성공")
         }
 
     override suspend fun answerCloserQuestion(answer : CloserAnswerRequestDto): Result<CloserAnswerResponseDto> =
         runCatching {
             closerRemoteDataSource.answerCloserQuestion(answer)
         }.onSuccess {
-            Log.e("hyeon","answer data 성공")
         }.onFailure {
             Log.e("hyeon","answer data 실패")
         }
@@ -35,7 +32,6 @@ class CloserRepositoryImpl @Inject constructor(
         runCatching {
             closerRemoteDataSource.getNextCloserQuestion()
         }.onSuccess {
-            Log.e("hyeon","get next data 성공")
         }.onFailure {
             Log.e("hyeon","get next data 실패 ")
         }
