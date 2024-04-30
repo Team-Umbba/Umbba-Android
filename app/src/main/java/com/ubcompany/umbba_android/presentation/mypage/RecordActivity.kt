@@ -49,6 +49,19 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         }
     }
 
+    private fun initAdapter() {
+        recordAdapter = RecordAdapter {
+            val bundle = Bundle()
+            val deleteDialog = DeleteRecordDialogFragment()
+            bundle.putInt("albumId", it.id)
+            deleteDialog.arguments = bundle
+            deleteDialog.show(supportFragmentManager, "DeleteRecordDialogFragment open")
+
+        }
+        binding.rvRecord.adapter = recordAdapter
+    }
+
+
     private fun goUploadActivity() {
         binding.btnUpload.setOnSingleClickListener {
             viewModel.receivePresignedUrl()
