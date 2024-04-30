@@ -3,6 +3,7 @@ package com.ubcompany.umbba_android.presentation.mypage
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,6 +20,9 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     View.OnClickListener {
 
     private val viewModel by viewModels<RecordViewModel>()
+    private lateinit var recordAdapter: RecordAdapter
+    private lateinit var bitmapUtil: BitmapUtil
+
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
@@ -31,14 +35,22 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         }
 
     private val launcher =
-        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { imageUrl: Uri? ->
-            // 서버에 put으로 파일 넘기기
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { imageUri: Uri? ->
+            if (imageUri != null) {
+                bitmapUtil.createUriToBitmap(imageUri).let { bitmap ->
+                    Log.d("yeonjin", "사진 bitmap $bitmap")
+                    Log.d("yeonjin", "사진 url ${viewModel.presignedUrl.value}")
+                    viewModel.uploadImage(viewModel.presignedUrl.value.toString(), bitmap)
+                }
+            }
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
+        bitmapUtil = BitmapUtil(this)
 
+        initAdapter()
         goUploadActivity()
 
     }
