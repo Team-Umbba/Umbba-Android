@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.BlurMaskFilter
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
@@ -20,6 +21,7 @@ import com.skydoves.balloon.BalloonSizeSpec
 import com.skydoves.balloon.awaitBalloons
 import com.skydoves.balloon.overlay.BalloonOverlayRoundRect
 import com.ubcompany.umbba_android.R
+import com.ubcompany.umbba_android.data.local.SharedPreferences
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.databinding.ActivityQuestionAnswerBinding
@@ -34,7 +36,7 @@ class QuestionAnswerActivity :
     BindingActivity<ActivityQuestionAnswerBinding>(R.layout.activity_question_answer),
     View.OnClickListener {
     private val viewModel by viewModels<QuestionAnswerViewModel>()
-    private var isShowedBalloon = false
+    var isShowedTutorial = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.clickListener = this
@@ -146,9 +148,9 @@ class QuestionAnswerActivity :
             }
         }
         binding.clLoading.visibility = View.GONE
-        if (!isShowedBalloon) {
+        if (SharedPreferences.getQnaTutorialNeededBoolean("NEEDED_TUTORIAL") && !isShowedTutorial){
             isSetUpTutorialView()
-            isShowedBalloon = true
+            isShowedTutorial = true
         }
     }
 
