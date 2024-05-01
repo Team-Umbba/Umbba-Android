@@ -1,5 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.ubcompany.umbba_android.databinding.FragmentDeleteRecordDialogBinding
+import com.ubcompany.umbba_android.presentation.mypage.viewmodel.DeleteRecordDialogViewModel
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.RecordViewModel
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +23,7 @@ class DeleteRecordDialogFragment : DialogFragment() {
     private var _binding: FragmentDeleteRecordDialogBinding? = null
     private val binding get() = requireNotNull(_binding) { "DeleteRecordDialogFragment is null" }
 
-    private val viewModel by viewModels<RecordViewModel>()
+    private val viewModel by viewModels<DeleteRecordDialogViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,7 @@ class DeleteRecordDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         backgroundDesign()
         setBtnClickEvent()
+        observeDeleteRecordStatus()
     }
 
     override fun onResume() {
@@ -45,22 +48,25 @@ class DeleteRecordDialogFragment : DialogFragment() {
         )
     }
 
+    private fun observeDeleteRecordStatus() {
+        viewModel.deleteResponseStatus.observe(viewLifecycleOwner) { responseStatus ->
+            if (responseStatus == SUCCESS_DELETE_RECORD) {
+                dismiss()
+            }
+        }
+    }
+
     private fun setBtnClickEvent() {
         with(binding) {
             btnCancel.setOnSingleClickListener {
                 dismiss()
             }
             btnConfirm.setOnSingleClickListener {
-                val bundle = arguments
-                var id = 0
-                if (bundle != null) {
-                    id = bundle.getInt("albumId")
+                val albumId = arguments?.getInt("albumId")
+                Log.d("yeonjin", "삭제할 record id $albumId")
+                if (albumId != null) {
+                    viewModel.deleteRecord(albumId)
                 }
-                Log.d("yeonjin", "삭제할 record id $id")
-                viewModel.deleteRecord(id)
-                viewModel.isImageDelete.value = true
-                Log.d("yeonjin fragment", "새로고침 해야하나요 ${viewModel.isImageDelete.value}")
-                dismiss()
             }
         }
     }
@@ -74,4 +80,7 @@ class DeleteRecordDialogFragment : DialogFragment() {
         _binding = null
     }
 
+    companion object {
+        const val SUCCESS_DELETE_RECORD = 200
+    }
 }

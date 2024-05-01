@@ -27,7 +27,6 @@ class RecordViewModel @Inject constructor(
     private var _recordListResponse = MutableLiveData<List<RecordListResponseDto.RecordListData>>()
     val recordListResponse: LiveData<List<RecordListResponseDto.RecordListData>> = _recordListResponse
 
-    val isImageDelete = MutableLiveData<Boolean>()
 
     fun receivePresignedUrl() {
         viewModelScope.launch {
@@ -63,18 +62,6 @@ class RecordViewModel @Inject constructor(
                 }.onFailure { error ->
                     Log.e("yeonjin", "record getList 실패 $error")
                 }
-        }
-    }
-
-    fun deleteRecord(albumId: Int) {
-        viewModelScope.launch {
-            settingRepository.deleteRecord(
-                albumId.toLong()
-            ).onSuccess {
-                Log.d("yeonjin", "delete record 성공")
-            }.onFailure { error ->
-                Log.e("yeonjin", "delete record 실패 $error")
-            }
         }
     }
 }
