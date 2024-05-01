@@ -1,7 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -40,16 +39,13 @@ class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: RecordListResponseDto.RecordListData) {
             with(binding) {
-                Log.d("yeonjin adapter", "image: ${data.imgUrl}")
                 ivRecord.load(data.imgUrl)
                 tvTitle.text = data.title
                 tvPictureDescription.text = data.content
                 tvWriter.text = data.writer
-
                 btnDelete.setOnSingleClickListener {
                     itemClick(data)
                 }
-
                 root.setOnSingleClickListener {
                     onRootClickListener?.touchRecordItem(true, binding)
                 }

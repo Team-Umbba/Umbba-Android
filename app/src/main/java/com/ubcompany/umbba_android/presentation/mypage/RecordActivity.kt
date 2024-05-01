@@ -101,8 +101,6 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
                     }
                 }
             }
-
-
         })
     }
 
@@ -123,16 +121,24 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private fun goUploadActivity() {
         binding.btnUpload.setOnSingleClickListener {
             askNotificationPermission()
+            // url 서버에서 받아옴
             viewModel.receivePresignedUrl()
-            viewModel.presignedUrl.observe(this) {
-                if (it.isNotEmpty()) {
+            // url을 잘 받아왔으면 갤러리 런처 실행 - 여기가 중복으로 뜨고 있음
+            viewModel.isUrlSaved.observe(this) { isUrlSaved ->
+                if (isUrlSaved) {
+                    viewModel.initIsUrlSaved()
                     launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                    Log.d("yeonjin launcher", "갤러리 런처 실행")
                 }
             }
-            viewModel.image.observe(this) {
-                startActivity(Intent(this, UploadRecordActivity::class.java).apply {
-                    putExtra("fileName", viewModel.fileName.value.toString())
-                })
+            // 이미지가 서버에 잘 올라갔다면 이동
+            viewModel.isImageSaved.observe(this) { isImageSaved ->
+                if (isImageSaved) {
+                    viewModel.initIsImageSaved()
+                    startActivity(Intent(this, UploadRecordActivity::class.java).apply {
+                        putExtra("fileName", viewModel.fileName.value.toString())
+                    })
+                }
             }
         }
     }

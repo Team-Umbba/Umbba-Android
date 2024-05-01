@@ -11,22 +11,30 @@ import com.ubcompany.umbba_android.data.model.response.RecordListResponseDto
 import com.ubcompany.umbba_android.domain.repository.SettingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
 class RecordViewModel @Inject constructor(
     private val settingRepository: SettingRepository,
-) :
-    ViewModel() {
-
+) : ViewModel() {
+    
     val fileName = MutableLiveData<String>()
     val presignedUrl = MutableLiveData<String>()
 
-    val image = MutableLiveData<Bitmap>()
+    val isImageSaved = MutableLiveData<Boolean>()
+    val isUrlSaved = MutableLiveData<Boolean>()
 
     private var _recordListResponse = MutableLiveData<List<RecordListResponseDto.RecordListData>>()
     val recordListResponse: LiveData<List<RecordListResponseDto.RecordListData>> = _recordListResponse
 
+    fun initIsImageSaved() {
+        isImageSaved.value = false
+    }
+
+    fun initIsUrlSaved() {
+        isUrlSaved.value = false
+    }
 
     fun receivePresignedUrl() {
         viewModelScope.launch {
@@ -37,6 +45,7 @@ class RecordViewModel @Inject constructor(
             ).onSuccess {
                 fileName.value = it.data.fileName
                 presignedUrl.value = it.data.url
+                isUrlSaved.value = true
                 Log.d("yeonjin", "receivePresignedUrl 성공 presigned url : ${presignedUrl.value}")
             }.onFailure { error ->
                 Log.e("yeonjin", "receivePresignedUrl 실패 $error")
@@ -49,8 +58,8 @@ class RecordViewModel @Inject constructor(
             settingRepository.uploadImage(
                 url, imageBitmap
             )
-            image.value = imageBitmap
         }
+        isImageSaved.value = true
     }
 
     fun getRecordListData() {
