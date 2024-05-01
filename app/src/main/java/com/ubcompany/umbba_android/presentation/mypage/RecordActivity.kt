@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_record),
-    View.OnClickListener {
+    DeleteRecordDialogFragment.OnListenerDelete, View.OnClickListener {
 
     private val viewModel by viewModels<RecordViewModel>()
     private lateinit var recordAdapter: RecordAdapter
@@ -150,11 +150,18 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     }
 
     companion object {
-        private val PERMISSION_ALBUM = 101
+        const val PERMISSION_ALBUM = 101
+        const val SUCCESS_DELETE_RECORD = 200
     }
 
     override fun onResume() {
         super.onResume()
         observeRecordData()
+    }
+
+    override fun onDeleteRecord(status: Int) {
+        if (status == SUCCESS_DELETE_RECORD) {
+            observeRecordData()
+        }
     }
 }

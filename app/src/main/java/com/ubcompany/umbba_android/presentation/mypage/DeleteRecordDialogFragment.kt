@@ -1,5 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -24,6 +25,17 @@ class DeleteRecordDialogFragment : DialogFragment() {
     private val binding get() = requireNotNull(_binding) { "DeleteRecordDialogFragment is null" }
 
     private val viewModel by viewModels<DeleteRecordDialogViewModel>()
+
+    private var onListenerDelete: OnListenerDelete? = null
+
+    interface OnListenerDelete {
+        fun onDeleteRecord(status: Int)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onListenerDelete = activity as OnListenerDelete
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +63,7 @@ class DeleteRecordDialogFragment : DialogFragment() {
     private fun observeDeleteRecordStatus() {
         viewModel.deleteResponseStatus.observe(viewLifecycleOwner) { responseStatus ->
             if (responseStatus == SUCCESS_DELETE_RECORD) {
+                onListenerDelete?.onDeleteRecord(SUCCESS_DELETE_RECORD)
                 dismiss()
             }
         }
@@ -73,6 +86,11 @@ class DeleteRecordDialogFragment : DialogFragment() {
 
     private fun backgroundDesign() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        onListenerDelete = null
     }
 
     override fun onDestroy() {
