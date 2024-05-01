@@ -199,9 +199,9 @@
     <string name="travel">여행을 떠난 지</string>
     <string name="answer">나눈 문답 수</string>
     <string name="getclose">가까워지기</string>
-    <string name="getclose_description">서로에 대한 퀴즈를 풀어보세요</string>
+    <string name="getclose_description">서로를 알아가는 밸런스게임</string>
     <string name="record">기록하기</string>
-    <string name="record_description">소중한 순간을 기록하세요</string>
+    <string name="record_description">소중한 순간을 기록하는 사진첩</string>
     <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
     <string name="tv_me">나</string>
     <string name="other_not_connect">상대 미연결</string>
