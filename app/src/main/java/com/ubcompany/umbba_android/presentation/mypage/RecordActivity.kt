@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityRecordBinding
+import com.ubcompany.umbba_android.databinding.ItemRecordListBinding
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.RecordViewModel
 import com.ubcompany.umbba_android.util.BitmapUtil
 import com.ubcompany.umbba_android.util.binding.BindingActivity
@@ -58,6 +59,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         bitmapUtil = BitmapUtil(this)
 
         initAdapter()
+        touchItemEvent()
         observeRecordData()
         goUploadActivity()
 
@@ -76,9 +78,32 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
             bundle.putInt("albumId", it.id)
             deleteDialog.arguments = bundle
             deleteDialog.show(supportFragmentManager, "DeleteRecordDialogFragment open")
-
         }
         binding.rvRecord.adapter = recordAdapter
+    }
+
+    private fun touchItemEvent() {
+        recordAdapter.initListener(object : RecordAdapter.OnRootClickListener {
+            override fun touchRecordItem(isTouched: Boolean, itemBinding: ItemRecordListBinding) {
+                if (isTouched) {
+                    if (itemBinding.clTitle.visibility == View.VISIBLE) {
+                        with(itemBinding) {
+                            clTitle.visibility = View.GONE
+                            btnTouch.visibility = View.GONE
+                            clTouch.visibility = View.VISIBLE
+                        }
+                    } else {
+                        with(itemBinding) {
+                            clTitle.visibility = View.VISIBLE
+                            btnTouch.visibility = View.VISIBLE
+                            clTouch.visibility = View.GONE
+                        }
+                    }
+                }
+            }
+
+
+        })
     }
 
     private fun observeRecordData() {

@@ -14,6 +14,16 @@ import com.ubcompany.umbba_android.util.setOnSingleClickListener
 class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData) -> (Unit)) :
     ListAdapter<RecordListResponseDto.RecordListData, RecordAdapter.RecordViewHolder>(diffUtil) {
 
+    private var onRootClickListener: OnRootClickListener? = null
+
+    interface OnRootClickListener {
+        fun touchRecordItem(isTouched: Boolean, itemBinding: ItemRecordListBinding)
+    }
+
+    fun initListener(pOnClick: OnRootClickListener) {
+        this.onRootClickListener = pOnClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordViewHolder {
         val binding =
             ItemRecordListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,12 +34,13 @@ class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData
         holder.onBind(currentList[position])
     }
 
-    class RecordViewHolder(
+    inner class RecordViewHolder(
         private val binding: ItemRecordListBinding,
         private val itemClick: (RecordListResponseDto.RecordListData) -> (Unit)
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: RecordListResponseDto.RecordListData) {
             with(binding) {
+                Log.d("yeonjin adapter", "image: ${data.imgUrl}")
                 ivRecord.load(data.imgUrl)
                 tvTitle.text = data.title
                 tvPictureDescription.text = data.content
@@ -39,7 +50,9 @@ class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData
                     itemClick(data)
                 }
 
-                // 클릭 이벤트 처리
+                root.setOnSingleClickListener {
+                    onRootClickListener?.touchRecordItem(true, binding)
+                }
             }
         }
     }
