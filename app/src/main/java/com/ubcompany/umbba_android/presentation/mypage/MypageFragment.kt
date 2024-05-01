@@ -31,7 +31,7 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
             }
             clGetclose.setOnSingleClickListener {
                 if (viewModel.isOpponentExit.value == false) {
-                    if (viewModel.opponentUsername.value==null) {
+                    if (viewModel.opponentUsername.value == null) {
                         showInviteDialog(
                             viewModel.mypageResponse.value!!.myUserName,
                             viewModel.mypageResponse.value!!.inviteCode!!
@@ -44,7 +44,18 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
                 }
             }
             clRecord.setOnSingleClickListener {
-                startActivity(Intent(requireActivity(), RecordActivity::class.java))
+                if (viewModel.isOpponentExit.value == false) {
+                    if (viewModel.opponentUsername.value == null) {
+                        showInviteDialog(
+                            viewModel.mypageResponse.value!!.myUserName,
+                            viewModel.mypageResponse.value!!.inviteCode!!
+                        )
+                    } else {
+                        startActivity(Intent(requireActivity(), RecordActivity::class.java))
+                    }
+                } else {
+                    showDeleteOpponentDialog()
+                }
             }
         }
     }
