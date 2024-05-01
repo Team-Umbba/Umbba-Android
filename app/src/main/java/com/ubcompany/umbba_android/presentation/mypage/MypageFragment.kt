@@ -31,16 +31,16 @@ class MypageFragment : BindingFragment<FragmentMypageBinding>(R.layout.fragment_
             }
             clGetclose.setOnSingleClickListener {
                 if (viewModel.isOpponentExit.value == false) {
-                    if (viewModel.isOpponentNull.value == null) {
+                    if (viewModel.opponentUsername.value==null) {
                         showInviteDialog(
                             viewModel.mypageResponse.value!!.myUserName,
                             viewModel.mypageResponse.value!!.inviteCode!!
                         )
                     } else {
-                        showDeleteOpponentDialog()
+                        startActivity(Intent(requireActivity(), GetCloserActivity::class.java))
                     }
                 } else {
-                    startActivity(Intent(requireActivity(), GetCloserActivity::class.java))
+                    showDeleteOpponentDialog()
                 }
             }
             clRecord.setOnSingleClickListener {
