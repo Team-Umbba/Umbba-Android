@@ -218,6 +218,11 @@
     <!-- record activity-->
     <string name="record_upload_title">사진으로 추억을 기록해요</string>
     <string name="record_upload_description">간단한 설명과 함께 사진을 업로드하세요</string>
+    <string name="allow_gallery">갤러리 접근 권한이 허용되어 있습니다.</string>
+    <string name="not_allow_gallery">갤러리에 접근할 권한이 없습니다.</string>
+    <string name="need_permission">권한이 필요합니다.</string>
+    <string name="need_permission_description">앱에서 사진을 불러오기 위해 권한이 필요합니다.</string>
+    <string name="agree">동의</string>
 
     <!-- upload record activity -->
     <string name="title">제목</string>

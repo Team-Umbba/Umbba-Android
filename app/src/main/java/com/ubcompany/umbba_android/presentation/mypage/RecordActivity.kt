@@ -33,10 +33,10 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                Snackbar.make(binding.root, "갤러리 접근 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.allow_gallery, Snackbar.LENGTH_SHORT)
                     .show()
             } else {
-                Snackbar.make(binding.root, "갤러리에 접근할 권한이 없습니다.", Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.not_allow_gallery, Snackbar.LENGTH_SHORT)
                     .show()
             }
         }
@@ -145,7 +145,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
             ) {
                 Snackbar.make(
                     binding.root,
-                    "갤러리 접근 권한이 허용되어 있습니다.",
+                    R.string.allow_gallery,
                     Snackbar.LENGTH_SHORT
                 ).show()
             } else {
@@ -160,15 +160,15 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
 
     private fun showPermissionContextPopup() {
         AlertDialog.Builder(this)
-            .setTitle("권한이 필요합니다.")
-            .setMessage("앱에서 사진을 불러오기 위해 권한이 필요합니다.")
-            .setPositiveButton("동의") { _, _ ->
+            .setTitle(R.string.need_permission)
+            .setMessage(R.string.need_permission_description)
+            .setPositiveButton(R.string.agree) { _, _ ->
                 requestPermissions(
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     PERMISSION_ALBUM
                 )
             }
-            .setNegativeButton("취소") { _, _ -> }
+            .setNegativeButton(R.string.cancel) { _, _ -> }
             .create()
             .show()
     }

@@ -40,7 +40,7 @@ class RecordViewModel @Inject constructor(
         viewModelScope.launch {
             settingRepository.getImageUrl(
                 RecordImageRequestDto(
-                    imgPrefix = "album/"
+                    imgPrefix = PREFIX
                 )
             ).onSuccess {
                 fileName.value = it.data.fileName
@@ -73,5 +73,9 @@ class RecordViewModel @Inject constructor(
                     Timber.e("getRecordListData 실패")
                 }
         }
+    }
+
+    companion object {
+        const val PREFIX = "album/"
     }
 }
