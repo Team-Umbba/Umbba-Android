@@ -1,7 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
@@ -42,11 +41,9 @@ class GetCloserActivity : BindingActivity<ActivityGetCloseBinding>(R.layout.acti
             if (it == SUCCESS_GET_CLOSER_RESPONSE) {
                 if (viewModel.changeQuestionFragment.value == true) {
                     changeFragment(GetCloserQuestionFragment(viewModel))
-                    Log.e("hyeon", "response 200 question")
                 }
                 if (viewModel.changeResultFragment.value == true) {
                     changeFragment(GetCloserResultFragment(viewModel))
-                    Log.e("hyeon", "response 200 ** result")
                 }
             }
         }

@@ -1,11 +1,9 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +12,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.ubcompany.umbba_android.databinding.FragmentDeleteRecordDialogBinding
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.DeleteRecordDialogViewModel
-import com.ubcompany.umbba_android.presentation.mypage.viewmodel.RecordViewModel
 import com.ubcompany.umbba_android.util.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -76,7 +73,6 @@ class DeleteRecordDialogFragment : DialogFragment() {
             }
             btnConfirm.setOnSingleClickListener {
                 val albumId = arguments?.getInt("albumId")
-                Log.d("yeonjin", "삭제할 record id $albumId")
                 if (albumId != null) {
                     viewModel.deleteRecord(albumId)
                 }

@@ -3,7 +3,6 @@ package com.ubcompany.umbba_android.presentation.mypage
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.activity.viewModels
@@ -76,9 +75,7 @@ class UploadRecordActivity :
     private fun uploadRecord() {
         val fileName = intent.getStringExtra("fileName")
         viewModel.imgName.value = fileName
-        Log.d("yeonjin", "전달받은 사진 이름 $fileName")
         binding.btnUpload.setOnSingleClickListener {
-            Log.d("yeonjin", "서버에 올라가는 사진 이름 ${viewModel.imgName.value}")
             viewModel.uploadRecord()
             finish()
             finish()

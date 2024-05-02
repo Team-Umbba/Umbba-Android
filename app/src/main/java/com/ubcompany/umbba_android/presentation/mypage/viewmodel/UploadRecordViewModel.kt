@@ -1,6 +1,5 @@
 package com.ubcompany.umbba_android.presentation.mypage.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,6 +7,7 @@ import com.ubcompany.umbba_android.data.model.request.RecordUploadRequestDto
 import com.ubcompany.umbba_android.domain.repository.SettingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,9 +37,9 @@ class UploadRecordViewModel @Inject constructor(
                     imgName = imgName.value.toString()
                 )
             ).onSuccess {
-                Log.d("yeonjin", "uploadRecord 성공")
-            }.onFailure { error ->
-                Log.d("yeonjin", "uploadRecord 실패 $error")
+                Timber.d("uploadRecord 성공")
+            }.onFailure {
+                Timber.e("uploadRecord 실패")
             }
         }
     }

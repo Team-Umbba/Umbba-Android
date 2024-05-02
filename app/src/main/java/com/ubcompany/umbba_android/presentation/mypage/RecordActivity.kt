@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -46,8 +45,6 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { imageUri: Uri? ->
             if (imageUri != null) {
                 bitmapUtil.createUriToBitmap(imageUri).let { bitmap ->
-                    Log.d("yeonjin", "사진 bitmap $bitmap")
-                    Log.d("yeonjin", "사진 url ${viewModel.presignedUrl.value}")
                     viewModel.uploadImage(viewModel.presignedUrl.value.toString(), bitmap)
                 }
             }
@@ -121,17 +118,13 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private fun goUploadActivity() {
         binding.btnUpload.setOnSingleClickListener {
             askNotificationPermission()
-            // url 서버에서 받아옴
             viewModel.receivePresignedUrl()
-            // url을 잘 받아왔으면 갤러리 런처 실행 - 여기가 중복으로 뜨고 있음
             viewModel.isUrlSaved.observe(this) { isUrlSaved ->
                 if (isUrlSaved) {
                     viewModel.initIsUrlSaved()
                     launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                    Log.d("yeonjin launcher", "갤러리 런처 실행")
                 }
             }
-            // 이미지가 서버에 잘 올라갔다면 이동
             viewModel.isImageSaved.observe(this) { isImageSaved ->
                 if (isImageSaved) {
                     viewModel.initIsImageSaved()

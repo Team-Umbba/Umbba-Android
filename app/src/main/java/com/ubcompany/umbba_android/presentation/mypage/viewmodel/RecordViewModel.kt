@@ -1,7 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage.viewmodel
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,14 +10,14 @@ import com.ubcompany.umbba_android.data.model.response.RecordListResponseDto
 import com.ubcompany.umbba_android.domain.repository.SettingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okhttp3.RequestBody
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class RecordViewModel @Inject constructor(
     private val settingRepository: SettingRepository,
 ) : ViewModel() {
-    
+
     val fileName = MutableLiveData<String>()
     val presignedUrl = MutableLiveData<String>()
 
@@ -26,7 +25,8 @@ class RecordViewModel @Inject constructor(
     val isUrlSaved = MutableLiveData<Boolean>()
 
     private var _recordListResponse = MutableLiveData<List<RecordListResponseDto.RecordListData>>()
-    val recordListResponse: LiveData<List<RecordListResponseDto.RecordListData>> = _recordListResponse
+    val recordListResponse: LiveData<List<RecordListResponseDto.RecordListData>> =
+        _recordListResponse
 
     fun initIsImageSaved() {
         isImageSaved.value = false
@@ -46,19 +46,20 @@ class RecordViewModel @Inject constructor(
                 fileName.value = it.data.fileName
                 presignedUrl.value = it.data.url
                 isUrlSaved.value = true
-                Log.d("yeonjin", "receivePresignedUrl 성공 presigned url : ${presignedUrl.value}")
-            }.onFailure { error ->
-                Log.e("yeonjin", "receivePresignedUrl 실패 $error")
+                Timber.d("receivePresignedUrl 성공")
+            }.onFailure {
+                Timber.e("receivePresignedUrl 실패")
             }
         }
     }
-    
+
     fun uploadImage(url: String, imageBitmap: Bitmap) {
         viewModelScope.launch {
             settingRepository.uploadImage(
                 url, imageBitmap
             )
         }
+        Timber.d("uploadImage 성공")
         isImageSaved.value = true
     }
 
@@ -67,9 +68,9 @@ class RecordViewModel @Inject constructor(
             settingRepository.getRecordList()
                 .onSuccess {
                     _recordListResponse.value = it.data
-                    Log.d("yeonjin", "record getList 성공")
-                }.onFailure { error ->
-                    Log.e("yeonjin", "record getList 실패 $error")
+                    Timber.d("getRecordListData 성공")
+                }.onFailure {
+                    Timber.e("getRecordListData 실패")
                 }
         }
     }
