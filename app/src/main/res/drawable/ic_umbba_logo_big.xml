@@ -16,14 +16,14 @@
             android:endX="140.53"
             android:endY="106.14"
             android:type="linear">
-          <item android:offset="0" android:color="#FFD97E7F"/>
-          <item android:offset="0.51" android:color="#FFECA887"/>
-          <item android:offset="1" android:color="#FFF9C9AF"/>
+          <item android:offset="0" android:color="#FFD67E78"/>
+          <item android:offset="0.51" android:color="#FFE09490"/>
+          <item android:offset="1" android:color="#FFF8C8AE"/>
         </gradient>
       </aapt:attr>
     </path>
     <path
-        android:pathData="M71.66,71.78L70.23,70.78L68.72,69.52H85.92V71.78H71.66Z"
+        android:pathData="M71.66,71.78L70.23,70.79L68.72,69.52H85.92V71.78H71.66Z"
         android:strokeAlpha="0.5"
         android:fillAlpha="0.5">
       <aapt:attr name="android:fillColor">
