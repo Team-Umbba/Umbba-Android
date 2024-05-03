@@ -269,6 +269,11 @@
             android:background="@drawable/shape_g400_stroke_r10_rect"
             app:layout_constraintTop_toBottomOf="@id/cl_getclose">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_record_background" />
+
             <TextView
                 android:id="@+id/tv_record"
                 style="@style/AndroidSubHead1SemiBold20"
@@ -292,16 +297,6 @@
                 android:textColor="@color/grey_900"
                 app:layout_constraintStart_toStartOf="@id/tv_record"
                 app:layout_constraintTop_toBottomOf="@id/tv_record" />
-
-            <ImageView
-                android:id="@+id/iv_record"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="18dp"
-                android:src="@drawable/ic_camera"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

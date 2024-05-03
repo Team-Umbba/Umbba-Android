@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.ubcompany.umbba_android.R
 import com.ubcompany.umbba_android.databinding.ActivityRecordBinding
+import com.ubcompany.umbba_android.databinding.ItemRecordListBinding
 import com.ubcompany.umbba_android.presentation.mypage.viewmodel.RecordViewModel
 import com.ubcompany.umbba_android.util.BitmapUtil
 import com.ubcompany.umbba_android.util.binding.BindingActivity
@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_record),
-    View.OnClickListener {
+    DeleteRecordDialogFragment.OnListenerDelete, View.OnClickListener {
 
     private val viewModel by viewModels<RecordViewModel>()
     private lateinit var recordAdapter: RecordAdapter
@@ -33,10 +33,10 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                Snackbar.make(binding.root, "갤러리 접근 권한이 허용되어 있습니다.", Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.allow_gallery, Snackbar.LENGTH_SHORT)
                     .show()
             } else {
-                Snackbar.make(binding.root, "갤러리에 접근할 권한이 없습니다.", Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.not_allow_gallery, Snackbar.LENGTH_SHORT)
                     .show()
             }
         }
@@ -45,8 +45,6 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { imageUri: Uri? ->
             if (imageUri != null) {
                 bitmapUtil.createUriToBitmap(imageUri).let { bitmap ->
-                    Log.d("yeonjin", "사진 bitmap $bitmap")
-                    Log.d("yeonjin", "사진 url ${viewModel.presignedUrl.value}")
                     viewModel.uploadImage(viewModel.presignedUrl.value.toString(), bitmap)
                 }
             }
@@ -58,6 +56,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         bitmapUtil = BitmapUtil(this)
 
         initAdapter()
+        touchItemEvent()
         observeRecordData()
         goUploadActivity()
 
@@ -76,9 +75,30 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
             bundle.putInt("albumId", it.id)
             deleteDialog.arguments = bundle
             deleteDialog.show(supportFragmentManager, "DeleteRecordDialogFragment open")
-
         }
         binding.rvRecord.adapter = recordAdapter
+    }
+
+    private fun touchItemEvent() {
+        recordAdapter.initListener(object : RecordAdapter.OnRootClickListener {
+            override fun touchRecordItem(isTouched: Boolean, itemBinding: ItemRecordListBinding) {
+                if (isTouched) {
+                    if (itemBinding.clTitle.visibility == View.VISIBLE) {
+                        with(itemBinding) {
+                            clTitle.visibility = View.GONE
+                            btnTouch.visibility = View.GONE
+                            clTouch.visibility = View.VISIBLE
+                        }
+                    } else {
+                        with(itemBinding) {
+                            clTitle.visibility = View.VISIBLE
+                            btnTouch.visibility = View.VISIBLE
+                            clTouch.visibility = View.GONE
+                        }
+                    }
+                }
+            }
+        })
     }
 
     private fun observeRecordData() {
@@ -99,15 +119,19 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
         binding.btnUpload.setOnSingleClickListener {
             askNotificationPermission()
             viewModel.receivePresignedUrl()
-            viewModel.presignedUrl.observe(this) {
-                if (it.isNotEmpty()) {
+            viewModel.isUrlSaved.observe(this) { isUrlSaved ->
+                if (isUrlSaved) {
+                    viewModel.initIsUrlSaved()
                     launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
             }
-            viewModel.image.observe(this) {
-                startActivity(Intent(this, UploadRecordActivity::class.java).apply {
-                    putExtra("fileName", viewModel.fileName.value.toString())
-                })
+            viewModel.isImageSaved.observe(this) { isImageSaved ->
+                if (isImageSaved) {
+                    viewModel.initIsImageSaved()
+                    startActivity(Intent(this, UploadRecordActivity::class.java).apply {
+                        putExtra("fileName", viewModel.fileName.value.toString())
+                    })
+                }
             }
         }
     }
@@ -121,7 +145,7 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
             ) {
                 Snackbar.make(
                     binding.root,
-                    "갤러리 접근 권한이 허용되어 있습니다.",
+                    R.string.allow_gallery,
                     Snackbar.LENGTH_SHORT
                 ).show()
             } else {
@@ -136,25 +160,32 @@ class RecordActivity : BindingActivity<ActivityRecordBinding>(R.layout.activity_
 
     private fun showPermissionContextPopup() {
         AlertDialog.Builder(this)
-            .setTitle("권한이 필요합니다.")
-            .setMessage("앱에서 사진을 불러오기 위해 권한이 필요합니다.")
-            .setPositiveButton("동의") { _, _ ->
+            .setTitle(R.string.need_permission)
+            .setMessage(R.string.need_permission_description)
+            .setPositiveButton(R.string.agree) { _, _ ->
                 requestPermissions(
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     PERMISSION_ALBUM
                 )
             }
-            .setNegativeButton("취소") { _, _ -> }
+            .setNegativeButton(R.string.cancel) { _, _ -> }
             .create()
             .show()
     }
 
     companion object {
-        private val PERMISSION_ALBUM = 101
+        const val PERMISSION_ALBUM = 101
+        const val SUCCESS_DELETE_RECORD = 200
     }
 
     override fun onResume() {
         super.onResume()
         observeRecordData()
+    }
+
+    override fun onDeleteRecord(status: Int) {
+        if (status == SUCCESS_DELETE_RECORD) {
+            observeRecordData()
+        }
     }
 }

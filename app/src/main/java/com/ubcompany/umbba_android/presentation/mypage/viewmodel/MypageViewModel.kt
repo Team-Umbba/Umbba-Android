@@ -1,6 +1,5 @@
 package com.ubcompany.umbba_android.presentation.mypage.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.ubcompany.umbba_android.data.model.response.MypageResponseDto
 import com.ubcompany.umbba_android.domain.repository.SettingRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -43,14 +41,10 @@ class MypageViewModel @Inject constructor(private val settingRepository: Setting
                     matchedDate.value = response.data.matchedDate
                     qnaCount.value = response.data.qnaCount
                     isOpponentExit.value = response.data.isOpponentExit
+
                     Timber.d("getMypage 성공")
-                }.onFailure { error ->
-                    if (error is HttpException) {
-                        val errorBody = error.response()?.errorBody()?.string()
-                        Log.e("yeonjin", "getMypage http 연결 실패 $errorBody")
-                    }
-                    Timber.e("getMypage 실패 $error")
-                    Log.e("yeonjin", "getMypage 실패 ${error.message}")
+                }.onFailure {
+                    Timber.e("getMypage 실패")
                 }
         }
     }

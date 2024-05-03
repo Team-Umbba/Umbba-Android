@@ -199,9 +199,9 @@
     <string name="travel">여행을 떠난 지</string>
     <string name="answer">나눈 문답 수</string>
     <string name="getclose">가까워지기</string>
-    <string name="getclose_description">서로에 대한 퀴즈를 풀어보세요</string>
+    <string name="getclose_description">서로를 알아가는 밸런스게임</string>
     <string name="record">기록하기</string>
-    <string name="record_description">소중한 순간을 기록하세요</string>
+    <string name="record_description">소중한 순간을 기록하는 사진첩</string>
     <string name="umbba_version">ub company 2024 ver 1.2.0 All Right Reserved</string>
     <string name="tv_me">나</string>
     <string name="other_not_connect">상대 미연결</string>
@@ -218,6 +218,11 @@
     <!-- record activity-->
     <string name="record_upload_title">사진으로 추억을 기록해요</string>
     <string name="record_upload_description">간단한 설명과 함께 사진을 업로드하세요</string>
+    <string name="allow_gallery">갤러리 접근 권한이 허용되어 있습니다.</string>
+    <string name="not_allow_gallery">갤러리에 접근할 권한이 없습니다.</string>
+    <string name="need_permission">권한이 필요합니다.</string>
+    <string name="need_permission_description">앱에서 사진을 불러오기 위해 권한이 필요합니다.</string>
+    <string name="agree">동의</string>
 
     <!-- upload record activity -->
     <string name="title">제목</string>

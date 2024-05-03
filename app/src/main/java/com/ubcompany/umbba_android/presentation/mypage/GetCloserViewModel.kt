@@ -13,7 +13,6 @@ import com.ubcompany.umbba_android.domain.repository.CloserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -80,7 +79,6 @@ class GetCloserViewModel @Inject constructor(private val closerRepository: Close
     fun patchNextQuestion() {
         viewModelScope.launch {
             closerRepository.getNextCloserQuestion().onSuccess {
-                Log.e("hyeon","next 성공")
                 getCloserQuestion()
             }.onFailure { error ->
                 if (error is HttpException) {

@@ -1,7 +1,6 @@
 package com.ubcompany.umbba_android.presentation.mypage
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -14,6 +13,16 @@ import com.ubcompany.umbba_android.util.setOnSingleClickListener
 class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData) -> (Unit)) :
     ListAdapter<RecordListResponseDto.RecordListData, RecordAdapter.RecordViewHolder>(diffUtil) {
 
+    private var onRootClickListener: OnRootClickListener? = null
+
+    interface OnRootClickListener {
+        fun touchRecordItem(isTouched: Boolean, itemBinding: ItemRecordListBinding)
+    }
+
+    fun initListener(pOnClick: OnRootClickListener) {
+        this.onRootClickListener = pOnClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecordViewHolder {
         val binding =
             ItemRecordListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,7 +33,7 @@ class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData
         holder.onBind(currentList[position])
     }
 
-    class RecordViewHolder(
+    inner class RecordViewHolder(
         private val binding: ItemRecordListBinding,
         private val itemClick: (RecordListResponseDto.RecordListData) -> (Unit)
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -34,12 +43,12 @@ class RecordAdapter(private val itemClick: (RecordListResponseDto.RecordListData
                 tvTitle.text = data.title
                 tvPictureDescription.text = data.content
                 tvWriter.text = data.writer
-
                 btnDelete.setOnSingleClickListener {
                     itemClick(data)
                 }
-
-                // 클릭 이벤트 처리
+                root.setOnSingleClickListener {
+                    onRootClickListener?.touchRecordItem(true, binding)
+                }
             }
         }
     }
