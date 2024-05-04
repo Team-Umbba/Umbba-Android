@@ -8,7 +8,7 @@
 | [황연진](https://github.com/yeoncheong) | [신서현](https://github.com/ss99x2002) |
 | --- | --- |
 | <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/86d88c5e-b9b6-4aa3-ac89-4415cd6c4033" width = "300"> | <img src = "https://github.com/Team-Umbba/Umbba-Android/assets/70602631/85f7a242-f16d-4244-9a42-2b7d1847a557" width = "300"> |
-| `온보딩` `소셜로그인` `카카오 초대공유` | `홈` `리스트` `설정` `fcm 알림` `문답` |
+| `온보딩` `소셜로그인` `카카오 초대공유` `기록하기` `새로고침` | `홈` `리스트` `설정` `fcm 알림` `문답` `튜토리얼` `가까워지기` |
 
 ### 📸 ScreenShot
 [ScreenShot](https://harsh-step-7dd.notion.site/a1a44b35fd6d42e2aad95d22fcf1efcf?pvs=4)
