@@ -55,7 +55,6 @@ android {
         store {
             dimension = "version"
             applicationId = "com.ubcompany.umbba_android"
-            applicationIdSuffix = ".store"
             versionNameSuffix = "-store"
             versionCode = 3
             versionName = "1.2.0"
