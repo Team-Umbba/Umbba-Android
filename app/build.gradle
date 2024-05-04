@@ -26,6 +26,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("C:\\Users\\hyeon\\keystore\\Testkey.jks")
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = "key0"
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
     flavorDimensions += "version"
     productFlavors {
         dev {
@@ -63,6 +72,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
