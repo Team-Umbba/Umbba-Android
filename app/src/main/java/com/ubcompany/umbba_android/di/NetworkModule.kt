@@ -11,8 +11,10 @@ import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -20,11 +22,12 @@ import javax.inject.Singleton
 object NetworkModule {
     @Provides
     @Singleton
-    fun provideRetrofit(client: OkHttpClient, jsonConverter:Converter.Factory): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.UMBBA_BASE_URL)
-        .client(client)
-        .addConverterFactory(jsonConverter)
-        .build()
+    fun provideRetrofit(client: OkHttpClient, jsonConverter: Converter.Factory): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.UMBBA_BASE_URL)
+            .client(client)
+            .addConverterFactory(jsonConverter)
+            .build()
 
     @Provides
     @Singleton
@@ -34,14 +37,39 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @AuthInterceptorQualifier
     fun provideAuthInterceptor(interceptor: AuthInterceptor): Interceptor = interceptor
 
     @Provides
     @Singleton
-    fun provideHttpClient(authInterceptor: AuthInterceptor): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(authInterceptor)
-            .build()
+    @LoggingInterceptorQualifier
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        }
     }
 
+    @Provides
+    @Singleton
+    fun provideHttpClient(
+        @LoggingInterceptorQualifier loggingInterceptor: HttpLoggingInterceptor,
+        @AuthInterceptorQualifier authInterceptor: Interceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .addInterceptor(loggingInterceptor)
+            .build()
+    }
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class AuthInterceptorQualifier
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class LoggingInterceptorQualifier
