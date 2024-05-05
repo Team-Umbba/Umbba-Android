@@ -189,7 +189,7 @@
     <string name="ending_survey_caption">설문조사에 참여하여 피드백을 남겨주세요.</string>
     <string name="ending_btn_survey">설문하러 가기</string>
     <string name="ending_close_page"><u>건너뛰기</u></string>
-    <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
+    <string name="ending_survey_uri">https://walla.my/umbba</string>
 
     <!-- communication activity-->
     <string name="communication">오래된 공중전화에서 수신음이 들린다</string>
