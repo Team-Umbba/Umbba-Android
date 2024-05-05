@@ -242,4 +242,10 @@
     <string name="delete_record_confirm">정말 기록을 삭제하시겠어요?</string>
     <string name="delete">삭제</string>
 
+    <!-- refresh question dialog fragment -->>
+    <string name="do_you_change_question">질문을 변경하시겠어요?</string>
+    <string name="new_question">새로운 질문</string>
+    <string name="not_change_question_if_you_change">변경한 질문은 되돌릴 수 없어요</string>
+    <string name="change_question">질문 변경하기</string>
+    
 </resources>
