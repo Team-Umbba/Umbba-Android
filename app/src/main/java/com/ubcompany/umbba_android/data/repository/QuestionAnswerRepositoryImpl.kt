@@ -2,7 +2,10 @@ package com.ubcompany.umbba_android.data.repository
 
 import com.ubcompany.umbba_android.data.datasource.QuestionAnswerRemoteDataSource
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
+import com.ubcompany.umbba_android.data.model.request.RefreshQuestionRequestDto
 import com.ubcompany.umbba_android.data.model.response.AnswerResponseDto
+import com.ubcompany.umbba_android.data.model.response.BaseResponseDto
+import com.ubcompany.umbba_android.data.model.response.IsRefreshResponseDto
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.domain.repository.QuestionAnswerRepository
@@ -45,5 +48,14 @@ class QuestionAnswerRepositoryImpl @Inject constructor(private val questionAnswe
             Timber.d("새로고침 새 질문 get 성공")
         }.onFailure {
             Timber.e("새로고침 새 질문 get 실패")
+        }
+
+    override suspend fun patchRefreshQuestion(refreshQuestionRequestDto: RefreshQuestionRequestDto): Result<BaseResponseDto> =
+        runCatching {
+            questionAnswerRemoteDataSource.patchRefreshQuestion(refreshQuestionRequestDto)
+        }.onSuccess {
+            Timber.d("새로운 질문 patch 성공")
+        }.onFailure {
+            Timber.e("새로운 질문 patch 실패")
         }
 }

@@ -1,7 +1,10 @@
 package com.ubcompany.umbba_android.domain.repository
 
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
+import com.ubcompany.umbba_android.data.model.request.RefreshQuestionRequestDto
 import com.ubcompany.umbba_android.data.model.response.AnswerResponseDto
+import com.ubcompany.umbba_android.data.model.response.BaseResponseDto
+import com.ubcompany.umbba_android.data.model.response.IsRefreshResponseDto
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 
@@ -10,4 +13,5 @@ interface QuestionAnswerRepository {
     suspend fun getListQuestionAnswer(qnaId: Long): Result<ListQuestionAnswerResponseDto>
     suspend fun postAnswer(answerRequestDto: AnswerRequestDto): Result<AnswerResponseDto>
     suspend fun getRefreshQuestion(): Result<IsRefreshResponseDto>
+    suspend fun patchRefreshQuestion(refreshQuestionRequestDto: RefreshQuestionRequestDto): Result<BaseResponseDto>
 }
