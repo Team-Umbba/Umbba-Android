@@ -48,10 +48,10 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                 .onSuccess { response ->
                     Timber.d("getHomeData 성공")
                     _homeData.value = response.data
-                    _topicTitle.value = if (response.data.index != 8) {
-                        "#${response.data.index} ${response.data.topic}"
+                    _topicTitle.value = if (response.data.index == -1) {
+                        "#${response.data.index + 8} ${response.data.topic}"
                     } else {
-                        "#${(response.data.index) - 1} ${response.data.topic}"
+                        "#${response.data.index} ${response.data.topic}"
                     }
                 }.onFailure { error ->
                     Timber.e("getHomeData 실패 " + error.message)

@@ -197,7 +197,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
 
     companion object {
         const val IS_UPDATE_AVAILABLE = "IS_UPDATE_AVAILABLE"
-        const val IS_AFTER_7DAYS_INDEX = 8
+        const val IS_AFTER_7DAYS_INDEX = -1
         const val DELAY_MILLIS = 500L
         const val MATCHED_OPPONENT = 1
         const val REQUIRE_INVITE_CODE = 2
