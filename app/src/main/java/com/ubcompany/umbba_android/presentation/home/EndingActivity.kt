@@ -49,7 +49,7 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
         }
         viewModel.errorCode.observe(this) {
             if (viewModel.errorCode.value == 501) {
-                Snackbar.make(binding.root, "남은 질문이 없습니다. 질문을 추가해주세요.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, R.string.not_question, Snackbar.LENGTH_SHORT).show()
             }
         }
     }

@@ -190,6 +190,7 @@
     <string name="ending_btn_survey">설문하러 가기</string>
     <string name="ending_close_page"><u>건너뛰기</u></string>
     <string name="ending_survey_uri">https://walla.my/umbba</string>
+    <string name="not_question">남은 질문이 없습니다. 질문을 추가해주세요.</string>
 
     <!-- communication activity-->
     <string name="communication">오래된 공중전화에서 수신음이 들린다</string>
