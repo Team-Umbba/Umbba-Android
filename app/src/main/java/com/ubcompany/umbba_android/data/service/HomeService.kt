@@ -1,5 +1,6 @@
 package com.ubcompany.umbba_android.data.service
 
+import com.ubcompany.umbba_android.data.model.response.BaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeFirstResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
@@ -14,5 +15,8 @@ interface HomeService {
     suspend fun getResponseCase(): HomeCaseResponseDto
 
     @PATCH("/home/first")
-    suspend fun patchHomeFirst() : HomeFirstResponseDto
+    suspend fun patchHomeFirst(): HomeFirstResponseDto
+
+    @PATCH("/qna/restart")
+    suspend fun patch7DaysAfter(): BaseResponseDto
 }
