@@ -37,4 +37,13 @@ class QuestionAnswerRepositoryImpl @Inject constructor(private val questionAnswe
         }.onFailure {
             Timber.e("답변 data post 실패")
         }
+
+    override suspend fun getRefreshQuestion(): Result<IsRefreshResponseDto> =
+        runCatching {
+            questionAnswerRemoteDataSource.getRefreshQuestion()
+        }.onSuccess {
+            Timber.d("새로고침 새 질문 get 성공")
+        }.onFailure {
+            Timber.e("새로고침 새 질문 get 실패")
+        }
 }

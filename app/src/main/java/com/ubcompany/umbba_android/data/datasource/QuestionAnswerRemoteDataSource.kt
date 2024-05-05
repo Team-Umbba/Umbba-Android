@@ -13,4 +13,6 @@ class QuestionAnswerRemoteDataSource @Inject constructor(
 
     suspend fun postAnswer(answerRequestDto: AnswerRequestDto) =
         questionAnswerService.postAnswer(answerRequestDto)
+
+    suspend fun getRefreshQuestion() = questionAnswerService.getRefreshQuestion()
 }

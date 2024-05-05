@@ -9,4 +9,5 @@ interface QuestionAnswerRepository {
     suspend fun getQuestionAnswer(): Result<QuestionAnswerResponseDto>
     suspend fun getListQuestionAnswer(qnaId: Long): Result<ListQuestionAnswerResponseDto>
     suspend fun postAnswer(answerRequestDto: AnswerRequestDto): Result<AnswerResponseDto>
+    suspend fun getRefreshQuestion(): Result<IsRefreshResponseDto>
 }

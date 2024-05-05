@@ -18,4 +18,7 @@ interface QuestionAnswerService {
 
     @POST("/qna/answer")
     suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto): AnswerResponseDto
+
+    @GET("/reroll/check")
+    suspend fun getRefreshQuestion(): IsRefreshResponseDto
 }

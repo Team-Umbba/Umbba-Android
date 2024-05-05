@@ -102,6 +102,9 @@
     <string name="answer_opponent_hint">아래 질문에 답하고 내용을 확인하세요</string>
     <string name="answer_only_me_hint">상대방이 아직 답변하지 않았어요</string>
     <string name="home">홈으로</string>
+    <string name="not_redo">변경한 질문은 되돌릴 수 없어요.</string>
+    <string name="not_any_question">남은 질문이 존재하지 않아요.</string>
+    <string name="not_refresh">새로고침을 할 수 없어요.</string>
 
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
