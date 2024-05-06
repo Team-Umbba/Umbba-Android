@@ -48,9 +48,13 @@ class EndingActivity : BindingActivity<ActivityEndingBinding>(R.layout.activity_
             finish()
         }
         viewModel.errorCode.observe(this) {
-            if (viewModel.errorCode.value == 501) {
+            if (viewModel.errorCode.value == NOT_ANY_QUESTION) {
                 Snackbar.make(binding.root, R.string.not_question, Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+
+    companion object {
+        const val NOT_ANY_QUESTION = 501
     }
 }

@@ -67,7 +67,7 @@ class QuestionAnswerActivity :
             showRefreshQuestionDialog()
         }
         viewModel.errorCode.observe(this) {
-            if (viewModel.errorCode.value == 501) {
+            if (viewModel.errorCode.value == NOT_ANY_QUESTION) {
                 Snackbar.make(binding.root, R.string.not_any_question, Snackbar.LENGTH_SHORT).show()
             } else {
                 Snackbar.make(binding.root, R.string.not_refresh, Snackbar.LENGTH_SHORT).show()
@@ -331,5 +331,9 @@ class QuestionAnswerActivity :
     override fun onResume() {
         super.onResume()
         observeQnaViewFlag()
+    }
+
+    companion object {
+        const val NOT_ANY_QUESTION = 501
     }
 }
