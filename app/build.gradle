@@ -19,7 +19,7 @@ android {
         applicationId "com.ubcompany.umbba_android"
         minSdk 26
         targetSdk 34
-        versionCode 3
+        versionCode 4
         versionName "1.2.0"
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
@@ -56,7 +56,7 @@ android {
             dimension = "version"
             applicationId = "com.ubcompany.umbba_android"
             versionNameSuffix = "-store"
-            versionCode = 3
+            versionCode = 4
             versionName = "1.2.0"
             archivesBaseName = "umbba_store"
             buildConfigField "boolean", "IS_DEV", "false"
