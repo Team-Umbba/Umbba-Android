@@ -63,8 +63,11 @@ class QuestionAnswerActivity :
     }
 
     private fun observeRefreshQuestionData() {
-        viewModel.refreshResponse.observe(this) {
-            showRefreshQuestionDialog()
+        viewModel.isQuestionSaved.observe(this) { isQuestionSaved ->
+            if (isQuestionSaved) {
+                viewModel.initIsQuestionSaved()
+                showRefreshQuestionDialog()
+            }
         }
         viewModel.errorCode.observe(this) {
             if (viewModel.errorCode.value == NOT_ANY_QUESTION) {

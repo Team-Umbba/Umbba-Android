@@ -41,7 +41,12 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
     private var _topicTitle = MutableLiveData<String>()
     val topicTitle: LiveData<String> = _topicTitle
 
+    val isQuestionSaved = MutableLiveData<Boolean>()
     var errorCode = MutableLiveData<Int>()
+
+    fun initIsQuestionSaved() {
+        isQuestionSaved.value = false
+    }
 
     fun setBundleArgument(bundle: Bundle): Bundle {
         bundle.apply {
@@ -92,6 +97,7 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
             questionAnswerRepository.getRefreshQuestion()
                 .onSuccess { response ->
                     _refreshResponse.value = response.data
+                    isQuestionSaved.value = true
                     Timber.d("getRefreshQuestion 성공")
                 }
                 .onFailure { error ->
