@@ -102,6 +102,9 @@
     <string name="answer_opponent_hint">아래 질문에 답하고 내용을 확인하세요</string>
     <string name="answer_only_me_hint">상대방이 아직 답변하지 않았어요</string>
     <string name="home">홈으로</string>
+    <string name="not_redo">변경한 질문은 되돌릴 수 없어요.</string>
+    <string name="not_any_question">남은 질문이 존재하지 않아요.</string>
+    <string name="not_refresh">새로고침을 할 수 없어요.</string>
 
     <!--invite code dialog fragment-->
     <string name="not_have_partner">상대를 초대할 차례야\n상대방이 수락하면 문답이 시작돼</string>
@@ -181,12 +184,13 @@
     <string name="quest_5">돌아가고 싶은 순간이 있어?</string>
 
     <!-- ending activity-->
-    <string name="ending_title">지금까지의 여정이 어땠는지 알려줘</string>
+    <string name="ending_title">지금까지의 여정이 어땠는지\n알려줘</string>
     <string name="ending_survey_title">설문에 참여하고, 다시 문답을 이어가자</string>
     <string name="ending_survey_caption">설문조사에 참여하여 피드백을 남겨주세요.</string>
     <string name="ending_btn_survey">설문하러 가기</string>
     <string name="ending_close_page"><u>건너뛰기</u></string>
-    <string name="ending_survey_uri">https://walla.my/survey/HzusbLOOtm1ptMUmIhJ7</string>
+    <string name="ending_survey_uri">https://walla.my/umbba</string>
+    <string name="not_question">남은 질문이 없습니다. 질문을 추가해주세요.</string>
 
     <!-- communication activity-->
     <string name="communication">오래된 공중전화에서 수신음이 들린다</string>
@@ -239,4 +243,10 @@
     <string name="delete_record_confirm">정말 기록을 삭제하시겠어요?</string>
     <string name="delete">삭제</string>
 
+    <!-- refresh question dialog fragment -->>
+    <string name="do_you_change_question">질문을 변경하시겠어요?</string>
+    <string name="new_question">새로운 질문</string>
+    <string name="not_change_question_if_you_change">변경한 질문은 되돌릴 수 없어요</string>
+    <string name="change_question">질문 변경하기</string>
+    
 </resources>

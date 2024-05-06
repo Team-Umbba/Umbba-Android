@@ -1,10 +1,13 @@
 package com.ubcompany.umbba_android.presentation.qna.viewmodel
 
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.snackbar.Snackbar
+import com.ubcompany.umbba_android.data.model.response.IsRefreshResponseDto
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.repository.QuestionAnswerRepositoryImpl
@@ -24,8 +27,12 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
     private var _listQnaResponse = MutableLiveData<ListQuestionAnswerResponseDto.QnaData>()
     val listQnaResponse: LiveData<ListQuestionAnswerResponseDto.QnaData> = _listQnaResponse
 
+    private var _refreshResponse = MutableLiveData<IsRefreshResponseDto.RefreshData>()
+    val refreshResponse: LiveData<IsRefreshResponseDto.RefreshData> = _refreshResponse
+
     var isMyAnswer = MutableLiveData<Boolean?>()
     var isOpponentAnswer = MutableLiveData<Boolean?>()
+    var isRerollTime = MutableLiveData<Boolean?>()
 
     var appbarSection = MutableLiveData<String>()
 
@@ -34,6 +41,16 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
     private var _topicTitle = MutableLiveData<String>()
     val topicTitle: LiveData<String> = _topicTitle
 
+    var errorCode = MutableLiveData<Int>()
+
+    fun setBundleArgument(bundle: Bundle): Bundle {
+        bundle.apply {
+            _refreshResponse.value?.questionId?.let { putLong("questionId", it) }
+            _refreshResponse.value?.newQuestion.let { putString("newQuestion", it) }
+        }
+        return bundle
+    }
+
     fun getQuestionAnswer() {
         viewModelScope.launch {
             questionAnswerRepository.getQuestionAnswer()
@@ -41,6 +58,7 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
                     _qnaResponse.value = response.data
                     isMyAnswer.value = response.data.isMyAnswer
                     isOpponentAnswer.value = response.data.isOpponentAnswer
+                    isRerollTime.value = response.data.isRerollTime
                     _topicTitle.value = "#${response.data.index} ${response.data.topic}"
                     appbarSection.value = response.data.section.toString()
                     Timber.d("getQuestionAnswer 성공")
@@ -65,6 +83,22 @@ class QuestionAnswerViewModel @Inject constructor(private val questionAnswerRepo
                     Timber.e("getListQuestionAnswer 성공")
                 }.onFailure { error ->
                     Timber.e("getListQuestionAnswer 실패 $error")
+                }
+        }
+    }
+
+    fun getRefreshQuestion() {
+        viewModelScope.launch {
+            questionAnswerRepository.getRefreshQuestion()
+                .onSuccess { response ->
+                    _refreshResponse.value = response.data
+                    Timber.d("getRefreshQuestion 성공")
+                }
+                .onFailure { error ->
+                    if (error is HttpException) {
+                        errorCode.value = error.code()
+                    }
+                    Timber.e("getRefreshQuestion 실패")
                 }
         }
     }

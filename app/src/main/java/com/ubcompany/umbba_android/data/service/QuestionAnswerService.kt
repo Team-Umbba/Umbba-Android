@@ -1,11 +1,15 @@
 package com.ubcompany.umbba_android.data.service
 
 import com.ubcompany.umbba_android.data.model.request.AnswerRequestDto
+import com.ubcompany.umbba_android.data.model.request.RefreshQuestionRequestDto
 import com.ubcompany.umbba_android.data.model.response.AnswerResponseDto
+import com.ubcompany.umbba_android.data.model.response.BaseResponseDto
+import com.ubcompany.umbba_android.data.model.response.IsRefreshResponseDto
 import com.ubcompany.umbba_android.data.model.response.ListQuestionAnswerResponseDto
 import com.ubcompany.umbba_android.data.model.response.QuestionAnswerResponseDto
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -18,4 +22,12 @@ interface QuestionAnswerService {
 
     @POST("/qna/answer")
     suspend fun postAnswer(@Body answerRequestDto: AnswerRequestDto): AnswerResponseDto
+
+    @GET("/reroll/check")
+    suspend fun getRefreshQuestion(): IsRefreshResponseDto
+
+    @PATCH("/reroll/change")
+    suspend fun patchRefreshQuestion(
+        @Body refreshQuestionRequestDto: RefreshQuestionRequestDto
+    ): BaseResponseDto
 }

@@ -2,6 +2,7 @@ package com.ubcompany.umbba_android.data.repository
 
 import android.util.Log
 import com.ubcompany.umbba_android.data.datasource.HomeRemoteDataSource
+import com.ubcompany.umbba_android.data.model.response.BaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeCaseResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeFirstResponseDto
 import com.ubcompany.umbba_android.data.model.response.HomeResponseDto
@@ -47,5 +48,14 @@ class HomeRepositoryImpl @Inject constructor(
                 Log.e("hyeon","patch 실패 ${errorBody}")
             }
             Log.e("hyeon", "patch first 실패 ${error.message} ")
+        }
+
+    override suspend fun patch7DaysAfter(): Result<BaseResponseDto> =
+        runCatching {
+            homeRemoteDataSource.patch7DaysAfter()
+        }.onSuccess {
+            Timber.d("patch 7days after 성공")
+        }.onFailure {
+            Timber.e("patch 7days after 실패")
         }
 }

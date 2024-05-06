@@ -15,6 +15,7 @@ import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import com.skydoves.balloon.ArrowOrientation
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonSizeSpec
@@ -48,6 +49,37 @@ class QuestionAnswerActivity :
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.iv_qna_back -> finish()
+            R.id.btn_question_refresh -> refreshQuestion()
+        }
+    }
+
+    private fun refreshQuestion() {
+        if (viewModel.isRerollTime.value == true) {
+            viewModel.getRefreshQuestion()
+            observeRefreshQuestionData()
+        } else {
+            Snackbar.make(binding.root, R.string.not_redo, Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun observeRefreshQuestionData() {
+        viewModel.refreshResponse.observe(this) {
+            showRefreshQuestionDialog()
+        }
+        viewModel.errorCode.observe(this) {
+            if (viewModel.errorCode.value == NOT_ANY_QUESTION) {
+                Snackbar.make(binding.root, R.string.not_any_question, Snackbar.LENGTH_SHORT).show()
+            } else {
+                Snackbar.make(binding.root, R.string.not_refresh, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showRefreshQuestionDialog() {
+        val bundle = Bundle()
+        RefreshQuestionDialogFragment().apply {
+            arguments = viewModel.setBundleArgument(bundle)
+            show(supportFragmentManager, "RefreshQustionDialogFragment")
         }
     }
 
@@ -90,9 +122,20 @@ class QuestionAnswerActivity :
 
     private fun observeQnaResponse() {
         viewModel.qnaResponse.observe(this@QuestionAnswerActivity) {
+            setQuestionRefreshButton(it)
             setAnswerText(it)
             setUserAnswerClickEvent(it)
             setAnswerBtnEnable(it.isMyAnswer)
+        }
+    }
+
+    private fun setQuestionRefreshButton(data: QuestionAnswerResponseDto.QnaData) {
+        with(binding) {
+            if (data.index!! >= 7 && data.isMyAnswer == false && data.isOpponentAnswer == false) {
+                layoutAppbar.btnQuestionRefresh.visibility = View.VISIBLE
+            } else {
+                layoutAppbar.btnQuestionRefresh.visibility = View.GONE
+            }
         }
     }
 
@@ -148,7 +191,7 @@ class QuestionAnswerActivity :
             }
         }
         binding.clLoading.visibility = View.GONE
-        if (SharedPreferences.getQnaTutorialNeededBoolean("NEEDED_TUTORIAL") && !isShowedTutorial){
+        if (SharedPreferences.getQnaTutorialNeededBoolean("NEEDED_TUTORIAL") && !isShowedTutorial) {
             isSetUpTutorialView()
             isShowedTutorial = true
         }
@@ -235,8 +278,8 @@ class QuestionAnswerActivity :
     }
 
     private fun showTutorialView() {
-        val btnAnswerBalloon = createBalloon("답변은 상대가 확인할 수 있으니\n잘 답변해줘",80f,0.5f)
-        val tvQuestionBalloon = createBalloon("답변을 입력하면\n상대가 받은 질문을 알 수 있어", 50f,0.2f)
+        val btnAnswerBalloon = createBalloon("답변은 상대가 확인할 수 있으니\n잘 답변해줘", 80f, 0.5f)
+        val tvQuestionBalloon = createBalloon("답변을 입력하면\n상대가 받은 질문을 알 수 있어", 50f, 0.2f)
         lifecycleScope.launch {
             awaitBalloons {
                 dismissSequentially = false
@@ -245,6 +288,7 @@ class QuestionAnswerActivity :
             }
         }
     }
+
     private fun createBalloon(text: String, radius: Float, arrowPosition: Float): Balloon {
         return Balloon.Builder(this@QuestionAnswerActivity)
             .setWidth(BalloonSizeSpec.WRAP)
@@ -287,5 +331,9 @@ class QuestionAnswerActivity :
     override fun onResume() {
         super.onResume()
         observeQnaViewFlag()
+    }
+
+    companion object {
+        const val NOT_ANY_QUESTION = 501
     }
 }

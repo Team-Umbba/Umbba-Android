@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,8 +12,8 @@
             android:id="@+id/iv_close"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="6dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -39,24 +38,26 @@
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:text="@string/ending_survey_title"
             android:layout_marginTop="12dp"
+            android:text="@string/ending_survey_title"
             android:textAppearance="@style/AndroidBody1_2Regular16"
             android:textColor="@color/umbba_black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title1"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_title1" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/bg_einding_logo"
-            app:layout_constraintTop_toBottomOf="@id/tv_title2"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title2" />
+
         <TextView
             android:id="@+id/tv_survey_caption"
             android:layout_width="wrap_content"
@@ -67,8 +68,8 @@
             android:textColor="@color/grey_900"
             app:layout_constraintBottom_toTopOf="@id/btn_survey"
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_close_page"
@@ -80,21 +81,21 @@
             android:textColor="@color/grey_900"
             android:textColorLink="@color/grey_900"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_survey"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="28dp"
             android:background="@drawable/shape_pri500_btn_r50_rect"
             android:stateListAnimator="@null"
             android:text="@string/ending_btn_survey"
             android:textAppearance="@style/AndroidBody1_1SemiBold16"
             android:textColor="@color/white"
-            android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_close_page"/>
+            app:layout_constraintBottom_toTopOf="@id/tv_close_page" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

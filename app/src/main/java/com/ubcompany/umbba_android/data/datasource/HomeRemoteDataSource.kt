@@ -8,6 +8,6 @@ class HomeRemoteDataSource @Inject constructor(
 ) {
     suspend fun getHomeData() = homeService.getHomeData()
     suspend fun getResponseCase() = homeService.getResponseCase()
-
     suspend fun patchHomeFirst() = homeService.patchHomeFirst()
+    suspend fun patch7DaysAfter() = homeService.patch7DaysAfter()
 }
